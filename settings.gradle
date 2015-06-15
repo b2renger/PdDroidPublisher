@@ -1,0 +1,8 @@
+
+include 'pd-for-android', 'midi', 'pd-party'
+
+project(':pd-party').projectDir = new File(settingsDir, "PdDroidParty")
+project(':pd-for-android').projectDir = new File(settingsDir, "pd-for-android/PdCore")
+project(':midi').projectDir = new File(settingsDir, "pd-for-android/midi/AndroidMidi")
+
+rootProject.name = 'PdPartyPublisher'
