@@ -1,8 +1,9 @@
 
-include 'pd-for-android', 'midi', 'pd-party'
+include 'pd-for-android', 'midi', 'pd-party', 'svg-android'
 
 project(':pd-party').projectDir = new File(settingsDir, "PdDroidParty")
 project(':pd-for-android').projectDir = new File(settingsDir, "pd-for-android/PdCore")
 project(':midi').projectDir = new File(settingsDir, "pd-for-android/midi/AndroidMidi")
+project(':svg-android').projectDir = new File(settingsDir, "svg-android/svgandroid")
 
 rootProject.name = 'PdPartyPublisher'

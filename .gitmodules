@@ -4,3 +4,6 @@
 [submodule "PdDroidParty"]
 	path = PdDroidParty
 	url = https://github.com/b2renger/PdDroidParty.git
+[submodule "svg-android"]
+	path = svg-android
+	url = https://github.com/b2renger/svg-android.git
