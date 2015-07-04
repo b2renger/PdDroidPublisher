@@ -1,23 +1,33 @@
 package com.larvalabs.svgandroid;
 
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.graphics.*;
-import android.graphics.drawable.PictureDrawable;
-import android.util.Log;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Picture;
+import android.graphics.RadialGradient;
+import android.graphics.RectF;
+import android.graphics.Shader;
+import android.util.Log;
 
 /*
 
@@ -176,7 +186,6 @@ public class SVGParser {
     private static SVG parse(InputStream in, Integer searchColor, Integer replaceColor, boolean whiteMode) throws SVGParseException {
 //        Util.debug("Parsing SVG...");
         try {
-            long start = System.currentTimeMillis();
             SAXParserFactory spf = SAXParserFactory.newInstance();
             SAXParser sp = spf.newSAXParser();
             XMLReader xr = sp.getXMLReader();
@@ -606,36 +615,11 @@ public class SVGParser {
         }
     }
 
-    private static Integer getHexAttr(String name, Attributes attributes) {
-        String v = getStringAttr(name, attributes);
-        //Util.debug("Hex parsing '" + name + "=" + v + "'");
-        if (v == null) {
-            return null;
-        } else {
-            try {
-                return Integer.parseInt(v.substring(1), 16);
-            } catch (NumberFormatException nfe) {
-                // todo - parse word-based color here
-                return null;
-            }
-        }
-    }
-
     private static class NumberParse {
         private ArrayList<Float> numbers;
-        private int nextCmd;
 
         public NumberParse(ArrayList<Float> numbers, int nextCmd) {
             this.numbers = numbers;
-            this.nextCmd = nextCmd;
-        }
-
-        public int getNextCmd() {
-            return nextCmd;
-        }
-
-        public float getNumber(int index) {
-            return numbers.get(index);
         }
 
     }
@@ -734,15 +718,6 @@ public class SVGParser {
                     // todo - parse word-based color here
                     return null;
                 }
-            }
-        }
-
-        public Float getFloat(String name, float defaultValue) {
-            Float v = getFloat(name);
-            if (v == null) {
-                return defaultValue;
-            } else {
-                return v;
             }
         }
 
