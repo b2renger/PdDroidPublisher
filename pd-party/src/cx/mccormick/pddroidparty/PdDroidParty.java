@@ -58,7 +58,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.noisepages.nettoyeur.midi.MidiReceiver;
 import com.noisepages.nettoyeur.usb.ConnectionFailedException;
 import com.noisepages.nettoyeur.usb.DeviceNotConnectedException;
 import com.noisepages.nettoyeur.usb.InterfaceNotAvailableException;
@@ -99,7 +98,6 @@ public class PdDroidParty extends Activity {
 	private MenuItem menumidi = null;
 
 	private UsbMidiDevice midiDevice = null;
-	private MidiReceiver midiOut = null;
 	private MidiToPdAdapter receiver = new MidiToPdAdapter();
 	
 	private MidiManager midiManager;
@@ -198,10 +196,14 @@ public class PdDroidParty extends Activity {
 		// test for platforms that don't support USB OTG devices
 		try {
 			UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
-			menumidi = menu.add(0, Menu.FIRST + menu.size(), 0, "Midi");
-			menumidi.setIcon(android.R.drawable.ic_menu_manage); 
+			if(manager != null)
+			{
+				menumidi = menu.add(0, Menu.FIRST + menu.size(), 0, "Midi");
+				menumidi.setIcon(android.R.drawable.ic_menu_manage); 
+			}
 		} catch(NoClassDefFoundError e) {
 			// don't care
+			Log.w(TAG, "USB not available", e);
 		}
 		// exit menu item
 		menuexit = menu.add(0, Menu.FIRST + menu.size(), 0, "Exit");
@@ -532,7 +534,7 @@ public class PdDroidParty extends Activity {
 					protected void onOutputSelected(UsbMidiOutput output, UsbMidiDevice device, int iface, int index) {
 						post("Output selection: Interface " + iface + ", Output " + index);
 						try {
-							midiOut = output.getMidiOut();
+							output.getMidiOut();
 						} catch (DeviceNotConnectedException e) {
 							post("MIDI device has been disconnected");
 						} catch (InterfaceNotAvailableException e) {
