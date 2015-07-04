@@ -4,7 +4,6 @@ import java.text.DecimalFormat;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import android.util.Log;
 
 public class Numberbox2 extends Numberbox {
 	private static final String TAG = "Nbx";

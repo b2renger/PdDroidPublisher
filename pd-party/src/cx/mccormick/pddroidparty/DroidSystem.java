@@ -1,16 +1,13 @@
 package cx.mccormick.pddroidparty;
 
-import java.lang.Object;
-
+import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Vibrator;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.content.Context;
-import android.util.Log;
+import android.net.Uri;
+import android.os.Vibrator;
 
 public class DroidSystem extends Widget implements SensorEventListener{
 	private static final String TAG = "DroidSystem";

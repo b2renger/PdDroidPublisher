@@ -2,7 +2,6 @@ package cx.mccormick.pddroidparty;
 
 import org.puredata.core.PdBase;
 
-import cx.mccormick.pddroidparty.Widget.WImage;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;

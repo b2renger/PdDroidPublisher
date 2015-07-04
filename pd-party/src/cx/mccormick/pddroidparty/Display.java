@@ -1,13 +1,8 @@
 package cx.mccormick.pddroidparty;
 
-import java.util.ArrayList;
-
-import org.puredata.core.PdBase;
-
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.util.Log;
 
 public class Display extends Widget {
 	private static final String TAG = "Display";

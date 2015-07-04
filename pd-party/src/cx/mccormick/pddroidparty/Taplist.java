@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 import org.puredata.core.PdBase;
 
-import cx.mccormick.pddroidparty.Widget.WImage;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.util.Log;
 
 public class Taplist extends Widget {
 	private static final String TAG = "Taplist";
