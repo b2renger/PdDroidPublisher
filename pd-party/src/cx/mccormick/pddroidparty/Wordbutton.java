@@ -109,7 +109,7 @@ public class Wordbutton extends Bang {
 			}
 			break;
 		case MotionEvent.ACTION_POINTER_DOWN:
-			pid = event.getAction() >> MotionEvent.ACTION_POINTER_ID_SHIFT;
+			pid = event.getAction() >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
 			index = event.findPointerIndex(pid);
 			Log.d("dwnBtnBefore", index + "");
 			index = (index == -1) ? 1 : index;
@@ -132,7 +132,7 @@ public class Wordbutton extends Bang {
 			break;
 
 		case MotionEvent.ACTION_POINTER_UP:
-			pid = event.getAction() >> MotionEvent.ACTION_POINTER_ID_SHIFT;
+			pid = event.getAction() >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
 			index = event.findPointerIndex(pid);
 			Log.d("upBtnBefore", index + "");
 			index = (index == -1) ? 1 : index;
