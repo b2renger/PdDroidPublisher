@@ -39,7 +39,7 @@ public class Taplist extends Widget {
 		paint.setTextSize(fontsize);
 		paint.setTextAlign(Paint.Align.CENTER);
 
-		sendname = app.app.replaceDollarZero(atomline[8]);
+		sendname = app.replaceDollarZero(atomline[8]);
 		receivename = atomline[7];
 
 		setval(0, 0);
@@ -81,7 +81,7 @@ public class Taplist extends Widget {
 
 	private void doSend() {
 		PdBase.sendFloat(sendname + "/idx", val);
-		parent.app.send(sendname, atoms.get((int) val));
+		parent.send(sendname, atoms.get((int) val));
 	}
 
 	public boolean touchdown(int pid, float x,float y) {

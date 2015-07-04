@@ -20,10 +20,10 @@ public class DroidNetReceive extends Widget {
 		super(app);
 		
 		port = (int)Float.parseFloat(atomline[5]);
-		sendname = app.app.replaceDollarZero(atomline[6]);
-		receivename = app.app.replaceDollarZero(atomline[6]) + "-rcv";
+		sendname = app.replaceDollarZero(atomline[6]);
+		receivename = app.replaceDollarZero(atomline[6]) + "-rcv";
 		if (atomline.length > 7) {
-			connection_type = app.app.replaceDollarZero(atomline[7]);
+			connection_type = app.replaceDollarZero(atomline[7]);
 			
 		}
 		Log.d(TAG, "Connection type: " + connection_type);

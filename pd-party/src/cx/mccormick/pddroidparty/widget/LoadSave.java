@@ -19,7 +19,7 @@ public class LoadSave extends Widget {
 		super(app);
 		parent = app;
 		sendreceive = atomline[5];
-		parent.app.registerReceiver(sendreceive, this);
+		app.registerReceiver(sendreceive, this);
 	}
 	
 	public String getFilename() {
@@ -43,17 +43,17 @@ public class LoadSave extends Widget {
 		}
 		directory = args.length > 0 ? (String)args[0] : ".";
 		extension = args.length > 1 ? (String)args[1] : "";
-		parent.app.launchDialog(this, type);
+		parent.launchDialog(this, type);
 	}
 	
 	public void gotFilename(String type, String newname) {
 		filename = newname;
 		List<Object> details = new ArrayList<Object>();
-		details.add(parent.app.getPatchRelativePath(directory));
+		details.add(parent.getPatchRelativePath(directory));
 		details.add(filename);
 		details.add(extension);
 		Object[] ol = details.toArray();
 		PdBase.sendList(sendreceive + "-" + type + "-detail", ol);
-		PdBase.sendSymbol(sendreceive + "-" + type, parent.app.getPatchRelativePath(directory) + "/" + filename + "." + extension);
+		PdBase.sendSymbol(sendreceive + "-" + type, parent.getPatchRelativePath(directory) + "/" + filename + "." + extension);
 	}
 }

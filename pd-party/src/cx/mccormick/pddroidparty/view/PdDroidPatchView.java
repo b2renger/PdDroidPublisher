@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -58,7 +59,7 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 
 	public int fontsize;
 	ArrayList<Widget> widgets = new ArrayList<Widget>();
-	public PdDroidParty app;
+	private PdDroidParty app;
 	private int splash_res = 0;
 	private Resources res = null;
 	private Picture background = null;
@@ -308,5 +309,39 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 			}
 		}
 		threadSafeInvalidate();
+	}
+
+	public String replaceDollarZero(String name) 
+	{
+		return app.replaceDollarZero(name);
+	}
+
+	public Object getSystemService(String name) {
+		return app.getSystemService(name);
+	}
+
+	public void startActivity(Intent intent) 
+	{
+		app.startActivity(intent);
+	}
+
+	public void registerReceiver(String name, Widget w) {
+		app.registerReceiver(name, w);
+	}
+
+	public String getPatchRelativePath(String dir) {
+		return app.getPatchRelativePath(dir);
+	}
+
+	public void launchDialog(Widget which, int type) {
+		app.launchDialog(which, type);
+	}
+
+	public File getPatchFile() {
+		return app.getPatchFile();
+	}
+
+	public void send(String dest, String s) {
+		app.send(dest, s);
 	}
 }

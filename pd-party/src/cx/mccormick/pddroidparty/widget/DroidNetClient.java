@@ -19,8 +19,8 @@ public class DroidNetClient extends Widget {
 	public DroidNetClient(PdDroidPatchView app, String[] atomline) {
 		super(app);
 
-		sendname = app.app.replaceDollarZero(atomline[5]) + "-snd";
-		receivename = app.app.replaceDollarZero(atomline[5]) + "-rcv";
+		sendname = app.replaceDollarZero(atomline[5]) + "-snd";
+		receivename = app.replaceDollarZero(atomline[5]) + "-rcv";
 		setupreceive();		
 	}
 

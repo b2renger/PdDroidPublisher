@@ -63,12 +63,12 @@ public class Widget {
 		File f = null;
 		
 		// set an aliased font
-		f = new File(parent.app.getPatchFile().getParent() + "/font.ttf");
+		f = new File(parent.getPatchFile().getParent() + "/font.ttf");
 		if (f.exists() && f.canRead() && f.isFile()) {
 			font = Typeface.createFromFile(f);
 		} else {
 			// set an anti-aliased font
-			f = new File(parent.app.getPatchFile().getParent() + "/font-antialiased.ttf");
+			f = new File(parent.getPatchFile().getParent() + "/font-antialiased.ttf");
 			if (f.exists() && f.canRead() && f.isFile()) {
 				font = Typeface.createFromFile(f);
 				paint.setAntiAlias(true);
@@ -126,7 +126,7 @@ public class Widget {
 	public void setTextParametersFromSVG(SVGRenderer svg) {
 		if (svg != null) {
 			if (svg.getAttribute("textFont") != null) {
-				File f = new File(parent.app.getPatchFile().getParent() + "/" + svg.getAttribute("textFont") + ".ttf");
+				File f = new File(parent.getPatchFile().getParent() + "/" + svg.getAttribute("textFont") + ".ttf");
 				if (f.exists() && f.canRead() && f.isFile()) {
 					font = Typeface.createFromFile(f);
 				} else {
@@ -160,7 +160,7 @@ public class Widget {
 	
 	public void send(String msg) {
 		if (sendname != null && !sendname.equals("") && !sendname.equals("empty")) {
-			parent.app.send(sendname, msg);
+			parent.send(sendname, msg);
 		}
 	}
 	
@@ -173,7 +173,7 @@ public class Widget {
 	public void setupreceive() {
 		// listen out for floats from Pd
 		if (receivename != null && !receivename.equals("") && !receivename.equals("empty")) {
-			parent.app.registerReceiver(receivename, this);
+			parent.registerReceiver(receivename, this);
 		}
 	}
 	
@@ -428,7 +428,7 @@ public class Widget {
 			// now test every combination we have come up with
 			// we want to check from most specific to least specific
 			for (int s = testnames.size() - 1; s >= 0; s--) {
-				File f = new File(parent.app.getPatchFile().getParent() + "/" + testnames.get(s) + ".png");
+				File f = new File(parent.getPatchFile().getParent() + "/" + testnames.get(s) + ".png");
 				if (f.exists() && f.canRead() && f.isFile()) {
 					return BitmapFactory.decodeFile(f.getAbsolutePath() );
 				}

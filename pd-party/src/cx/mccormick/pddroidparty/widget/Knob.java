@@ -34,7 +34,7 @@ public class Knob extends Widget {
 		max = Float.parseFloat(atomline[8]);
 		log = Integer.parseInt(atomline[9]);
 		init = Integer.parseInt(atomline[10]);
-		sendname = app.app.replaceDollarZero(atomline[11]);
+		sendname = app.replaceDollarZero(atomline[11]);
 		receivename = atomline[12];
 		label = setLabel(atomline[13]);
 		labelpos[0] = Float.parseFloat(atomline[14]) ;

@@ -17,12 +17,12 @@ public class DroidSystem extends Widget implements SensorEventListener{
 	public DroidSystem(PdDroidPatchView app, String[] atomline) {
 		super(app);
 
-		sendname = app.app.replaceDollarZero(atomline[5]) + "-snd";
-		receivename = app.app.replaceDollarZero(atomline[5]) + "-rcv";
+		sendname = app.replaceDollarZero(atomline[5]) + "-snd";
+		receivename = app.replaceDollarZero(atomline[5]) + "-rcv";
 		setupreceive();
 
-		sensorManager = (SensorManager)parent.app.getSystemService(Context.SENSOR_SERVICE);
-		vibrator = (Vibrator)parent.app.getSystemService(Context.VIBRATOR_SERVICE);
+		sensorManager = (SensorManager)app.getSystemService(Context.SENSOR_SERVICE);
+		vibrator = (Vibrator)app.getSystemService(Context.VIBRATOR_SERVICE);
 	}
 
 	public void receiveMessage(String symbol, Object... args) {
@@ -30,7 +30,7 @@ public class DroidSystem extends Widget implements SensorEventListener{
 			if ((args.length == 1) && args[0].getClass().equals(String.class)) {
 				Uri uriUrl = Uri.parse(args[0].toString());
 		        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
-		        parent.app.startActivity(launchBrowser);
+		        parent.startActivity(launchBrowser);
 			}
 			return ;
 		}

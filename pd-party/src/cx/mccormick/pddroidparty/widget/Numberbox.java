@@ -52,7 +52,7 @@ public class Numberbox extends Widget {
 		
 		min = Float.parseFloat(atomline[5]);
 		max = Float.parseFloat(atomline[6]);
-		sendname = app.app.replaceDollarZero(atomline[10]);
+		sendname = app.replaceDollarZero(atomline[10]);
 		receivename = atomline[9];
 		label = setLabel(atomline[8]);
 		labelpos[0] = x;
@@ -89,7 +89,7 @@ public class Numberbox extends Widget {
 	
 	public boolean touchup(int pid, float x,float y) {
 		if (pid == pid0) {
-			parent.app.launchDialog(this, PdDroidParty.DIALOG_NUMBERBOX);
+			parent.launchDialog(this, PdDroidParty.DIALOG_NUMBERBOX);
 			down = false;
 			pid0 = -1;
 			return true;
@@ -131,7 +131,7 @@ public class Numberbox extends Widget {
 			ex = event.getX();
 			ey = event.getY();
 			if (dRect.contains(ex, ey)) {
-				parent.app.launchDialog(this, PdDroidParty.DIALOG_NUMBERBOX);
+				parent.launchDialog(this, PdDroidParty.DIALOG_NUMBERBOX);
 			}
 			down = false;
 			break;
@@ -145,7 +145,7 @@ public class Numberbox extends Widget {
 			ex = event.getX(index);
 			ey = event.getY(index);
 			if (dRect.contains(ex, ey)) {
-				parent.app.launchDialog(this, PdDroidParty.DIALOG_NUMBERBOX);
+				parent.launchDialog(this, PdDroidParty.DIALOG_NUMBERBOX);
 			}
 			down = false;
 			break;

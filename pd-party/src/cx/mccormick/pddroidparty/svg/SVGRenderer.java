@@ -37,7 +37,7 @@ public class SVGRenderer {
 	public static SVGRenderer getSVGRenderer(PdDroidPatchView parent, String name) {
 		// reads the SVG string from a file if the file with with name exists
 		// returns null if the file with name does not exist	
-		File f = new File(parent.app.getPatchFile().getParent() + "/" + name + ".svg");
+		File f = new File(parent.getPatchFile().getParent() + "/" + name + ".svg");
 		if (f.exists() && f.canRead() && f.isFile()) {
 			return new SVGRenderer(f);
 		}
