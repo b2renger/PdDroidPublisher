@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.text.TextUtils;
@@ -32,7 +33,7 @@ public class Widget {
 	protected String label = null;
 	protected float[] labelpos = new float[2];
 	protected int labelfont=0;
-	protected int labelsize=14;
+	protected int labelsize=10;
 	Typeface font = Typeface.create("Courier", Typeface.BOLD);
 	protected int fontsize = 0;
 	float[] textoffset = new float[2];
@@ -44,6 +45,13 @@ public class Widget {
 	protected int labelcolor=0xFF000000;
 	
 	protected PdDroidPatchView parent = null;
+
+	/** text cache, used to compute font size once */
+	private String textCache;
+	
+	/** the computed font size to fit in rectangle */
+	private float computedSize;
+
 	
 	private static int IEM_GUI_MAX_COLOR = 30;
 	private static int iemgui_color_hex[] = {
@@ -200,7 +208,7 @@ public class Widget {
 			paint.setStrokeWidth(0);
 			paint.setColor(labelcolor);
 			paint.setTextSize(labelsize);
-			canvas.drawText(label, dRect.left + labelpos[0], dRect.top + labelpos[1] + labelsize / 3, paint);
+			canvas.drawText(label, dRect.left + labelpos[0], dRect.top + labelpos[1] - paint.getFontMetrics().top, paint);
 			paint.setTextSize(fontsize);
 		}
 		paint.setColor(Color.BLACK);
@@ -209,6 +217,22 @@ public class Widget {
 	public void drawCenteredText(Canvas canvas, String text) {
 		paint.setStrokeWidth(0);
 		if (text != null) {
+			if(!text.equals(textCache))
+			{
+				// TODO algorithm not accurate but seems to work ...
+				Rect bounds = new Rect();
+				paint.getTextBounds(text, 0, text.length(), bounds);
+				float ratioW = bounds.width() / dRect.width();
+				float ratioH = bounds.height() / dRect.height();
+				float maxRatio = Math.max(ratioW, ratioH);
+				if(maxRatio > 1)
+					computedSize = paint.getTextSize() / maxRatio;
+				else
+					computedSize = paint.getTextSize();
+				
+				textCache = new String(text);
+			}
+			paint.setTextSize(computedSize);
 			canvas.drawText(text, dRect.left + dRect.width() / 2 + dRect.width() * textoffset[0], (int) (dRect.top + dRect.height() * 0.75 + dRect.height() * textoffset[1]), paint);
 		}
 	}

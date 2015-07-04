@@ -29,7 +29,7 @@ public class Taplist extends Widget {
 		float w = Float.parseFloat(atomline[5]) ;
 		float h = Float.parseFloat(atomline[6]) ;
 
-		fontsize = (int) (h * 0.75);
+		fontsize = (int) (h * 0.75); // XXX Wrong !
 
 		// get list atoms
 		for (int a = 9; a < atomline.length; a++) {
