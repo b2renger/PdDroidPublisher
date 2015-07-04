@@ -1,8 +1,5 @@
 package cx.mccormick.pddroidparty.midi;
 
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
 import org.puredata.core.PdBase;
@@ -15,21 +12,7 @@ public class MidiClock
 	private volatile int bpm;
 	private NetworkMidiOutput out;
 	private byte[] buffer = new byte[1];
-	private ScheduledFuture<?> task;
-	
-	// TODO implements specific executor :
-	// schedule 1 tick at a time to handle BPM soft change
-	// track time (NANO) to schedule ticks at absolute time
-	
-	ScheduledThreadPoolExecutor timer = new ScheduledThreadPoolExecutor(1, new ThreadFactory() {
-		@Override
-		public Thread newThread(Runnable r) 
-		{
-			Thread thread = new Thread(r);
-			thread.setPriority(Thread.MAX_PRIORITY);
-			return thread;
-		}
-	});
+	private ClockScheduler timer;
 	
 	private void dispatchRealTimeMessage(final NetworkMidiOutput out, int message)
 	{
@@ -73,7 +56,7 @@ public class MidiClock
 				dispatchRealTimeMessage(out, MidiCode.MIDI_REALTIME_CLOCK_RESUME);
 			}
 			
-			long period = 60000000 / (bpm * 24);
+			long period = 60000000000L / (long)(bpm * 24);
 			
 			Runnable command = new Runnable() {
 				@Override
@@ -82,7 +65,9 @@ public class MidiClock
 				}
 			};
 			
-			task = timer.scheduleAtFixedRate(command, 0, period, TimeUnit.MICROSECONDS);
+			timer = new ClockScheduler();
+			timer.setPeriod(period, TimeUnit.NANOSECONDS);
+			timer.start(command);
 		}
 	}
 	
@@ -95,11 +80,19 @@ public class MidiClock
 				@Override
 				public void run() 
 				{
-					shouldSendClock = false;
-					
-					task.cancel(false);
+					try
+					{
+					try {
+						timer.stopAndWait();
+					} catch (InterruptedException e) {
+						throw new Error(e);
+					}
 					
 					dispatchRealTimeMessage(out, MidiCode.MIDI_REALTIME_CLOCK_STOP);
+					}
+					finally{
+						shouldSendClock = false;
+					}
 					
 				}
 			}).start();
@@ -109,6 +102,9 @@ public class MidiClock
 	public void setBPM(int value)
 	{
 		bpm = value;
+		
+		long period = 60000000000L / (long)(bpm * 24);
+		timer.setPeriod(period, TimeUnit.NANOSECONDS);
 	}
 
 	public void resume(final NetworkMidiOutput out, final int startBpm) 
