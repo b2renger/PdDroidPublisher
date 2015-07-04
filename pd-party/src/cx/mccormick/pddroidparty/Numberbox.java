@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 
 public class Numberbox extends Widget {
-	private static final String TAG = "Floatatom";
 	
 	float min, max;
 	int numwidth;

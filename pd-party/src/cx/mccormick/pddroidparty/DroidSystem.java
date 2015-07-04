@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.Vibrator;
 
 public class DroidSystem extends Widget implements SensorEventListener{
-	private static final String TAG = "DroidSystem";
 	private SensorManager sensorManager;
 	private Vibrator vibrator;
 	

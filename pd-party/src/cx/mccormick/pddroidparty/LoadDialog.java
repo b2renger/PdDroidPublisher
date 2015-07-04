@@ -19,7 +19,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class LoadDialog extends Activity {
-	private static final String TAG = "LoadDialog";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 
 public class Numberbox2 extends Numberbox {
-	private static final String TAG = "Nbx";
 	
 	public Numberbox2(PdDroidPatchView app, String[] atomline) {
 		super(app);

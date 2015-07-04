@@ -23,7 +23,6 @@ import android.view.View.OnTouchListener;
 import com.larvalabs.svgandroid.SVGParser;
 
 public class PdDroidPatchView extends View implements OnTouchListener {
-	private static final String TAG = "PdDroidPatchView";
 	
 	Paint paint = new Paint();
 	public int patchwidth;

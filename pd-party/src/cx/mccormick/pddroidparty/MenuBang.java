@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MenuBang {
-	private static final String TAG = "Widget";
 	
 	// list of all known menubangs so we can find them when we are told a menu item has been pressed
 	private static Map<MenuItem, MenuBang> all = new HashMap<MenuItem, MenuBang>();

@@ -3,7 +3,6 @@ package cx.mccormick.pddroidparty;
 import android.graphics.Canvas;
 
 public class Comment extends Widget {
-	private static final String TAG = "Comment";
 	
 	public Comment(PdDroidPatchView app, String[] atomline) {
 		super(app);

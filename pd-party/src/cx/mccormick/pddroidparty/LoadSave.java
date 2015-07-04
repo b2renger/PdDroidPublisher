@@ -6,7 +6,6 @@ import java.util.List;
 import org.puredata.core.PdBase;
 
 public class LoadSave extends Widget {
-	private static final String TAG = "LoadSave";
 	private PdDroidPatchView parent = null;
 	private String filename = "";
 	private String directory = ".";
