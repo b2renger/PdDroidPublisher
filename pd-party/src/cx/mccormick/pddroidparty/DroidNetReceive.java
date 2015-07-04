@@ -98,9 +98,10 @@ public class DroidNetReceive extends Widget {
 		}
 		
 		void do_udp_connection() {
+			DatagramSocket s = null;
 			try {
 				Log.d(TAG, "Server running on port " + port);
-				DatagramSocket s = new DatagramSocket(port);
+				s = new DatagramSocket(port);
 				while (true) {
 					byte[] message = new byte[1024];
 					DatagramPacket p = new DatagramPacket(message, message.length);
@@ -118,7 +119,13 @@ public class DroidNetReceive extends Widget {
 					send(text);
 				}
 			} catch(IOException e) {
-				e.printStackTrace();
+				Log.e(TAG, "do_udp_connection error", e);
+			}
+			finally{
+				if(s != null)
+				{
+					s.close();
+				}
 			}
 		}
 	};
