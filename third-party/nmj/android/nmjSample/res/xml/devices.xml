@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <!-- We're only interested in MIDI interfaces (AUDIO device class, MIDI STREAMING subclass) -->   
+    <usb-device class="1" subclass="3"/>
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="example.humatic.de"
+      android:versionCode="1"
+      android:versionName="1.0"> 
+    
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="21"/>
+    
+    <!-- 
+    These permissions are required, but will generally be granted on Android M. 
+    They must still be requested in the manifest 
+    -->
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    
+    <!-- 
+    Under Android M this permission is user setable and will generally be 'off' after installation. 
+    It is only required for multicast input channels.
+    The library will not prompt for permissions itself, you need to fit that into your flow however it suits your needs.
+    Trying to open channels with missing permissions will throw Exceptions 
+    -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"></uses-permission>
+	
+	<!-- Bluetooth permissions are optional (required only if you intend to use Bluetooth)-->
+    <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
+	
+	<application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".nmjSample"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> 
+		<!-- Make nmj's control panel accessible -->
+		<activity android:name="de.humatic.nmj.NMJConfigDialog"> 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.PREFERENCE" />
+            </intent-filter>
+                   
+        </activity> 
+     	<!-- activity android:name="example.humatic.de.USBListener">  
+		     <intent-filter>                
+		         <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />            
+		        </intent-filter>            
+		        <meta-data android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"                
+		            android:resource="@xml/devices" />
+		</activity -->
+    </application>
+    
+</manifest> 

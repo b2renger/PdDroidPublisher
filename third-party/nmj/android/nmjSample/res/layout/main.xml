@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginTop="10dip"
+    >
+
+
+<Spinner android:id="@+id/Spinner01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center"></Spinner>
+<Button android:id="@+id/Button01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="send MIDI" android:layout_gravity="center"></Button>
+<Button android:id="@+id/ButtonStart" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Start Clock" android:layout_gravity="center"></Button>
+<Button android:id="@+id/ButtonStop" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Stop Clock" android:layout_gravity="center"></Button>
+<SeekBar android:id="@+id/BPMSlider" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="BPM" android:max="100" android:layout_gravity="center"/>
+<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minLines="10" android:layout_gravity="center" android:text=" "></TextView>
+</LinearLayout>
