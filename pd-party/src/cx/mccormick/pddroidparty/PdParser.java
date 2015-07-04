@@ -81,7 +81,6 @@ public final class PdParser {
 		Matcher matcher = pattern.matcher(patchtext);
 		ArrayList<String[]> atomlines = new ArrayList<String[]>();
 		while (matcher.find()) {
-			String[] s = token_pattern.split(matcher.group(1));
 			atomlines.add(token_pattern.split(matcher.group(1)));
 		}
 		return atomlines;
