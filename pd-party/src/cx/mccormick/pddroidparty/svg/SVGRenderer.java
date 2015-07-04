@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import android.graphics.Picture;
 import android.util.Log;
+import android.util.SparseArray;
 
 import com.larvalabs.svgandroid.SVGParser;
 
@@ -18,7 +19,7 @@ public class SVGRenderer {
 	Picture cached = null;
 	// my SVG filename
 	String svgfile = null;
-	HashMap<Integer, Picture> interpolated_cache = new HashMap<Integer, Picture>();
+	SparseArray<Picture> interpolated_cache = new SparseArray<Picture>();
 	// class shared static hashmap of all cached SVG images
 	private static HashMap<String, Picture> cache = new HashMap<String, Picture>();
 	
@@ -62,15 +63,14 @@ public class SVGRenderer {
 	
 	// interpolate between two paths in the SVG, making the second one invisible
 	public SVGRenderer interpolate(String startid, String endid, double amount) {
-		if (interpolated_cache.containsKey((int)(amount * 1000)) ) {
-			cached = interpolated_cache.get((int)(amount * 1000));
-			Log.d("SVGRenderer", "cache hit: " + ((int)(amount * 1000)));
-		} else {
+		int key = (int)(amount * 1000);
+		cached = interpolated_cache.get(key);
+		if (cached == null) {
 			original.interpolate(startid, endid, amount);
 			Picture tmp = getPicture();
-			interpolated_cache.put((int)(amount * 1000), tmp);
+			interpolated_cache.put(key, tmp);
 			cached = tmp;
-			Log.d("SVGRenderer", "cached: " + ((int)(amount * 1000)));
+			Log.d("SVGRenderer", "cached: " + key);
 		}
 		return this;
 	}
