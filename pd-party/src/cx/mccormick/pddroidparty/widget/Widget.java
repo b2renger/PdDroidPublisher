@@ -125,33 +125,33 @@ public class Widget {
 	
 	public void setTextParametersFromSVG(SVGRenderer svg) {
 		if (svg != null) {
-			if (svg.getAttribute("textFont") != null) {
-				File f = new File(parent.getPatchFile().getParent() + "/" + svg.getAttribute("textFont") + ".ttf");
+			if (svg.getInfo().getTextFont() != null) {
+				File f = new File(parent.getPatchFile().getParent() + "/" + svg.getInfo().getTextFont() + ".ttf");
 				if (f.exists() && f.canRead() && f.isFile()) {
 					font = Typeface.createFromFile(f);
 				} else {
-					Log.e("PdDroidParty", "Bad font file: " + svg.getAttribute("textFont"));
+					Log.e("PdDroidParty", "Bad font file: " + svg.getInfo().getTextFont());
 				}
 				paint.setTypeface(font);
 			}
-			if (svg.getAttribute("textColor") != null) {
+			if (svg.getInfo().getTextColor() != null) {
 				try {
-					paint.setColor(Color.parseColor(svg.getAttribute("textColor")));
+					paint.setColor(Color.parseColor(svg.getInfo().getTextColor()));
 				} catch (Exception e) {
 					// badly formatted color string - who cares?
-					Log.e("PdDroidParty", "Bad text color: " + svg.getAttribute("textColor"));
+					Log.e("PdDroidParty", "Bad text color: " + svg.getInfo().getTextColor());
 				}
 			}
-			if (svg.getAttribute("textAntialias") != null) {
+			if (svg.getInfo().getTextAntialias() != null) {
 				paint.setAntiAlias(true);
 			}
-			if (svg.getAttribute("textOffset") != null) {
+			if (svg.getInfo().getTextOffset() != null) {
 				try {
-					String[] xy = svg.getAttribute("textOffset").split(" ");
+					String[] xy = svg.getInfo().getTextOffset().split(" ");
 					textoffset[0] = Float.parseFloat(xy[0]);
 					textoffset[1] = Float.parseFloat(xy[1]);
 				} catch (Exception e) {
-					Log.e("PdDroidParty", "Bad text offset: " + svg.getAttribute("textOffset"));
+					Log.e("PdDroidParty", "Bad text offset: " + svg.getInfo().getTextOffset());
 					Log.e("PdDroidParty", e.toString());
 				}
 			}
@@ -445,14 +445,14 @@ public class Widget {
 		// ***** Get attributes
 		
 		public float getWidth() {
-			if(svg != null) return Float.parseFloat(svg.getAttribute("width"));
+			if(svg != null) return svg.getPicture().getWidth();
 			else if(bitmap != null) return bitmap.getWidth();
 			else return 0;
 		}
 		
 		
 		public float getHeight() {
-			if(svg != null) return Float.parseFloat(svg.getAttribute("height"));
+			if(svg != null) return svg.getPicture().getHeight();
 			else if(bitmap != null) return bitmap.getHeight();
 			else return 0;
 		}

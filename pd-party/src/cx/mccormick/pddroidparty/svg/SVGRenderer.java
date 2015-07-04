@@ -1,37 +1,53 @@
 package cx.mccormick.pddroidparty.svg;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Map;
 
 import android.graphics.Picture;
 import android.util.Log;
-import android.util.SparseArray;
 
+import com.larvalabs.svgandroid.SVGParseException;
 import com.larvalabs.svgandroid.SVGParser;
 
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class SVGRenderer {
 	private static final String TAG = "SVGRenderer";
-	// used for modification (e.g. interpolation) of the original svg
-	SVGManipulator original = null;
 	// cached image so we don't keep regenerating it every frame
 	Picture cached = null;
 	// my SVG filename
 	String svgfile = null;
-	SparseArray<Picture> interpolated_cache = new SparseArray<Picture>();
 	// class shared static hashmap of all cached SVG images
 	private static HashMap<String, Picture> cache = new HashMap<String, Picture>();
+	
+	private static Map<String, SVGInfo> infoCache = new HashMap<String, SVGInfo>();
+	
+	private SVGInfo info;
 	
 	public SVGRenderer(File f) {
 		svgfile = f.toString();
 		Log.d(TAG, "Loading: " + svgfile);
-		original = new SVGManipulator(f);
 		// cache it the first time
 		if (!cache.containsKey(svgfile)) {
-			cache.put(svgfile, SVGParser.getSVGFromString(original.toString()).getPicture());
+			try {
+				cache.put(svgfile, SVGParser.getSVGFromInputStream(new FileInputStream(f)).getPicture());
+			} catch (SVGParseException e) {
+				throw new Error(e);
+			} catch (FileNotFoundException e) {
+				throw new Error(e);
+			}
 			Log.d(TAG, "(cache store)");
 		}
+		info = infoCache.get(svgfile);
+		if(info == null)
+		{
+			info = new SVGInfo(f);
+			infoCache.put(svgfile, info);
+		}
+		
 	}
 	
 	// only create an SVGRenderer if we can load the file name asked for
@@ -50,28 +66,11 @@ public class SVGRenderer {
 		if (cached != null) {
 			return cached;
 		}
-		if (!cache.containsKey(svgfile)) {
-			cache.put(svgfile, SVGParser.getSVGFromString(original.toString()).getPicture());
-		}
 		return cache.get(svgfile);
 	}
-	
-	// proxy to SVGManipulator to get attributes of the SVG
-	public String getAttribute(String s) {
-		return original.getAttribute(s);
+
+	public SVGInfo getInfo() {
+		return info;
 	}
 	
-	// interpolate between two paths in the SVG, making the second one invisible
-	public SVGRenderer interpolate(String startid, String endid, double amount) {
-		int key = (int)(amount * 1000);
-		cached = interpolated_cache.get(key);
-		if (cached == null) {
-			original.interpolate(startid, endid, amount);
-			Picture tmp = getPicture();
-			interpolated_cache.put(key, tmp);
-			cached = tmp;
-			Log.d("SVGRenderer", "cached: " + key);
-		}
-		return this;
-	}
 }
