@@ -19,6 +19,7 @@ project(":pd-party") {
 	dependencies {
 	    compile project(":pd-for-android")
 	    compile project(":svg-android")
+	    compile files('../third-party/nmj/android/nmj.jar')
 	}
 
 	android {
