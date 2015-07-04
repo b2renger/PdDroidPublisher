@@ -39,24 +39,11 @@ import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.noisepages.nettoyeur.usb.ConnectionFailedException;
 import com.noisepages.nettoyeur.usb.DeviceNotConnectedException;
@@ -73,10 +60,10 @@ import cx.mccormick.pddroidparty.midi.MidiManager;
 import cx.mccormick.pddroidparty.net.DroidPartyReceiver;
 import cx.mccormick.pddroidparty.pd.PdParser;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
+import cx.mccormick.pddroidparty.view.PdPartyClockControl;
 import cx.mccormick.pddroidparty.widget.LoadSave;
 import cx.mccormick.pddroidparty.widget.MenuBang;
 import cx.mccormick.pddroidparty.widget.Widget;
-import de.humatic.nmj.NMJConfig;
 
 public class PdDroidParty extends Activity {
 	public PdDroidPatchView patchview = null;
@@ -87,7 +74,11 @@ public class PdDroidParty extends Activity {
 	public static final int DIALOG_NUMBERBOX = 1;
 	public static final int DIALOG_SAVE = 2;
 	public static final int DIALOG_LOAD = 3;
-	protected static final int SETUP_ACTIVITY_CODE = 666;
+	
+	private MidiManager midiManager;
+	
+	private PdPartyClockControl clockControl;
+	
 	public int dollarzero = -1;
 	
 	private String path;
@@ -105,12 +96,6 @@ public class PdDroidParty extends Activity {
 
 	private UsbMidiDevice midiDevice = null;
 	private MidiToPdAdapter receiver = new MidiToPdAdapter();
-	
-	private MidiManager midiManager;
-	
-	private ArrayAdapter<String> midiOutArrayList;
-	private ArrayAdapter<String> midiInArrayList;
-
 	
 	private final PdDispatcher dispatcher = new PdDispatcher() {
 		@Override
@@ -136,11 +121,10 @@ public class PdDroidParty extends Activity {
 			synchronized(lock) {
 				pdService = ((PdService.PdBinder) service).getService();
 				initPd();
-				midiManager = new MidiManager();
 				midiManager.init(PdDroidParty.this);
 				runOnUiThread(new Runnable() {
 					public void run() {
-						initMidiLists();
+						clockControl.initMidiLists();
 					}
 				});
 			}
@@ -151,8 +135,6 @@ public class PdDroidParty extends Activity {
 			// this method will never be called
 		}
 	};
-	private Spinner midiOutSpinner;
-	private Spinner midiInSpinner;
 	
 	// called when the app is launched
 	@Override
@@ -160,6 +142,9 @@ public class PdDroidParty extends Activity {
 		super.onCreate(savedInstanceState);
 		Intent intent = getIntent();
 		path = intent.getStringExtra(PATCH);
+		
+		midiManager = new MidiManager();
+		
 		initGui();
 		new Thread() {
 			@Override
@@ -339,179 +324,14 @@ public class PdDroidParty extends Activity {
 		LinearLayout layout = new LinearLayout(this);
 		layout.setOrientation(LinearLayout.VERTICAL);
 		
-		layout.addView(createControlView());
+		clockControl = new PdPartyClockControl(this, midiManager);
+		
+		layout.addView(clockControl);
 		layout.addView(patchview);
 		
 		setContentView(layout);
 		patchview.requestFocus();
 		MenuBang.clear();
-	}
-	
-	private Spinner createSpinner(ArrayAdapter<String> adapter)
-	{
-		Spinner spinner = new Spinner(this, Spinner.MODE_DIALOG);
-		spinner.setAdapter(adapter);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		return spinner;
-	}
-	
-	private View createControlView()
-	{
-		final int BPM_MIN = 60;
-		final int BPM_MAX = 480;
-		
-		LinearLayout main = new LinearLayout(this);
-		main.setOrientation(LinearLayout.HORIZONTAL);
-		
-		final LinearLayout masterLayout = new LinearLayout(this);
-		masterLayout.setOrientation(LinearLayout.HORIZONTAL);
-		
-		final LinearLayout slaveLayout = new LinearLayout(this);
-		slaveLayout.setOrientation(LinearLayout.HORIZONTAL);
-		
-		Button btStart = new Button(this);
-		btStart.setText("Start");
-		btStart.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				midiManager.startClock();
-			}
-		});
-		
-		Button btStop = new Button(this);
-		btStop.setText("Stop");
-		btStop.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				midiManager.stopClock();
-			}
-		});
-		
-		Button btResume = new Button(this);
-		btResume.setText("Resume");
-		btResume.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				midiManager.resumeClock();
-			}
-		});
-		
-		final TextView bpmLabel = new TextView(this);
-		bpmLabel.setText(String.valueOf(BPM_MIN));
-		
-		SeekBar slider = new SeekBar(this);
-		slider.setMax(BPM_MAX - BPM_MIN);
-		
-		slider.setLayoutParams(new ViewGroup.LayoutParams(300, ViewGroup.LayoutParams.WRAP_CONTENT));
-		
-		slider.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-			
-			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
-			}
-			
-			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-			}
-			
-			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-				int bpm = progress + BPM_MIN;
-				midiManager.setBpm(bpm);
-				bpmLabel.setText(String.valueOf(bpm)); 
-			}
-		});
-		
-		ToggleButton btSlave = new ToggleButton(this);
-		btSlave.setTextOn("Slave");
-		btSlave.setTextOff("Master");
-		btSlave.setText(btSlave.getTextOff());
-		btSlave.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				
-				for(int i=0 ; i<masterLayout.getChildCount() ; i++)
-				{
-					masterLayout.getChildAt(i).setEnabled(!isChecked);
-				}
-				for(int i=0 ; i<slaveLayout.getChildCount() ; i++)
-				{
-					slaveLayout.getChildAt(i).setEnabled(isChecked);
-				}
-			}
-		});
-		
-		midiOutArrayList = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, new ArrayList<String>());
-
-		midiOutSpinner = createSpinner(midiOutArrayList);
-		midiOutSpinner.setPrompt("Output...");
-		midiOutSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-			@Override
-			public void onItemSelected(AdapterView<?> adapter, View view,
-					int position, long id) {
-				midiManager.setOut(midiOutArrayList.getItem(position));
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> adapter) {
-			}
-		});
-		
-		midiInArrayList = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, new ArrayList<String>());
-		midiInSpinner = createSpinner(midiInArrayList);
-		midiInSpinner.setEnabled(false);
-		midiOutSpinner.setPrompt("Input...");
-		midiInSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-			@Override
-			public void onItemSelected(AdapterView<?> adapter, View view,
-					int position, long id) {
-				midiManager.setIn(midiInArrayList.getItem(position));
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> adapter) {
-			}
-		});
-		
-
-		Button btSetup = new Button(this);
-		btSetup.setText("Setup");
-		btSetup.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				final Intent si = new Intent(PdDroidParty.this, de.humatic.nmj.NMJConfigDialog.class);
-				PdDroidParty.this.startActivityForResult(si, SETUP_ACTIVITY_CODE);
-			}
-		});
-		
-
-		
-		masterLayout.addView(btStart);
-		masterLayout.addView(btStop);
-		masterLayout.addView(btResume);
-		masterLayout.addView(slider);
-		masterLayout.addView(bpmLabel);
-		
-		masterLayout.addView(midiOutSpinner);
-
-		slaveLayout.addView(midiInSpinner);
-
-		LinearLayout msLayout = new LinearLayout(this);
-		msLayout.setOrientation(LinearLayout.VERTICAL);
-		msLayout.addView(masterLayout);
-		msLayout.addView(slaveLayout);
-		
-		LinearLayout ctLayout = new LinearLayout(this);
-		ctLayout.setOrientation(LinearLayout.VERTICAL);
-		ctLayout.addView(btSlave);
-		ctLayout.addView(btSetup);
-		
-		main.addView(ctLayout);
-		main.addView(msLayout);
-		
-		return main;
 	}
 	
 	// initialise Pd asking for the desired sample rate, parameters, etc.
@@ -806,9 +626,9 @@ public class PdDroidParty extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data); 
-		if(requestCode == SETUP_ACTIVITY_CODE)
+		if(requestCode == PdPartyClockControl.SETUP_ACTIVITY_CODE)
 		{
-			initMidiLists();
+			clockControl.initMidiLists();
 		}
 		else if (resultCode == RESULT_OK) {
 			if (widgetpopped != null) {
@@ -828,32 +648,4 @@ public class PdDroidParty extends Activity {
 		}
 	}
 
-	private void initMidiLists() 
-	{
-		midiManager.setOut(null);
-		midiManager.setIn(null);
-		midiInArrayList.clear();
-		midiOutArrayList.clear();
-		
-		midiInArrayList.add("");
-		midiOutArrayList.add("");
-		
-		for(int i=0 ; i<NMJConfig.getNumChannels() ; i++)
-		{
-			int io = NMJConfig.getIO(i);
-			String name = NMJConfig.getName(i);
-			// input
-			if(io == 0 || io == -1)
-			{
-				midiInArrayList.add(name);
-			}
-			// output
-			if(io == 1 || io == -1)
-			{
-				midiOutArrayList.add(name);
-			}
-		}
-		midiInSpinner.setPrompt("Select Midi In");
-		midiOutSpinner.setPrompt("Select Midi Out");
-	}
 }
