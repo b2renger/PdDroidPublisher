@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.svg;
 
 import java.io.File;
 import java.io.IOException;

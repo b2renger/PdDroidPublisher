@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.widget;
 
 import java.text.DecimalFormat;
 
@@ -8,17 +8,20 @@ import android.graphics.Rect;
 import android.text.StaticLayout;
 import android.util.Log;
 import android.view.MotionEvent;
+import cx.mccormick.pddroidparty.PdDroidParty;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Numberbox extends Widget {
 	
-	float min, max;
-	int numwidth;
+	protected float min;
+	protected float max;
+	protected int numwidth;
 	
 	StaticLayout numLayout = null;
-	DecimalFormat fmt = null;
+	protected DecimalFormat fmt = null;
 	Rect tRect = new Rect();
 	
-	boolean down = false;
+	protected boolean down = false;
 	int pid0 = -1; //pointer id when down
 	
 	public Numberbox(PdDroidPatchView app, String[] atomline) {

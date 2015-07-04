@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.widget;
 
 import org.puredata.core.PdBase;
 
@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.Log;
 import android.view.MotionEvent;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Wordbutton extends Bang {
 	private static final String TAG = "Wordbutton";

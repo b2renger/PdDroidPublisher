@@ -70,6 +70,12 @@ import com.noisepages.nettoyeur.usb.midi.util.UsbMidiOutputSelector;
 import com.noisepages.nettoyeur.usb.util.AsyncDeviceInfoLookup;
 
 import cx.mccormick.pddroidparty.midi.MidiManager;
+import cx.mccormick.pddroidparty.net.DroidPartyReceiver;
+import cx.mccormick.pddroidparty.pd.PdParser;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
+import cx.mccormick.pddroidparty.widget.LoadSave;
+import cx.mccormick.pddroidparty.widget.MenuBang;
+import cx.mccormick.pddroidparty.widget.Widget;
 import de.humatic.nmj.NMJConfig;
 
 public class PdDroidParty extends Activity {

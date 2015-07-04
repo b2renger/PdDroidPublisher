@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.widget;
 
 import java.io.File;
 import java.util.HashMap;
@@ -12,6 +12,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class MenuBang {
 	

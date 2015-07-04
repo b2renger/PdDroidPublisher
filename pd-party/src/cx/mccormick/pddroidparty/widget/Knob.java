@@ -1,9 +1,10 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.widget;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Knob extends Widget {
 	private static final String TAG = "Knob";

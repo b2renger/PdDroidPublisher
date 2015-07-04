@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.view;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -21,6 +21,30 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 
 import com.larvalabs.svgandroid.SVGParser;
+
+import cx.mccormick.pddroidparty.PdDroidParty;
+import cx.mccormick.pddroidparty.R;
+import cx.mccormick.pddroidparty.pd.PdParser;
+import cx.mccormick.pddroidparty.svg.SVGRenderer;
+import cx.mccormick.pddroidparty.widget.Bang;
+import cx.mccormick.pddroidparty.widget.Canvasrect;
+import cx.mccormick.pddroidparty.widget.Comment;
+import cx.mccormick.pddroidparty.widget.Display;
+import cx.mccormick.pddroidparty.widget.DroidNetClient;
+import cx.mccormick.pddroidparty.widget.DroidNetReceive;
+import cx.mccormick.pddroidparty.widget.DroidSystem;
+import cx.mccormick.pddroidparty.widget.Knob;
+import cx.mccormick.pddroidparty.widget.LoadSave;
+import cx.mccormick.pddroidparty.widget.MenuBang;
+import cx.mccormick.pddroidparty.widget.Numberbox;
+import cx.mccormick.pddroidparty.widget.Numberbox2;
+import cx.mccormick.pddroidparty.widget.Numberboxfixed;
+import cx.mccormick.pddroidparty.widget.Slider;
+import cx.mccormick.pddroidparty.widget.Taplist;
+import cx.mccormick.pddroidparty.widget.Toggle;
+import cx.mccormick.pddroidparty.widget.Touch;
+import cx.mccormick.pddroidparty.widget.Widget;
+import cx.mccormick.pddroidparty.widget.Wordbutton;
 
 public class PdDroidPatchView extends View implements OnTouchListener {
 	

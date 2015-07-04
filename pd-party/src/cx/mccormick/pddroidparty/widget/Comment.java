@@ -1,6 +1,7 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.widget;
 
 import android.graphics.Canvas;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Comment extends Widget {
 	

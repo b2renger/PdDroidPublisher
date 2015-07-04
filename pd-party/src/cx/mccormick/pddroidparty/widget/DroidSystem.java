@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.widget;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Vibrator;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class DroidSystem extends Widget implements SensorEventListener{
 	private SensorManager sensorManager;

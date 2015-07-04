@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.widget;
 
 import java.util.ArrayList;
 
@@ -7,6 +7,7 @@ import org.puredata.core.PdBase;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Taplist extends Widget {
 	private static final String TAG = "Taplist";

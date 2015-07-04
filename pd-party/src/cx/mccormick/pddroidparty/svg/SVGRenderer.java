@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.svg;
 
 import java.io.File;
 import java.util.HashMap;
@@ -7,6 +7,8 @@ import android.graphics.Picture;
 import android.util.Log;
 
 import com.larvalabs.svgandroid.SVGParser;
+
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class SVGRenderer {
 	private static final String TAG = "SVGRenderer";

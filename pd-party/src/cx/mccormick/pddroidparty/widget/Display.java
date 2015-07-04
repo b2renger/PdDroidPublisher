@@ -1,8 +1,9 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.widget;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Display extends Widget {
 	private static final String TAG = "Display";

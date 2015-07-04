@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.widget;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -15,29 +15,35 @@ import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
+import cx.mccormick.pddroidparty.svg.SVGRenderer;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Widget {
 	private static final String TAG = "Widget";
 	
- 	RectF dRect = new RectF();
+ 	protected RectF dRect = new RectF();
 	
-	Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+	protected Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	
-	float val = 0;
-	int init = 0;
-	String sendname = null;
-	String receivename = null;
-	String label = null;
-	float[] labelpos = new float[2];
-	int labelfont=0;
-	int labelsize=14;
+	protected float val = 0;
+	protected int init = 0;
+	protected String sendname = null;
+	protected String receivename = null;
+	protected String label = null;
+	protected float[] labelpos = new float[2];
+	protected int labelfont=0;
+	protected int labelsize=14;
 	Typeface font = Typeface.create("Courier", Typeface.BOLD);
-	int fontsize = 0;
+	protected int fontsize = 0;
 	float[] textoffset = new float[2];
 	
-	int bgcolor=0xFFFFFFFF, fgcolor=0xFF000000, labelcolor=0xFF000000;
+	protected int bgcolor=0xFFFFFFFF;
+
+	protected int fgcolor=0xFF000000;
+
+	protected int labelcolor=0xFF000000;
 	
-	PdDroidPatchView parent = null;
+	protected PdDroidPatchView parent = null;
 	
 	private static int IEM_GUI_MAX_COLOR = 30;
 	private static int iemgui_color_hex[] = {
@@ -333,7 +339,7 @@ public class Widget {
 	/***** Special SVG GUI drawing stuff *****/
 	public class WImage {
 		
-		SVGRenderer svg = null;
+		public SVGRenderer svg = null;
 		Bitmap bitmap = null;
 		
 		public WImage(){

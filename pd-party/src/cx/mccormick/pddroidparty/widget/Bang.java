@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.widget;
 
 import org.puredata.core.PdBase;
 
@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.SystemClock;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Bang extends Widget {
 	private static final String TAG = "Bang";

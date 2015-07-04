@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.pd;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,10 +1,11 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.widget;
 
 import java.text.DecimalFormat;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Numberboxfixed extends Numberbox {
 	private static final String TAG = "Numberbox";

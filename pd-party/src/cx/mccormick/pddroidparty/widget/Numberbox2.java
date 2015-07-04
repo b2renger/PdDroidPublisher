@@ -1,9 +1,10 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.widget;
 
 import java.text.DecimalFormat;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Numberbox2 extends Numberbox {
 	

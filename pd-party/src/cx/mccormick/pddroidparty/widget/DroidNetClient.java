@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.widget;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import android.util.Log;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class DroidNetClient extends Widget {
 	private static final String TAG = "DroidNetClient";

@@ -1,7 +1,8 @@
-package cx.mccormick.pddroidparty;
+package cx.mccormick.pddroidparty.widget;
 
 import android.graphics.Canvas;
 import android.graphics.RectF;
+import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Touch extends Widget {
 	private static final String TAG = "Touch";
