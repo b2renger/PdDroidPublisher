@@ -1,0 +1,127 @@
+ * incorporate phonecall code from ScenePlayer
+ * Prevent sleeping while app is active
+   http://forum.processing.org/topic/turning-sleep-mode-off-in-android#25080000000940015
+
+ * Add a touchpad which doesn't reset to 0,0 when the user lifts their finger.
+ * accelerometer support (RjDj style - ScenePlayer)
+   (check ScenePlayer code)
+ * touch support code (RjDj style - ScenePlayer)
+ * gps support RjDj style
+ * work out multitouch support
+
+ * loadsave dialog title should reflect activity name
+
+ * bundle pdlua
+
+ * nbx2 -> slider -> nbx2 gives a different value!
+
+ * multi-page canvas display with vis
+
+ * Toasting an info message android style
+ * confirm / alert message
+
+ * upgrade svg-android to the forked version
+
+ * documentation - numberbox init val in doc patches (_OVERVIEW.pd? test patches?)
+ * test bérenger's broken-toggles app
+ * cache the patch list in the database
+ * BUG: allow any message to numberboxes (at the moment users are needing to pass through [float])
+ * BUG: canvas label can't be changed with a message
+ * BUG: canvas colours are inconsistent between PC and PdDroidParty
+ * BUG: Numberbox font size is not working properly
+ * BUG: touch abstraction has no black dot (make an option to show it?)
+
+ * Stop console errors for built-in abstractions (make passthrough abstractions)
+ * document abstractions
+ * document SVG stuff
+   * File -> Inkscape Preferences -> SVG Output -> uncheck "Allow relative coordinates"
+ * unzip any zips in res
+ * package demos as a zip in the patch res directory
+
+ * add externals to the path
+   * copy externals from /sdcard/pd-externals to the phone because /sdcard is mounted noexec
+
+ * include demos zip in the PdDroidParty apk under res
+ * more patch GUIs
+   * vradio / hradio
+   * slider log mode
+   * numberbox extras:
+     * option to allow limited range with spinner
+     * logarithmic finger dragging
+       * up/down is whole numbers
+       * left/right is decimal point with starting threshold
+   * "ribbon" 1d = start -> end datastructure - 0,0 means finger-lifted
+ * config option comment -> noadc
+ * ability to click on .pd files from a file browser (association)
+ * 9-patch graphics for named objects
+
+DONE
+----
+
+ + force landscape mode
+ + list of _main.pd and android_main.pd patches on the sdcard
+   + test duplicate receivers in patch and in PdClient
+   + make 2D OpenGL renderer
+   + integrate patch parser
+ + basic GUIs
+   + toggle
+   + slider
+   + numberbox 
+     + tap to launch input dialog
+   + comment
+   + bang!
+   + numberbox2
+   + "canvas" widget
+   + numberbox-fixed abstraction
+   + "wordbutton" abstraction
+   + "touch" 2d surface - 0,0 means finger-lifted
+   + "menubang"
+   + "taplist" lets the user choose from a list by tapping
+   + "loadsave" - emulates openpanel and savepanel in an android way
+ + write up a help doc on modifying your patches
+ + put the logo on the website
+ + custom font load
+ + AB patch fixes:
+   + bang should send an actual bang
+   + bang circle should fit inside rectangle
+   + sliders are drawing wrong for fractional amounts
+ + svg graphics for background + named objects
+   http://code.google.com/p/svg-android/wiki/Tutorial
+ + Set text colour using an SVG property - modify SVGLoader
+   + numberbox
+   + wordbutton
+   + taplist
+ + Set text antialiasing using an SVG property - modify SVGLoader
+   + numberbox
+   + wordbutton
+   + taplist
+ + SVG widgets
+   + hslider
+   + vslider
+   + canvas
+   + numberbox
+   + wordbutton
+   + touch
+   + taplist
+ + loading indicator when you are waiting for a patch to load
+ + 'about' window loads static assets/about.html
+ + if patch.zip exists in res
+   + check for unzipped directory with same version number textfile
+   + unzip and load patch.zip if it doesn't exist
+   + don't show patch selector
+ +  fix back button & exit button for unpacked zips
+ + CanOfBeats - superclass main droidparty class for derivatives
+ + wordbutton - replace underscores with spaces
+ + change wording from "Loading patch..." to "Loading..."
+ + splash class
+   + if splash.svg exists in assets, show that on startup
+   + move patch unzipping stuff into the splash class
+ + make default 'savefiles' directory alongside recordings and patch
+ + cache svgrenderer images across instances
+ + stretch the splash svg
+ + stretch the background svg
+ + Make the splash screen persist on the background until loaded
+ + Fix build against latest version of libpd
+ + fix $0 replacement in GUI send/receives
+ + get it working with the 1.6 SDK (bluetooth free or emulated)
+
