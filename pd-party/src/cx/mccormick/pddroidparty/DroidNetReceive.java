@@ -25,7 +25,7 @@ public class DroidNetReceive extends Widget {
 			connection_type = app.app.replaceDollarZero(atomline[7]);
 			
 		}
-		Log.e(TAG, "Connection type: " + connection_type);
+		Log.d(TAG, "Connection type: " + connection_type);
 		
 		ServerThread = new Thread(ServerRun);
 		ServerThread.start();

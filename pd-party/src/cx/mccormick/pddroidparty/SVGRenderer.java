@@ -22,12 +22,12 @@ public class SVGRenderer {
 	
 	public SVGRenderer(File f) {
 		svgfile = f.toString();
-		Log.e(TAG, "Loading: " + svgfile);
+		Log.d(TAG, "Loading: " + svgfile);
 		original = new SVGManipulator(f);
 		// cache it the first time
 		if (!cache.containsKey(svgfile)) {
 			cache.put(svgfile, SVGParser.getSVGFromString(original.toString()).getPicture());
-			Log.e(TAG, "(cache store)");
+			Log.d(TAG, "(cache store)");
 		}
 	}
 	
@@ -62,13 +62,13 @@ public class SVGRenderer {
 	public SVGRenderer interpolate(String startid, String endid, double amount) {
 		if (interpolated_cache.containsKey((int)(amount * 1000)) ) {
 			cached = interpolated_cache.get((int)(amount * 1000));
-			Log.e("SVGRenderer", "cache hit: " + ((int)(amount * 1000)));
+			Log.d("SVGRenderer", "cache hit: " + ((int)(amount * 1000)));
 		} else {
 			original.interpolate(startid, endid, amount);
 			Picture tmp = getPicture();
 			interpolated_cache.put((int)(amount * 1000), tmp);
 			cached = tmp;
-			Log.e("SVGRenderer", "cached: " + ((int)(amount * 1000)));
+			Log.d("SVGRenderer", "cached: " + ((int)(amount * 1000)));
 		}
 		return this;
 	}

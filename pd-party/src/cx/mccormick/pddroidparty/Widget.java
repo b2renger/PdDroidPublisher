@@ -308,23 +308,23 @@ public class Widget {
 	}
 		
 	public void receiveList(Object... args) {
-		Log.e(TAG, "dropped list");
+		Log.d(TAG, "dropped list");
 	}
 	
 	public void receiveMessage(String symbol, Object... args) {
-		Log.e(TAG, "dropped message");
+		Log.d(TAG, "dropped message");
 	}
 	
 	public void receiveSymbol(String symbol) {
-		Log.e(TAG, "dropped symbol");
+		Log.d(TAG, "dropped symbol");
 	}
 	
 	public void receiveFloat(float x) {
-		Log.e(TAG, "dropped float");
+		Log.d(TAG, "dropped float");
 	}
 	
 	public void receiveBang() {
-		Log.e(TAG, "dropped bang");
+		Log.d(TAG, "dropped bang");
 	}
 	
 	public void receiveAny() {

@@ -308,7 +308,7 @@ public class PdDroidParty extends Activity {
 	public void registerReceiver(String name, Widget w) {
 		// do $0 replacement
 		String realname = replaceDollarZero(name);
-		Log.e(TAG, "Receiver: " + realname);
+		Log.d(TAG, "Receiver: " + realname);
 		DroidPartyReceiver r = receivemap.get(realname);
 		if (r == null) {
 			r = new DroidPartyReceiver(patchview, w);
@@ -513,9 +513,9 @@ public class PdDroidParty extends Activity {
 		Context context = this.getApplicationContext();
 		// make sure netreceive can receive broadcast UDP packets
 		wifiMulticastLock = ((WifiManager) context.getSystemService(Context.WIFI_SERVICE)).createMulticastLock("PdDroidPartyMulticastLock");
-		Log.e(TAG, "Got Multicast Lock (before)? " + wifiMulticastLock.isHeld());
+		Log.d(TAG, "Got Multicast Lock (before)? " + wifiMulticastLock.isHeld());
 		wifiMulticastLock.acquire();
-		Log.e(TAG, "Got Multicast Lock (after)? " + wifiMulticastLock.isHeld());
+		Log.d(TAG, "Got Multicast Lock (after)? " + wifiMulticastLock.isHeld());
 		// set up the midi stuff
 		UsbMidiDevice.installBroadcastHandler(this, new UsbBroadcastHandler() {
 			@Override
@@ -599,24 +599,24 @@ public class PdDroidParty extends Activity {
 			@Override
 			public void run() {
 				int sRate = AudioParameters.suggestSampleRate();
-				Log.e(TAG, "suggested sample rate: " + sRate);
+				Log.d(TAG, "suggested sample rate: " + sRate);
 				if (sRate < SAMPLE_RATE) {
 					Log.e(TAG, "warning: sample rate is only " + sRate);
 				}
 				// clamp it
 				sRate = Math.min(sRate, SAMPLE_RATE);
-				Log.e(TAG, "actual sample rate: " + sRate);
+				Log.d(TAG, "actual sample rate: " + sRate);
 				
 				int nIn = Math.min(AudioParameters.suggestInputChannels(), 1);
-				Log.e(TAG, "input channels: " + nIn);
+				Log.d(TAG, "input channels: " + nIn);
 				if (nIn == 0) {
-					Log.e(TAG, "warning: audio input not available");
+					Log.w(TAG, "warning: audio input not available");
 				}
 				
 				int nOut = Math.min(AudioParameters.suggestOutputChannels(), 2);
-				Log.e(TAG, "output channels: " + nOut);
+				Log.d(TAG, "output channels: " + nOut);
 				if (nOut == 0) {
-					Log.e(TAG, "audio output not available; exiting");
+					Log.w(TAG, "audio output not available; exiting");
 					finish();
 					return;
 				}

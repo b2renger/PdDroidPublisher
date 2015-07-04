@@ -159,7 +159,7 @@ public class SVGManipulator {
 				}
 			}
 			
-			Log.e("SVGManipulator", newpath.toString());
+			Log.d("SVGManipulator", newpath.toString());
 			// set the value of interpolated path to what we just created
 			interpolated.getAttributes().getNamedItem("d").setNodeValue(newpath.toString());
 		}
