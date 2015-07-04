@@ -452,7 +452,6 @@ public class PdDroidParty extends Activity {
 				
 				try {
 					// parse the patch for GUI elements
-					PdParser p = new PdParser();
 					// p.printAtoms(p.parsePatch(path));
 					// get the actual lines of atoms from the patch
 					atomlines = PdParser.parsePatch(path);
@@ -470,7 +469,7 @@ public class PdDroidParty extends Activity {
 						finish();
 					}
 					dollarzero = PdBase.openPatch(path.toString());
-					patchview.buildUI(p, atomlines);
+					patchview.buildUI(atomlines);
 					// start the audio thread
 					String name = res.getString(R.string.app_name);
 					pdService.startAudio(new Intent(PdDroidParty.this, PdDroidParty.class), R.drawable.icon, name, "Return to " + name + ".");

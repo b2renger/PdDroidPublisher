@@ -24,7 +24,6 @@ import com.larvalabs.svgandroid.SVGParser;
 
 import cx.mccormick.pddroidparty.PdDroidParty;
 import cx.mccormick.pddroidparty.R;
-import cx.mccormick.pddroidparty.pd.PdParser;
 import cx.mccormick.pddroidparty.svg.SVGRenderer;
 import cx.mccormick.pddroidparty.widget.Bang;
 import cx.mccormick.pddroidparty.widget.Canvasrect;
@@ -229,7 +228,7 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 	}
 	
 	/** build a user interface using the lines of atoms found in the patch by the pd file parser */
-	public void buildUI(PdParser p, ArrayList<String[]> atomlines) {
+	public void buildUI(ArrayList<String[]> atomlines) {
 		//ArrayList<String> canvases = new ArrayList<String>();
 		int level = 0;
 		
