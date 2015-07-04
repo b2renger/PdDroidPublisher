@@ -160,6 +160,12 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		return (y * ((float)viewH) / getHeight() + viewY);
 	}
 	
+	@Override
+	public boolean performClick() 
+	{
+		return super.performClick();
+	}
+	
 	public boolean onTouch(View view, MotionEvent event) {
 		int index, pid, action;
 		float x, y;
@@ -178,6 +184,7 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 					}
 					break;
 				case MotionEvent.ACTION_UP:
+					view.performClick();
 				case MotionEvent.ACTION_POINTER_UP:
 					index = event.getActionIndex();
 					pid = event.getPointerId(index);
