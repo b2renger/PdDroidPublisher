@@ -1,8 +1,6 @@
 package cx.mccormick.pddroidparty;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +20,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.hardware.usb.UsbDevice;
@@ -31,17 +28,12 @@ import android.net.wifi.WifiManager;
 import android.net.wifi.WifiManager.MulticastLock;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.text.Html;
-import android.text.SpannableString;
-import android.text.method.LinkMovementMethod;
-import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.noisepages.nettoyeur.usb.ConnectionFailedException;
@@ -86,8 +78,6 @@ public class PdDroidParty extends Activity {
 	Widget widgetpopped = null;
 	MulticastLock wifiMulticastLock = null;
 	
-	private MenuItem menuabout = null;
-	private MenuItem menuexit = null;
 	private MenuItem menumidi = null;
 
 	private UsbMidiDevice midiDevice = null;
@@ -172,9 +162,6 @@ public class PdDroidParty extends Activity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		menu.clear();
-		// about menu item
-		menuabout = menu.add(0, Menu.FIRST + menu.size(), 0, "About");
-		menuabout.setIcon(android.R.drawable.ic_menu_info_details); 
 		// add the menu bang menu items
 		MenuBang.setMenu(menu);
 		// TODO: preferences = ic_menu_preferences
@@ -191,47 +178,13 @@ public class PdDroidParty extends Activity {
 			// don't care
 			Log.w(TAG, "USB not available", e);
 		}
-		// exit menu item
-		menuexit = menu.add(0, Menu.FIRST + menu.size(), 0, "Exit");
-		menuexit.setIcon(android.R.drawable.ic_menu_close_clear_cancel); 
 		
 		return super.onPrepareOptionsMenu(menu);
 	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (item == menuabout) {
-			// load in the about dialog contents from assets/about.html
-			StringBuffer sb = new StringBuffer();
-			try {
-				AssetManager assets = getAssets();
-				InputStreamReader reader = new InputStreamReader(assets.open("about.html"), "UTF-8");
-				BufferedReader br = new BufferedReader(reader);
-				String line = br.readLine();
-				while(line != null) {
-					sb.append(line + "\n");
-					line = br.readLine();
-				}
-			} catch (IOException e) {
-				sb.append("Copyright Chris McCormick, 2011");
-			}
-			
-			// convert the string to HTML for the about dialog
-			final SpannableString s = new SpannableString(Html.fromHtml(sb.toString()));
-			Linkify.addLinks(s, Linkify.ALL);
-			
-			AlertDialog ab = new AlertDialog.Builder(this)
-			.setTitle("About")
-			.setIcon(android.R.drawable.ic_dialog_info)
-			.setMessage(s)
-			.setPositiveButton("ok", null)
-			.create();
-			ab.show();
-			// make the links clickable
-			((TextView)ab.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
-		} else if (item == menuexit) {
-			finish();
-		} else if (menumidi != null && item == menumidi) {
+		if (menumidi != null && item == menumidi) {
 			if (midiDevice == null) {
 				chooseMidiDevice();
 			} else {
