@@ -164,7 +164,7 @@ public class PdDroidParty extends Activity {
 		getWindow().setFlags(flags, flags);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
-		patchview = new PdDroidPatchView(this, this, patch);
+		patchview = new PdDroidPatchView(this, this, patch, config);
 		
 		LinearLayout layout = new LinearLayout(this);
 		layout.setOrientation(LinearLayout.VERTICAL);

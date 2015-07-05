@@ -27,6 +27,7 @@ import android.view.View.OnTouchListener;
 import com.larvalabs.svgandroid.SVGParser;
 
 import cx.mccormick.pddroidparty.PdDroidParty;
+import cx.mccormick.pddroidparty.PdDroidPartyConfig;
 import cx.mccormick.pddroidparty.R;
 import cx.mccormick.pddroidparty.pd.DroidPartyReceiver;
 import cx.mccormick.pddroidparty.pd.PdHelper;
@@ -74,14 +75,17 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 	private PdPatch patch;
 	private Map<String, DroidPartyReceiver> receivemap = new HashMap<String, DroidPartyReceiver>();
 	
+	private PdDroidPartyConfig config;
+	
 	// default background color settings
 	private int backgroundColor = Color.WHITE;
 
 	
-	public PdDroidPatchView(Activity activity, PdDroidParty parent, PdPatch patch) {
+	public PdDroidPatchView(Activity activity, PdDroidParty parent, PdPatch patch, PdDroidPartyConfig config) {
 		super(activity);
 		
 		this.patch = patch;
+		this.config = config;
 		
 		// disable graphic acceleration to have SVG properly rendered
 		// not needed prior to API level 17
@@ -150,6 +154,11 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		}
 	}
 	
+	private float ratioW = 1;
+	private float ratioH = 1;
+	private float offsetX = 0;
+	private float offsetY = 0;
+	
 	@Override
 	public void onDraw(Canvas canvas) {
 		
@@ -158,7 +167,29 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		canvas.drawPaint(paint);
 		canvas.save();
 
-		canvas.scale(getWidth() / (float)viewW, getHeight() / (float)viewH);
+		offsetX = 0;
+		offsetY = 0;
+		ratioW = getWidth() / (float)viewW;
+		ratioH = getHeight() / (float)viewH;
+		
+		if(config.guiKeepAspectRatio)
+		{
+			float ratio = Math.min(ratioW, ratioH);
+			
+			if(ratioW > ratioH)
+			{
+				offsetX = (getWidth() - viewW) / (2 * ratioW);
+				offsetY = 0;
+			}
+			else
+			{
+				offsetX = 0;
+				offsetY = (getHeight() - viewH) / (2 * ratioH);
+			}
+			ratioW = ratioH = ratio;
+		}
+		canvas.translate(offsetX, offsetY);
+		canvas.scale(ratioW, ratioH);
 		canvas.translate(-viewX, -viewY );
 
 		bgrect.set(0, 0, patchwidth, patchheight);
@@ -174,11 +205,11 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 	}
 	
 	public float PointerX(float x){
-		return (x * ((float)viewW) / getWidth() + viewX);
+		return ((x - offsetX) / ratioW + viewX);
 	}
 	
 	public float PointerY(float y){
-		return (y * ((float)viewH) / getHeight() + viewY);
+		return ((y - offsetY) / ratioH + viewY);
 	}
 	
 	@Override

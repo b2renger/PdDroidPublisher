@@ -11,4 +11,5 @@ public class PdDroidPartyConfig implements Serializable
 	public int midiClockMinBPM = 60;
 	public int midiClockMaxBPM = 180;
 	public int midiClockDefaultBPM = 100;
+	public boolean guiKeepAspectRatio = true;
 }
