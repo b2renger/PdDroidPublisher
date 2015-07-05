@@ -197,6 +197,17 @@ public class PdPartyClockControl extends LinearLayout
 		main.addView(ctLayout);
 		main.addView(msLayout);
 		
+		Button btUsb = new Button(context);
+		btUsb.setText("USB");
+		btUsb.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				midiManager.usbMidiManager.chooseMidiDevice();
+			}
+		});
+		
+		main.addView(btUsb);
+		
 	}
 	
 	private Spinner createSpinner(Context context, ArrayAdapter<String> adapter)

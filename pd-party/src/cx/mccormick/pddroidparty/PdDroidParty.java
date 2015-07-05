@@ -57,8 +57,6 @@ public class PdDroidParty extends Activity {
 	private PdService pdService = null;
 	Widget widgetpopped = null;
 	
-	private MenuItem menumidi = null;
-
 	// post a 'toast' alert to the Android UI
 	private void post(final String msg) {
 		runOnUiThread(new Runnable() {
@@ -75,7 +73,7 @@ public class PdDroidParty extends Activity {
 		public void onServiceConnected(ComponentName name, IBinder service) {
 			pdService = ((PdService.PdBinder) service).getService();
 			initPd();
-			midiManager.init(PdDroidParty.this, config.midiClockDefaultBPM);
+			midiManager.init(PdDroidParty.this, usbMidiManager, config.midiClockDefaultBPM);
 			runOnUiThread(new Runnable() {
 				public void run() {
 					clockControl.initMidiLists();
@@ -145,17 +143,6 @@ public class PdDroidParty extends Activity {
 		// TODO menus are no longer displayed ...
 		// add the menu bang menu items
 		MenuBang.setMenu(menu);
-		// MIDI menu
-		// test for platforms that don't support USB OTG devices
-		if(usbMidiManager.isUsbAvailable())
-		{
-			menumidi = menu.add(0, Menu.FIRST + menu.size(), 0, "Midi");
-			menumidi.setIcon(android.R.drawable.ic_menu_manage); 
-		}
-		else
-		{
-			Log.w(TAG, "USB not available");
-		}
 		
 		return super.onPrepareOptionsMenu(menu);
 	}
@@ -163,19 +150,8 @@ public class PdDroidParty extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO menus are no longer displayed ...
-		if (menumidi != null && item == menumidi) {
-			if(usbMidiManager.deviceOpened())
-			{
-				usbMidiManager.closeDevice();
-			}
-			else
-			{
-				usbMidiManager.chooseMidiDevice();
-			}
-		} else {
-			// pass the menu selection through to the MenuBang manager
-			MenuBang.hit(item);
-		}
+		// pass the menu selection through to the MenuBang manager
+		MenuBang.hit(item);
 		return super.onOptionsItemSelected(item);
 	}
 	

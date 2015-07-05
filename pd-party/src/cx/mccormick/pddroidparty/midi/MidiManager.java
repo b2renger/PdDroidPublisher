@@ -21,9 +21,12 @@ public class MidiManager  implements NetworkMidiListener, NMJSystemListener
 	Context ctx;
 	private int bpm;
 	
-	public void init(final Context ctx, int bpm)
+	public UsbMidiManager usbMidiManager;
+	
+	public void init(final Context ctx, UsbMidiManager usbMidiManager, int bpm)
 	{
 		this.ctx = ctx;
+		this.usbMidiManager = usbMidiManager;
 		this.bpm = bpm;
         clock = new MidiClock();
  
