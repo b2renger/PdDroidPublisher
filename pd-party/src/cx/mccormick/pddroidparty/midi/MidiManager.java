@@ -19,11 +19,12 @@ public class MidiManager  implements NetworkMidiListener, NMJSystemListener
 	private NetworkMidiInput midiIn;
 	private NetworkMidiOutput midiOut;
 	Context ctx;
-	private int bpm = 60; // TODO set by slider initial value ...
+	private int bpm;
 	
-	public void init(final Context ctx)
+	public void init(final Context ctx, int bpm)
 	{
 		this.ctx = ctx;
+		this.bpm = bpm;
         clock = new MidiClock();
  
         /** 

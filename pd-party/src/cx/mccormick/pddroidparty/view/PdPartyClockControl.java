@@ -19,6 +19,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+import cx.mccormick.pddroidparty.PdDroidPartyConfig;
 import cx.mccormick.pddroidparty.midi.MidiManager;
 import de.humatic.nmj.NMJConfig;
 
@@ -34,19 +35,15 @@ public class PdPartyClockControl extends LinearLayout
 
 	private MidiManager midiManager;
 	
-	public PdPartyClockControl(final Activity context, MidiManager midiManager) 
+	public PdPartyClockControl(final Activity context, MidiManager midiManager, PdDroidPartyConfig config) 
 	{
 		super(context);
 		this.midiManager = midiManager;
-		initGUI(context);
+		initGUI(context, config);
 	}
 	
-	private void initGUI(final Activity context)
+	private void initGUI(final Activity context, final PdDroidPartyConfig config)
 	{
-
-		final int BPM_MIN = 60;
-		final int BPM_MAX = 480;
-		
 		LinearLayout main = this;
 		main.setOrientation(LinearLayout.HORIZONTAL);
 		
@@ -84,11 +81,13 @@ public class PdPartyClockControl extends LinearLayout
 		});
 		
 		final TextView bpmLabel = new TextView(context);
-		bpmLabel.setText(String.valueOf(BPM_MIN));
+		bpmLabel.setText(String.valueOf(config.midiClockDefaultBPM));
 		
 		SeekBar slider = new SeekBar(context);
-		slider.setMax(BPM_MAX - BPM_MIN);
+		slider.setMax(config.midiClockMaxBPM - config.midiClockMinBPM);
+		slider.setProgress(config.midiClockDefaultBPM);
 		
+		// TODO 300 is maybe too huge for some devices ...
 		slider.setLayoutParams(new ViewGroup.LayoutParams(300, ViewGroup.LayoutParams.WRAP_CONTENT));
 		
 		slider.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
@@ -103,7 +102,7 @@ public class PdPartyClockControl extends LinearLayout
 			
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-				int bpm = progress + BPM_MIN;
+				int bpm = progress + config.midiClockMinBPM;
 				midiManager.setBpm(bpm);
 				bpmLabel.setText(String.valueOf(bpm)); 
 			}

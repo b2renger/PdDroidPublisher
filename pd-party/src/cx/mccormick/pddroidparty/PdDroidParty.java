@@ -42,7 +42,6 @@ public class PdDroidParty extends Activity {
 	public static final String INTENT_EXTRA_PATCH_PATH = "PATCH";
 	private static final String PD_CLIENT = "PdDroidParty";
 	private static final String TAG = "PdDroidParty";
-	private static final int SAMPLE_RATE = 44100;
 	public static final int DIALOG_NUMBERBOX = 1;
 	public static final int DIALOG_SAVE = 2;
 	public static final int DIALOG_LOAD = 3;
@@ -52,6 +51,7 @@ public class PdDroidParty extends Activity {
 	
 	private PdPartyClockControl clockControl;
 	
+	private PdDroidPartyConfig config;
 	private PdPatch patch;
 	
 	private PdService pdService = null;
@@ -75,7 +75,7 @@ public class PdDroidParty extends Activity {
 		public void onServiceConnected(ComponentName name, IBinder service) {
 			pdService = ((PdService.PdBinder) service).getService();
 			initPd();
-			midiManager.init(PdDroidParty.this);
+			midiManager.init(PdDroidParty.this, config.midiClockDefaultBPM);
 			runOnUiThread(new Runnable() {
 				public void run() {
 					clockControl.initMidiLists();
@@ -98,6 +98,8 @@ public class PdDroidParty extends Activity {
 		Intent intent = getIntent();
 		String path = intent.getStringExtra(INTENT_EXTRA_PATCH_PATH);
 		patch = new PdPatch(path);
+		
+		config = (PdDroidPartyConfig)intent.getSerializableExtra(PdDroidPartyConfig.class.getName());
 		
 		usbMidiManager = new UsbMidiManager(this, new UsbMidiHandler() {
 			@Override
@@ -191,7 +193,7 @@ public class PdDroidParty extends Activity {
 		LinearLayout layout = new LinearLayout(this);
 		layout.setOrientation(LinearLayout.VERTICAL);
 		
-		clockControl = new PdPartyClockControl(this, midiManager);
+		clockControl = new PdPartyClockControl(this, midiManager, config);
 		
 		layout.addView(clockControl);
 		layout.addView(patchview);
@@ -229,25 +231,23 @@ public class PdDroidParty extends Activity {
 			public void run() {
 				int sRate = AudioParameters.suggestSampleRate();
 				Log.d(TAG, "suggested sample rate: " + sRate);
-				if (sRate < SAMPLE_RATE) {
+				if (sRate < config.audioSampleRate) {
 					Log.e(TAG, "warning: sample rate is only " + sRate);
 				}
 				// clamp it
-				sRate = Math.min(sRate, SAMPLE_RATE);
+				sRate = Math.min(sRate, config.audioSampleRate);
 				Log.d(TAG, "actual sample rate: " + sRate);
 				
-				int nIn = Math.min(AudioParameters.suggestInputChannels(), 1);
+				int nIn = Math.min(AudioParameters.suggestInputChannels(), config.audioInputs);
 				Log.d(TAG, "input channels: " + nIn);
 				if (nIn == 0) {
 					Log.w(TAG, "warning: audio input not available");
 				}
 				
-				int nOut = Math.min(AudioParameters.suggestOutputChannels(), 2);
+				int nOut = Math.min(AudioParameters.suggestOutputChannels(), config.audioOutputs);
 				Log.d(TAG, "output channels: " + nOut);
 				if (nOut == 0) {
-					Log.w(TAG, "audio output not available; exiting");
-					finish();
-					return;
+					Log.w(TAG, "audio output not available");
 				}
 				
 				Resources res = getResources();
