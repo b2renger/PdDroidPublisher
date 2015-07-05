@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,29 +14,8 @@ public final class PdParser {
 	private static final String line_re = "(#((.|\r|\n)*?)[^\\\\])\r{0,1}\n{0,1};\r{0,1}\n";
 	private static final String token_re = " |\r\n?|\n";
 	
-	// test stub
-	public static void main (String[] aArguments) {
-		ArrayList<String[]> atomlines = getAtomLines(readPatch(aArguments[0]));
-		printAtoms(atomlines);
-	}
-	
-	// print out a particular atom line
-	public static void printAtom(String[] line) {
-		for (int i=0; i<line.length; i++) {
-			System.out.print(" [" + line[i] + "]");
-		}
-		System.out.println();
-	}
-	
-	// print out all of the atoms found
-	public static void printAtoms(ArrayList<String[]> atomlines) {
-		for (String[] line: atomlines) {
-			printAtom(line);
-		}
-	}
-	
 	// read a file and get an array of arrays of atoms (strings)
-	public static ArrayList<String[]> parsePatch(String filename) {
+	public static List<String[]> parsePatch(String filename) {
 		return getAtomLines(readPatch(filename));
 	}
 	
@@ -66,7 +46,7 @@ public final class PdParser {
 					reader.close();
 				}
 			} catch (IOException e) {
-				e.printStackTrace();
+				throw new Error(e);
 			}
 		}
 		
@@ -75,11 +55,11 @@ public final class PdParser {
 	}
 	
 	// use a regular expression to extract rows of atoms from a given text
-	public static ArrayList<String[]> getAtomLines(String patchtext) {
+	public static List<String[]> getAtomLines(String patchtext) {
 		Pattern pattern = Pattern.compile(line_re, Pattern.MULTILINE);
 		Pattern token_pattern = Pattern.compile(token_re, Pattern.MULTILINE);
 		Matcher matcher = pattern.matcher(patchtext);
-		ArrayList<String[]> atomlines = new ArrayList<String[]>();
+		List<String[]> atomlines = new ArrayList<String[]>();
 		while (matcher.find()) {
 			atomlines.add(token_pattern.split(matcher.group(1)));
 		}

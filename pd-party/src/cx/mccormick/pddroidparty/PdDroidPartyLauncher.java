@@ -35,7 +35,7 @@ public class PdDroidPartyLauncher extends Activity
 		
         // start the intent
 		Intent intent = new Intent(activity, PdDroidParty.class);
-		intent.putExtra(PdDroidParty.PATCH, cachePatchFile.getAbsolutePath());
+		intent.putExtra(PdDroidParty.INTENT_EXTRA_PATCH_PATH, cachePatchFile.getAbsolutePath());
 		activity.startActivity(intent);
 		activity.finish();
 	}

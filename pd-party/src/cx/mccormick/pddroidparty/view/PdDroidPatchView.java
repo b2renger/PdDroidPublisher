@@ -2,6 +2,7 @@ package cx.mccormick.pddroidparty.view;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -229,7 +230,7 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 	}
 	
 	/** build a user interface using the lines of atoms found in the patch by the pd file parser */
-	public void buildUI(ArrayList<String[]> atomlines) {
+	public void buildUI(List<String[]> atomlines) {
 		//ArrayList<String> canvases = new ArrayList<String>();
 		int level = 0;
 		

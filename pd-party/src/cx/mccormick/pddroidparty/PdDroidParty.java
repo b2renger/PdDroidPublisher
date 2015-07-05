@@ -67,7 +67,7 @@ import cx.mccormick.pddroidparty.widget.Widget;
 
 public class PdDroidParty extends Activity {
 	public PdDroidPatchView patchview = null;
-	public static final String PATCH = "PATCH";
+	public static final String INTENT_EXTRA_PATCH_PATH = "PATCH";
 	private static final String PD_CLIENT = "PdDroidParty";
 	private static final String TAG = "PdDroidParty";
 	private static final int SAMPLE_RATE = 44100;
@@ -83,10 +83,7 @@ public class PdDroidParty extends Activity {
 	
 	private String path;
 	private PdService pdService = null;
-	private final Object lock = new Object();
-	public Menu ourmenu = null;
 	Map<String, DroidPartyReceiver> receivemap = new HashMap<String, DroidPartyReceiver>();
-	ArrayList<String[]> atomlines = null;
 	Widget widgetpopped = null;
 	MulticastLock wifiMulticastLock = null;
 	
@@ -118,16 +115,14 @@ public class PdDroidParty extends Activity {
 	private final ServiceConnection serviceConnection = new ServiceConnection() {
 		@Override
 		public void onServiceConnected(ComponentName name, IBinder service) {
-			synchronized(lock) {
-				pdService = ((PdService.PdBinder) service).getService();
-				initPd();
-				midiManager.init(PdDroidParty.this);
-				runOnUiThread(new Runnable() {
-					public void run() {
-						clockControl.initMidiLists();
-					}
-				});
-			}
+			pdService = ((PdService.PdBinder) service).getService();
+			initPd();
+			midiManager.init(PdDroidParty.this);
+			runOnUiThread(new Runnable() {
+				public void run() {
+					clockControl.initMidiLists();
+				}
+			});
 		}
 		
 		@Override
@@ -141,7 +136,7 @@ public class PdDroidParty extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Intent intent = getIntent();
-		path = intent.getStringExtra(PATCH);
+		path = intent.getStringExtra(INTENT_EXTRA_PATCH_PATH);
 		
 		midiManager = new MidiManager();
 		
@@ -454,7 +449,7 @@ public class PdDroidParty extends Activity {
 					// parse the patch for GUI elements
 					// p.printAtoms(p.parsePatch(path));
 					// get the actual lines of atoms from the patch
-					atomlines = PdParser.parsePatch(path);
+					List<String[]> atomlines = PdParser.parsePatch(path);
 					// some devices don't have a mic and might be buggy
 					// so don't create the audio in unless we really need it
 					// TODO: check a config option for this
