@@ -1,57 +1,25 @@
 package cx.mccormick.pddroidparty.pd;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import cx.mccormick.pddroidparty.util.FileHelper;
 
 public final class PdParser {
 	private static final String line_re = "(#((.|\r|\n)*?)[^\\\\])\r{0,1}\n{0,1};\r{0,1}\n";
 	private static final String token_re = " |\r\n?|\n";
 	
 	// read a file and get an array of arrays of atoms (strings)
-	public static List<String[]> parsePatch(String filename) {
-		return getAtomLines(readPatch(filename));
+	public static List<String[]> parsePatch(PdPatch patch) {
+		return getAtomLines(readPatch(patch));
 	}
 	
 	// read a text file
-	private static String readPatch(String name)
+	private static String readPatch(PdPatch patch)
 	{
-		File file = new File(name);
-		StringBuffer contents = new StringBuffer();
-		BufferedReader reader = null;
-
-		try {
-			reader = new BufferedReader(new FileReader(file));
-			String text = null;
-
-			// repeat until all lines is read
-			while ((text = reader.readLine()) != null) {
-				contents.append(text)
-					.append(System.getProperty(
-						"line.separator"));
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (reader != null) {
-					reader.close();
-				}
-			} catch (IOException e) {
-				throw new Error(e);
-			}
-		}
-		
-		// show file contents here
-		return contents.toString();
+		return FileHelper.readTextFile(patch.getFile());
 	}
 	
 	// use a regular expression to extract rows of atoms from a given text

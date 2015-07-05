@@ -26,6 +26,7 @@ import com.larvalabs.svgandroid.SVGParser;
 
 import cx.mccormick.pddroidparty.PdDroidParty;
 import cx.mccormick.pddroidparty.R;
+import cx.mccormick.pddroidparty.pd.PdPatch;
 import cx.mccormick.pddroidparty.svg.SVGRenderer;
 import cx.mccormick.pddroidparty.widget.Bang;
 import cx.mccormick.pddroidparty.widget.Canvasrect;
@@ -66,9 +67,12 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 	private Picture background = null;
 	private Bitmap bgbitmap = null;
 	private RectF bgrect = new RectF();
+	private PdPatch patch;
 	
-	public PdDroidPatchView(Context context, PdDroidParty parent) {
+	public PdDroidPatchView(Context context, PdDroidParty parent, PdPatch patch) {
 		super(context);
+		
+		this.patch = patch;
 		
 		// disable graphic acceleration to have SVG properly rendered
 		// not needed prior to API level 17
@@ -125,7 +129,7 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 				bgbitmap = picture2Bitmap(background);
 			}
 			else {
-				File f = new File(app.getPatchFile().getParent() + "/" + "background" + ".png");
+				File f = patch.getFile("background.png");
 				if (f.exists() && f.canRead() && f.isFile()) {
 					bgbitmap = BitmapFactory.decodeFile(f.getAbsolutePath());
 				}
@@ -314,7 +318,7 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 
 	public String replaceDollarZero(String name) 
 	{
-		return app.replaceDollarZero(name);
+		return patch.replaceDollarZero(name);
 	}
 
 	public Object getSystemService(String name) {
@@ -338,11 +342,12 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		app.launchDialog(which, type);
 	}
 
-	public File getPatchFile() {
-		return app.getPatchFile();
-	}
-
 	public void send(String dest, String s) {
 		app.send(dest, s);
+	}
+
+	public PdPatch getPatch() 
+	{
+		return patch;
 	}
 }

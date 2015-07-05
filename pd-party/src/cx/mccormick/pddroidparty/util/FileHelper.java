@@ -1,7 +1,10 @@
 package cx.mccormick.pddroidparty.util;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -11,6 +14,39 @@ import android.content.res.AssetManager;
 
 public class FileHelper {
 
+	public static String readTextFile(File file)
+	{
+		StringBuffer contents = new StringBuffer();
+		BufferedReader reader = null;
+
+		try {
+			reader = new BufferedReader(new FileReader(file));
+			String text = null;
+
+			// repeat until all lines is read
+			while ((text = reader.readLine()) != null) {
+				contents.append(text)
+					.append(System.getProperty(
+						"line.separator"));
+			}
+		} catch (FileNotFoundException e) {
+			throw new Error(e);
+		} catch (IOException e) {
+			throw new Error(e);
+		} finally {
+			try {
+				if (reader != null) {
+					reader.close();
+				}
+			} catch (IOException e) {
+				throw new Error(e);
+			}
+		}
+		
+		// show file contents here
+		return contents.toString();
+	}
+	
 	public static void trimCache(Context context) {
 		File dir = context.getCacheDir();
 		if (dir != null && dir.isDirectory()) {

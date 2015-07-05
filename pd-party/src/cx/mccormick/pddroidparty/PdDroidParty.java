@@ -1,7 +1,6 @@
 package cx.mccormick.pddroidparty;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -59,6 +58,7 @@ import com.noisepages.nettoyeur.usb.util.AsyncDeviceInfoLookup;
 import cx.mccormick.pddroidparty.midi.MidiManager;
 import cx.mccormick.pddroidparty.net.DroidPartyReceiver;
 import cx.mccormick.pddroidparty.pd.PdParser;
+import cx.mccormick.pddroidparty.pd.PdPatch;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.view.PdPartyClockControl;
 import cx.mccormick.pddroidparty.widget.LoadSave;
@@ -79,9 +79,8 @@ public class PdDroidParty extends Activity {
 	
 	private PdPartyClockControl clockControl;
 	
-	public int dollarzero = -1;
+	private PdPatch patch;
 	
-	private String path;
 	private PdService pdService = null;
 	Map<String, DroidPartyReceiver> receivemap = new HashMap<String, DroidPartyReceiver>();
 	Widget widgetpopped = null;
@@ -136,7 +135,8 @@ public class PdDroidParty extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Intent intent = getIntent();
-		path = intent.getStringExtra(INTENT_EXTRA_PATCH_PATH);
+		String path = intent.getStringExtra(INTENT_EXTRA_PATCH_PATH);
+		patch = new PdPatch(path);
 		
 		midiManager = new MidiManager();
 		
@@ -246,30 +246,6 @@ public class PdDroidParty extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	// confirm quit :
-	@Override
-	public void onBackPressed() {
-	    String basename;
-	    
-	    basename = path.substring(0,path.lastIndexOf("/"));
-	    basename = basename.substring(basename.lastIndexOf("/")+1,basename.length());
-	    
-		new AlertDialog.Builder(this)
-	        .setIcon(android.R.drawable.ic_dialog_alert)
-	        .setTitle("Confirm Close")
-	        .setMessage("Are you sure you want to close " + basename + " ?")
-	        .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-	    {
-	        @Override
-	        public void onClick(DialogInterface dialog, int which) {
-	            finish();    
-	        }
-
-	    })
-	    .setNegativeButton("No", null)
-	    .show();
-	}
-	
 	// send a Pd atom-string 's' to a particular receiver 'dest'
 	public void send(String dest, String s) {
 		List<Object> list = new ArrayList<Object>();
@@ -287,13 +263,9 @@ public class PdDroidParty extends Activity {
 		PdBase.sendList(dest, ol);
 	}
 	
-	public String replaceDollarZero(String name) {
-		return name.replace("\\$0", dollarzero + "").replace("$0", dollarzero + "");
-	}
-	
 	public void registerReceiver(String name, Widget w) {
 		// do $0 replacement
-		String realname = replaceDollarZero(name);
+		String realname = patch.replaceDollarZero(name);
 		Log.d(TAG, "Receiver: " + realname);
 		DroidPartyReceiver r = receivemap.get(realname);
 		if (r == null) {
@@ -314,7 +286,7 @@ public class PdDroidParty extends Activity {
 		getWindow().setFlags(flags, flags);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
-		patchview = new PdDroidPatchView(this, this);
+		patchview = new PdDroidPatchView(this, this, patch);
 		
 		LinearLayout layout = new LinearLayout(this);
 		layout.setOrientation(LinearLayout.VERTICAL);
@@ -449,7 +421,7 @@ public class PdDroidParty extends Activity {
 					// parse the patch for GUI elements
 					// p.printAtoms(p.parsePatch(path));
 					// get the actual lines of atoms from the patch
-					List<String[]> atomlines = PdParser.parsePatch(path);
+					List<String[]> atomlines = PdParser.parsePatch(patch);
 					// some devices don't have a mic and might be buggy
 					// so don't create the audio in unless we really need it
 					// TODO: check a config option for this
@@ -463,7 +435,7 @@ public class PdDroidParty extends Activity {
 						Log.e(TAG, e.toString());
 						finish();
 					}
-					dollarzero = PdBase.openPatch(path.toString());
+					patch.open();
 					patchview.buildUI(atomlines);
 					// start the audio thread
 					String name = res.getString(R.string.app_name);
@@ -493,10 +465,6 @@ public class PdDroidParty extends Activity {
 		return has;
 	}
 	
-	public File getPatchFile() {
-		return new File(path);
-	}
-	
 	// close the app and exit
 	@Override
 	public void finish() {
@@ -507,14 +475,18 @@ public class PdDroidParty extends Activity {
 	// quit the Pd service and release other resources
 	private void cleanup() {
 		// let the screen blank again
-		getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+			}
+		});
 		// make sure to release all resources
 		if (pdService != null) {
 			pdService.stopAudio();
 		}
-		if (dollarzero != -1) {
-			PdBase.closePatch(dollarzero);
-		}
+		patch.close();
+		
 		PdBase.sendMessage("pd", "quit", "bang");
 		PdBase.release();
 		try {
@@ -555,14 +527,7 @@ public class PdDroidParty extends Activity {
 	}
 	
 	public String getPatchRelativePath(String dir) {
-		String root = getPatchFile().getParent();
-		if (dir.equals(".")) {
-			return root;
-		} else if (dir.charAt(0) != '/') {
-			return root + "/" + dir;
-		} else {
-			return dir;
-		}
+		return patch.getFile(dir).getAbsolutePath();
 	}
 	
 	private void chooseMidiDevice() {

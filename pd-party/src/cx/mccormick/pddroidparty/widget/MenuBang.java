@@ -31,7 +31,7 @@ public class MenuBang {
 		name = atomline[5];
 		sendname = "menubang-" + name;
 		// find an icon for us
-		File f = new File(app.getPatchFile().getParent() + "/menubang-" + name + ".png");
+		File f = parent.getPatch().getFile("menubang-" + name + ".png");
 		if (f.exists() && f.canRead() && f.isFile()) {
 			//    36x36 for low-density
 			//    48x48 for medium-density
