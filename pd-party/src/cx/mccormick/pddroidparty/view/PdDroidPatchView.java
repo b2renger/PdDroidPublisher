@@ -73,6 +73,9 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 	private RectF bgrect = new RectF();
 	private PdPatch patch;
 	private Map<String, DroidPartyReceiver> receivemap = new HashMap<String, DroidPartyReceiver>();
+	
+	// default background color settings
+	private int backgroundColor = Color.WHITE;
 
 	
 	public PdDroidPatchView(Activity activity, PdDroidParty parent, PdPatch patch) {
@@ -94,8 +97,8 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		
 		this.setOnTouchListener(this);
 		this.setId(R.id.patch_view);
-		// default background color settings
-		paint.setColor(Color.WHITE);
+		
+		paint.setColor(backgroundColor);
 		paint.setAntiAlias(true);
 		
 		res = activity.getResources();
@@ -133,6 +136,10 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 			if (renderer != null) {
 				background = renderer.getPicture();
 				bgbitmap = picture2Bitmap(background);
+				if(renderer.getInfo().getBackgroundColor() != null)
+				{
+					backgroundColor  = Color.parseColor(renderer.getInfo().getBackgroundColor());
+				}
 			}
 			else {
 				File f = patch.getFile("background.png");
@@ -145,6 +152,9 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 	
 	@Override
 	public void onDraw(Canvas canvas) {
+		
+		paint.setColor(backgroundColor);
+		
 		canvas.drawPaint(paint);
 		canvas.save();
 

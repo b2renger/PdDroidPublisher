@@ -19,7 +19,7 @@ public class SVGInfo {
 			XmlPullParser parser = Xml.newPullParser();
 	        parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
 	        parser.setInput(new FileInputStream(f), null);
-	        while (parser.next() != XmlPullParser.END_TAG) {
+	        while (parser.next() != XmlPullParser.END_DOCUMENT) {
 	            if (parser.getEventType() != XmlPullParser.START_TAG) {
 	                continue;
 	            }
@@ -29,6 +29,10 @@ public class SVGInfo {
 	            	textColor = parser.getAttributeValue(null, "textColor");
 	            	textAntialias = parser.getAttributeValue(null, "textAntialias");
 	            	textOffset = parser.getAttributeValue(null, "textOffset");
+	            }
+	            else if(name.equals("sodipodi:namedview"))
+	            {
+	            	backgroundColor = parser.getAttributeValue(null, "pagecolor");
 	            }
 	        }  
 		} catch (XmlPullParserException e) {
@@ -41,6 +45,7 @@ public class SVGInfo {
 	}
 
 	private String textFont, textColor, textAntialias, textOffset;
+	private String backgroundColor;
 	
 	public String getTextFont() {
 		return textFont;
@@ -56,6 +61,11 @@ public class SVGInfo {
 
 	public String getTextOffset() {
 		return textOffset;
+	}
+
+	public String getBackgroundColor() 
+	{
+		return backgroundColor;
 	}
 
 }

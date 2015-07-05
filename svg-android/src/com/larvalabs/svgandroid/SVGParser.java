@@ -27,6 +27,7 @@ import android.graphics.Picture;
 import android.graphics.RadialGradient;
 import android.graphics.RectF;
 import android.graphics.Shader;
+import android.graphics.Shader.TileMode;
 import android.util.Log;
 
 /*
@@ -255,7 +256,7 @@ public class SVGParser {
                 case '\t':
                 case ' ':
                 case ',':
-                case '-': {
+                /*case '-':*/ {
                     String str = s.substring(p, i);
                     // Just keep moving if multiple whitespace
                     if (str.trim().length() > 0) {
@@ -633,6 +634,7 @@ public class SVGParser {
         ArrayList<Float> positions = new ArrayList<Float>();
         ArrayList<Integer> colors = new ArrayList<Integer>();
         Matrix matrix = null;
+		String spread = null;
 
         public Gradient createChild(Gradient g) {
             Gradient child = new Gradient();
@@ -647,6 +649,7 @@ public class SVGParser {
             child.y = g.y;
             child.radius = g.radius;
             child.positions = positions;
+            child.spread = g.spread;
             child.colors = colors;
             child.matrix = matrix;
             if (g.matrix != null) {
@@ -794,7 +797,7 @@ public class SVGParser {
             if (fillString != null && fillString.startsWith("url(#")) {
                 // It's a gradient fill, look it up in our map
                 String id = fillString.substring("url(#".length(), fillString.length() - 1);
-                Shader shader = gradients.get(id);
+                Shader shader = gradients.get(id); 
                 if (shader != null) {
                     //Util.debug("Found shader!");
                     paint.setShader(shader);
@@ -856,6 +859,7 @@ public class SVGParser {
                     paint.setStrokeJoin(Paint.Join.BEVEL);
                 }
                 paint.setStyle(Paint.Style.STROKE);
+                paint.setShader(null);
                 return true;
             }
             return false;
@@ -864,6 +868,7 @@ public class SVGParser {
         private Gradient doGradient(boolean isLinear, Attributes atts) {
             Gradient gradient = new Gradient();
             gradient.id = getStringAttr("id", atts);
+            gradient.spread = getStringAttr("spreadMethod", atts);
             gradient.isLinear = isLinear;
             if (isLinear) {
                 gradient.x1 = getFloatAttr("x1", atts, 0f);
@@ -1180,7 +1185,20 @@ public class SVGParser {
                     if (colors.length == 0) {
                         Log.d("BAD", "BAD");
                     }
-                    LinearGradient g = new LinearGradient(gradient.x1, gradient.y1, gradient.x2, gradient.y2, colors, positions, Shader.TileMode.CLAMP);
+                    TileMode mode = TileMode.CLAMP;
+                    if("reflect".equals(gradient.spread))
+                    {
+                    	mode = TileMode.MIRROR;
+                    }
+                    else if(("pad").equals(gradient.spread))
+                    {
+                    	mode = TileMode.CLAMP;
+                    }
+                    else if(("repeat").equals(gradient.spread))
+                    {
+                    	mode = TileMode.REPEAT;
+                    }
+                    LinearGradient g = new LinearGradient(gradient.x1, gradient.y1, gradient.x2, gradient.y2, colors, positions, mode);
                     if (gradient.matrix != null) {
                         g.setLocalMatrix(gradient.matrix);
                     }
@@ -1233,7 +1251,7 @@ public class SVGParser {
                 	popTransform();
                 }
                 // Clear gradient map
-                gradientMap.clear();
+               // XXX gradientMap.clear();
             }
         }
     }
