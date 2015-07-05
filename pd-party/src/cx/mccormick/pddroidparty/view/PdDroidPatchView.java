@@ -2,10 +2,12 @@ package cx.mccormick.pddroidparty.view;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.annotation.TargetApi;
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -26,6 +28,8 @@ import com.larvalabs.svgandroid.SVGParser;
 
 import cx.mccormick.pddroidparty.PdDroidParty;
 import cx.mccormick.pddroidparty.R;
+import cx.mccormick.pddroidparty.pd.DroidPartyReceiver;
+import cx.mccormick.pddroidparty.pd.PdHelper;
 import cx.mccormick.pddroidparty.pd.PdPatch;
 import cx.mccormick.pddroidparty.svg.SVGRenderer;
 import cx.mccormick.pddroidparty.widget.Bang;
@@ -50,7 +54,7 @@ import cx.mccormick.pddroidparty.widget.Wordbutton;
 
 public class PdDroidPatchView extends View implements OnTouchListener {
 	
-	Paint paint = new Paint();
+	private Paint paint = new Paint();
 	public int patchwidth;
 	public int patchheight;
 	//view port :
@@ -60,7 +64,7 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 	public int viewH = 1;
 
 	public int fontsize;
-	ArrayList<Widget> widgets = new ArrayList<Widget>();
+	private ArrayList<Widget> widgets = new ArrayList<Widget>();
 	private PdDroidParty app;
 	private int splash_res = 0;
 	private Resources res = null;
@@ -68,9 +72,11 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 	private Bitmap bgbitmap = null;
 	private RectF bgrect = new RectF();
 	private PdPatch patch;
+	private Map<String, DroidPartyReceiver> receivemap = new HashMap<String, DroidPartyReceiver>();
+
 	
-	public PdDroidPatchView(Context context, PdDroidParty parent, PdPatch patch) {
-		super(context);
+	public PdDroidPatchView(Activity activity, PdDroidParty parent, PdPatch patch) {
+		super(activity);
 		
 		this.patch = patch;
 		
@@ -92,10 +98,10 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		paint.setColor(Color.WHITE);
 		paint.setAntiAlias(true);
 		
-		res = parent.getResources();
+		res = activity.getResources();
 		
 		// if there is a splash image, use it
-		splash_res = res.getIdentifier("splash", "raw", parent.getPackageName());
+		splash_res = res.getIdentifier("splash", "raw", activity.getPackageName());
 		if (splash_res != 0) {
 			// Get a drawable from the parsed SVG and set it as the drawable for the ImageView
 			background = SVGParser.getSVGFromResource(res, splash_res).getPicture();
@@ -218,12 +224,12 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 	}
 	
 	/** Lets us invalidate this view from the audio thread */
-	public void threadSafeInvalidate() {
-		final PdDroidPatchView me = this;
-		app.runOnUiThread(new Runnable() {
+	public void threadSafeInvalidate() 
+	{
+		((Activity)getContext()).runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				me.invalidate();
+				PdDroidPatchView.this.invalidate();
 			}
 		});
 	}
@@ -322,30 +328,35 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 	}
 
 	public Object getSystemService(String name) {
-		return app.getSystemService(name);
+		return ((Activity)getContext()).getSystemService(name);
 	}
 
 	public void startActivity(Intent intent) 
 	{
-		app.startActivity(intent);
+		((Activity)getContext()).startActivity(intent);
 	}
 
 	public void registerReceiver(String name, Widget w) {
-		app.registerReceiver(name, w);
+		// do $0 replacement
+		String realname = patch.replaceDollarZero(name);
+		DroidPartyReceiver r = receivemap.get(realname);
+		if (r == null) {
+			r = new DroidPartyReceiver(this, w);
+			receivemap.put(realname, r);
+			PdHelper.addListener(realname, r.listener);
+		} else {
+			r.addWidget(w);
+		}
 	}
 
 	public String getPatchRelativePath(String dir) {
-		return app.getPatchRelativePath(dir);
+		return patch.getFile(dir).getPath();
 	}
 
 	public void launchDialog(Widget which, int type) {
 		app.launchDialog(which, type);
 	}
-
-	public void send(String dest, String s) {
-		app.send(dest, s);
-	}
-
+	
 	public PdPatch getPatch() 
 	{
 		return patch;

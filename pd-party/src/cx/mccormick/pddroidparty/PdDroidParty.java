@@ -2,15 +2,12 @@ package cx.mccormick.pddroidparty;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.puredata.android.io.AudioParameters;
 import org.puredata.android.midi.MidiToPdAdapter;
 import org.puredata.android.service.PdService;
 import org.puredata.core.PdBase;
-import org.puredata.core.utils.PdDispatcher;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -48,7 +45,7 @@ import com.noisepages.nettoyeur.usb.midi.util.UsbMidiOutputSelector;
 import com.noisepages.nettoyeur.usb.util.AsyncDeviceInfoLookup;
 
 import cx.mccormick.pddroidparty.midi.MidiManager;
-import cx.mccormick.pddroidparty.net.DroidPartyReceiver;
+import cx.mccormick.pddroidparty.pd.PdHelper;
 import cx.mccormick.pddroidparty.pd.PdParser;
 import cx.mccormick.pddroidparty.pd.PdPatch;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
@@ -74,7 +71,6 @@ public class PdDroidParty extends Activity {
 	private PdPatch patch;
 	
 	private PdService pdService = null;
-	Map<String, DroidPartyReceiver> receivemap = new HashMap<String, DroidPartyReceiver>();
 	Widget widgetpopped = null;
 	MulticastLock wifiMulticastLock = null;
 	
@@ -82,13 +78,6 @@ public class PdDroidParty extends Activity {
 
 	private UsbMidiDevice midiDevice = null;
 	private MidiToPdAdapter receiver = new MidiToPdAdapter();
-	
-	private final PdDispatcher dispatcher = new PdDispatcher() {
-		@Override
-		public void print(String s) {
-			Log.e("Pd [print]", s);
-		}
-	};
 	
 	// post a 'toast' alert to the Android UI
 	private void post(final String msg) {
@@ -197,37 +186,6 @@ public class PdDroidParty extends Activity {
 			MenuBang.hit(item);
 		}
 		return super.onOptionsItemSelected(item);
-	}
-	
-	// send a Pd atom-string 's' to a particular receiver 'dest'
-	public void send(String dest, String s) {
-		List<Object> list = new ArrayList<Object>();
-		String[] bits = s.split(" ");
-		
-		for (int i=0; i < bits.length; i++) {
-			try {
-				list.add(Float.parseFloat(bits[i]));
-			} catch (NumberFormatException e) {
-				list.add(bits[i]);
-			}
-		}
-		
-		Object[] ol = list.toArray();
-		PdBase.sendList(dest, ol);
-	}
-	
-	public void registerReceiver(String name, Widget w) {
-		// do $0 replacement
-		String realname = patch.replaceDollarZero(name);
-		Log.d(TAG, "Receiver: " + realname);
-		DroidPartyReceiver r = receivemap.get(realname);
-		if (r == null) {
-			r = new DroidPartyReceiver(patchview, w);
-			receivemap.put(realname, r);
-			dispatcher.addListener(realname, r.listener);
-		} else {
-			r.addWidget(w);
-		}
 	}
 	
 	// initialise the GUI with the OpenGL rendering engine
@@ -368,7 +326,8 @@ public class PdDroidParty extends Activity {
 				}
 				
 				Resources res = getResources();
-				PdBase.setReceiver(dispatcher);
+				
+				PdHelper.init();
 				
 				try {
 					// parse the patch for GUI elements
@@ -473,14 +432,10 @@ public class PdDroidParty extends Activity {
 		} else if (type == DIALOG_LOAD) {
 			Intent it = new Intent(this, LoadDialog.class);
 			it.putExtra("filename", ((LoadSave)which).getFilename());
-			it.putExtra("directory", getPatchRelativePath(((LoadSave)which).getDirectory()));
+			it.putExtra("directory", patch.getFile(((LoadSave)which).getDirectory()).getPath());
 			it.putExtra("extension", ((LoadSave)which).getExtension());
 			startActivityForResult(it, DIALOG_LOAD);
 		}
-	}
-	
-	public String getPatchRelativePath(String dir) {
-		return patch.getFile(dir).getAbsolutePath();
 	}
 	
 	private void chooseMidiDevice() {

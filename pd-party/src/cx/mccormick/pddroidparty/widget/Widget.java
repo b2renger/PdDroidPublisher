@@ -16,6 +16,7 @@ import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
+import cx.mccormick.pddroidparty.pd.PdHelper;
 import cx.mccormick.pddroidparty.svg.SVGRenderer;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
@@ -168,7 +169,7 @@ public class Widget {
 	
 	public void send(String msg) {
 		if (sendname != null && !sendname.equals("") && !sendname.equals("empty")) {
-			parent.send(sendname, msg);
+			PdHelper.send(sendname, msg);
 		}
 	}
 	

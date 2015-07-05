@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty.net;
+package cx.mccormick.pddroidparty.pd;
 
 import java.util.ArrayList;
 

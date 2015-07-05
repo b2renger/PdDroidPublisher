@@ -7,6 +7,7 @@ import org.puredata.core.PdBase;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import cx.mccormick.pddroidparty.pd.PdHelper;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Taplist extends Widget {
@@ -81,7 +82,7 @@ public class Taplist extends Widget {
 
 	private void doSend() {
 		PdBase.sendFloat(sendname + "/idx", val);
-		parent.send(sendname, atoms.get((int) val));
+		PdHelper.send(sendname, atoms.get((int) val));
 	}
 
 	public boolean touchdown(int pid, float x,float y) {
