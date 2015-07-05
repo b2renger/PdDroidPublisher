@@ -5,14 +5,15 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -20,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import cx.mccormick.pddroidparty.PdDroidPartyConfig;
+import cx.mccormick.pddroidparty.R;
 import cx.mccormick.pddroidparty.midi.MidiManager;
 import de.humatic.nmj.NMJConfig;
 
@@ -35,6 +37,12 @@ public class PdPartyClockControl extends LinearLayout
 
 	private MidiManager midiManager;
 	
+	private ImageButton btStart;
+	private ImageButton btReStart;
+	
+	private boolean started;
+	private boolean startedOnce;
+
 	public PdPartyClockControl(final Activity context, MidiManager midiManager, PdDroidPartyConfig config) 
 	{
 		super(context);
@@ -42,53 +50,86 @@ public class PdPartyClockControl extends LinearLayout
 		initGUI(context, config);
 	}
 	
+	private void resume()
+	{
+		started = true;
+		if(startedOnce)
+			midiManager.resumeClock();
+		else
+			midiManager.startClock();
+		startedOnce = true;
+		btStart.setImageResource(R.drawable.ic_action_pause);
+	}
+	
+	private void start()
+	{
+		started = true;
+		midiManager.startClock();
+		btStart.setImageResource(R.drawable.ic_action_pause);
+	}
+	
+	private void stop()
+	{
+		started = false;
+		midiManager.stopClock();
+		btStart.setImageResource(R.drawable.ic_action_play);
+	}
+	
 	private void initGUI(final Activity context, final PdDroidPartyConfig config)
 	{
 		LinearLayout main = this;
 		main.setOrientation(LinearLayout.HORIZONTAL);
 		
-		final LinearLayout masterLayout = new LinearLayout(context);
-		masterLayout.setOrientation(LinearLayout.HORIZONTAL);
-		
-		final LinearLayout slaveLayout = new LinearLayout(context);
-		slaveLayout.setOrientation(LinearLayout.HORIZONTAL);
-		
-		Button btStart = new Button(context);
-		btStart.setText("Start");
-		btStart.setOnClickListener(new OnClickListener() {
+		btStart = new ImageButton(context);
+		btStart.setImageResource(R.drawable.ic_action_play);
+		btStart.setOnTouchListener(new OnTouchListener() {
 			@Override
-			public void onClick(View v) {
-				midiManager.startClock();
+			public boolean onTouch(View v, MotionEvent event) {
+				if(event.getAction() == MotionEvent.ACTION_UP)
+				{
+					return v.performClick();
+				}
+				if(event.getAction() == MotionEvent.ACTION_DOWN)
+				{
+					if(started)
+					{
+						stop();
+					}
+					else
+					{
+						resume();
+					}
+				}
+				return true;
 			}
 		});
 		
-		Button btStop = new Button(context);
-		btStop.setText("Stop");
-		btStop.setOnClickListener(new OnClickListener() {
+		btReStart = new ImageButton(context);
+		btReStart.setImageResource(R.drawable.ic_action_replay);
+		btReStart.setOnTouchListener(new OnTouchListener() {
 			@Override
-			public void onClick(View v) {
-				midiManager.stopClock();
-			}
-		});
-		
-		Button btResume = new Button(context);
-		btResume.setText("Resume");
-		btResume.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				midiManager.resumeClock();
+			public boolean onTouch(View v, MotionEvent event) {
+				if(event.getAction() == MotionEvent.ACTION_UP)
+				{
+					return v.performClick();
+				}
+				if(event.getAction() == MotionEvent.ACTION_DOWN)
+				{
+					start();
+				}
+				return true;
 			}
 		});
 		
 		final TextView bpmLabel = new TextView(context);
 		bpmLabel.setText(String.valueOf(config.midiClockDefaultBPM));
 		
-		SeekBar slider = new SeekBar(context);
+		final SeekBar slider = new SeekBar(context);
 		slider.setMax(config.midiClockMaxBPM - config.midiClockMinBPM);
 		slider.setProgress(config.midiClockDefaultBPM);
 		
 		// TODO 300 is maybe too huge for some devices ...
-		slider.setLayoutParams(new ViewGroup.LayoutParams(300, ViewGroup.LayoutParams.WRAP_CONTENT));
+		slider.setLayoutParams(new ViewGroup.LayoutParams(100, ViewGroup.LayoutParams.WRAP_CONTENT));
 		
 		slider.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			
@@ -105,25 +146,6 @@ public class PdPartyClockControl extends LinearLayout
 				int bpm = progress + config.midiClockMinBPM;
 				midiManager.setBpm(bpm);
 				bpmLabel.setText(String.valueOf(bpm)); 
-			}
-		});
-		
-		ToggleButton btSlave = new ToggleButton(context);
-		btSlave.setTextOn("Slave");
-		btSlave.setTextOff("Master");
-		btSlave.setText(btSlave.getTextOff());
-		btSlave.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				
-				for(int i=0 ; i<masterLayout.getChildCount() ; i++)
-				{
-					masterLayout.getChildAt(i).setEnabled(!isChecked);
-				}
-				for(int i=0 ; i<slaveLayout.getChildCount() ; i++)
-				{
-					slaveLayout.getChildAt(i).setEnabled(isChecked);
-				}
 			}
 		});
 		
@@ -162,8 +184,8 @@ public class PdPartyClockControl extends LinearLayout
 		});
 		
 
-		Button btSetup = new Button(context);
-		btSetup.setText("Setup");
+		ImageButton btSetup = new ImageButton(context);
+		btSetup.setImageResource(R.drawable.ic_action_network_wifi);
 		btSetup.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -172,33 +194,8 @@ public class PdPartyClockControl extends LinearLayout
 			}
 		});
 		
-
-		
-		masterLayout.addView(btStart);
-		masterLayout.addView(btStop);
-		masterLayout.addView(btResume);
-		masterLayout.addView(slider);
-		masterLayout.addView(bpmLabel);
-		
-		masterLayout.addView(midiOutSpinner);
-
-		slaveLayout.addView(midiInSpinner);
-
-		LinearLayout msLayout = new LinearLayout(context);
-		msLayout.setOrientation(LinearLayout.VERTICAL);
-		msLayout.addView(masterLayout);
-		msLayout.addView(slaveLayout);
-		
-		LinearLayout ctLayout = new LinearLayout(context);
-		ctLayout.setOrientation(LinearLayout.VERTICAL);
-		ctLayout.addView(btSlave);
-		ctLayout.addView(btSetup);
-		
-		main.addView(ctLayout);
-		main.addView(msLayout);
-		
-		Button btUsb = new Button(context);
-		btUsb.setText("USB");
+		ImageButton btUsb = new ImageButton(context);
+		btUsb.setImageResource(R.drawable.ic_action_usb);
 		btUsb.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -206,6 +203,33 @@ public class PdPartyClockControl extends LinearLayout
 			}
 		});
 		
+		ToggleButton btSlave = new ToggleButton(context);
+		btSlave.setButtonDrawable(R.drawable.ic_action_time);
+		btSlave.setTextOn("Master");
+		btSlave.setTextOff("Slave");
+		btSlave.setText(btSlave.getTextOff());
+		btSlave.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) 
+			{
+				// TODO stop clock if started and state become slave
+				btStart.setEnabled(!isChecked);
+				btReStart.setEnabled(!isChecked);
+				slider.setEnabled(!isChecked);
+				midiOutSpinner.setEnabled(!isChecked);
+				
+				midiInSpinner.setEnabled(isChecked);
+			}
+		});
+
+		main.addView(btStart);
+		main.addView(btReStart);
+		main.addView(slider);
+		main.addView(bpmLabel);
+		main.addView(midiOutSpinner);
+		main.addView(btSlave);
+		main.addView(midiInSpinner);
+		main.addView(btSetup);
 		main.addView(btUsb);
 		
 	}
