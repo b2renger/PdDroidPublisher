@@ -1,11 +1,11 @@
-#N struct 2623template-marker float a float b;
-#N struct 2624template-marker float a float b;
-#N canvas 167 87 478 324 10;
+#N struct 1501template-marker float a float b;
+#N struct 1502template-marker float a float b;
+#N canvas 164 92 478 324 10;
 #X declare -path z_nrci_abs;
 #X declare -path z_nrci_abs;
 #X obj 165 40 cnv 15 24 150 empty cursor empty 20 12 0 14 -258113 -66577
 0;
-#N canvas 457 87 889 553 audio 0;
+#N canvas 454 92 889 553 audio 1;
 #N canvas 490 82 862 680 synthetiser 0;
 #X obj 198 101 line~;
 #X obj 126 19 mtof;
@@ -122,9 +122,7 @@ des objets volants.;
 #X connect 54 0 10 0;
 #X connect 55 0 54 0;
 #X restore 137 62 pd synthetiser;
-#N canvas 715 82 650 686 beats 0;
-#X obj 11 53 f 0;
-#X obj 37 53 + 1;
+#N canvas 712 87 650 686 beats 1;
 #X obj 11 107 s pos;
 #X obj 11 75 mod 16;
 #X obj 94 153 * 25;
@@ -143,9 +141,7 @@ canvas présent dans l'interface. Permettant de marquer la position
 #X obj 45 -45 i;
 #X obj 45 -20 change;
 #X floatatom 90 -19 5 0 0 0 - - -, f 5;
-#X floatatom 96 -173 5 0 0 0 - - -, f 5;
-#X obj 45 -198 route 248;
-#X floatatom 149 -196 5 0 0 0 - - -, f 5;
+#X floatatom 170 -216 5 0 0 0 - - -, f 5;
 #X obj 44 -219 midirealtimein;
 #X obj 302 71 s notetime;
 #X obj 342 -107 timer;
@@ -155,38 +151,38 @@ canvas présent dans l'interface. Permettant de marquer la position
 #X obj 342 -63 swap 60000;
 #X obj 342 -40 /;
 #X floatatom 365 -12 10 0 0 0 - - -, f 10;
-#X connect 0 0 1 0;
-#X connect 0 0 3 0;
-#X connect 1 0 0 1;
-#X connect 3 0 2 0;
-#X connect 3 0 4 0;
-#X connect 3 0 6 0;
-#X connect 4 0 5 0;
-#X connect 5 0 7 0;
-#X connect 9 0 10 0;
-#X connect 9 0 12 0;
-#X connect 10 0 9 1;
-#X connect 11 0 9 0;
+#X obj 45 -198 route 248 250 252;
+#X msg 155 -164 0;
+#X connect 1 0 0 0;
+#X connect 1 0 2 0;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 3 0 5 0;
+#X connect 7 0 8 0;
+#X connect 7 0 10 0;
+#X connect 8 0 7 1;
+#X connect 9 0 7 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
 #X connect 12 0 13 0;
 #X connect 13 0 14 0;
 #X connect 14 0 15 0;
-#X connect 15 0 16 0;
-#X connect 16 0 17 0;
-#X connect 16 0 0 0;
-#X connect 16 0 24 0;
-#X connect 19 0 11 0;
-#X connect 19 1 18 0;
+#X connect 14 0 20 0;
+#X connect 14 0 1 0;
+#X connect 17 0 26 0;
+#X connect 17 1 16 0;
+#X connect 19 0 18 0;
+#X connect 19 0 23 0;
+#X connect 19 0 22 0;
+#X connect 20 0 21 0;
 #X connect 21 0 19 0;
-#X connect 21 1 20 0;
-#X connect 23 0 22 0;
-#X connect 23 0 27 0;
-#X connect 23 0 26 0;
+#X connect 21 1 19 1;
+#X connect 23 0 24 0;
+#X connect 23 1 24 1;
 #X connect 24 0 25 0;
-#X connect 25 0 23 0;
-#X connect 25 1 23 1;
-#X connect 27 0 28 0;
-#X connect 27 1 28 1;
-#X connect 28 0 29 0;
+#X connect 26 0 9 0;
+#X connect 26 1 27 0;
+#X connect 27 0 7 1;
 #X restore 11 -147 pd beats;
 #N canvas 830 118 667 680 synth-seq 0;
 #X obj 75 -88 r pos;
@@ -1339,7 +1335,7 @@ A Bb B;
 #X text 14 93 Octave;
 #X text 63 300 |;
 #X text 167 201 >;
-#X obj 67 163 tgl 20 0 glide1 rien empty 17 7 0 10 -262144 -1 -1 1
+#X obj 67 163 tgl 20 0 glide1 rien empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 92 163 tgl 20 0 glide2 rien empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -1358,7 +1354,7 @@ A Bb B;
 #X obj 267 163 tgl 20 0 glide9 rien empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 292 163 tgl 20 0 glide10 rien empty 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X obj 317 163 tgl 20 0 glide11 rien empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 342 163 tgl 20 0 glide12 rien empty 17 7 0 10 -262144 -1 -1
@@ -1374,11 +1370,11 @@ A Bb B;
 #X text 15 162 Glide;
 #X text 8 116 Duration;
 #X obj 385 228 hsl 80 15 0 1 0 0 fromattack toattack empty -2 -6 1
-8 -258113 -1 -1 3000 1;
+8 -258113 -1 -1 0 1;
 #X obj 385 261 hsl 80 15 0 1 0 0 fromdecay todecay empty -2 -6 1 8
--258113 -1 -1 4500 1;
+-258113 -1 -1 0 1;
 #X obj 385 296 hsl 80 15 0 1 0 0 fromshape toshape empty -2 -6 1 8
--258113 -1 -1 3200 1;
+-258113 -1 -1 0 1;
 #X obj 67 116 taplist 20 20 null half1 /1 /2 /3 /4;
 #X obj 92 116 taplist 20 20 null half2 /1 /2 /3 /4;
 #X obj 117 116 taplist 20 20 null half3 /1 /2 /3 /4;
