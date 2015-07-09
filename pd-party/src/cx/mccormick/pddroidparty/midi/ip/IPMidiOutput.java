@@ -38,7 +38,7 @@ public class IPMidiOutput implements MidiOutput
 			{
 				clientSocket = new DatagramSocket();
 			}
-			tickPacket = new DatagramPacket(new byte[]{(byte)0xF8}, 1, IPAddress, 21928);
+			tickPacket = new DatagramPacket(new byte[]{(byte)0xF8}, 1, IPAddress, port);
 		}
 		catch(IOException e){
 			throw new Error(e);
