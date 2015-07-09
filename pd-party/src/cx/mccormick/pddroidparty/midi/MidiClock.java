@@ -2,58 +2,54 @@ package cx.mccormick.pddroidparty.midi;
 
 import java.util.concurrent.TimeUnit;
 
-import org.puredata.core.PdBase;
-
-import de.humatic.nmj.NetworkMidiOutput;
-
 public class MidiClock
 {
 	private volatile boolean shouldSendClock = false;
 	private volatile int bpm;
-	private NetworkMidiOutput out;
 	private byte[] buffer = new byte[1];
 	private ClockScheduler timer;
+	private MidiOutput[] outputs = new MidiOutput[]{};
 	
-	private void dispatchRealTimeMessage(final NetworkMidiOutput out, int message)
+	synchronized public void setOutputs(MidiOutput[] array) 
 	{
-		if(out != null) 
+		outputs = array;
+	}
+
+	private synchronized void dispatchRealTimeMessage(int message)
+	{
+		buffer[0] = (byte)message;
+		
+		for(MidiOutput output : outputs)
 		{
-			buffer[0] = (byte)message;
-			try {
-				out.sendMidi(buffer);
-			} catch (Exception e) {
-				throw new Error(e);
-			}
+			output.send(buffer);
 		}
-		PdBase.sendSysRealTime(0, message);
 	}
 	
-	public void start(final NetworkMidiOutput out, final int startBpm)
+	public void start(final int startBpm)
 	{
 		new Thread(new Runnable() {
 			
 			@Override
 			public void run() 
 			{
-				start(out, startBpm, true);
+				start(startBpm, true);
 			}
 		}).start();
 	}
-	private void start(final NetworkMidiOutput out, int startBpm, final boolean sendStartMessage)
+	private void start(int startBpm, final boolean sendStartMessage)
 	{
 		if(!shouldSendClock)
 		{
-			this.out = out;
 			this.bpm = startBpm;
 			shouldSendClock = true;
 			
 			if(sendStartMessage)
 			{
-				dispatchRealTimeMessage(out, MidiCode.MIDI_REALTIME_CLOCK_START);
+				dispatchRealTimeMessage(MidiCode.MIDI_REALTIME_CLOCK_START);
 			}
 			else
 			{
-				dispatchRealTimeMessage(out, MidiCode.MIDI_REALTIME_CLOCK_RESUME);
+				dispatchRealTimeMessage(MidiCode.MIDI_REALTIME_CLOCK_RESUME);
 			}
 			
 			long period = 60000000000L / (long)(bpm * 24);
@@ -61,7 +57,7 @@ public class MidiClock
 			Runnable command = new Runnable() {
 				@Override
 				public void run() {
-					dispatchRealTimeMessage(out, MidiCode.MIDI_REALTIME_CLOCK_TICK);
+					dispatchRealTimeMessage(MidiCode.MIDI_REALTIME_CLOCK_TICK);
 				}
 			};
 			
@@ -88,7 +84,7 @@ public class MidiClock
 						throw new Error(e);
 					}
 					
-					dispatchRealTimeMessage(out, MidiCode.MIDI_REALTIME_CLOCK_STOP);
+					dispatchRealTimeMessage(MidiCode.MIDI_REALTIME_CLOCK_STOP);
 					}
 					finally{
 						shouldSendClock = false;
@@ -110,18 +106,20 @@ public class MidiClock
 		}
 	}
 
-	public void resume(final NetworkMidiOutput out, final int startBpm) 
+	public void resume(final int startBpm) 
 	{
 		new Thread(new Runnable() {
 			
 			@Override
 			public void run() 
 			{
-				start(out, startBpm, false);
+				start(startBpm, false);
 			}
 		}).start();
 	}
-	
-	
+
+	public void init() {
+
+	}
 
 }

@@ -1,40 +1,26 @@
 package cx.mccormick.pddroidparty.view;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 import cx.mccormick.pddroidparty.PdDroidPartyConfig;
 import cx.mccormick.pddroidparty.R;
 import cx.mccormick.pddroidparty.midi.MidiManager;
-import de.humatic.nmj.NMJConfig;
 
-public class PdPartyClockControl extends LinearLayout 
+public class PdPartyClockControl extends RelativeLayout
 {
 	public static final int SETUP_ACTIVITY_CODE = 666;
 	
-	private Spinner midiOutSpinner;
-	private Spinner midiInSpinner;
-
-	private ArrayAdapter<String> midiOutArrayList;
-	private ArrayAdapter<String> midiInArrayList;
-
 	private MidiManager midiManager;
 	
 	private ImageButton btStart;
@@ -42,6 +28,8 @@ public class PdPartyClockControl extends LinearLayout
 	
 	private boolean started;
 	private boolean startedOnce;
+	
+	private MidiConfigDialog dialog;
 
 	public PdPartyClockControl(final Activity context, MidiManager midiManager, PdDroidPartyConfig config) 
 	{
@@ -77,7 +65,9 @@ public class PdPartyClockControl extends LinearLayout
 	
 	private void initGUI(final Activity context, final PdDroidPartyConfig config)
 	{
-		LinearLayout main = this;
+		this.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
+		
+		LinearLayout main = new LinearLayout(context);
 		main.setOrientation(LinearLayout.HORIZONTAL);
 		
 		btStart = new ImageButton(context);
@@ -129,7 +119,7 @@ public class PdPartyClockControl extends LinearLayout
 		slider.setProgress(config.midiClockDefaultBPM);
 		
 		// TODO 300 is maybe too huge for some devices ...
-		slider.setLayoutParams(new ViewGroup.LayoutParams(100, ViewGroup.LayoutParams.WRAP_CONTENT));
+		slider.setLayoutParams(new ViewGroup.LayoutParams(300, ViewGroup.LayoutParams.WRAP_CONTENT));
 		
 		slider.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			
@@ -149,127 +139,55 @@ public class PdPartyClockControl extends LinearLayout
 			}
 		});
 		
-		midiOutArrayList = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, new ArrayList<String>());
-
-		midiOutSpinner = createSpinner(context, midiOutArrayList);
-		midiOutSpinner.setPrompt("Output...");
-		midiOutSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-			@Override
-			public void onItemSelected(AdapterView<?> adapter, View view,
-					int position, long id) {
-				midiManager.setOut(midiOutArrayList.getItem(position));
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> adapter) {
-			}
-		});
-		
-		midiInArrayList = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, new ArrayList<String>());
-		midiInSpinner = createSpinner(context, midiInArrayList);
-		midiInSpinner.setEnabled(false);
-		midiInSpinner.setPrompt("Input...");
-		midiInSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-			@Override
-			public void onItemSelected(AdapterView<?> adapter, View view,
-					int position, long id) {
-				midiManager.setIn(midiInArrayList.getItem(position));
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> adapter) {
-			}
-		});
-		
-
-		ImageButton btSetup = new ImageButton(context);
-		btSetup.setImageResource(R.drawable.ic_action_network_wifi);
-		btSetup.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				final Intent si = new Intent(context, de.humatic.nmj.NMJConfigDialog.class);
-				context.startActivityForResult(si, SETUP_ACTIVITY_CODE);
-			}
-		});
-		
-		ImageButton btUsb = new ImageButton(context);
-		btUsb.setImageResource(R.drawable.ic_action_usb);
-		btUsb.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				midiManager.usbMidiManager.chooseMidiDevice();
-			}
-		});
-		
-		ToggleButton btSlave = new ToggleButton(context);
-		btSlave.setButtonDrawable(R.drawable.ic_action_time);
-		btSlave.setTextOn("Master");
-		btSlave.setTextOff("Slave");
-		btSlave.setText(btSlave.getTextOff());
-		btSlave.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) 
-			{
-				// TODO stop clock if started and state become slave
-				btStart.setEnabled(!isChecked);
-				btReStart.setEnabled(!isChecked);
-				slider.setEnabled(!isChecked);
-				midiOutSpinner.setEnabled(!isChecked);
-				
-				midiInSpinner.setEnabled(isChecked);
-			}
-		});
-
 		main.addView(btStart);
 		main.addView(btReStart);
 		main.addView(slider);
 		main.addView(bpmLabel);
-		main.addView(midiOutSpinner);
-		main.addView(btSlave);
-		main.addView(midiInSpinner);
-		main.addView(btSetup);
-		main.addView(btUsb);
+		
+		Button btMidiConfig = new Button(context);
+		btMidiConfig.setText("MIDI");
+		btMidiConfig.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				dialog = new MidiConfigDialog(context, midiManager);
+				dialog.setOnDismissListener(new OnDismissListener() {
+					@Override
+					public void onDismiss(DialogInterface dialog) {
+						boolean master = midiManager.getInput() == null;
+						btStart.setEnabled(master);
+						btReStart.setEnabled(master);
+						slider.setEnabled(master);
+						dialog = null;
+					}
+				});
+				dialog.show();
+			}
+		});
+		
+		RelativeLayout.LayoutParams params;
+		
+		addView(main);
+		params = (RelativeLayout.LayoutParams)main.getLayoutParams();
+		params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
+		params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+		main.setLayoutParams(params);
+		
+		addView(btMidiConfig);
+		params = (RelativeLayout.LayoutParams)btMidiConfig.getLayoutParams();
+		params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
+		params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+		btMidiConfig.setLayoutParams(params);
 		
 	}
-	
-	private Spinner createSpinner(Context context, ArrayAdapter<String> adapter)
+
+	public void updateMidiConfiguration() 
 	{
-		Spinner spinner = new Spinner(context, Spinner.MODE_DIALOG);
-		spinner.setAdapter(adapter);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		return spinner;
-	}
-	
-	public void initMidiLists() 
-	{
-		midiManager.setOut(null);
-		midiManager.setIn(null);
-		midiInArrayList.clear();
-		midiOutArrayList.clear();
-		
-		midiInArrayList.add("");
-		midiOutArrayList.add("");
-		
-		for(int i=0 ; i<NMJConfig.getNumChannels() ; i++)
+		if(dialog != null)
 		{
-			int io = NMJConfig.getIO(i);
-			String name = NMJConfig.getName(i);
-			// input
-			if(io == 0 || io == -1)
-			{
-				midiInArrayList.add(name);
-			}
-			// output
-			if(io == 1 || io == -1)
-			{
-				midiOutArrayList.add(name);
-			}
+			dialog.refreshInputList();
+			dialog.refreshOutputList();
 		}
-		midiInSpinner.setPrompt("Select Midi In");
-		midiOutSpinner.setPrompt("Select Midi Out");
 	}
-
-
+	
 }

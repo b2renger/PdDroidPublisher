@@ -74,11 +74,6 @@ public class PdDroidParty extends Activity {
 			pdService = ((PdService.PdBinder) service).getService();
 			initPd();
 			midiManager.init(PdDroidParty.this, usbMidiManager, config.midiClockDefaultBPM);
-			runOnUiThread(new Runnable() {
-				public void run() {
-					clockControl.initMidiLists();
-				}
-			});
 		}
 		
 		@Override
@@ -329,7 +324,7 @@ public class PdDroidParty extends Activity {
 		super.onActivityResult(requestCode, resultCode, data); 
 		if(requestCode == PdPartyClockControl.SETUP_ACTIVITY_CODE)
 		{
-			clockControl.initMidiLists();
+			clockControl.updateMidiConfiguration();
 		}
 		else if (resultCode == RESULT_OK) {
 			if (widgetpopped != null) {
