@@ -6,7 +6,6 @@ import android.content.DialogInterface.OnDismissListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -144,8 +143,8 @@ public class PdPartyClockControl extends RelativeLayout
 		main.addView(slider);
 		main.addView(bpmLabel);
 		
-		Button btMidiConfig = new Button(context);
-		btMidiConfig.setText("MIDI");
+		ImageButton btMidiConfig = new ImageButton(context);
+		btMidiConfig.setImageResource(R.drawable.ic_action_time);
 		btMidiConfig.setOnClickListener(new OnClickListener() {
 			
 			@Override
