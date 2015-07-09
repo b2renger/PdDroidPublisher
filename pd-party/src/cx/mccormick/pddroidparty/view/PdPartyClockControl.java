@@ -138,10 +138,41 @@ public class PdPartyClockControl extends RelativeLayout
 			}
 		});
 		
+		final TextView offsetLabel = new TextView(context);
+		offsetLabel.setText("0ms");
+		
+		final SeekBar offsetSlider = new SeekBar(context);
+		offsetSlider.setMax(100);
+		offsetSlider.setProgress(50);
+		
+		// TODO 300 is maybe too huge for some devices ...
+		offsetSlider.setLayoutParams(new ViewGroup.LayoutParams(300, ViewGroup.LayoutParams.WRAP_CONTENT));
+		
+		offsetSlider.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+			
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+			}
+			
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+			}
+			
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+				int value = (progress - 50) * 10;
+				midiManager.setOffsetMs(value);
+				offsetLabel.setText(String.valueOf(value) + "ms"); 
+			}
+		});
+
+		
 		main.addView(btStart);
 		main.addView(btReStart);
 		main.addView(slider);
 		main.addView(bpmLabel);
+		main.addView(offsetSlider);
+		main.addView(offsetLabel);
 		
 		ImageButton btMidiConfig = new ImageButton(context);
 		btMidiConfig.setImageResource(R.drawable.ic_action_time);

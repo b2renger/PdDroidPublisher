@@ -2,6 +2,7 @@ package cx.mccormick.pddroidparty.midi;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.puredata.core.PdBase;
 
@@ -9,6 +10,7 @@ import android.content.Context;
 import cx.mccormick.pddroidparty.midi.ip.IPMidiDevice;
 import cx.mccormick.pddroidparty.midi.nmj.NMJMidiDevice;
 import cx.mccormick.pddroidparty.midi.pd.PdMidiDevice;
+import cx.mccormick.pddroidparty.midi.pd.PdMidiOutput;
 
 public class MidiManager
 {
@@ -131,7 +133,7 @@ public class MidiManager
 	{
 		midiOutput.open();
 		midiOutputs.add(midiOutput);
-		clock.setOutputs(midiOutputs.toArray(new MidiOutput[]{}));
+		updateOutputs();
 	}
 
 
@@ -140,6 +142,35 @@ public class MidiManager
 	{
 		midiOutput.close();
 		midiOutputs.remove(midiOutput);
-		clock.setOutputs(midiOutputs.toArray(new MidiOutput[]{}));
+		updateOutputs();
 	}
+
+	private void updateOutputs() 
+	{
+		List<MidiOutput> internals = new ArrayList<MidiOutput>();
+		List<MidiOutput> externals = new ArrayList<MidiOutput>();
+		
+		for(MidiOutput out : midiOutputs)
+		{
+			if(out instanceof PdMidiOutput)
+			{
+				internals.add(out);
+			}
+			else
+			{
+				externals.add(out);
+			}
+		}
+		
+		clock.setInternals(internals.toArray(new MidiOutput[]{}));
+		clock.setExternals(externals.toArray(new MidiOutput[]{}));
+	}
+
+
+
+	public void setOffsetMs(int value) 
+	{
+		clock.setOffset(TimeUnit.MILLISECONDS.toNanos(value));
+	}
+
 }

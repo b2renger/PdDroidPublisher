@@ -6,20 +6,40 @@ public class MidiClock
 {
 	private volatile boolean shouldSendClock = false;
 	private volatile int bpm;
+	private volatile long offset;
 	private byte[] buffer = new byte[1];
-	private ClockScheduler timer;
-	private MidiOutput[] outputs = new MidiOutput[]{};
+	private BiClockScheduler timer;
+	private MidiOutput[] externals = new MidiOutput[]{};
+	private MidiOutput[] internals = new MidiOutput[]{};
 	
-	synchronized public void setOutputs(MidiOutput[] array) 
+	synchronized public void setInternals(MidiOutput[] array) 
 	{
-		outputs = array;
+		internals = array;
+	}
+	synchronized public void setExternals(MidiOutput[] array) 
+	{
+		externals = array;
 	}
 
 	private synchronized void dispatchRealTimeMessage(int message)
 	{
+		dispatchRealTimeMessageInternal(message);
+		dispatchRealTimeMessageExternal(message);
+	}
+	private synchronized void dispatchRealTimeMessageInternal(int message)
+	{
 		buffer[0] = (byte)message;
 		
-		for(MidiOutput output : outputs)
+		for(MidiOutput output : internals)
+		{
+			output.send(buffer);
+		}
+	}
+	private synchronized void dispatchRealTimeMessageExternal(int message)
+	{
+		buffer[0] = (byte)message;
+		
+		for(MidiOutput output : externals)
 		{
 			output.send(buffer);
 		}
@@ -54,16 +74,25 @@ public class MidiClock
 			
 			long period = 60000000000L / (long)(bpm * 24);
 			
-			Runnable command = new Runnable() {
+			Runnable commandInternal = new Runnable() {
 				@Override
 				public void run() {
-					dispatchRealTimeMessage(MidiCode.MIDI_REALTIME_CLOCK_TICK);
+					
+					dispatchRealTimeMessageInternal(MidiCode.MIDI_REALTIME_CLOCK_TICK);
+				}
+			};
+			Runnable commandExternal = new Runnable() {
+				@Override
+				public void run() {
+					
+					dispatchRealTimeMessageExternal(MidiCode.MIDI_REALTIME_CLOCK_TICK);
 				}
 			};
 			
-			timer = new ClockScheduler();
+			timer = new BiClockScheduler();
 			timer.setPeriod(period, TimeUnit.NANOSECONDS);
-			timer.start(command);
+			timer.start(commandInternal, commandExternal);
+			timer.setOffsetA(offset, TimeUnit.NANOSECONDS);
 		}
 	}
 	
@@ -120,6 +149,14 @@ public class MidiClock
 
 	public void init() {
 
+	}
+	public void setOffset(long nanos) 
+	{
+		offset = nanos;
+		if(timer != null)
+		{
+			timer.setOffsetA(nanos, TimeUnit.NANOSECONDS);
+		}
 	}
 
 }
