@@ -1,4 +1,4 @@
-#N canvas 270 262 450 300 10;
+#N canvas 273 257 450 300 10;
 #X obj 4 4 bng 15 250 50 0 empty empty \$1 23 8 0 10 -262144 -1 -1
 ;
 #X obj 4 30 s menubang-\$1;
