@@ -2,9 +2,13 @@ package cx.mccormick.pddroidparty.view;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -47,6 +51,7 @@ import cx.mccormick.pddroidparty.widget.Numberbox;
 import cx.mccormick.pddroidparty.widget.Numberbox2;
 import cx.mccormick.pddroidparty.widget.Numberboxfixed;
 import cx.mccormick.pddroidparty.widget.Slider;
+import cx.mccormick.pddroidparty.widget.Subpatch;
 import cx.mccormick.pddroidparty.widget.Taplist;
 import cx.mccormick.pddroidparty.widget.Toggle;
 import cx.mccormick.pddroidparty.widget.Touch;
@@ -192,16 +197,20 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		canvas.scale(ratioW, ratioH);
 		canvas.translate(-viewX, -viewY );
 
-		bgrect.set(0, 0, patchwidth, patchheight);
-		if (bgbitmap != null) {
-			canvas.drawBitmap(bgbitmap, null, bgrect, null);
+		if (widgets != null)
+		{	
+			bgrect.set(0, 0, patchwidth, patchheight);
+			if (bgbitmap != null) {
+				canvas.drawBitmap(bgbitmap, null, bgrect, null);
+			}
+		
+			for (Widget widget: widgets) {
+				widget.draw(canvas);
+			}
 		}
 	
-		if (widgets != null) for (Widget widget: widgets) {
-			widget.draw(canvas);
-		}
-
 		canvas.restore();
+		
 	}
 	
 	public float PointerX(float x){
@@ -278,6 +287,18 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 	/** Main patch is done loading, now we should change the background from the splash. **/
 	public void loaded() {
 		loadBackground();
+		
+		// start timer
+		TimerTask task = new TimerTask() {
+			@Override
+			public void run() {
+				for (Widget widget: widgets) {
+					widget.updateData();
+				}
+				threadSafeInvalidate();
+			}
+		};
+		new Timer().scheduleAtFixedRate(task, new Date(), 1000); // XXX 1 s
 	}
 	
 	/** build a user interface using the lines of atoms found in the patch by the pd file parser */
@@ -285,23 +306,27 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		//ArrayList<String> canvases = new ArrayList<String>();
 		int level = 0;
 		
+		LinkedList<Subpatch> subpatches = new LinkedList<Subpatch>();
+		
 		for (String[] line: atomlines) {
 			if (line.length >= 4) {
 				// find canvas begin and end lines
 				if (line[1].equals("canvas")) {
-					/*if (canvases.length == 0) {
-						canvases.add(0, "self");
-					} else {
-						canvases.add(0, line[6]);
-					}*/
 					level += 1;
 					if (level == 1) {
 						viewW = patchwidth = Integer.parseInt(line[4]);
 						viewH = patchheight = Integer.parseInt(line[5]);
 						fontsize = Integer.parseInt(line[6]);
 					}
+					else
+					{
+						Subpatch subpatch = new Subpatch(this, line);
+						subpatches.addLast(subpatch);
+						widgets.add(subpatch);
+					}
 				} else if (line[1].equals("restore")) {
-					//canvases.remove(0);
+					Subpatch subpatch = subpatches.removeLast();
+					subpatch.parse(line);
 					level -= 1;
 				// find different types of UI element in the top level patch
 				} else if (level == 1) {
@@ -342,6 +367,9 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 							}
 						}
 					}
+				} else {
+					Subpatch subpatch = subpatches.peekLast();
+					subpatch.parse(line);
 				}
 				
 				// things that can be found at any depth and still work

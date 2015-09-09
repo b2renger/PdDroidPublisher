@@ -497,5 +497,9 @@ public class Widget {
 		}	
 
 	} // end of class WImage
+
+	/** called to update data (arrays) */
+	public void updateData() {
+	}
 	
 }
