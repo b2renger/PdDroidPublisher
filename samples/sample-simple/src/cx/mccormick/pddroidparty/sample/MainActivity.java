@@ -15,7 +15,7 @@ public class MainActivity extends Activity {
         PdDroidPartyConfig config = new PdDroidPartyConfig();
         config.midiClockMaxBPM = 480;
         
-        PdDroidPartyLauncher.launch(this, "groove-box-sync/nmj_groovebox.pd", config);
+        PdDroidPartyLauncher.launch(this, "Acid_Box/AcidBox.pd", config);
     }
     
 
