@@ -10,10 +10,15 @@ public class Subpatch extends Widget
 {
 	public static class Array
 	{
+		public final static int DRAWTYPE_POLYGON = 0;
+		public final static int DRAWTYPE_POINTS = 1;
+		public final static int DRAWTYPE_BEZIER = 2;
+		
+		
 		String name;
 		int length;
 		String type;
-		/** 0 : polygone, 1 : points, 2 : bezier */
+		/** 0 : polygon, 1 : points, 2 : bezier */
 		int drawType; 
 		boolean save;
 		float [] buffer;
@@ -22,17 +27,11 @@ public class Subpatch extends Widget
 	private Array array;
 	
 	private int top, bottom, left, right, zoneWidth, zoneHeight;
-	private int x, y, width, height;
+	private int x, y;
 	boolean graphOnParent;
 	
 	public Subpatch(PdDroidPatchView app, String[] atomline) {
 		super(app);
-		x = Integer.parseInt(atomline[2]); // TODO no it's the window i guess ...
-		y = Integer.parseInt(atomline[3]);
-		width = Integer.parseInt(atomline[4]);
-		height = Integer.parseInt(atomline[5]);
-		// TODO (subpatch)
-		// TODO options
 	}
 	
 	@Override
@@ -115,36 +114,72 @@ public class Subpatch extends Widget
 
 		if(array != null)
 		{
-			// TODO handle other mode (here is polygon)
-			
-			float ppx = 0, ppy = 0;
-			if(array.length < zoneWidth)
+			if(array.drawType == Array.DRAWTYPE_POINTS)
 			{
-				for(int i=0 ; i<array.buffer.length ; i++)
+				float ppx = 0, ppy = 0;
+				if(array.length < zoneWidth)
 				{
-					float value = array.buffer[i];
-					float px = x + (float)i * (float)zoneWidth / (float)array.buffer.length;
-					float py = y + zoneHeight * (float)(value - bottom) / (float)(top - bottom);
-					if(i > 0){
-						canvas.drawLine(ppx, ppy, px, py, paint);
+					for(int i=0 ; i<array.buffer.length+1 ; i++)
+					{
+						float px = x + (float)i * (float)zoneWidth / (float)array.buffer.length;
+						if(i > 0){
+							float value = array.buffer[i-1];
+							float py = y + zoneHeight * (float)(value - bottom) / (float)(top - bottom);
+							canvas.drawLine(ppx, py, px, py, paint);
+						}
+						ppx = px;
 					}
-					ppx = px;
-					ppy = py;
 				}
+				else
+				{
+					for(int i=0 ; i<zoneWidth ; i++)
+					{
+						int index = (int)((float)array.buffer.length * (float)i / (float)(zoneWidth));
+						float value = array.buffer[index];
+						float px = x + (float)i;
+						float py = y + zoneHeight * (float)(value - bottom) / (float)(top - bottom);
+						if(i > 0){
+							canvas.drawLine(ppx, ppy, px, py, paint);
+						}
+						ppx = px;
+						ppy = py;
+					}
+				}
+				
 			}
+			// TODO handle bezier drawing
 			else
 			{
-				for(int i=0 ; i<zoneWidth ; i++)
+			
+				float ppx = 0, ppy = 0;
+				if(array.length < zoneWidth)
 				{
-					int index = (int)((float)array.buffer.length * (float)i / (float)(zoneWidth));
-					float value = array.buffer[index];
-					float px = x + (float)i;
-					float py = y + zoneHeight * (float)(value - bottom) / (float)(top - bottom);
-					if(i > 0){
-						canvas.drawLine(ppx, ppy, px, py, paint);
+					for(int i=0 ; i<array.buffer.length ; i++)
+					{
+						float value = array.buffer[i];
+						float px = x + (float)i * (float)zoneWidth / (float)array.buffer.length;
+						float py = y + zoneHeight * (float)(value - bottom) / (float)(top - bottom);
+						if(i > 0){
+							canvas.drawLine(ppx, ppy, px, py, paint);
+						}
+						ppx = px;
+						ppy = py;
 					}
-					ppx = px;
-					ppy = py;
+				}
+				else
+				{
+					for(int i=0 ; i<zoneWidth ; i++)
+					{
+						int index = (int)((float)array.buffer.length * (float)i / (float)(zoneWidth));
+						float value = array.buffer[index];
+						float px = x + (float)i;
+						float py = y + zoneHeight * (float)(value - bottom) / (float)(top - bottom);
+						if(i > 0){
+							canvas.drawLine(ppx, ppy, px, py, paint);
+						}
+						ppx = px;
+						ppy = py;
+					}
 				}
 			}
 			
