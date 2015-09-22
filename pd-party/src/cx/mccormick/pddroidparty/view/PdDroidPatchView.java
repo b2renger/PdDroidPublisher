@@ -303,7 +303,7 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 				threadSafeInvalidate();
 			}
 		};
-		new Timer().scheduleAtFixedRate(task, new Date(), 1000); // XXX 1 s
+		new Timer().scheduleAtFixedRate(task, new Date(), config.arrayRefreshTimeMS);
 	}
 	
 	/** build a user interface using the lines of atoms found in the patch by the pd file parser */
