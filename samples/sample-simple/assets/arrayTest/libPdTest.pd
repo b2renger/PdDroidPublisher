@@ -1,4 +1,4 @@
-#N canvas 455 242 579 400 10;
+#N canvas 453 243 579 400 10;
 #X obj 181 365 dac~;
 #X obj 206 252 osc~ 440;
 #N canvas 305 285 966 315 (subpatch) 0;
@@ -10,7 +10,7 @@
 #X obj 192 328 /~ 4;
 #X obj 283 241 metro 100;
 #X obj 19 184 hsl 128 15 200 2000 0 0 freq empty Freq -2 -8 0 10 -262144
--1 -1 1600 1;
+-1 -1 1300 1;
 #X obj 206 183 r freq;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array large 1000 float 0;
@@ -23,18 +23,24 @@
 #X coords 0 1 10 -1 100 140 1 0 0;
 #X restore 258 21 graph;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array manual 10 float 1;
+#X array manual 32 float 1;
 #A 0 -0.0857142 -0.0999999 -0.114286 -0.128571 0.785714 -0.5 -0.128571
--0.128571 -0.128571 -0.114286;
-#X coords 0 1 10 -1 100 140 1 0 0;
+-0.128571 -0.171429 -0.128572 -0.0714289 -5.01052e-07 0.0285708 0.0857135
+0.157142 0.22857 0.285713 0.357141 0.42857 0.499998 0.585712 0.642855
+0.657141 0.614284 0.542855 0.42857 0.22857 0.114285 -0.171428 -0.242857
+-0.271428 -0.328571;
+#X coords 0 1 31 -1 100 140 1 0 0;
 #X restore 369 23 graph;
 #X msg 283 211 1;
 #X obj 42 291 tabread4~ manual;
 #X obj 42 229 phasor~ 0.1;
-#X obj 42 251 *~ 10;
 #X obj 42 313 *~ 100;
 #X obj 206 206 sig~;
 #X obj 206 228 +~;
+#X obj 374 179 hsl 128 15 0.1 1 0 0 speed empty Speed -2 -8 0 10 -262144
+-1 -1 8200 1;
+#X obj 42 206 r speed;
+#X obj 42 251 *~ 32;
 #X connect 1 0 3 0;
 #X connect 1 0 5 0;
 #X connect 1 0 10 0;
@@ -45,11 +51,12 @@
 #X connect 6 0 3 0;
 #X connect 6 0 10 0;
 #X connect 6 0 11 0;
-#X connect 8 0 19 0;
+#X connect 8 0 18 0;
 #X connect 14 0 6 0;
-#X connect 15 0 18 0;
-#X connect 16 0 17 0;
-#X connect 17 0 15 0;
-#X connect 18 0 20 1;
-#X connect 19 0 20 0;
-#X connect 20 0 1 0;
+#X connect 15 0 17 0;
+#X connect 16 0 22 0;
+#X connect 17 0 19 1;
+#X connect 18 0 19 0;
+#X connect 19 0 1 0;
+#X connect 21 0 16 0;
+#X connect 22 0 15 0;
