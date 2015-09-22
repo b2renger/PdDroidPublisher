@@ -203,12 +203,11 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 			if (bgbitmap != null) {
 				canvas.drawBitmap(bgbitmap, null, bgrect, null);
 			}
-		synchronized (this) {
-			for (Widget widget: widgets) {
-				widget.draw(canvas);
+			synchronized (this) {
+				for (Widget widget: widgets) {
+					widget.draw(canvas);
+				}
 			}
-			
-		}
 		}
 	
 		canvas.restore();
@@ -307,7 +306,7 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 	}
 	
 	/** build a user interface using the lines of atoms found in the patch by the pd file parser */
-	public void buildUI(List<String[]> atomlines) {
+	synchronized public void buildUI(List<String[]> atomlines) {
 		//ArrayList<String> canvases = new ArrayList<String>();
 		int level = 0;
 		
