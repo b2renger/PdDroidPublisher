@@ -203,10 +203,12 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 			if (bgbitmap != null) {
 				canvas.drawBitmap(bgbitmap, null, bgrect, null);
 			}
-		
+		synchronized (this) {
 			for (Widget widget: widgets) {
 				widget.draw(canvas);
 			}
+			
+		}
 		}
 	
 		canvas.restore();
@@ -292,8 +294,11 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
-				for (Widget widget: widgets) {
-					widget.updateData();
+				synchronized (PdDroidPatchView.this) {
+					for (Widget widget: widgets) {
+						widget.updateData();
+					}
+					
 				}
 				threadSafeInvalidate();
 			}
