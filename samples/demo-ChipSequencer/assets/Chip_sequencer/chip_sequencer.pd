@@ -1,18 +1,18 @@
-#N canvas 65 54 1301 714 10;
-#X obj 55 360 cnv 15 100 140 empty cursorAccents empty 20 12 0 14 -261234
+#N canvas 66 78 1301 694 10;
+#X obj 755 560 cnv 15 100 140 empty cursorAccents empty 20 12 0 14
+-261234 -66577 0;
+#X obj 55 420 cnv 15 100 140 empty cursorOctaves empty 20 12 0 14 -261234
 -66577 0;
-#X obj 55 220 cnv 15 100 140 empty cursorOctaves empty 20 12 0 14 -261234
--66577 0;
-#X obj 55 -10 cnv 15 100 235 empty cursorNotes empty 20 12 0 14 -261234
+#X obj 755 190 cnv 15 100 235 empty cursorNotes empty 20 12 0 14 -261234
 -66577 0;
 #N canvas 65 87 450 250 (subpatch) 0;
 #X array Notes 8 float 3;
 #A 0 12 7 12 7 12 5 12 5;
 #X coords 0 0 8 12 800 200 2 0 0;
-#X restore 55 5 graph;
-#N canvas 65 107 1301 686 guts 1;
+#X restore 57 206 graph;
+#N canvas 66 81 1301 686 guts 1;
 #X obj 257 636 pack f f;
-#N canvas 354 92 831 686 gui-lookup 0;
+#N canvas 352 81 831 686 gui-lookup 0;
 #X obj 8 23 table_note_rd_lookup Notes 0 notes_0.r 11;
 #X obj 325 21 table_set_from_gui Notes 0 notes_0.s 11;
 #X obj 8 42 table_note_rd_lookup Notes 1 notes_1.r 11;
@@ -86,7 +86,7 @@
 #X floatatom 621 683 5 0 0 0 - synthdata_6.r synthdata_6.s, f 5;
 #X floatatom 622 704 5 0 0 0 - synthdata_7.r synthdata_7.s, f 5;
 #X restore 199 -100 pd gui-lookup;
-#N canvas 65 107 725 570 reading-modes-toggles 0;
+#N canvas 66 108 725 570 reading-modes-toggles 0;
 #X obj 18 65 select 0 1;
 #X obj 46 111 f 0;
 #X obj 46 86 t b b;
@@ -257,15 +257,12 @@
 #X obj 257 396 %;
 #X obj 471 394 %;
 #X obj 683 395 %;
-#X msg 870 682 \; cursorNotes pos \$1 -10;
 #X obj 870 630 * 100;
 #X obj 870 655 + 55;
 #X obj 868 539 * 100;
 #X obj 868 564 + 55;
-#X msg 868 591 \; cursorOctaves pos \$1 220;
 #X obj 868 450 * 100;
 #X obj 868 475 + 55;
-#X msg 868 502 \; cursorAccents pos \$1 360;
 #X obj 683 582 * 100;
 #X obj 258 1178 rj/e_dubdel mydubdel;
 #X obj 257 605 +;
@@ -380,7 +377,10 @@ basenote.r 24 \; notedur.r 25 \;;
 #X obj 486 315 r reset;
 #X obj 265 1253 dac~;
 #X obj 265 1275;
-#X connect 0 0 50 0;
+#X msg 870 682 \; cursorNotes pos \$1 190;
+#X msg 868 591 \; cursorOctaves pos \$1 420;
+#X msg 868 502 \; cursorAccents pos \$1 560;
+#X connect 0 0 47 0;
 #X connect 3 0 6 0;
 #X connect 4 0 6 0;
 #X connect 5 0 6 0;
@@ -410,306 +410,305 @@ basenote.r 24 \; notedur.r 25 \;;
 #X connect 26 0 25 0;
 #X connect 26 1 25 1;
 #X connect 27 0 28 1;
-#X connect 28 0 48 0;
+#X connect 28 0 45 0;
 #X connect 29 0 33 0;
 #X connect 30 0 29 0;
 #X connect 30 1 29 1;
 #X connect 31 0 19 0;
-#X connect 31 0 100 0;
+#X connect 31 0 97 0;
 #X connect 32 0 7 0;
 #X connect 32 1 17 0;
 #X connect 32 2 18 0;
-#X connect 33 0 46 0;
+#X connect 33 0 43 0;
 #X connect 34 0 20 0;
-#X connect 34 0 38 0;
-#X connect 34 0 79 0;
+#X connect 34 0 37 0;
+#X connect 34 0 76 0;
 #X connect 35 0 21 0;
-#X connect 35 0 40 0;
-#X connect 35 0 85 0;
+#X connect 35 0 39 0;
+#X connect 35 0 82 0;
 #X connect 36 0 22 0;
-#X connect 36 0 43 0;
-#X connect 36 0 86 0;
-#X connect 38 0 39 0;
-#X connect 39 0 37 0;
-#X connect 40 0 41 0;
+#X connect 36 0 41 0;
+#X connect 36 0 83 0;
+#X connect 37 0 38 0;
+#X connect 38 0 118 0;
+#X connect 39 0 40 0;
+#X connect 40 0 119 0;
 #X connect 41 0 42 0;
-#X connect 43 0 44 0;
-#X connect 44 0 45 0;
-#X connect 46 0 0 1;
-#X connect 47 0 119 0;
-#X connect 47 1 119 1;
-#X connect 48 0 0 0;
-#X connect 49 0 48 1;
-#X connect 50 0 58 0;
-#X connect 50 1 58 1;
-#X connect 51 0 102 1;
-#X connect 52 0 54 0;
-#X connect 52 1 54 1;
-#X connect 52 2 54 2;
-#X connect 53 0 102 0;
-#X connect 53 1 101 0;
-#X connect 53 2 104 0;
-#X connect 53 3 103 0;
-#X connect 54 0 53 0;
-#X connect 55 0 101 1;
-#X connect 56 0 104 1;
-#X connect 57 0 103 1;
-#X connect 58 0 52 0;
-#X connect 58 1 52 1;
-#X connect 59 0 60 0;
-#X connect 59 0 70 0;
-#X connect 60 0 47 2;
+#X connect 42 0 120 0;
+#X connect 43 0 0 1;
+#X connect 44 0 116 0;
+#X connect 44 1 116 1;
+#X connect 45 0 0 0;
+#X connect 46 0 45 1;
+#X connect 47 0 55 0;
+#X connect 47 1 55 1;
+#X connect 48 0 99 1;
+#X connect 49 0 51 0;
+#X connect 49 1 51 1;
+#X connect 49 2 51 2;
+#X connect 50 0 99 0;
+#X connect 50 1 98 0;
+#X connect 50 2 101 0;
+#X connect 50 3 100 0;
+#X connect 51 0 50 0;
+#X connect 52 0 98 1;
+#X connect 53 0 101 1;
+#X connect 54 0 100 1;
+#X connect 55 0 49 0;
+#X connect 55 1 49 1;
+#X connect 56 0 57 0;
+#X connect 56 0 67 0;
+#X connect 57 0 44 2;
+#X connect 58 0 59 0;
+#X connect 59 0 44 2;
+#X connect 60 0 44 2;
 #X connect 61 0 62 0;
-#X connect 62 0 47 2;
-#X connect 63 0 47 2;
-#X connect 64 0 65 0;
-#X connect 65 0 47 2;
-#X connect 66 0 67 0;
-#X connect 67 0 47 2;
-#X connect 68 0 69 0;
-#X connect 69 0 47 2;
-#X connect 70 0 63 0;
-#X connect 71 0 34 1;
-#X connect 72 0 35 1;
-#X connect 73 0 36 1;
-#X connect 74 0 75 0;
-#X connect 75 0 4 0;
-#X connect 76 0 3 0;
-#X connect 77 0 76 0;
-#X connect 78 0 5 0;
-#X connect 80 0 4 0;
-#X connect 80 1 3 0;
-#X connect 81 0 10 0;
-#X connect 82 0 9 0;
-#X connect 83 0 10 0;
-#X connect 83 1 9 0;
-#X connect 84 0 81 0;
-#X connect 87 0 82 0;
-#X connect 88 0 11 0;
-#X connect 89 0 14 0;
-#X connect 90 0 13 0;
-#X connect 91 0 14 0;
-#X connect 91 1 13 0;
-#X connect 92 0 89 0;
-#X connect 93 0 90 0;
-#X connect 94 0 15 0;
-#X connect 101 0 111 0;
-#X connect 102 0 111 0;
-#X connect 103 0 111 0;
-#X connect 104 0 111 0;
-#X connect 106 0 105 0;
-#X connect 106 0 109 0;
+#X connect 62 0 44 2;
+#X connect 63 0 64 0;
+#X connect 64 0 44 2;
+#X connect 65 0 66 0;
+#X connect 66 0 44 2;
+#X connect 67 0 60 0;
+#X connect 68 0 34 1;
+#X connect 69 0 35 1;
+#X connect 70 0 36 1;
+#X connect 71 0 72 0;
+#X connect 72 0 4 0;
+#X connect 73 0 3 0;
+#X connect 74 0 73 0;
+#X connect 75 0 5 0;
+#X connect 77 0 4 0;
+#X connect 77 1 3 0;
+#X connect 78 0 10 0;
+#X connect 79 0 9 0;
+#X connect 80 0 10 0;
+#X connect 80 1 9 0;
+#X connect 81 0 78 0;
+#X connect 84 0 79 0;
+#X connect 85 0 11 0;
+#X connect 86 0 14 0;
+#X connect 87 0 13 0;
+#X connect 88 0 14 0;
+#X connect 88 1 13 0;
+#X connect 89 0 86 0;
+#X connect 90 0 87 0;
+#X connect 91 0 15 0;
+#X connect 98 0 108 0;
+#X connect 99 0 108 0;
+#X connect 100 0 108 0;
+#X connect 101 0 108 0;
+#X connect 103 0 102 0;
+#X connect 103 0 106 0;
+#X connect 105 0 104 0;
+#X connect 105 0 107 2;
+#X connect 106 0 107 1;
+#X connect 107 0 44 0;
+#X connect 107 0 44 1;
+#X connect 107 1 44 0;
+#X connect 107 1 44 1;
 #X connect 108 0 107 0;
-#X connect 108 0 110 2;
-#X connect 109 0 110 1;
-#X connect 110 0 47 0;
-#X connect 110 0 47 1;
-#X connect 110 1 47 0;
-#X connect 110 1 47 1;
-#X connect 111 0 110 0;
-#X connect 113 2 114 0;
-#X connect 113 3 115 0;
-#X connect 116 0 7 0;
-#X connect 117 0 18 0;
-#X connect 118 0 17 0;
-#X restore 879 129 pd guts;
+#X connect 110 2 111 0;
+#X connect 110 3 112 0;
+#X connect 113 0 7 0;
+#X connect 114 0 18 0;
+#X connect 115 0 17 0;
+#X restore 881 330 pd guts;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array Octaves 8 float 3;
 #A 0 6 6 6 6 6 4 6 3;
 #X coords 0 0 8 6 800 100 1 0 0;
-#X restore 55 239 graph;
+#X restore 57 440 graph;
 #N canvas 65 82 450 250 (subpatch) 0;
 #X array Accents 8 float 3;
 #A 0 3 1 2 0 3 1 2 3;
 #X coords 0 0 8 4 800 100 1 0 0;
-#X restore 56 380 graph;
-#X floatatom 80 205 7 0 0 0 - notes_0.r notes_0.s, f 7;
-#X floatatom 181 205 7 0 0 0 - notes_1.r notes_1.s, f 7;
-#X floatatom 282 205 7 0 0 0 - notes_2.r notes_2.s, f 7;
-#X floatatom 379 205 7 0 0 0 - notes_3.r notes_3.s, f 7;
-#X floatatom 484 205 7 0 0 0 - notes_4.r notes_4.s, f 7;
-#X floatatom 581 205 7 0 0 0 - notes_5.r notes_5.s, f 7;
-#X floatatom 681 205 7 0 0 0 - notes_6.r notes_6.s, f 7;
-#X floatatom 780 205 7 0 0 0 - notes_7.r notes_7.s, f 7;
-#X obj 39 170 cnv 15 815 1 empty empty +2 -20 0 0 14 -162280 -66577
+#X restore 58 581 graph;
+#X floatatom 82 406 7 0 0 0 - notes_0.r notes_0.s, f 7;
+#X floatatom 183 406 7 0 0 0 - notes_1.r notes_1.s, f 7;
+#X floatatom 284 406 7 0 0 0 - notes_2.r notes_2.s, f 7;
+#X floatatom 381 406 7 0 0 0 - notes_3.r notes_3.s, f 7;
+#X floatatom 486 406 7 0 0 0 - notes_4.r notes_4.s, f 7;
+#X floatatom 583 406 7 0 0 0 - notes_5.r notes_5.s, f 7;
+#X floatatom 683 406 7 0 0 0 - notes_6.r notes_6.s, f 7;
+#X floatatom 782 406 7 0 0 0 - notes_7.r notes_7.s, f 7;
+#X obj 41 371 cnv 15 815 1 empty empty +2 -20 0 0 14 -162280 -66577
 0;
-#X obj 39 138 cnv 15 815 1 empty empty +4 -20 0 0 14 -162280 -66577
+#X obj 41 339 cnv 15 815 1 empty empty +4 -20 0 0 14 -162280 -66577
 0;
-#X obj 39 121 cnv 15 815 1 empty empty +5 -20 0 0 14 -162280 -66577
+#X obj 41 322 cnv 15 815 1 empty empty +5 -20 0 0 14 -162280 -66577
 0;
-#X obj 39 87 cnv 15 815 1 empty empty +7 -20 0 0 14 -162280 -66577
+#X obj 41 288 cnv 15 815 1 empty empty +7 -20 0 0 14 -162280 -66577
 0;
-#X obj 39 55 cnv 15 815 1 empty empty +9 -20 0 0 14 -162280 -66577
+#X obj 41 256 cnv 15 815 1 empty empty +9 -20 0 0 14 -162280 -66577
 0;
-#X obj 39 21 cnv 15 815 1 empty empty +11 -25 0 0 14 -162280 -66577
+#X obj 41 222 cnv 15 815 1 empty empty +11 -25 0 0 14 -162280 -66577
 0;
-#X obj 39 187 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+#X obj 41 388 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
 0;
-#X obj 39 154 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+#X obj 41 355 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
 0;
-#X obj 39 105 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+#X obj 41 306 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
 0;
-#X obj 39 71 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+#X obj 41 272 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
 0;
-#X obj 39 38 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+#X obj 41 239 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
 0;
-#X obj 754 -10 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 756 191 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 654 -10 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 656 191 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 554 -10 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 556 191 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 455 -10 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 457 191 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 354 -10 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 356 191 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 255 -10 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 257 191 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 154 -10 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 156 191 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X floatatom 80 339 7 0 0 0 - octaves_0.r octaves_0.s, f 7;
-#X floatatom 181 339 7 0 0 0 - octaves_1.r octaves_1.s, f 7;
-#X floatatom 282 339 7 0 0 0 - octaves_2.r octaves_2.s, f 7;
-#X floatatom 379 339 7 0 0 0 - octaves_3.r octaves_3.s, f 7;
-#X floatatom 484 339 7 0 0 0 - octaves_4.r octaves_4.s, f 7;
-#X floatatom 581 339 7 0 0 0 - octaves_5.r octaves_5.s, f 7;
-#X floatatom 681 339 7 0 0 0 - octaves_6.r octaves_6.s, f 7;
-#X floatatom 780 339 7 0 0 0 - octaves_7.r octaves_7.s, f 7;
-#X floatatom 80 481 7 0 0 0 - accents_0.r accents_0.s, f 7;
-#X floatatom 181 481 7 0 0 0 - accents_1.r accents_1.s, f 7;
-#X floatatom 282 481 7 0 0 0 - accents_2.r accents_2.s, f 7;
-#X floatatom 379 481 7 0 0 0 - accents_3.r accents_3.s, f 7;
-#X floatatom 484 481 7 0 0 0 - accents_4.r accents_4.s, f 7;
-#X floatatom 581 481 7 0 0 0 - accents_5.r accents_5.s, f 7;
-#X floatatom 681 481 7 0 0 0 - accents_6.r accents_6.s, f 7;
-#X floatatom 780 481 7 0 0 0 - accents_7.r accents_7.s, f 7;
-#X obj 654 224 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X floatatom 82 540 7 0 0 0 - octaves_0.r octaves_0.s, f 7;
+#X floatatom 183 540 7 0 0 0 - octaves_1.r octaves_1.s, f 7;
+#X floatatom 284 540 7 0 0 0 - octaves_2.r octaves_2.s, f 7;
+#X floatatom 381 540 7 0 0 0 - octaves_3.r octaves_3.s, f 7;
+#X floatatom 486 540 7 0 0 0 - octaves_4.r octaves_4.s, f 7;
+#X floatatom 583 540 7 0 0 0 - octaves_5.r octaves_5.s, f 7;
+#X floatatom 683 540 7 0 0 0 - octaves_6.r octaves_6.s, f 7;
+#X floatatom 782 540 7 0 0 0 - octaves_7.r octaves_7.s, f 7;
+#X floatatom 82 682 7 0 0 0 - accents_0.r accents_0.s, f 7;
+#X floatatom 183 682 7 0 0 0 - accents_1.r accents_1.s, f 7;
+#X floatatom 284 682 7 0 0 0 - accents_2.r accents_2.s, f 7;
+#X floatatom 381 682 7 0 0 0 - accents_3.r accents_3.s, f 7;
+#X floatatom 486 682 7 0 0 0 - accents_4.r accents_4.s, f 7;
+#X floatatom 583 682 7 0 0 0 - accents_5.r accents_5.s, f 7;
+#X floatatom 683 682 7 0 0 0 - accents_6.r accents_6.s, f 7;
+#X floatatom 782 682 7 0 0 0 - accents_7.r accents_7.s, f 7;
+#X obj 656 425 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 554 224 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 556 425 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 455 224 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 457 425 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 354 224 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 356 425 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 255 224 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 257 425 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 154 224 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 156 425 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 754 365 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 756 566 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 653 365 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 655 566 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 554 365 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 556 566 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 455 365 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 457 566 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 354 365 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 356 566 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 255 365 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 257 566 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 153 365 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 155 566 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 40 338 cnv 15 815 1 empty empty 0 -10 0 0 14 -162280 -66577
+#X obj 42 539 cnv 15 815 1 empty empty 0 -10 0 0 14 -162280 -66577
 0;
-#X obj 39 322 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+#X obj 41 523 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
 0;
-#X obj 39 305 cnv 15 815 1 empty empty 2 -10 0 0 14 -162280 -66577
+#X obj 41 506 cnv 15 815 1 empty empty 2 -10 0 0 14 -162280 -66577
 0;
-#X obj 39 289 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+#X obj 41 490 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
 0;
-#X obj 39 272 cnv 15 815 1 empty empty 4 -10 0 0 14 -162280 -66577
+#X obj 41 473 cnv 15 815 1 empty empty 4 -10 0 0 14 -162280 -66577
 0;
-#X obj 39 255 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+#X obj 41 456 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
 0;
-#X obj 39 4 cnv 15 815 1 empty empty +12 -25 0 0 14 -162280 -66577
+#X obj 41 205 cnv 15 815 1 empty empty +12 -25 0 0 14 -162280 -66577
 0;
-#X obj 40 238 cnv 15 815 1 empty empty 6 -10 0 0 14 -162280 -66577
+#X obj 42 439 cnv 15 815 1 empty empty 6 -10 0 0 14 -162280 -66577
 0;
-#X obj 40 204 cnv 15 815 1 empty empty +0 -20 0 0 14 -162280 -66577
+#X obj 42 405 cnv 15 815 1 empty empty +0 -20 0 0 14 -162280 -66577
 0;
-#X obj 41 479 cnv 15 815 1 empty empty mute -35 0 0 14 -162280 -66577
+#X obj 43 680 cnv 15 815 1 empty empty mute -35 0 0 14 -162280 -66577
 0;
-#X obj 40 455 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+#X obj 42 656 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
 0;
-#X obj 40 430 cnv 15 815 1 empty empty soft -35 0 0 14 -162280 -66577
+#X obj 42 631 cnv 15 815 1 empty empty soft -35 0 0 14 -162280 -66577
 0;
-#X obj 40 405 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+#X obj 42 606 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
 0;
-#X obj 40 380 cnv 15 815 1 empty empty hard -35 0 0 14 -162280 -66577
+#X obj 42 581 cnv 15 815 1 empty empty hard -35 0 0 14 -162280 -66577
 0;
-#X obj 754 223 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 756 424 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X floatatom 58 -169 7 0 96 1 Base_Note basenote.r basenote.s, f 7
-;
+#X floatatom 60 32 7 0 96 1 Base_Note basenote.r basenote.s, f 7;
 #N canvas 65 92 450 250 (subpatch) 0;
 #X array Synth-Data 8 float 3;
 #A 0 0 1 1 0 0 0 1 1;
 #X coords 0 3 8 0 250 100 1 0 0;
-#X restore 57 -128 graph;
-#X obj 242 -143 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X restore 59 73 graph;
+#X obj 244 58 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 212 -143 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 214 58 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 181 -143 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 183 58 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 149 -143 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 151 58 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 118 -143 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 120 58 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 87 -143 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 89 58 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 42 -29 cnv 15 265 1 empty empty null -35 0 0 14 -162280 -66577
+#X obj 44 172 cnv 15 265 1 empty empty null -35 0 0 14 -162280 -66577
 0;
-#X obj 41 -62 cnv 15 265 1 empty empty sinus -40 0 0 14 -162280 -66577
+#X obj 43 139 cnv 15 265 1 empty empty sinus -40 0 0 14 -162280 -66577
 0;
-#X obj 41 -94 cnv 15 265 1 empty empty square -50 0 0 14 -162280 -66577
+#X obj 43 107 cnv 15 265 1 empty empty square -50 0 0 14 -162280 -66577
 0;
-#X obj 41 -128 cnv 15 265 1 empty empty noise -40 0 0 14 -162280 -66577
+#X obj 43 73 cnv 15 265 1 empty empty noise -40 0 0 14 -162280 -66577
 0;
 #N canvas 65 97 450 250 (subpatch) 0;
 #X array Synth-Pitch 9 float 1;
 #A 0 -0.48 -0.48 17.28 -4.32 0.480007 -22.56 -9.6 4.32 2.88;
 #X coords 0 24 8 -24 250 100 1 0 0;
-#X restore 324 -129 graph;
-#X floatatom 181 -169 7 5 100 1 Note_Duration notedur.r notedur.s,
-f 7;
-#X floatatom 879 239 7 24 96 1 Modulo modulooctaves.r modulooctaves.s
-, f 7;
-#X obj 879 260 tgl 25 0 forwardoctaves.s forwardoctaves.r Forward 30
-13 0 10 -262144 -1 -1 0 1;
-#X obj 879 287 tgl 25 0 backwardsoctaves.s backwardsoctaves.r Backwards
-30 13 0 10 -262144 -1 -1 0 1;
-#X obj 879 314 tgl 25 0 pingpongoctaves.s pingpongoctaves.r PingPong
-30 13 0 10 -262144 -1 -1 0 1;
-#X floatatom 976 239 7 24 96 1 Dephase dephaseoctaves.r dephaseoctaves.s
-, f 7;
-#X floatatom 879 5 7 24 96 1 Modulo modulonotes.r modulonotes.s, f
+#X restore 326 72 graph;
+#X floatatom 183 32 7 5 100 1 Note_Duration notedur.r notedur.s, f
 7;
-#X obj 879 26 tgl 25 0 forwardnotes.s forwardnotes.r Forward 30 13
-0 10 -262144 -1 -1 0 1;
-#X obj 879 53 tgl 25 0 backwardsnotes.s backwardsnotes.r Backwards
-30 13 0 10 -262144 -1 -1 0 1;
-#X obj 879 80 tgl 25 0 pingpongnotes.s pingpongnotes.r PingPong 30
-13 0 10 -262144 -1 -1 1 1;
-#X floatatom 976 5 7 24 96 1 Dephase dephasenotes.r dephasenotes.s
+#X floatatom 881 440 7 24 96 1 Modulo modulooctaves.r modulooctaves.s
 , f 7;
-#X floatatom 879 379 7 24 96 1 Modulo moduloaccents.r moduloaccents.s
-, f 7;
-#X obj 879 400 tgl 25 0 forwardaccents.s forwardaccents.r Forward 30
+#X obj 881 461 tgl 25 0 forwardoctaves.s forwardoctaves.r Forward 30
 13 0 10 -262144 -1 -1 0 1;
-#X obj 879 427 tgl 25 0 backwardsaccents.s backwardsaccents.r Backwards
-30 13 0 10 -262144 -1 -1 0 1;
-#X obj 879 454 tgl 25 0 pingpongaccents.s pingpongaccents.r PingPong
+#X obj 881 488 tgl 25 0 backwardsoctaves.s backwardsoctaves.r Backwards
 30 13 0 10 -262144 -1 -1 1 1;
-#X floatatom 976 379 7 24 96 1 Dephase dephaseaccents.r dephaseaccents.s
+#X obj 881 515 tgl 25 0 pingpongoctaves.s pingpongoctaves.r PingPong
+30 13 0 10 -262144 -1 -1 0 1;
+#X floatatom 978 440 7 24 96 1 Dephase dephaseoctaves.r dephaseoctaves.s
 , f 7;
-#X obj 601 -81 hsl 200 25 0 1 0 0 feedback.s feedback.r Feedback -2
--8 0 10 -262144 -1 -1 13700 1;
-#X obj 601 -127 hsl 200 25 0 1 0 0 dry.s dry.r Wet/Dry -2 -8 0 10 -262144
--1 -1 1600 1;
-#X floatatom 598 -42 7 0 9 1 Left_delay dell.r dell.s, f 7;
-#X floatatom 850 -42 7 0 9 1 Right_delay delr.r delr.s, f 7;
-#X obj 274 -143 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+#X floatatom 881 206 7 24 96 1 Modulo modulonotes.r modulonotes.s,
+f 7;
+#X obj 881 227 tgl 25 0 forwardnotes.s forwardnotes.r Forward 30 13
+0 10 -262144 -1 -1 0 1;
+#X obj 881 254 tgl 25 0 backwardsnotes.s backwardsnotes.r Backwards
+30 13 0 10 -262144 -1 -1 0 1;
+#X obj 881 281 tgl 25 0 pingpongnotes.s pingpongnotes.r PingPong 30
+13 0 10 -262144 -1 -1 1 1;
+#X floatatom 978 206 7 24 96 1 Dephase dephasenotes.r dephasenotes.s
+, f 7;
+#X floatatom 881 580 7 24 96 1 Modulo moduloaccents.r moduloaccents.s
+, f 7;
+#X obj 881 601 tgl 25 0 forwardaccents.s forwardaccents.r Forward 30
+13 0 10 -262144 -1 -1 0 1;
+#X obj 881 628 tgl 25 0 backwardsaccents.s backwardsaccents.r Backwards
+30 13 0 10 -262144 -1 -1 0 1;
+#X obj 881 655 tgl 25 0 pingpongaccents.s pingpongaccents.r PingPong
+30 13 0 10 -262144 -1 -1 0 1;
+#X floatatom 978 580 7 24 96 1 Dephase dephaseaccents.r dephaseaccents.s
+, f 7;
+#X obj 603 120 hsl 200 25 0 1 0 0 feedback.s feedback.r Feedback -2
+-8 0 10 -262144 -1 -1 0 1;
+#X obj 603 74 hsl 200 25 0 1 0 0 dry.s dry.r Wet/Dry -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 600 159 7 0 9 1 Left_delay dell.r dell.s, f 7;
+#X floatatom 852 159 7 0 9 1 Right_delay delr.r delr.s, f 7;
+#X obj 276 58 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
 #N canvas 717 304 613 463 loadsave-interface 0;
 #X obj 44 15 s cb-save;
@@ -729,7 +728,7 @@ f 7;
 #X connect 5 0 6 0;
 #X connect 7 0 9 0;
 #X connect 8 0 10 0;
-#X restore 879 167 pd loadsave-interface;
+#X restore 881 368 pd loadsave-interface;
 #N canvas 65 54 1301 714 loadsave 0;
 #X obj 97 58 sssad/tablesave Synth-Data 8 Synth-Data;
 #X obj 97 78 sssad/tablesave Synth-Pitch 8 Synth-Pitch;
@@ -759,13 +758,13 @@ f 7;
 #X obj 99 587 sssad/auto dephaseaccents.s dephaseaccents.r;
 #X obj 335 267 sssad/auto bppitch.s bppitch.r;
 #X obj 335 286 sssad/auto bpq.s bpq.r;
-#X restore 879 187 pd loadsave;
-#X obj 879 148 loadsave storage;
-#X obj 471 -170 wordbutton 50 20 save;
-#X obj 325 -169 wordbutton 50 20 load;
-#X obj 852 -80 hsl 200 25 0 15 0 0 bpq.s bpq.r VCF_Q -2 -8 0 10 -262144
+#X restore 881 388 pd loadsave;
+#X obj 881 349 loadsave storage;
+#X obj 473 31 wordbutton 50 20 save;
+#X obj 327 32 wordbutton 50 20 load;
+#X obj 854 121 hsl 200 25 0 15 0 0 bpq.s bpq.r VCF_Q -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 852 -126 hsl 200 25 24 127 0 0 bppitch.s bppitch.r VCF_F -2
--8 0 10 -262144 -1 -1 17700 1;
-#X obj 598 -169 clock-gui;
-#X text 677 -169 <--- check me;
+#X obj 854 75 hsl 200 25 24 127 0 0 bppitch.s bppitch.r VCF_F -2 -8
+0 10 -262144 -1 -1 0 1;
+#X obj 600 32 clock-gui;
+#X text 679 32 <--- check me;
