@@ -1,11 +1,11 @@
-#N canvas 332 151 475 307 10;
-#X obj 7 47 hsl 128 25 0 32 0 0 num1.s num1.r Numerator 5 12 0 10 -262144
--1 -1 800 1;
-#X obj 7 81 hsl 128 25 0 32 0 0 den1.s den1.r Denominator 5 12 0 10
--262144 -1 -1 3700 1;
-#X obj 4 14 tgl 25 0 glitch1.s glitch1.r Glitch_1 30 12 0 10 -262144
+#N canvas 329 156 475 307 10;
+#X obj 9 79 hsl 128 25 0 32 0 0 num1.s num1.r Numerator 5 12 0 10 -262144
 -1 -1 0 1;
-#N canvas 65 82 651 686 guts 1;
+#X obj 9 113 hsl 128 25 0 32 0 0 den1.s den1.r Denominator 5 12 0 10
+-262144 -1 -1 0 1;
+#X obj 6 46 tgl 25 0 glitch1.s glitch1.r Glitch_1 30 12 0 10 -262144
+-1 -1 0 1;
+#N canvas 65 87 651 686 guts 0;
 #X obj 526 657 dac~;
 #X obj 66 256 euclidean 7 16;
 #X obj 415 602 hip~ 25;
@@ -486,38 +486,38 @@
 #X connect 67 2 32 0;
 #X connect 67 2 23 0;
 #X connect 67 2 12 0;
-#X restore 6 230 pd guts;
-#X obj 156 48 hsl 128 25 0 32 0 0 num2.s num2.r Numerator 5 12 0 10
--262144 -1 -1 1400 1;
-#X obj 156 82 hsl 128 25 0 32 0 0 den2.s den2.r Denominator 5 12 0
-10 -262144 -1 -1 5200 1;
-#X obj 153 15 tgl 25 0 glitch2.s glitch2.r Glitch_2 30 12 0 10 -262144
+#X restore 8 262 pd guts;
+#X obj 158 80 hsl 128 25 0 32 0 0 num2.s num2.r Numerator 5 12 0 10
+-262144 -1 -1 0 1;
+#X obj 158 114 hsl 128 25 0 32 0 0 den2.s den2.r Denominator 5 12 0
+10 -262144 -1 -1 0 1;
+#X obj 155 47 tgl 25 0 glitch2.s glitch2.r Glitch_2 30 12 0 10 -262144
 -1 -1 0 1;
-#X obj 304 48 hsl 128 25 0 32 0 0 num3.s num3.r Numerator 5 12 0 10
--262144 -1 -1 2600 1;
-#X obj 304 82 hsl 128 25 0 32 0 0 den3.s den3.r Denominator 5 12 0
-10 -262144 -1 -1 4000 1;
-#X obj 301 15 tgl 25 0 glitch3.s glitch3.r Glitch_3 30 12 0 10 -262144
+#X obj 306 80 hsl 128 25 0 32 0 0 num3.s num3.r Numerator 5 12 0 10
+-262144 -1 -1 0 1;
+#X obj 306 114 hsl 128 25 0 32 0 0 den3.s den3.r Denominator 5 12 0
+10 -262144 -1 -1 0 1;
+#X obj 303 47 tgl 25 0 glitch3.s glitch3.r Glitch_3 30 12 0 10 -262144
 -1 -1 0 1;
-#X obj 8 154 hsl 128 25 0 32 0 0 num4.s num4.r Numerator 5 12 0 10
--262144 -1 -1 7800 1;
-#X obj 8 188 hsl 128 25 0 32 0 0 den4.s den4.r Denominator 5 12 0 10
--262144 -1 -1 10100 1;
-#X obj 5 121 tgl 25 0 glitch4.s glitch4.r Glitch_4 30 12 0 10 -262144
+#X obj 10 186 hsl 128 25 0 32 0 0 num4.s num4.r Numerator 5 12 0 10
+-262144 -1 -1 0 1;
+#X obj 10 220 hsl 128 25 0 32 0 0 den4.s den4.r Denominator 5 12 0
+10 -262144 -1 -1 0 1;
+#X obj 7 153 tgl 25 0 glitch4.s glitch4.r Glitch_4 30 12 0 10 -262144
 -1 -1 0 1;
-#X obj 157 155 hsl 128 25 0 32 0 0 num5.s num5.r Numerator 5 12 0 10
--262144 -1 -1 5300 1;
-#X obj 157 189 hsl 128 25 0 32 0 0 den5.s den5.r Denominator 5 12 0
-10 -262144 -1 -1 8600 1;
-#X obj 154 122 tgl 25 0 glitch5.s glitch5.r Glitch_5 30 12 0 10 -262144
+#X obj 159 187 hsl 128 25 0 32 0 0 num5.s num5.r Numerator 5 12 0 10
+-262144 -1 -1 0 1;
+#X obj 159 221 hsl 128 25 0 32 0 0 den5.s den5.r Denominator 5 12 0
+10 -262144 -1 -1 0 1;
+#X obj 156 154 tgl 25 0 glitch5.s glitch5.r Glitch_5 30 12 0 10 -262144
 -1 -1 0 1;
-#X obj 305 155 hsl 128 25 0 32 0 0 num6.s num6.r Numerator 5 12 0 10
--262144 -1 -1 700 1;
-#X obj 305 189 hsl 128 25 0 32 0 0 den6.s den6.r Denominator 5 12 0
-10 -262144 -1 -1 9500 1;
-#X obj 302 122 tgl 25 0 glitch6.s glitch6.r Glitch_6 30 12 0 10 -262144
+#X obj 307 187 hsl 128 25 0 32 0 0 num6.s num6.r Numerator 5 12 0 10
+-262144 -1 -1 0 1;
+#X obj 307 221 hsl 128 25 0 32 0 0 den6.s den6.r Denominator 5 12 0
+10 -262144 -1 -1 0 1;
+#X obj 304 154 tgl 25 0 glitch6.s glitch6.r Glitch_6 30 12 0 10 -262144
 -1 -1 0 1;
-#X obj 8 252 clock-gui;
+#X obj 10 284 clock-gui;
 #N canvas 714 281 613 463 loadsave-interface 0;
 #X obj 44 15 s cb-save;
 #X obj 44 -6 r storage-save;
@@ -536,8 +536,8 @@
 #X connect 5 0 6 0;
 #X connect 7 0 9 0;
 #X connect 8 0 10 0;
-#X restore 84 253 pd loadsave-interface;
-#N canvas 715 82 651 686 loadsave 1;
+#X restore 86 285 pd loadsave-interface;
+#N canvas 712 87 651 686 loadsave 0;
 #X obj 7 31 sssad/auto num1.s num1.r;
 #X obj 7 52 sssad/auto den1.s den1.r;
 #X obj 7 104 sssad/auto num2.s num2.r;
@@ -556,7 +556,7 @@
 #X obj 8 154 sssad/auto glitch3.s glitch3.r;
 #X obj 7 10 sssad/auto glitch1.s glitch1.r;
 #X obj 7 83 sssad/auto glitch2.s glitch2.r;
-#X restore 230 253 pd loadsave;
-#X obj 89 -28 wordbutton 50 20 save;
-#X obj 3 -28 wordbutton 50 20 load;
-#X obj 84 230 loadsave storage;
+#X restore 232 285 pd loadsave;
+#X obj 91 4 wordbutton 50 20 save;
+#X obj 5 4 wordbutton 50 20 load;
+#X obj 86 262 loadsave storage;
