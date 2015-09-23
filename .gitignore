@@ -3,6 +3,7 @@
 .classpath
 .settings/
 bin/
+/local.properties
 
 # Gradle
 .gradle
