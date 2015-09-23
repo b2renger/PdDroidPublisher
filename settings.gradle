@@ -1,11 +1,12 @@
 
-include 'pd-for-android', 'midi', 'pd-party', 'svg-android', 'demo-AcidBox','demo-Wobbler', 'lib'
+include 'pd-for-android', 'midi', 'pd-party', 'svg-android', 'lib', 'demo-AcidBox', 'demo-Wobbler', 'demo-Glitcher', 'demo-ChipSequencer'
 
 project(':pd-for-android').projectDir = new File(settingsDir, "pd-for-android/PdCore")
 project(':midi').projectDir = new File(settingsDir, "pd-for-android/midi/AndroidMidi")
 
 project(':demo-AcidBox').projectDir = new File(settingsDir, "samples/demo-AcidBox")
 project(':demo-Wobbler').projectDir = new File(settingsDir, "samples/demo-Wobbler")
-
+project(':demo-Glitcher').projectDir = new File(settingsDir, "samples/demo-Glitcher")
+project(':demo-ChipSequencer').projectDir = new File(settingsDir, "samples/demo-ChipSequencer")
 
 rootProject.name = 'PdPartyPublisher'

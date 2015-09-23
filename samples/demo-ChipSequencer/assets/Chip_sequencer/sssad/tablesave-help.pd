@@ -1,0 +1,41 @@
+#N canvas 478 40 450 300 10;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array testtable 23 float 1;
+#A 0 0 0.128569 0 0 0 0 0 0 0 0 0 -0.114286 -0.200001 -0.414287 0 0
+0 0 0 0 0 0 0;
+#X coords 0 1 22 -1 200 140 1;
+#X restore 226 18 graph;
+#X obj 19 59 sssad/datastore;
+#N canvas 0 0 450 300 datastore 1;
+#X obj 10 10 r SSSADDATA;
+#X msg 10 30 \; SSSAD testtable-tabledata 0 0 0.128569 0 0 0 0 0 0
+0 0 0 -0.114286 -0.200001 -0.414287 0 0 0 0 0 0 0 0 0 \; SSSAD testtable-tabledata
+0 0 0.128569 0 0 0 0 0 0 0 0 0 -0.114286 -0.200001 -0.414287 0 0 0
+0 0 0 0 0 0 \; SSSAD acid2/spook/detune 0 \; SSSAD acid2/spook/detune
+0 \; SSSAD acid2/spook/location \; SSSAD acid2/spook/location \; SSSAD
+acid2/spook/windowsize 6 \; SSSAD acid2/spook/windowsize 6 \; SSSAD
+acid2/spook/lock 0 \; SSSAD acid2/spook/lock 0 \; SSSAD 1455/length
+23.0414 \; SSSAD 1455/length 23.0414 \; SSSAD 1455/feedback 13.7281
+\; SSSAD 1455/feedback 13.7281 \; SSSAD 1422/length 23.0414 \; SSSAD
+1422/length 23.0414 \; SSSAD 1422/feedback 13.7281 \; SSSAD 1422/feedback
+13.7281 \; SSSAD acid1/spook/detune 0 \; SSSAD acid1/spook/detune 0
+\; SSSAD acid1/spook/location \; SSSAD acid1/spook/location \; SSSAD
+acid1/spook/windowsize 6 \; SSSAD acid1/spook/windowsize 6 \; SSSAD
+acid1/spook/lock 0 \; SSSAD acid1/spook/lock 0 \; SSSAD 1131/length
+23.0414 \; SSSAD 1131/length 23.0414 \; SSSAD 1131/feedback 13.7281
+\; SSSAD 1131/feedback 13.7281 \; SSSAD 1098/length 23.0414 \; SSSAD
+1098/length 23.0414 \; SSSAD 1098/feedback 13.7281 \; SSSAD 1098/feedback
+13.7281 \; SSSAD master/volume 6.04762 \; SSSAD master/volume 6.04762
+\; SSSAD master/pan 61.9881 \; SSSAD master/pan 61.9881 \; SSSAD_ADMIN
+set \;;
+#X connect 0 0 1 0;
+#X restore 19 123 pd datastore;
+#X obj 20 239 sssad/tablesave testtable 100;
+#X text 14 10 save a table into sssad.;
+#X text 17 26 args: tablename length;
+#X floatatom 20 157 5 0 0 0 - - -;
+#X obj 20 175 t f f;
+#X msg 47 196 \; testtable resize \$1 \;;
+#X connect 6 0 7 0;
+#X connect 7 0 3 0;
+#X connect 7 1 8 0;

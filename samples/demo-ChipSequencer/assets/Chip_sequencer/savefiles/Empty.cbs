@@ -1,0 +1,27 @@
+pingpongaccents.r 0;
+backwardsaccents.r 0;
+forwardaccents.r 1;
+dephaseaccents.r;
+moduloaccents.r;
+pingpongoctaves.r 0;
+backwardsnotes.r;
+backwardsoctaves.r 0;
+forwardoctaves.r 1;
+dephaseoctaves.r;
+modulooctaves.r;
+pingpongnotes.r;
+forwardnotes.r;
+dephasenotes.r;
+modulonotes.r;
+delr.r 0;
+dell.r 0;
+feedback.r 1;
+dry.r 1;
+notedur.r;
+basenote.r 36;
+Octaves-tabledata 0 6 6 6 6 6 6 6 6;
+Accents-tabledata 0 4 4 4 4 4 4 4 4;
+Notes-tabledata 0 12 12 12 12 12 12 12 12;
+Synth-Pitch-tabledata 0 13.44 -1.92 8.64 21.12 33.6 26.88 17.28 27.84
+;
+Synth-Data-tabledata 0 0 0 0 0 0 0 0 0;
