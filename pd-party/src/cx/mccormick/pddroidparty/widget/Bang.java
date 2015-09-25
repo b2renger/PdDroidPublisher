@@ -1,23 +1,28 @@
 package cx.mccormick.pddroidparty.widget;
 
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 import org.puredata.core.PdBase;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.os.SystemClock;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Bang extends Widget {
 	private static final String TAG = "Bang";
 
-	boolean bang = false;
-	long bangtime ;
-	int interrpt,hold; //interrpt and hold time, in ms.
+	volatile boolean bang = false;
+	int interrpt,hold; //interrupt and hold time, in ms.
 	
 	WImage on = new WImage();
 	WImage off = new WImage();
+	
+	ScheduledThreadPoolExecutor timer = new ScheduledThreadPoolExecutor(1);
+	ScheduledFuture<?> task;
 	
 	public Bang(PdDroidPatchView app, String[] atomline) {
 		super(app);
@@ -78,8 +83,6 @@ public class Bang extends Widget {
 		}
 		if (bang) {
 			
-			// TODO souldn't done here ...
-			if((SystemClock.uptimeMillis()-bangtime)>hold) bang = false;
 			
 			// parent.threadSafeInvalidate();
 			if(on.draw(canvas))
@@ -95,7 +98,19 @@ public class Bang extends Widget {
 	// visual bang :
 	private void bang() {
 		bang = true;
-		bangtime = SystemClock.uptimeMillis();
+		if(task != null && !task.isCancelled())
+		{
+			task.cancel(true);
+		}
+		task = timer.schedule(new Runnable() {
+			
+			@Override
+			public void run() {
+				bang = false;
+				parent.threadSafeInvalidate();
+				
+			}
+		}, hold, TimeUnit.MILLISECONDS);
 	}
 
 	public boolean touchdown(int pid, float x, float y)

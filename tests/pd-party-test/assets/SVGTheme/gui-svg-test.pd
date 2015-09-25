@@ -1,6 +1,6 @@
-#N canvas 417 175 618 398 10;
+#N canvas 413 177 618 398 10;
 #X floatatom 54 37 5 0 0 0 Nombre - -, f 5;
-#X obj 116 38 bng 32 250 50 0 empty empty Bang_A 0 -7 0 10 -262144
+#X obj 116 38 bng 32 1000 500 0 empty empty Bang_A 0 -7 0 10 -262144
 -1 -1;
 #X obj 181 38 tgl 32 0 empty empty Inter_A 0 -7 0 10 -262144 -1 -1
 0 1;
@@ -17,3 +17,29 @@
 0.12;
 #X coords 0 1 10 -1 100 100 1 0 0;
 #X restore 457 27 graph;
+#X obj 33 102 nbx 5 14 -1e+37 1e+37 0 0 empty empty Nombre_2 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 57 167 loadbang;
+#X obj 57 190 metro 500;
+#X obj 115 100 bng 15 250 50 0 empty bip.1 empty 17 7 0 10 -262144
+-1 -1;
+#X obj 134 100 bng 15 250 50 0 empty bip.2 empty 17 7 0 10 -262144
+-1 -1;
+#X obj 153 100 bng 15 250 50 0 empty bip.3 empty 17 7 0 10 -262144
+-1 -1;
+#X obj 57 212 f 0;
+#X obj 88 213 + 1;
+#X obj 57 234 mod 3;
+#X obj 57 256 select 0 1 2;
+#X obj 28 314 s bip.1;
+#X obj 78 315 s bip.2;
+#X obj 128 315 s bip.3;
+#X connect 10 0 11 0;
+#X connect 11 0 15 0;
+#X connect 15 0 16 0;
+#X connect 15 0 17 0;
+#X connect 16 0 15 1;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 18 1 20 0;
+#X connect 18 2 21 0;
