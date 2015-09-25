@@ -35,7 +35,7 @@ public class Widget {
 	protected float[] labelpos = new float[2];
 	protected int labelfont=0;
 	protected int labelsize=10;
-	Typeface font = Typeface.create("Courier", Typeface.BOLD);
+	Typeface font = Typeface.create("monospace", Typeface.BOLD);
 	protected int fontsize = 0;
 	float[] textoffset = new float[2];
 	
@@ -209,7 +209,9 @@ public class Widget {
 			paint.setStrokeWidth(0);
 			paint.setColor(labelcolor);
 			paint.setTextSize(labelsize);
-			canvas.drawText(label, dRect.left + labelpos[0], dRect.top + labelpos[1] - paint.getFontMetrics().top, paint);
+			paint.setTypeface(font);
+			// convert from middle-left to baseline-left
+			canvas.drawText(label, dRect.left + labelpos[0], dRect.top + labelpos[1] - paint.ascent() + paint.getFontMetrics().top/2, paint);
 			paint.setTextSize(fontsize);
 		}
 		paint.setColor(Color.BLACK);

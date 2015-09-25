@@ -26,21 +26,15 @@ public class Numberbox2 extends Numberbox {
 			}
 		}
 		fmt = new DecimalFormat(calclen.toString());
-		paint.getTextBounds(">" + calclen.toString(), 0, calclen.length() + 1, tRect);
-		dRect.set(tRect);
-		dRect.sort();
-		dRect.offset((int)x, (int)y);
-		dRect.top -= 3;
-		dRect.bottom += 3;
-		dRect.left -= 3;
-		dRect.right += 3;
-
+		paint.getTextBounds(calclen.toString(), 0, calclen.length(), tRect);
+		tRect.sort();
+		
 		float h = Float.parseFloat(atomline[6]) ;
-		float diff = h - dRect.height();
-		if (diff > 0) {
-			dRect.bottom += diff / 2;
-			dRect.top -= diff / 2;
-		}
+		
+		dRect.left = x;
+		dRect.top = y;
+		dRect.bottom = y + h;
+		dRect.right = x + h/2 + tRect.width();
 		
 		min = Float.parseFloat(atomline[7]);
 		max = Float.parseFloat(atomline[8]);
@@ -61,13 +55,21 @@ public class Numberbox2 extends Numberbox {
 		initval();
 	}
 	
-	public void draw(Canvas canvas) {
-		canvas.drawLine(dRect.left + 1, dRect.top, dRect.right - 5, dRect.top, paint);
-		canvas.drawLine(dRect.left + 1, dRect.bottom, dRect.right, dRect.bottom, paint);
-		canvas.drawLine(dRect.left, dRect.top + 1, dRect.left, dRect.bottom, paint);
+	public void draw(Canvas canvas) 
+	{
+		// edges lines
+		canvas.drawLine(dRect.left, dRect.top, dRect.right - 5, dRect.top, paint);
+		canvas.drawLine(dRect.left, dRect.bottom, dRect.right, dRect.bottom, paint);
+		canvas.drawLine(dRect.left, dRect.top, dRect.left, dRect.bottom, paint);
 		canvas.drawLine(dRect.right, dRect.top + 5, dRect.right, dRect.bottom, paint);
 		canvas.drawLine(dRect.right - 5, dRect.top, dRect.right, dRect.top + 5, paint);
-		canvas.drawText(">" + fmt.format(val), dRect.left + 3, dRect.centerY() + dRect.height() * (float)0.25, paint);
+		
+		// cursor lines
+		canvas.drawLine(dRect.left, dRect.top, dRect.left + dRect.height()/2, dRect.centerY(), paint);
+		canvas.drawLine(dRect.left + dRect.height()/2, dRect.centerY(), dRect.left + 1, dRect.bottom, paint);
+		
+		// draw value
+		canvas.drawText(fmt.format(val), dRect.left + 3 + dRect.height()/2, dRect.centerY() - paint.ascent()/2, paint);
 	}
 }
 

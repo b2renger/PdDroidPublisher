@@ -1,6 +1,7 @@
 package cx.mccormick.pddroidparty.widget;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Comment extends Widget {
@@ -23,6 +24,15 @@ public class Comment extends Widget {
 	}
 	
 	public void draw(Canvas canvas) {
-		drawLabel(canvas);
+		if (label != null) {
+			paint.setStrokeWidth(0);
+			paint.setColor(labelcolor);
+			paint.setTextSize(labelsize);
+			paint.setTypeface(font);
+			// convert from middle-left to baseline-left
+			canvas.drawText(label, dRect.left + labelpos[0], dRect.top + labelpos[1] - paint.ascent(), paint);
+			paint.setTextSize(fontsize);
+		}
+		paint.setColor(Color.BLACK);
 	}
 }
