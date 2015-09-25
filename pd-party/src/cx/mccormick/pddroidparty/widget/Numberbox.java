@@ -13,6 +13,8 @@ import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Numberbox extends Widget {
 	
+	private static final String TAG = "Number";
+
 	// TODO refactor for other widgets
 	public static final int POSITION_LEFT = 0;
 	public static final int POSITION_RIGHT = 1;
@@ -27,6 +29,7 @@ public class Numberbox extends Widget {
 	StaticLayout numLayout = null;
 	protected DecimalFormat fmt = null;
 	Rect tRect = new Rect();
+	WImage background = new WImage();
 	
 	protected boolean down = false;
 	int pid0 = -1; //pointer id when down
@@ -96,6 +99,8 @@ public class Numberbox extends Widget {
 			}
 		}
 		
+		background.load(TAG, "back", label, sendname, receivename);
+		
 		setval(0, 0);
 		
 		// listen out for floats from Pd
@@ -107,12 +112,15 @@ public class Numberbox extends Widget {
 	}
 	
 	public void draw(Canvas canvas) {
-		paint.setColor(Color.BLACK);
-		canvas.drawLine(dRect.left, dRect.top, dRect.right - 5, dRect.top, paint);
-		canvas.drawLine(dRect.left, dRect.bottom, dRect.right, dRect.bottom, paint);
-		canvas.drawLine(dRect.left, dRect.top, dRect.left, dRect.bottom, paint);
-		canvas.drawLine(dRect.right, dRect.top + 5, dRect.right, dRect.bottom, paint);
-		canvas.drawLine(dRect.right - 5, dRect.top, dRect.right, dRect.top + 5, paint);
+		if(background.draw(canvas))
+		{
+			paint.setColor(Color.BLACK);
+			canvas.drawLine(dRect.left, dRect.top, dRect.right - 5, dRect.top, paint);
+			canvas.drawLine(dRect.left, dRect.bottom, dRect.right, dRect.bottom, paint);
+			canvas.drawLine(dRect.left, dRect.top, dRect.left, dRect.bottom, paint);
+			canvas.drawLine(dRect.right, dRect.top + 5, dRect.right, dRect.bottom, paint);
+			canvas.drawLine(dRect.right - 5, dRect.top, dRect.right, dRect.top + 5, paint);
+		}
 		canvas.drawText(fmt.format(val), dRect.left + 3, dRect.centerY() - paint.ascent()/2, paint);
 		drawLabel(canvas);
 	}
