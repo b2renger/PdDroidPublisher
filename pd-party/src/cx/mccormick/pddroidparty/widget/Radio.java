@@ -10,6 +10,7 @@ public class Radio extends Widget
 {
 	private static final String TAG = "Radio";
 
+	WImage bgCell = new WImage();
 	WImage bg = new WImage();
 	WImage button = new WImage();
 
@@ -64,11 +65,11 @@ public class Radio extends Widget
 		
 		if (horizontal) {
 			bg.load(TAG, "horizontal", label, sendname);
-			button.load(TAG, "button", label, sendname);
 		} else {
 			bg.load(TAG, "vertical", label, sendname);
-			button.load(TAG, "button", label, sendname);
 		}
+		bgCell.load(TAG, "background", label, sendname);
+		button.load(TAG, "button", label, sendname);
 		
 		setupreceive();
 	}
@@ -78,42 +79,82 @@ public class Radio extends Widget
 	{
 		if (bg.draw(canvas)) 
 		{
-			// PD style
-			paint.setColor(bgcolor);
-			paint.setStyle(Paint.Style.FILL);
-			canvas.drawRect(dRect,paint);
-
-			paint.setStyle(Paint.Style.STROKE);
-			paint.setColor(Color.BLACK);
-			paint.setStrokeWidth(1);
-			RectF cellRect = new RectF();
-			cellRect.left = dRect.left;
-			cellRect.top = dRect.top;
-			cellRect.right = cellRect.left + size;
-			cellRect.bottom = cellRect.top + size;
-			for(int i=0 ; i<count ; i++)
+			if(!bgCell.none())
 			{
-				canvas.drawRect(cellRect,paint);
-				if(horizontal)
+				RectF cellRect = new RectF();
+				cellRect.left = dRect.left;
+				cellRect.top = dRect.top;
+				cellRect.right = cellRect.left + size;
+				cellRect.bottom = cellRect.top + size;
+				for(int i=0 ; i<count ; i++)
 				{
-					cellRect.left += size;
-					cellRect.right += size;
+					bgCell.draw(canvas, cellRect);
+					if(horizontal)
+					{
+						cellRect.left += size;
+						cellRect.right += size;
+					}
+					else
+					{
+						cellRect.top += size;
+						cellRect.bottom += size;
+					}
 				}
-				else
+			}
+			else
+			{
+			
+				// PD style
+				paint.setColor(bgcolor);
+				paint.setStyle(Paint.Style.FILL);
+				canvas.drawRect(dRect,paint);
+	
+				paint.setStyle(Paint.Style.STROKE);
+				paint.setColor(Color.BLACK);
+				paint.setStrokeWidth(1);
+				RectF cellRect = new RectF();
+				cellRect.left = dRect.left;
+				cellRect.top = dRect.top;
+				cellRect.right = cellRect.left + size;
+				cellRect.bottom = cellRect.top + size;
+				for(int i=0 ; i<count ; i++)
 				{
-					cellRect.top += size;
-					cellRect.bottom += size;
+					canvas.drawRect(cellRect,paint);
+					if(horizontal)
+					{
+						cellRect.left += size;
+						cellRect.right += size;
+					}
+					else
+					{
+						cellRect.top += size;
+						cellRect.bottom += size;
+					}
 				}
 			}
 		}
-		if(button.draw(canvas))
+		RectF sRect = new RectF();
+		int index = (int)val;
+		if(horizontal)
+		{
+			sRect.left = dRect.left + size * index;
+			sRect.top = dRect.top;
+		}
+		else
+		{
+			sRect.left = dRect.left;
+			sRect.top = dRect.top + size * index;
+		}
+		sRect.right = sRect.left + size;
+		sRect.bottom = sRect.top + size;
+		
+		if(button.draw(canvas, sRect))
 		{
 			// button PD style
 			paint.setColor(fgcolor);
 			paint.setStyle(Paint.Style.FILL);
 
 			RectF cellRect = new RectF();
-			int index = (int)val;
 			if(horizontal)
 			{
 				cellRect.left = dRect.left + size * (index + 0.25f);
