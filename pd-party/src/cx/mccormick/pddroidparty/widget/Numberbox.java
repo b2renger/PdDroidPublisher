@@ -63,6 +63,7 @@ public class Numberbox extends Widget {
 		max = Float.parseFloat(atomline[6]);
 		sendname = app.replaceDollarZero(atomline[10]);
 		receivename = atomline[9];
+		if(sendname.endsWith(",")) sendname = sendname.substring(0, sendname.length()-1);
 		label = setLabel(atomline[8]);
 		
 		if(label != null)
