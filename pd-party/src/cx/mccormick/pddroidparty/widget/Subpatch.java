@@ -25,6 +25,8 @@ public class Subpatch extends Widget
 		float [] buffer;
 	}
 	
+	WImage background = new WImage();
+	
 	private Array array;
 	
 	// TODO use dRect instead
@@ -70,6 +72,8 @@ public class Subpatch extends Widget
 				array.drawType = options >> 1;
 				array.save = (options & 1) != 0;
 				array.buffer = new float [array.length];
+				
+				background.load("Array", "background", array.name);
 			}
 			else if(atomline[1].equals("coords"))
 			{
@@ -112,9 +116,12 @@ public class Subpatch extends Widget
 	{
 		if(!graphOnParent) return;
 		
-		paint.setStyle(Paint.Style.FILL);
-		paint.setColor(bgcolor);	
-		canvas.drawRect(x, y, x + zoneWidth, y + zoneHeight, paint);
+		if(background.draw(canvas))
+		{
+			paint.setStyle(Paint.Style.FILL);
+			paint.setColor(bgcolor);	
+			canvas.drawRect(x, y, x + zoneWidth, y + zoneHeight, paint);
+		}
 		
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setColor(fgcolor);
