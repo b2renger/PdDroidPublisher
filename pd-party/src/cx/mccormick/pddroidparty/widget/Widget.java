@@ -84,7 +84,10 @@ public class Widget {
 			}
 		}
 		
-		paint.setColor(Color.BLACK);
+		bgcolor = app.getConfig().backgroundColor;
+		fgcolor = app.getConfig().foregroundColor;
+		labelcolor = app.getConfig().foregroundColor;
+		paint.setColor(fgcolor);
 		paint.setStyle(Paint.Style.FILL_AND_STROKE);
 		paint.setTypeface(font);
 		paint.setTextSize(fontsize);
@@ -214,7 +217,7 @@ public class Widget {
 			canvas.drawText(label, dRect.left + labelpos[0], dRect.top + labelpos[1] - paint.ascent() + paint.getFontMetrics().top/2, paint);
 			paint.setTextSize(fontsize);
 		}
-		paint.setColor(Color.BLACK);
+		paint.setColor(fgcolor);
 	}
 	
 	public void drawCenteredText(Canvas canvas, String text) {

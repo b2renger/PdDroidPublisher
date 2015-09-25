@@ -12,6 +12,8 @@ public class PdDroidPartyConfig implements Serializable
 	public int midiClockMaxBPM = 180;
 	public int midiClockDefaultBPM = 100;
 	public boolean guiKeepAspectRatio = true;
+	public int foregroundColor = 0;
+	public int backgroundColor = 0xFFFFFF;
 	
 	/** time in milliseconds between 2 array refresh 
 	 * default is 1 seconds. Low values may impact performances.

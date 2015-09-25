@@ -129,6 +129,10 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 	}
 	
+	public PdDroidPartyConfig getConfig() {
+		return config;
+	}
+	
 	private static Bitmap picture2Bitmap(Picture picture){
 	    PictureDrawable pictureDrawable = new PictureDrawable(picture);
 	    Bitmap bitmap = Bitmap.createBitmap(pictureDrawable.getIntrinsicWidth(), pictureDrawable.getIntrinsicHeight(), Config.ARGB_8888);
