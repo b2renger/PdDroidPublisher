@@ -77,7 +77,7 @@ public class Slider extends Widget {
 				int rel = (int)(slider.getWidth() / ratio);
 				sRect = new RectF(x, y, x + rel, y + h);
 			} else {
-				float ratio = slider.getHeight() / w;
+				float ratio = slider.getWidth() / w;
 				int rel = (int)(slider.getHeight() / ratio);
 				sRect = new RectF(x, y, x + w, y + rel);
 			}
