@@ -17,6 +17,7 @@ import android.content.res.Resources;
 import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.Picture;
+import android.util.Log;
 
 /*
 
@@ -415,6 +416,9 @@ public class SVGParser {
                     } else if (prevCmd == 'l' || prevCmd == 'L') {
                         cmd = prevCmd;
                         break;
+                    } else if (prevCmd == 'q' || prevCmd == 'Q') {
+                        cmd = prevCmd;
+                        break;
                     }
                 default: {
                     ph.advance();
@@ -553,7 +557,30 @@ public class SVGParser {
                     lastY = y;
                     break;
                 }
+                case 'Q':
+                case 'q':
+                    wasCurve = true;
+                    float x2 = ph.nextFloat();
+                    float y2 = ph.nextFloat();
+                    float x = ph.nextFloat();
+                    float y = ph.nextFloat();
+                    if (cmd == 'q') {
+                        x2 += lastX;
+                        y2 += lastY;
+                        x += lastX;
+                        y += lastY;
+                    }
+                    p.quadTo(x2, y2, x, y);
+                    lastX1 = x2;
+                    lastY1 = y2;
+                    lastX = x;
+                    lastY = y;
+                    break;
+                default:
+                	Log.w("SVG", "unsupported path command '" + cmd + "'");
+                	break;
             }
+            // TODO missing T and Q cf. http://www.w3schools.com/svg/svg_path.asp
             if (!wasCurve) {
                 lastX1 = lastX;
                 lastY1 = lastY;
