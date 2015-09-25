@@ -3,6 +3,7 @@ package cx.mccormick.pddroidparty.widget;
 import org.puredata.core.PdBase;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
@@ -26,6 +27,7 @@ public class Subpatch extends Widget
 	
 	private Array array;
 	
+	// TODO use dRect instead
 	private int top, bottom, left, right, zoneWidth, zoneHeight;
 	private int x, y;
 	boolean graphOnParent;
@@ -79,11 +81,18 @@ public class Subpatch extends Widget
 				zoneHeight = Integer.parseInt(atomline[7]);
 				graphOnParent = Integer.parseInt(atomline[8]) != 0;
 				// TODO optional margin h/v
+				
+				dRect.right += zoneWidth;
+				dRect.bottom += zoneHeight;
 			}
 			else if(atomline[1].equals("restore")) 
 			{
 				x = Integer.parseInt(atomline[2]);
 				y = Integer.parseInt(atomline[3]);
+				dRect.left += x;
+				dRect.right += x;
+				dRect.top += y;
+				dRect.bottom += y;
 			}
 			// TODO handle array definition (saved)
 		}
@@ -183,6 +192,12 @@ public class Subpatch extends Widget
 				}
 			}
 			
+			paint.setStrokeWidth(0);
+			paint.setColor(Color.BLACK);
+			paint.setTextSize(fontsize);
+			paint.setTypeface(font);
+			canvas.drawText(array.name, dRect.left, dRect.top - paint.descent() - 2, paint);
+
 		}
 
 	}
