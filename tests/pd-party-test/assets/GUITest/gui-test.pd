@@ -1,0 +1,133 @@
+#N canvas 130 114 1275 602 10;
+#X floatatom 33 18 5 0 0 0 - - nombre.2.r, f 5;
+#X text 74 17 comment;
+#X obj 130 19 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 152 18 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 179 18 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 242 21 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 268 20 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 404 21 vradio 15 1 0 8 vradio.2.r empty empty 0 -8 0 10 -262144
+-1 -1 1;
+#X obj 427 22 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X obj 556 24 vu 15 120 empty empty -1 -8 0 10 -66577 -1 1 0;
+#X obj 612 21 cnv 15 100 60 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X coords 0 1 100 -1 200 140 1;
+#X restore 721 22 graph;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array array1 100 float 2;
+#X coords 0 1 100 -1 200 140 1;
+#X restore 928 22 graph;
+#N canvas 66 80 450 300 subpatch 0;
+#X obj 124 123 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X coords 0 -1 1 1 85 60 1 90 100;
+#X restore 1145 24 pd subpatch;
+#X floatatom 33 219 6 1000 2000 3 Nombre nombre.2.r nombre.2.s, f
+6;
+#X text 69 123 this a multiligne comment;
+#X obj 181 229 bng 32 1000 500 0 bang.2.s bang.2.r Bang 2 -10 0 12
+-260097 -257985 -258113;
+#X obj 238 322 tgl 32 0 toggle.2.s toggle.2.r Toggle -2 40 0 10 -83269
+-86277 -45076 0 5;
+#X obj 288 234 nbx 4 32 -1e+37 1e+37 0 0 empty empty Nombre_2 0 -8
+0 10 -86277 -258113 -1 0 256;
+#X obj 372 325 vsl 30 60 0 127 0 0 empty empty VSlider 0 -9 0 10 -228856
+-1 -1 0 1;
+#X obj 423 231 hsl 60 30 0 127 0 0 empty empty HSlider -2 -8 0 10 -99865
+-1 -1 0 1;
+#X obj 520 306 vradio 32 1 0 3 vradio.2.s vradio.2.r VSelector 0 -8
+0 10 -16662 -4032 -4160 1;
+#X obj 565 223 hradio 32 1 0 3 empty empty HSelector 0 -8 0 10 -13381
+-204786 -4034 0;
+#X obj 689 319 vu 30 80 empty VUMeter -1 -8 0 10 -66577 -1 1 0;
+#X obj 780 233 cnv 15 60 100 empty empty Canvas 20 12 0 14 -45076 -159808
+0;
+#N canvas 66 78 450 250 (subpatch) 0;
+#X coords 0 1 100 -1 200 140 1;
+#X restore 900 301 graph;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array array2 10 float 0;
+#X coords 0 1 10 -1 100 40 1 0 0;
+#X restore 1094 213 graph;
+#X obj 23 516 r nombre.2.s;
+#X obj 23 571 print;
+#X floatatom 77 344 5 0 0 2 top - -, f 5;
+#X floatatom 77 363 5 0 0 3 bottom - -, f 5;
+#X floatatom 114 355 5 0 0 1 right - -, f 5;
+#X floatatom 39 352 5 0 0 0 left - -, f 5;
+#X obj 156 450 bng 40 250 50 0 empty empty AAAjiJmL 0 0 0 20 -262144
+-1 -1;
+#X obj 31 181 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 6 217 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 179 191 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 154 227 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 236 284 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 211 320 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 286 196 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 261 232 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 370 285 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 345 321 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 418 193 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 393 229 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 518 268 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 493 304 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 563 185 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 538 221 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 686 279 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 661 315 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 778 195 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 753 231 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 898 263 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 873 299 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 1092 175 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 1067 211 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 500 527 r vradio.2.s;
+#X obj 500 549 print;
+#X obj 71 89 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 46 125 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 823 484 myGuiAbs;
+#X obj 821 446 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 796 482 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 636 485 myGuiAbs;
+#X obj 634 447 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 609 483 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X connect 27 0 28 0;
+#X connect 58 0 59 0;
