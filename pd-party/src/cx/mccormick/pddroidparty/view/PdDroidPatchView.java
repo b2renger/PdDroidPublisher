@@ -184,13 +184,13 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 			
 			if(ratioW > ratioH)
 			{
-				offsetX = (getWidth() - viewW) / (2 * ratioW);
+				offsetX = (getWidth() - viewW * ratio)/2;
 				offsetY = 0;
 			}
 			else
 			{
 				offsetX = 0;
-				offsetY = (getHeight() - viewH) / (2 * ratioH);
+				offsetY = (getHeight() - viewH * ratio) / 2;
 			}
 			ratioW = ratioH = ratio;
 		}
