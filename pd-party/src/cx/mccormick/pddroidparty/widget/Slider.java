@@ -22,6 +22,7 @@ public class Slider extends Widget {
 	
 	WImage bg = new WImage();
 	WImage slider = new WImage();
+	WImage fg = new WImage();
 	
 	RectF sRect = new RectF();
 	
@@ -65,9 +66,11 @@ public class Slider extends Widget {
 		// load up the images to use and cache all positions
 		if (horizontal) {
 			bg.load(TAG, "horizontal", label, sendname);
+			fg.load(TAG, "horizontal-foreground", label, sendname);
 			slider.load(TAG, "widget-horizontal", label, sendname);
 		} else {
 			bg.load(TAG, "vertical", label, sendname);
+			fg.load(TAG, "vertical-foreground", label, sendname);
 			slider.load(TAG, "widget-vertical", label, sendname);
 		}
 		
@@ -116,6 +119,7 @@ public class Slider extends Widget {
 				sRect.offsetTo(dRect.left, (1 - (val - min) / (max - min)) * (dRect.height() - sRect.height()) + dRect.top);
 			}
 			slider.draw(canvas,sRect);
+			fg.draw(canvas);
 		}
 		canvas.restore();
 		drawLabel(canvas);
