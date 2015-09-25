@@ -18,7 +18,7 @@ public class PdHelper
 		dispatcher = new PdDispatcher() {
 			@Override
 			public void print(String s) {
-				Log.e("Pd [print]", s);
+				Log.i("Pd [print]", s);
 			}
 		};
 		PdBase.setReceiver(dispatcher);
