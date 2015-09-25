@@ -50,6 +50,7 @@ import cx.mccormick.pddroidparty.widget.MenuBang;
 import cx.mccormick.pddroidparty.widget.Numberbox;
 import cx.mccormick.pddroidparty.widget.Numberbox2;
 import cx.mccormick.pddroidparty.widget.Numberboxfixed;
+import cx.mccormick.pddroidparty.widget.Radio;
 import cx.mccormick.pddroidparty.widget.Slider;
 import cx.mccormick.pddroidparty.widget.Subpatch;
 import cx.mccormick.pddroidparty.widget.Taplist;
@@ -354,6 +355,10 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 								widgets.add(new Numberbox2(this, line));
 							} else if (line[4].equals("cnv")) {
 								widgets.add(new Canvasrect(this, line));
+							} else if (line[4].equals("vradio")) {
+								widgets.add(new Radio(this, line, false));
+							} else if (line[4].equals("hradio")) {
+								widgets.add(new Radio(this, line, true));
 							} else if (line[4].equals("mknob")) {
 								widgets.add(new Knob(this, line));
 							}
