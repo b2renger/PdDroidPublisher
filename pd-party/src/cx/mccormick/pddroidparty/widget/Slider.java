@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.Region.Op;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Slider extends Widget {
@@ -87,6 +88,8 @@ public class Slider extends Widget {
 	}
 	
 	public void draw(Canvas canvas) {
+		canvas.save();
+		canvas.clipRect(dRect, Op.REPLACE);
 		if (bg.draw(canvas)) {
 			paint.setColor(bgcolor);
 			paint.setStyle(Paint.Style.FILL);
@@ -114,6 +117,7 @@ public class Slider extends Widget {
 			}
 			slider.draw(canvas,sRect);
 		}
+		canvas.restore();
 		drawLabel(canvas);
 	}
 
