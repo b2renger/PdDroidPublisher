@@ -33,9 +33,9 @@ import cx.mccormick.pddroidparty.pd.PdParser;
 import cx.mccormick.pddroidparty.pd.PdPatch;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.view.PdPartyClockControl;
-import cx.mccormick.pddroidparty.widget.LoadSave;
-import cx.mccormick.pddroidparty.widget.MenuBang;
 import cx.mccormick.pddroidparty.widget.Widget;
+import cx.mccormick.pddroidparty.widget.abs.LoadSave;
+import cx.mccormick.pddroidparty.widget.abs.MenuBang;
 
 public class PdDroidParty extends Activity {
 	public PdDroidPatchView patchview = null;

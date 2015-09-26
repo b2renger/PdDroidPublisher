@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty.widget;
+package cx.mccormick.pddroidparty.widget.core;
 
 import java.text.DecimalFormat;
 
@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import cx.mccormick.pddroidparty.PdDroidParty;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
+import cx.mccormick.pddroidparty.widget.Widget;
 
 public class Numberbox extends Widget {
 	

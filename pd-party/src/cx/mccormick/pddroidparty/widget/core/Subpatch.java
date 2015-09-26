@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty.widget;
+package cx.mccormick.pddroidparty.widget.core;
 
 import org.puredata.core.PdBase;
 
@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
+import cx.mccormick.pddroidparty.widget.Widget;
 
 public class Subpatch extends Widget
 {

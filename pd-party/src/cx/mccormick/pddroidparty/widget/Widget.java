@@ -23,7 +23,7 @@ import cx.mccormick.pddroidparty.svg.SVGRenderer;
 import cx.mccormick.pddroidparty.util.FileHelper;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
-public class Widget {
+abstract public class Widget {
 	private static final String TAG = "Widget";
 	
  	protected RectF dRect = new RectF();
@@ -38,7 +38,7 @@ public class Widget {
 	protected float[] labelpos = new float[2];
 	protected int labelfont=0;
 	protected int labelsize=10;
-	Typeface font;
+	protected Typeface font;
 	static Typeface defaultFont;
 	protected int fontsize = 0;
 	float[] textoffset = new float[2];

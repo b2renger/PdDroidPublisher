@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty.widget;
+package cx.mccormick.pddroidparty.widget.core;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -7,6 +7,7 @@ import android.graphics.RectF;
 import android.graphics.Region.Op;
 import cx.mccormick.pddroidparty.pd.PdGUI;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
+import cx.mccormick.pddroidparty.widget.Widget;
 
 public class Slider extends Widget {
 	private static final String TAG = "Slider";

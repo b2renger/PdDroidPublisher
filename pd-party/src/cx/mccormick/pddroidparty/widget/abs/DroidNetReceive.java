@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty.widget;
+package cx.mccormick.pddroidparty.widget.abs;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -8,6 +8,7 @@ import java.net.Socket;
 
 import android.util.Log;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
+import cx.mccormick.pddroidparty.widget.Widget;
 
 public class DroidNetReceive extends Widget {
 	private static final String TAG = "DroidNetReceive";
