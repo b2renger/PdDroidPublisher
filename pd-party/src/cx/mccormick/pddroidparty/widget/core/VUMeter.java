@@ -52,7 +52,7 @@ public class VUMeter extends Widget
 		
 		displayScale = Integer.parseInt(atomline[15]) != 0;
 		
-		bg.load(TAG, "horizontal", label, sendname);
+		bg.load(TAG, "background", label, sendname);
 		
 		setupreceive();
 	}
@@ -71,43 +71,43 @@ public class VUMeter extends Widget
 			paint.setColor(Color.BLACK);
 			paint.setStrokeWidth(1);
 			canvas.drawRect(dRect,paint);
-			
-			paint.setStyle(Paint.Style.FILL);
-			
-			RectF barRect = new RectF();
-			barRect.left = dRect.left + dRect.width() / 4;
-			barRect.right = dRect.right - dRect.width() / 4;
-			
-			float barSpace = dRect.height() / (float)(dbLabelScale.length + 1);
-			float barHeight = barSpace / 2;
-			
-			// draw value
+		}
+		
+		paint.setStyle(Paint.Style.FILL);
+		
+		RectF barRect = new RectF();
+		barRect.left = dRect.left + dRect.width() / 4;
+		barRect.right = dRect.right - dRect.width() / 4;
+		
+		float barSpace = dRect.height() / (float)(dbLabelScale.length + 1);
+		float barHeight = barSpace / 2;
+
+		// draw value
+		for(int step=0 ; step<dbLabelScale.length ; step++)
+		{
+			float lowValue = dbLabelScale[step];
+			if(val >= lowValue)
+			{
+				int color = dbColor[dbColorIndex[step]];
+				paint.setColor(color);
+				
+				barRect.bottom = dRect.bottom - (step + 0.5f) * barSpace;
+				barRect.top = barRect.bottom - barHeight;
+				
+				canvas.drawRect(barRect,paint);
+			}
+		}
+		
+		if(displayScale)
+		{
+			float labSpace = dRect.height() / (float)dbLabelScale.length;
+
+			paint.setTypeface(font);
+			paint.setTextSize(labelsize);
+			paint.setColor(labelcolor);
 			for(int step=0 ; step<dbLabelScale.length ; step++)
 			{
-				float lowValue = dbLabelScale[step];
-				if(val >= lowValue)
-				{
-					int color = dbColor[dbColorIndex[step]];
-					paint.setColor(color);
-					
-					barRect.bottom = dRect.bottom - (step + 0.5f) * barSpace;
-					barRect.top = barRect.bottom - barHeight;
-					
-					canvas.drawRect(barRect,paint);
-				}
-			}
-			
-			if(displayScale)
-			{
-				float labSpace = dRect.height() / (float)dbLabelScale.length;
-
-				paint.setTypeface(font);
-				paint.setTextSize(labelsize);
-				paint.setColor(labelcolor);
-				for(int step=0 ; step<dbLabelScale.length ; step++)
-				{
-					canvas.drawText(dbLabel[step], dRect.right + 3, dRect.bottom - step * labSpace, paint);
-				}
+				canvas.drawText(dbLabel[step], dRect.right + 3, dRect.bottom - step * labSpace, paint);
 			}
 		}
 		
