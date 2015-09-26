@@ -1,7 +1,6 @@
 package cx.mccormick.pddroidparty.widget.core;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Region.Op;
@@ -100,7 +99,7 @@ public class Slider extends Widget {
 			paint.setStyle(Paint.Style.FILL);
 			canvas.drawRect(dRect,paint);
 
-			paint.setColor(Color.BLACK);
+			paint.setColor(fgcolor);
 			paint.setStrokeWidth(1);
 			canvas.drawLine(dRect.left /*+ 1*/, dRect.top, dRect.right, dRect.top, paint);
 			canvas.drawLine(dRect.left /*+ 1*/, dRect.bottom, dRect.right, dRect.bottom, paint);

@@ -2,6 +2,8 @@ package cx.mccormick.pddroidparty;
 
 import java.io.Serializable;
 
+import cx.mccormick.pddroidparty.theme.Theme;
+
 @SuppressWarnings("serial")
 public class PdDroidPartyConfig implements Serializable
 {
@@ -14,6 +16,11 @@ public class PdDroidPartyConfig implements Serializable
 	public boolean guiKeepAspectRatio = true;
 	public int foregroundColor = 0xFF000000;
 	public int backgroundColor = 0xFFFFFFFF;
+	
+	/** global theme : default is PdTheme 
+	 * @see Theme implementations
+	 */
+	public Theme theme = Theme.pdTheme;
 	
 	/** time in milliseconds between 2 array refresh 
 	 * default is 1 seconds. Low values may impact performances.

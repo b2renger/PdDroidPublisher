@@ -3,7 +3,6 @@ package cx.mccormick.pddroidparty.widget.core;
 import org.puredata.core.PdBase;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.widget.Widget;
@@ -201,7 +200,7 @@ public class Subpatch extends Widget
 			}
 			
 			paint.setStrokeWidth(0);
-			paint.setColor(Color.BLACK);
+			paint.setColor(labelcolor);
 			paint.setTextSize(fontsize);
 			paint.setTypeface(font);
 			canvas.drawText(array.name, dRect.left, dRect.top - paint.descent() - 2, paint);

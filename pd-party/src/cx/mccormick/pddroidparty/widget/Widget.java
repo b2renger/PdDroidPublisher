@@ -43,11 +43,11 @@ abstract public class Widget {
 	protected int fontsize = 0;
 	float[] textoffset = new float[2];
 	
-	protected int bgcolor=0xFFFFFFFF;
+	public int bgcolor=0xFFFFFFFF;
 
-	protected int fgcolor=0xFF000000;
+	public int fgcolor=0xFF000000;
 
-	protected int labelcolor=0xFF000000;
+	public int labelcolor=0xFF000000;
 	
 	protected PdDroidPatchView parent = null;
 

@@ -57,6 +57,8 @@ public class Numberbox2 extends Numberbox {
 	
 	public void draw(Canvas canvas) 
 	{
+		paint.setColor(fgcolor);
+		
 		// edges lines
 		canvas.drawLine(dRect.left, dRect.top, dRect.right - 5, dRect.top, paint);
 		canvas.drawLine(dRect.left, dRect.bottom, dRect.right, dRect.bottom, paint);

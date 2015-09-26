@@ -3,7 +3,6 @@ package cx.mccormick.pddroidparty.widget.core;
 import java.text.DecimalFormat;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Rect;
 import android.text.StaticLayout;
 import android.util.Log;
@@ -113,9 +112,9 @@ public class Numberbox extends Widget {
 	}
 	
 	public void draw(Canvas canvas) {
+		paint.setColor(fgcolor);
 		if(background.draw(canvas))
 		{
-			paint.setColor(Color.BLACK);
 			canvas.drawLine(dRect.left, dRect.top, dRect.right - 5, dRect.top, paint);
 			canvas.drawLine(dRect.left, dRect.bottom, dRect.right, dRect.bottom, paint);
 			canvas.drawLine(dRect.left, dRect.top, dRect.left, dRect.bottom, paint);

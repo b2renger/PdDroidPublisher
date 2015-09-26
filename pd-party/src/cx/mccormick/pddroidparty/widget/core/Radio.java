@@ -1,7 +1,6 @@
 package cx.mccormick.pddroidparty.widget.core;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import cx.mccormick.pddroidparty.pd.PdGUI;
@@ -112,7 +111,7 @@ public class Radio extends Widget
 				canvas.drawRect(dRect,paint);
 	
 				paint.setStyle(Paint.Style.STROKE);
-				paint.setColor(Color.BLACK);
+				paint.setColor(fgcolor);
 				paint.setStrokeWidth(1);
 				RectF cellRect = new RectF();
 				cellRect.left = dRect.left;

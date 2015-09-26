@@ -404,6 +404,17 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 				}
 			}
 		}
+		
+		// Apply theme to all widgets
+		backgroundColor = config.theme.getBackgroundColor();
+		for(Widget widget : widgets)
+		{
+			widget.fgcolor = config.theme.getForegroundColor(widget);
+			widget.bgcolor = config.theme.getBackgroundColor(widget);
+			widget.labelcolor = config.theme.getLabelColor(widget);
+		}
+		
+		
 		threadSafeInvalidate();
 	}
 

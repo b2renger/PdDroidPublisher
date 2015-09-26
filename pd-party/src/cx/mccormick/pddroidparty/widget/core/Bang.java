@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 import org.puredata.core.PdBase;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import cx.mccormick.pddroidparty.pd.PdGUI;
@@ -72,14 +71,14 @@ public class Bang extends Widget {
 			paint.setColor(bgcolor);
 			canvas.drawRect(dRect, paint);
 
-			paint.setColor(Color.BLACK);
+			paint.setColor(fgcolor);
 			paint.setStrokeWidth(1);
 			canvas.drawLine(dRect.left /*+ 1*/, dRect.top, dRect.right, dRect.top, paint);
 			canvas.drawLine(dRect.left + 0, dRect.bottom, dRect.right, dRect.bottom, paint);
 			canvas.drawLine(dRect.left, dRect.top + 0, dRect.left, dRect.bottom, paint);
 			canvas.drawLine(dRect.right, dRect.top + 0, dRect.right, dRect.bottom, paint);
 			
-			paint.setColor(Color.BLACK);
+			paint.setColor(fgcolor);
 			paint.setStyle(Paint.Style.STROKE);
 			canvas.drawCircle(dRect.centerX(), dRect.centerY(), Math.min(dRect.width(), dRect.height()) / 2, paint);
 		}
