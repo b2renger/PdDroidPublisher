@@ -385,7 +385,8 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 					}
 				} else {
 					Subpatch subpatch = subpatches.peekLast();
-					subpatch.parse(line);
+					if(subpatch != null)
+						subpatch.parse(line);
 				}
 				
 				// things that can be found at any depth and still work
