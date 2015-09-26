@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import cx.mccormick.pddroidparty.pd.PdGUI;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Toggle extends Widget {
@@ -31,9 +32,9 @@ public class Toggle extends Widget {
 		labelpos[1] = Float.parseFloat(atomline[11]) ;
 		labelfont = Integer.parseInt(atomline[12]);
 		labelsize = (int)(Float.parseFloat(atomline[13]) );
-		bgcolor = getColor(Integer.parseInt(atomline[14]));
-		fgcolor = getColor(Integer.parseInt(atomline[15]));
-		labelcolor = getColor(Integer.parseInt(atomline[16]));
+		bgcolor = PdGUI.getColor(Integer.parseInt(atomline[14]));
+		fgcolor = PdGUI.getColor(Integer.parseInt(atomline[15]));
+		labelcolor = PdGUI.getColor(Integer.parseInt(atomline[16]));
 
 		setval(Float.parseFloat(atomline[17]), 0);
 

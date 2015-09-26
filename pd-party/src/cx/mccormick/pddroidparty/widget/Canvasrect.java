@@ -3,6 +3,7 @@ package cx.mccormick.pddroidparty.widget;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import cx.mccormick.pddroidparty.pd.PdGUI;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Canvasrect extends Widget {
@@ -24,8 +25,8 @@ public class Canvasrect extends Widget {
 		labelpos[1] = Float.parseFloat(atomline[12]);
 		labelfont = Integer.parseInt(atomline[13]);
 		labelsize = (int)(Float.parseFloat(atomline[14]));
-		bgcolor = getColor(Integer.parseInt(atomline[15]));
-		labelcolor = getColor(Integer.parseInt(atomline[16]));
+		bgcolor = PdGUI.getColor(Integer.parseInt(atomline[15]));
+		labelcolor = PdGUI.getColor(Integer.parseInt(atomline[16]));
 		
 		setupreceive();
 		dRect = new RectF(Math.round(x), Math.round(y), Math.round(x + w), Math.round(y + h));

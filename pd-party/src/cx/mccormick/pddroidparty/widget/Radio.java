@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import cx.mccormick.pddroidparty.pd.PdGUI;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Radio extends Widget
@@ -57,9 +58,9 @@ public class Radio extends Widget
 		labelfont = Integer.parseInt(atomline[14]);
 		labelsize = (int)(Float.parseFloat(atomline[15]));
 		
-		bgcolor = getColor(Integer.parseInt(atomline[16]));
-		fgcolor = getColor(Integer.parseInt(atomline[17]));
-		labelcolor = getColor(Integer.parseInt(atomline[18]));
+		bgcolor = PdGUI.getColor(Integer.parseInt(atomline[16]));
+		fgcolor = PdGUI.getColor(Integer.parseInt(atomline[17]));
+		labelcolor = PdGUI.getColor(Integer.parseInt(atomline[18]));
 		
 		val = Integer.parseInt(atomline[19]);
 		

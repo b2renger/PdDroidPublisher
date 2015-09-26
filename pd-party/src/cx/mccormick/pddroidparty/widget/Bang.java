@@ -10,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import cx.mccormick.pddroidparty.pd.PdGUI;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Bang extends Widget {
@@ -43,9 +44,9 @@ public class Bang extends Widget {
 		labelpos[1] = Float.parseFloat(atomline[13]) ;
 		labelfont = Integer.parseInt(atomline[14]);
 		labelsize = (int)(Float.parseFloat(atomline[15]));
-		bgcolor = getColor(Integer.parseInt(atomline[16]));
-		fgcolor = getColor(Integer.parseInt(atomline[17]));
-		labelcolor = getColor(Integer.parseInt(atomline[18]));
+		bgcolor = PdGUI.getColor(Integer.parseInt(atomline[16]));
+		fgcolor = PdGUI.getColor(Integer.parseInt(atomline[17]));
+		labelcolor = PdGUI.getColor(Integer.parseInt(atomline[18]));
 
 		// listen out for floats from Pd
 		setupreceive();

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Region.Op;
+import cx.mccormick.pddroidparty.pd.PdGUI;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Slider extends Widget {
@@ -47,9 +48,9 @@ public class Slider extends Widget {
 		labelpos[1] = Float.parseFloat(atomline[15]) ;
 		labelfont = Integer.parseInt(atomline[16]);
 		labelsize = (int)(Float.parseFloat(atomline[17]));
-		bgcolor = getColor(Integer.parseInt(atomline[18]));
-		fgcolor = getColor(Integer.parseInt(atomline[19]));
-		labelcolor = getColor(Integer.parseInt(atomline[20]));
+		bgcolor = PdGUI.getColor(Integer.parseInt(atomline[18]));
+		fgcolor = PdGUI.getColor(Integer.parseInt(atomline[19]));
+		labelcolor = PdGUI.getColor(Integer.parseInt(atomline[20]));
 		steady = Integer.parseInt(atomline[22]);
 
 		setval((float)(Float.parseFloat(atomline[21]) * 0.01 * (max - min) / ((horizontal ? Float.parseFloat(atomline[5]) : Float.parseFloat(atomline[6])) - 1) + min), min);

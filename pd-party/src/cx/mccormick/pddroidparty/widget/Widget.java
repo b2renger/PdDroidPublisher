@@ -17,6 +17,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
 import cx.mccormick.pddroidparty.R;
+import cx.mccormick.pddroidparty.pd.PdGUI;
 import cx.mccormick.pddroidparty.pd.PdHelper;
 import cx.mccormick.pddroidparty.svg.SVGRenderer;
 import cx.mccormick.pddroidparty.util.FileHelper;
@@ -57,17 +58,6 @@ public class Widget {
 	private float computedSize;
 
 	
-	private static int IEM_GUI_MAX_COLOR = 30;
-	private static int iemgui_color_hex[] = {
-		16579836, 10526880, 4210752, 16572640, 16572608,
-		16579784, 14220504, 14220540, 14476540, 16308476,
-		14737632, 8158332, 2105376, 16525352, 16559172,
-		15263784, 1370132, 2684148, 3952892, 16003312,
-		12369084, 6316128, 0, 9177096, 5779456,
-		7874580, 2641940, 17488, 5256, 5767248
-	};
-
-	
 	public Widget(PdDroidPatchView app) {
 		parent = app;	
 		if(defaultFont == null)
@@ -102,46 +92,6 @@ public class Widget {
 		textoffset[0] = 0.0f;
 		textoffset[1] = 0.0f;
 		
-	}
-	
-	public static int getColor(int iemcolor) {
-		//Log.e("ORIGINAL COLOR", "" + iemcolor);
-		int color = 0;		
-
-		if(iemcolor < 0)
-		{
-			iemcolor = -1 - iemcolor;
-			color = ((iemcolor & 0x3f000) << 6 )
-					+ ((iemcolor & 0xfc0) << 4 )
-					+ ((iemcolor & 0x3f) << 2 )
-					+ 0xFF000000;
-					//(iemcolor & 0xffffff) + 0xFF000000;
-		}
-		else
-		{
-			color = (iemgui_color_hex[iemcolor%IEM_GUI_MAX_COLOR] & 0xFFFFFF) | 0xFF000000;
-		}
-		
-		//Log.e("COLOR", "" + color);
-		return color;
-	}
-		
-	public static int getColor24(int iemcolor) {
-		//Log.e("ORIGINAL COLOR", "" + iemcolor);
-		int color = 0;		
-
-		if(iemcolor < 0)
-		{
-			iemcolor = -1 - iemcolor;
-			color = (iemcolor & 0xffffff) + 0xFF000000;
-		}
-		else
-		{
-			color = (iemgui_color_hex[iemcolor%IEM_GUI_MAX_COLOR] & 0xFFFFFF) | 0xFF000000;
-		}
-		
-		//Log.e("COLOR", "" + color);
-		return color;
 	}
 	
 	public void setTextParametersFromSVG(SVGRenderer svg) {
@@ -325,9 +275,9 @@ public class Widget {
 		&& args[1].getClass().equals(Float.class)
 		&& args[2].getClass().equals(Float.class)
 		) {
-			bgcolor = getColor24((int)(float)(Float)args[0]);
-			fgcolor = getColor24((int)(float)(Float)args[1]);
-			labelcolor = getColor24((int)(float)(Float)args[2]);
+			bgcolor = PdGUI.getColor24((int)(float)(Float)args[0]);
+			fgcolor = PdGUI.getColor24((int)(float)(Float)args[1]);
+			labelcolor = PdGUI.getColor24((int)(float)(Float)args[2]);
 			//Log.e(TAG, "msg bgcolor = "+(int)(float)(Float)args[0]+", bgcolor = "+bgcolor);
 			return true;
 		} 
