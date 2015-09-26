@@ -1,16 +1,16 @@
-#N canvas 461 117 443 381 10;
+#N canvas 637 185 288 387 10;
 #X declare -path ./rj;
-#X obj 18 277 hsl 250 25 0 1 0 0 wobble.s wobble.r WOBBLE 40 7 1 10
--262144 -1 -1 0 1;
-#X obj 18 200 hsl 250 25 0 1 0 0 glide.s glide.r GLIDE 40 7 1 10 -262144
--1 -1 0 1;
-#X obj 18 239 hsl 250 25 0 1 0 0 tone.s tone.r TONE 40 7 1 10 -262144
--1 -1 0 1;
+#X obj 19 277 hsl 250 25 0 1 0 0 wobble.s wobble.r WOBBLE 40 7 1 10
+-262144 -1 -4160 0 1;
+#X obj 19 200 hsl 250 25 0 1 0 0 glide.s glide.r GLIDE 40 7 1 10 -262144
+-1 -4160 0 1;
+#X obj 19 239 hsl 250 25 0 1 0 0 tone.s tone.r TONE 40 7 1 10 -262144
+-1 -4160 0 1;
 #X obj 61 20 tgl 25 0 autoplay.s autoplay.r AUTOPLAY 0 -10 1 10 -262144
--1 -1 0 1;
-#X obj 16 21 tgl 25 0 bass.s bass.r BASS 0 -10 1 10 -262144 -1 -1 0
-1;
-#N canvas 65 152 450 300 guts 1;
+-1 -4160 0 1;
+#X obj 16 20 tgl 25 0 bass.s bass.r BASS 0 -10 1 10 -262144 -1 -4160
+0 1;
+#N canvas 66 153 450 300 guts 1;
 #N canvas 65 54 1301 714 BASS 0;
 #X obj 19 271 osc~;
 #X obj 51 226 *~;
@@ -596,13 +596,13 @@
 #X restore 288 321 pd loadsave;
 #X obj 288 282 loadsave storage;
 #X obj 19 129 hsl 250 25 0 1 0 0 noilvl.s noilvl.r NOISE_LEVEL 40 7
-1 10 -262144 -1 -1 0 1;
+1 10 -262144 -1 -4160 0 1;
 #X obj 19 52 hsl 250 25 0 1 0 0 osclvl.s osclvl.r OSC_LEVEL 40 7 1
-10 -262144 -1 -1 0 1;
+10 -262144 -1 -4160 0 1;
 #X obj 19 91 hsl 250 25 0 1 0 0 phalvl.s phalvl.r PHASOR_LEVEL 40 7
-1 10 -262144 -1 -1 0 1;
+1 10 -262144 -1 -4160 0 1;
 #X obj 19 163 hsl 250 25 5 100 0 0 noiq.s noiq.r NOISE_RESONANCE 40
-7 1 10 -262144 -1 -1 0 1;
+7 1 10 -262144 -1 -4160 0 1;
 #X obj 220 24 wordbutton 50 20 save;
 #X obj 134 24 wordbutton 50 20 load;
 #X obj 36 315 numberbox 50 25 note1.r note1.s 24 127 48;
