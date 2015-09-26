@@ -1,0 +1,55 @@
+#N canvas 409 179 618 398 10;
+#X floatatom 54 37 5 0 0 0 Nombre - -, f 5;
+#X obj 116 38 bng 32 1000 500 0 empty empty Bang_A 0 -7 0 10 -262144
+-1 -1;
+#X obj 181 38 tgl 32 0 empty empty Inter_A 0 -7 0 10 -262144 -1 -1
+0 1;
+#X obj 237 39 vsl 16 64 0 127 0 0 empty empty Slider_V 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 383 29 vradio 32 1 0 3 empty empty Right_Choice 0 -8 0 10 -262144
+-1 -1 0;
+#X text 420 38 Normal;
+#X text 420 72 Heavy;
+#X text 419 104 Mad;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array Shape 10 float 1;
+#A 0 0.58 0.6 0.54 0.38 -0.580001 -0.740001 -0.700001 -0.580001 -0.320001
+0.12;
+#X coords 0 1 10 -1 100 100 1 0 0;
+#X restore 488 29 graph;
+#X obj 33 102 nbx 5 14 -1e+37 1e+37 0 0 empty empty Nombre_2 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 147 177 loadbang;
+#X obj 147 200 metro 500;
+#X obj 115 100 bng 15 250 50 0 empty bip.1 empty 17 7 0 10 -262144
+-1 -1;
+#X obj 134 100 bng 15 250 50 0 empty bip.2 empty 17 7 0 10 -262144
+-1 -1;
+#X obj 153 100 bng 15 250 50 0 empty bip.3 empty 17 7 0 10 -262144
+-1 -1;
+#X obj 147 222 f 0;
+#X obj 178 223 + 1;
+#X obj 147 244 mod 3;
+#X obj 147 266 select 0 1 2;
+#X obj 118 324 s bip.1;
+#X obj 168 325 s bip.2;
+#X obj 218 325 s bip.3;
+#X obj 309 34 vu 18 80 meter VU -1 -8 0 10 -66577 -1 1 0;
+#X obj 32 251 random 5;
+#X obj 32 273 *;
+#X obj 32 320 s meter;
+#X obj 32 295 - 12;
+#X connect 10 0 11 0;
+#X connect 11 0 15 0;
+#X connect 11 0 23 0;
+#X connect 15 0 16 0;
+#X connect 15 0 17 0;
+#X connect 16 0 15 1;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 18 1 20 0;
+#X connect 18 2 21 0;
+#X connect 23 0 24 0;
+#X connect 23 0 24 1;
+#X connect 24 0 26 0;
+#X connect 26 0 25 0;
