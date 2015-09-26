@@ -82,9 +82,6 @@ abstract public class Widget {
 			}
 		}
 		
-		bgcolor = app.getConfig().backgroundColor;
-		fgcolor = app.getConfig().foregroundColor;
-		labelcolor = app.getConfig().foregroundColor;
 		paint.setColor(fgcolor);
 		paint.setStyle(Paint.Style.FILL_AND_STROKE);
 		paint.setTypeface(font);

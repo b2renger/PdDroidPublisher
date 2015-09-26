@@ -14,8 +14,6 @@ public class PdDroidPartyConfig implements Serializable
 	public int midiClockMaxBPM = 180;
 	public int midiClockDefaultBPM = 100;
 	public boolean guiKeepAspectRatio = true;
-	public int foregroundColor = 0xFF000000;
-	public int backgroundColor = 0xFFFFFFFF;
 	
 	/** global theme : default is PdTheme 
 	 * @see Theme implementations

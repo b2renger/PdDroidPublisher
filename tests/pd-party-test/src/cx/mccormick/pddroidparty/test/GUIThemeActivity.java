@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import cx.mccormick.pddroidparty.PdDroidPartyConfig;
 import cx.mccormick.pddroidparty.PdDroidPartyLauncher;
+import cx.mccormick.pddroidparty.theme.mono.MonochromeTheme;
 
 
 public class GUIThemeActivity extends Activity {
@@ -13,12 +14,9 @@ public class GUIThemeActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
-        
+        config.theme = new MonochromeTheme(0xff101933, 0xff202943, 0xff004ce6);
         config.guiKeepAspectRatio = true;
 
-        config.foregroundColor = 0xff004ce6;
-        config.backgroundColor = 0xff101933;
-        
         PdDroidPartyLauncher.launch(this, "SVGTheme/gui-svg-test.pd", config);
     }
     

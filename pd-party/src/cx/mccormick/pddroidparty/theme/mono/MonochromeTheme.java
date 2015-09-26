@@ -16,6 +16,7 @@ public class MonochromeTheme implements Theme
 	protected int fgColor, bgColor, mainBgColor;
 	
 	/**
+	 * Simple mode : giving a hue and an aspect
 	 * @param hue base color frequency from 0 to 360
 	 * @param dark inverse colors for a dark theme (true) or a light theme (false)
 	 */
@@ -36,6 +37,22 @@ public class MonochromeTheme implements Theme
 			mainBgColor = 0xFFFFFFFF;
 		}
 	}
+
+	
+	/**
+	 * Mode custom : give all colors
+	 * @param mainBgColor
+	 * @param bgColor
+	 * @param fgColor
+	 */
+	public MonochromeTheme(int mainBgColor, int bgColor, int fgColor) {
+		super();
+		this.mainBgColor = mainBgColor;
+		this.bgColor = bgColor;
+		this.fgColor = fgColor;
+	}
+
+
 
 	@Override
 	public int getForegroundColor(Widget widget) {
