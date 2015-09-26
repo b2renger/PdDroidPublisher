@@ -130,22 +130,27 @@ abstract public class Widget {
 	}
 	
 	public void send(String msg) {
-		if (sendname != null && !sendname.equals("") && !sendname.equals("empty")) {
+		if (isValidSymbolName(sendname)) {
 			PdHelper.send(sendname, msg);
 		}
 	}
 	
 	public void sendFloat(float f) {
-		if (sendname != null && !sendname.equals("") && !sendname.equals("empty")) {
+		if (isValidSymbolName(sendname)) {
 			PdBase.sendFloat(sendname, f);
 		}
 	}
 
 	public void setupreceive() {
 		// listen out for floats from Pd
-		if (receivename != null && !receivename.equals("") && !receivename.equals("empty")) {
+		if (isValidSymbolName(receivename)) {
 			parent.registerReceiver(receivename, this);
 		}
+	}
+	
+	protected static boolean isValidSymbolName(String name)
+	{
+		return name != null && !name.isEmpty() && !name.equals("-") && !name.equals("empty");
 	}
 	
 	public void setval(float v, float alt) {
