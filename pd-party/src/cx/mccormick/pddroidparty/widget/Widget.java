@@ -16,8 +16,10 @@ import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
+import cx.mccormick.pddroidparty.R;
 import cx.mccormick.pddroidparty.pd.PdHelper;
 import cx.mccormick.pddroidparty.svg.SVGRenderer;
+import cx.mccormick.pddroidparty.util.FileHelper;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 
 public class Widget {
@@ -35,7 +37,8 @@ public class Widget {
 	protected float[] labelpos = new float[2];
 	protected int labelfont=0;
 	protected int labelsize=10;
-	Typeface font = Typeface.create("monospace", Typeface.BOLD);
+	Typeface font;
+	static Typeface defaultFont;
 	protected int fontsize = 0;
 	float[] textoffset = new float[2];
 	
@@ -66,11 +69,16 @@ public class Widget {
 
 	
 	public Widget(PdDroidPatchView app) {
-		parent = app;
+		parent = app;	
+		if(defaultFont == null)
+		{
+			defaultFont = FileHelper.loadFontFromRaw(parent.getContext(), R.raw.dejavu_sans_mono_bold, "dejavu_sans_mono_bold.ttf");
+		}
+		
 		fontsize = (int)((float)parent.fontsize);
-		
+		font = defaultFont;
 		File f = null;
-		
+
 		// set an aliased font
 		f = parent.getPatch().getFile("font.ttf");
 		if (f.exists() && f.canRead() && f.isFile()) {
@@ -93,6 +101,7 @@ public class Widget {
 		paint.setTextSize(fontsize);
 		textoffset[0] = 0.0f;
 		textoffset[1] = 0.0f;
+		
 	}
 	
 	public static int getColor(int iemcolor) {

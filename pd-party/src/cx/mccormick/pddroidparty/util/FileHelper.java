@@ -1,5 +1,6 @@
 package cx.mccormick.pddroidparty.util;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,6 +12,7 @@ import java.io.OutputStream;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.graphics.Typeface;
 
 public class FileHelper {
 
@@ -105,5 +107,35 @@ public class FileHelper {
 			out.write(buffer, 0, read);
 		}
 	}
+	
+	public static Typeface loadFontFromRaw(Context context, int resource, String uniqueName)
+	{
+	    Typeface tf = null;
+
+	    File f = new File(context.getCacheDir(), uniqueName);
+
+	    try
+	    {
+		    InputStream is = context.getResources().openRawResource(resource);
+	        byte[] buffer = new byte[is.available()];
+	        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(f));
+
+	        int l = 0;
+	        while((l = is.read(buffer)) > 0)
+	        {
+	            bos.write(buffer, 0, l);
+	        }
+	        bos.close();
+
+	        tf = Typeface.createFromFile(f);
+	    }
+	    catch (IOException e)
+	    {
+	        throw new Error(e);
+	    }
+
+	    return tf;      
+	}
+
 
 }
