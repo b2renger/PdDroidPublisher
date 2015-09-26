@@ -1,4 +1,4 @@
-#N canvas 130 114 1275 602 10;
+#N canvas 88 116 1275 602 10;
 #X floatatom 33 18 5 0 0 0 - - nombre.2.r, f 5;
 #X text 74 17 comment;
 #X obj 130 19 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -12,10 +12,10 @@
 #X obj 268 20 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X obj 404 21 vradio 15 1 0 8 vradio.2.r empty empty 0 -8 0 10 -262144
--1 -1 1;
+-1 -1 0;
 #X obj 427 22 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
 -1 0;
-#X obj 556 24 vu 15 120 empty empty -1 -8 0 10 -66577 -1 1 0;
+#X obj 556 24 vu 15 120 empty empty -1 -8 0 10 -66577 -1 0 0;
 #X obj 612 21 cnv 15 100 60 empty empty empty 20 12 0 14 -233017 -66577
 0;
 #N canvas 0 50 450 250 (subpatch) 0;
@@ -44,10 +44,11 @@
 #X obj 423 231 hsl 60 30 0 127 0 0 empty empty HSlider -2 -8 0 10 -99865
 -1 -1 0 1;
 #X obj 520 306 vradio 32 1 0 3 vradio.2.s vradio.2.r VSelector 0 -8
-0 10 -16662 -4032 -4160 1;
+0 10 -16662 -4032 -4160 0;
 #X obj 565 223 hradio 32 1 0 3 empty empty HSelector 0 -8 0 10 -13381
 -204786 -4034 0;
-#X obj 689 319 vu 30 80 empty VUMeter -1 -8 0 10 -66577 -1 1 0;
+#X obj 689 319 vu 30 120 meter.2.r VUMeter -1 -8 0 10 -13330 -1 1 0
+;
 #X obj 780 233 cnv 15 60 100 empty empty Canvas 20 12 0 14 -45076 -159808
 0;
 #N canvas 66 78 450 250 (subpatch) 0;
@@ -113,8 +114,8 @@
 0;
 #X obj 1067 211 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
 0;
-#X obj 500 527 r vradio.2.s;
-#X obj 500 549 print;
+#X obj 498 500 r vradio.2.s;
+#X obj 498 550 print;
 #X obj 71 89 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
 0;
 #X obj 46 125 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
@@ -129,5 +130,8 @@
 0;
 #X obj 609 483 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
 0;
+#X obj 618 299 vsl 32 128 -100 12 0 0 meter.2.r empty empty 0 -9 0
+10 -262144 -1 -1 11200 1;
+#X floatatom 618 279 5 0 0 0 - meter.2.r -, f 5;
 #X connect 27 0 28 0;
 #X connect 58 0 59 0;

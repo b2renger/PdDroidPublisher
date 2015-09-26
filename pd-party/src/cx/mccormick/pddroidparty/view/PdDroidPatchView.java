@@ -57,6 +57,7 @@ import cx.mccormick.pddroidparty.widget.core.Radio;
 import cx.mccormick.pddroidparty.widget.core.Slider;
 import cx.mccormick.pddroidparty.widget.core.Subpatch;
 import cx.mccormick.pddroidparty.widget.core.Toggle;
+import cx.mccormick.pddroidparty.widget.core.VUMeter;
 import cx.mccormick.pddroidparty.widget.ext.Knob;
 
 public class PdDroidPatchView extends View implements OnTouchListener {
@@ -363,6 +364,8 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 								widgets.add(new Radio(this, line, false));
 							} else if (line[4].equals("hradio")) {
 								widgets.add(new Radio(this, line, true));
+							} else if (line[4].equals("vu")) {
+								widgets.add(new VUMeter(this, line));
 							} else if (line[4].equals("mknob")) {
 								widgets.add(new Knob(this, line));
 							}
