@@ -94,7 +94,7 @@ public class Slider extends Widget {
 	
 	public void draw(Canvas canvas) {
 		canvas.save();
-		canvas.clipRect(dRect, Op.REPLACE);
+		canvas.clipRect(dRect.left, dRect.top, dRect.right, dRect.bottom + 1, Op.REPLACE);
 		if (bg.draw(canvas)) {
 			paint.setColor(bgcolor);
 			paint.setStyle(Paint.Style.FILL);
