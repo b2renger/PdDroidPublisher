@@ -1,0 +1,9 @@
+#N canvas 136 220 827 401 10;
+#X text 8 4 special GUIs emulated by PdDroidParty;
+#X obj 8 55 taplist 100 16 pick-notes note C C# D D# E F F# G G# A
+A# B;
+#X obj 8 89 r note;
+#X text 5 35 taplist - tap through list items;
+#X text -1 72 "taplist 100 16 n note C C# D...";
+#X symbolatom 8 110 10 0 0 0 - - -, f 10;
+#X connect 2 0 5 0;

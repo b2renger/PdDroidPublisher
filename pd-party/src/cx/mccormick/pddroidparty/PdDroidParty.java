@@ -19,7 +19,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
@@ -35,7 +34,6 @@ import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.view.PdPartyClockControl;
 import cx.mccormick.pddroidparty.widget.Widget;
 import cx.mccormick.pddroidparty.widget.abs.LoadSave;
-import cx.mccormick.pddroidparty.widget.abs.MenuBang;
 
 public class PdDroidParty extends Activity {
 	public PdDroidPatchView patchview = null;
@@ -131,25 +129,6 @@ public class PdDroidParty extends Activity {
 		return true;
 	}
 	
-	// menu launch yeah
-	@Override
-	public boolean onPrepareOptionsMenu(Menu menu) {
-		menu.clear();
-		// TODO menus are no longer displayed ...
-		// add the menu bang menu items
-		MenuBang.setMenu(menu);
-		
-		return super.onPrepareOptionsMenu(menu);
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO menus are no longer displayed ...
-		// pass the menu selection through to the MenuBang manager
-		MenuBang.hit(item);
-		return super.onOptionsItemSelected(item);
-	}
-	
 	// initialise the GUI with the OpenGL rendering engine
 	private void initGui() {
 		//setContentView(R.layout.main);
@@ -171,7 +150,6 @@ public class PdDroidParty extends Activity {
 		
 		setContentView(layout);
 		patchview.requestFocus();
-		MenuBang.clear();
 	}
 	
 	// initialise Pd asking for the desired sample rate, parameters, etc.

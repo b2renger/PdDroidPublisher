@@ -1,5 +1,0 @@
-#!/bin/bash
-
-cwd=`pwd`
-dir=`basename $cwd`
-echo "rm -r /sdcard/$dir/patch; exit;" | adb shell

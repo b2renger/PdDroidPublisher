@@ -1,0 +1,12 @@
+#N canvas 138 219 401 401 10;
+#X text 8 4 special GUIs emulated by PdDroidParty;
+#X obj 25 105 loadsave hello;
+#X symbolatom 25 151 48 0 0 0 - - -, f 48;
+#X text 23 51 loadsave - androidy file panels;
+#X symbolatom 25 191 48 0 0 0 - - -, f 48;
+#X obj 25 170 r hello-save;
+#X obj 25 130 r hello-load;
+#X msg 25 70 \; hello load /tmp wav;
+#X msg 161 70 \; hello save /tmp sav;
+#X connect 5 0 4 0;
+#X connect 6 0 2 0;

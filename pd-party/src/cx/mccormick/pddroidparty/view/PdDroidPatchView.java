@@ -40,16 +40,9 @@ import cx.mccormick.pddroidparty.pd.PdHelper;
 import cx.mccormick.pddroidparty.pd.PdPatch;
 import cx.mccormick.pddroidparty.svg.SVGRenderer;
 import cx.mccormick.pddroidparty.widget.Widget;
-import cx.mccormick.pddroidparty.widget.abs.Display;
-import cx.mccormick.pddroidparty.widget.abs.DroidNetClient;
-import cx.mccormick.pddroidparty.widget.abs.DroidNetReceive;
-import cx.mccormick.pddroidparty.widget.abs.DroidSystem;
 import cx.mccormick.pddroidparty.widget.abs.LoadSave;
-import cx.mccormick.pddroidparty.widget.abs.MenuBang;
-import cx.mccormick.pddroidparty.widget.abs.Numberboxfixed;
 import cx.mccormick.pddroidparty.widget.abs.Taplist;
 import cx.mccormick.pddroidparty.widget.abs.Touch;
-import cx.mccormick.pddroidparty.widget.abs.Wordbutton;
 import cx.mccormick.pddroidparty.widget.core.Bang;
 import cx.mccormick.pddroidparty.widget.core.Canvasrect;
 import cx.mccormick.pddroidparty.widget.core.Comment;
@@ -60,7 +53,6 @@ import cx.mccormick.pddroidparty.widget.core.Slider;
 import cx.mccormick.pddroidparty.widget.core.Subpatch;
 import cx.mccormick.pddroidparty.widget.core.Toggle;
 import cx.mccormick.pddroidparty.widget.core.VUMeter;
-import cx.mccormick.pddroidparty.widget.ext.Knob;
 
 public class PdDroidPatchView extends View implements OnTouchListener {
 	
@@ -384,18 +376,10 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 								widgets.add(new Radio(this, line, true));
 							} else if (line[4].equals("vu")) {
 								widgets.add(new VUMeter(this, line));
-							} else if (line[4].equals("mknob")) {
-								widgets.add(new Knob(this, line));
 							}
 							// special PdDroidParty abstractions
-							else if (line[4].equals("wordbutton")) {
-								widgets.add(new Wordbutton(this, line));
-							} else if (line[4].equals("numberbox")) {
-								widgets.add(new Numberboxfixed(this, line));
-							} else if (line[4].equals("taplist")) {
+							else if (line[4].equals("taplist")) {
 								widgets.add(new Taplist(this, line));
-							} else if (line[4].equals("display")) {
-								widgets.add(new Display(this, line));
 							} else if (line[4].equals("touch")) {
 								widgets.add(new Touch(this, line));
 							}
@@ -405,16 +389,8 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 				
 				// things that can be found at any depth and still work
 				if (line.length >= 5) {
-					if (line[4].equals("droidnetreceive")) {
-						this.widgets.add(new DroidNetReceive(this, line));
-					} else if (line[4].equals("droidnetclient")) {
-						this.widgets.add(new DroidNetClient(this, line));
-					} else if (line[4].equals("menubang")) {
-						new MenuBang(this, line);
-					} else if (line[4].equals("loadsave")) {
+					if (line[4].equals("loadsave")) {
 						new LoadSave(this, line);
-					} else if (line[4].equals("droidsystem")) {
-						new DroidSystem(this, line);
 					}
 				}
 			}
