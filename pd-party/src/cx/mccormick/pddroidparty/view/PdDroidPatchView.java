@@ -330,17 +330,20 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 					}
 					else
 					{
-						List<Widget> widgets;
-						if(subpatches.isEmpty()) widgets = this.widgets; else{
-							widgets = subpatches.peekLast().widgets;
-						}
 						Subpatch subpatch = new Subpatch(this, line);
 						subpatches.addLast(subpatch);
-						widgets.add(subpatch);
 					}
 				} else if (line[1].equals("restore")) {
 					Subpatch subpatch = subpatches.removeLast();
 					subpatch.parse(line);
+					if(subpatch.isGraphOnParent())
+					{
+						if(subpatches.isEmpty()){
+							widgets.add(subpatch);
+						}else{
+							subpatches.peekLast().widgets.add(subpatch);
+						}
+					}
 					level -= 1;
 				// find different types of UI element in the top level patch
 				} else {

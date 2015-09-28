@@ -46,6 +46,10 @@ public class Subpatch extends Widget
 		super(app);
 	}
 	
+	public boolean isGraphOnParent() {
+		return graphOnParent;
+	}
+	
 	@Override
 	public boolean touchmove(int pid, float x, float y) 
 	{
