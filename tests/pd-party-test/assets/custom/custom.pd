@@ -1,10 +1,12 @@
-#N canvas 109 164 992 484 10;
+#N struct 1177template-marker float a float b;
+#N canvas 105 166 1216 484 10;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 380 40 hsl 128 15 0 1 0 0 volume empty vsl-Volume -2 -8 0 10
 -262144 -1 -1 0 1;
 #X obj 366 238 hsl 128 128 200 600 0 0 frequency empty hsl-custom -2
 -8 0 10 -262144 -1 -1 0 1;
 #X floatatom 15 28 5 0 0 3 nombre - -, f 5;
-#X obj 2 183 cnv 15 1000 1 empty empty empty 20 12 0 14 -233017 -66577
+#X obj 97 181 cnv 15 1000 1 empty empty empty 20 12 0 14 -233017 -66577
 0;
 #X floatatom 12 239 5 0 0 3 nombre-custom - -, f 5;
 #X obj 141 36 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -60,3 +62,7 @@
 #X restore 883 247 pd sub-custom;
 #X text 65 75 comment;
 #X text 75 339 custom comment;
+#X obj 853 6 declare -path ../../../../pd-party/droidparty-abstractions
+;
+#X obj 1002 53 taplist 32 32 tl.r tl.s A B C D;
+#X obj 1069 54 touch 64 64 myTouch;

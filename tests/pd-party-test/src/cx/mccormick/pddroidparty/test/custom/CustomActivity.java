@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import cx.mccormick.pddroidparty.PdDroidPartyConfig;
 import cx.mccormick.pddroidparty.PdDroidPartyLauncher;
+import cx.mccormick.pddroidparty.widget.abs.Taplist;
 import cx.mccormick.pddroidparty.widget.core.Bang;
 import cx.mccormick.pddroidparty.widget.core.Canvasrect;
 import cx.mccormick.pddroidparty.widget.core.Comment;
@@ -23,11 +24,18 @@ public class CustomActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
-        config.midiClockMaxBPM = 480;	
+        config.midiClockMaxBPM = 480;
+        
+        // specific override examples
         config.objectOverrides.put("hsl-custom", CustomSlider.class);
         config.objectOverrides.put("vsl-custom", RibbonSlider.class);
         config.objectOverrides.put("bang-custom", CustomBang.class);
         
+        // TODO can't bind to specific object since taplist
+        // do not have name !
+        config.typeOverrides.put(Taplist.class, CustomTaplist.class);
+        
+        // Global override (all types hidden)
         config.typeOverrides.put(Bang.class, HiddenWidget.class);
         config.typeOverrides.put(Canvasrect.class, HiddenWidget.class);
         config.typeOverrides.put(Comment.class, HiddenWidget.class);
