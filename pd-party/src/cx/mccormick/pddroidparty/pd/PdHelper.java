@@ -12,13 +12,22 @@ import android.util.Log;
 public class PdHelper 
 {
 	private static PdDispatcher dispatcher;
+	private static StringBuilder message = new StringBuilder();
 	
 	public static void init() 
 	{
 		dispatcher = new PdDispatcher() {
 			@Override
 			public void print(String s) {
-				Log.i("Pd [print]", s);
+				if(s.equals("\n"))
+				{
+					Log.i("Pd [print]", message.toString());
+					message = new StringBuilder();
+				}
+				else
+				{
+					message.append(s);
+				}
 			}
 		};
 		PdBase.setReceiver(dispatcher);
