@@ -127,7 +127,7 @@ public class Subpatch extends Widget
 		paint.setColor(fgcolor);
 		paint.setStrokeWidth(1);
 		canvas.drawRect(x, y, x + zoneWidth, y + zoneHeight, paint);
-
+		paint.setStrokeWidth(3);
 		if(array != null)
 		{
 			if(array.drawType == Array.DRAWTYPE_POINTS)
