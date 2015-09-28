@@ -28,7 +28,7 @@ public class MenuBang {
 	
 	public MenuBang(PdDroidPatchView app, String[] atomline) {
 		parent = app;
-		name = atomline[5];
+		name = atomline[4];
 		sendname = "menubang-" + name;
 		// find an icon for us
 		File f = parent.getPatch().getFile("menubang-" + name + ".png");
