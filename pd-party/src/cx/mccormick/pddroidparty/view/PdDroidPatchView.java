@@ -1,6 +1,8 @@
 package cx.mccormick.pddroidparty.view;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -319,6 +321,15 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		LinkedList<Subpatch> subpatches = new LinkedList<Subpatch>();
 		
 		for (String[] line: atomlines) {
+			
+			List<Widget> widgets;
+			if(subpatches.isEmpty()) widgets = this.widgets; else{
+				widgets = subpatches.peekLast().widgets;
+				subpatches.peekLast().parse(line);
+			}
+
+			int widgetsSize = widgets.size();
+			
 			if (line.length >= 4) {
 				// find canvas begin and end lines
 				if (line[1].equals("canvas")) {
@@ -335,11 +346,10 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 					}
 				} else if (line[1].equals("restore")) {
 					Subpatch subpatch = subpatches.removeLast();
-					subpatch.parse(line);
 					if(subpatch.isGraphOnParent())
 					{
 						if(subpatches.isEmpty()){
-							widgets.add(subpatch);
+							this.widgets.add(subpatch);
 						}else{
 							subpatches.peekLast().widgets.add(subpatch);
 						}
@@ -347,12 +357,6 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 					level -= 1;
 				// find different types of UI element in the top level patch
 				} else {
-					
-					List<Widget> widgets;
-					if(subpatches.isEmpty()) widgets = this.widgets; else{
-						widgets = subpatches.peekLast().widgets;
-						subpatches.peekLast().parse(line);
-					}
 					
 					if (line.length >= 2) {
 						// builtin pd things
@@ -402,15 +406,54 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 				// things that can be found at any depth and still work
 				if (line.length >= 5) {
 					if (line[4].equals("droidnetreceive")) {
-						widgets.add(new DroidNetReceive(this, line));
+						this.widgets.add(new DroidNetReceive(this, line));
 					} else if (line[4].equals("droidnetclient")) {
-						widgets.add(new DroidNetClient(this, line));
+						this.widgets.add(new DroidNetClient(this, line));
 					} else if (line[4].equals("menubang")) {
 						new MenuBang(this, line);
 					} else if (line[4].equals("loadsave")) {
 						new LoadSave(this, line);
 					} else if (line[4].equals("droidsystem")) {
 						new DroidSystem(this, line);
+					}
+				}
+			}
+			
+			// overrides
+			if(widgetsSize != widgets.size())
+			{
+				Widget lastWidget = widgets.get(widgets.size() -1);
+				
+				// resolve class
+				Class<? extends Widget> cls = null;
+				if(lastWidget.getLabel() != null)
+				{
+					cls = config.objectOverrides.get(lastWidget.getLabel());
+				}
+				if(cls == null)
+				{
+					cls = config.typeOverrides.get(lastWidget.getClass());
+				}
+				
+				if(cls != null)
+				{
+					try {
+						Constructor<? extends Widget> cons = cls.getConstructor(PdDroidPatchView.class, String[].class);
+						Widget newWidget = cons.newInstance(this, line);
+						widgets.remove(lastWidget);
+						widgets.add(newWidget);
+					} catch (NoSuchMethodException e) {
+						throw new Error(e);
+					} catch (SecurityException e) {
+						throw new Error(e);
+					} catch (InstantiationException e) {
+						throw new Error(e);
+					} catch (IllegalAccessException e) {
+						throw new Error(e);
+					} catch (IllegalArgumentException e) {
+						throw new Error(e);
+					} catch (InvocationTargetException e) {
+						throw new Error(e);
 					}
 				}
 			}

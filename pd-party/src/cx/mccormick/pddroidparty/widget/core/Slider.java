@@ -11,7 +11,7 @@ import cx.mccormick.pddroidparty.widget.Widget;
 public class Slider extends Widget {
 	private static final String TAG = "Slider";
 	
-	float min, max;
+	protected float min, max;
 	int log;
 	
 	int pid0=-1;			// pointer id,

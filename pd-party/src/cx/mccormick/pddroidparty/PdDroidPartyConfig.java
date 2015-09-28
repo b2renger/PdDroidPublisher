@@ -1,6 +1,10 @@
 package cx.mccormick.pddroidparty;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
+import cx.mccormick.pddroidparty.widget.Widget;
 
 import cx.mccormick.pddroidparty.theme.Theme;
 
@@ -24,4 +28,7 @@ public class PdDroidPartyConfig implements Serializable
 	 * default is 1 seconds. Low values may impact performances.
 	 */
 	public long arrayRefreshTimeMS = 1000;
+	
+	public Map<Class<? extends Widget>, Class<? extends Widget>> typeOverrides = new HashMap<Class<? extends Widget>, Class<? extends Widget>>();
+	public Map<String, Class<? extends Widget>> objectOverrides = new HashMap<String, Class<? extends Widget>>();
 }

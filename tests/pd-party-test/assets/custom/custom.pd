@@ -1,0 +1,62 @@
+#N canvas 109 164 992 484 10;
+#X obj 380 40 hsl 128 15 0 1 0 0 volume empty vsl-Volume -2 -8 0 10
+-262144 -1 -1 0 1;
+#X obj 366 238 hsl 128 128 200 600 0 0 frequency empty hsl-custom -2
+-8 0 10 -262144 -1 -1 0 1;
+#X floatatom 15 28 5 0 0 3 nombre - -, f 5;
+#X obj 2 183 cnv 15 1000 1 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X floatatom 12 239 5 0 0 3 nombre-custom - -, f 5;
+#X obj 141 36 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 125 240 bng 15 250 50 0 empty empty bang-custom 17 7 0 10 -262144
+-1 -1;
+#X obj 201 34 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 200 275 tgl 15 0 empty empty toggle-custom 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 260 37 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 246 220 nbx 5 14 -1e+37 1e+37 0 0 empty empty nombre2-custom
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 344 13 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 338 216 vsl 15 128 0 127 0 0 empty empty vsl-custom 0 -9 0 10
+-262144 -1 -1 0 1;
+#X obj 525 18 vradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X obj 528 228 vradio 15 1 0 8 empty empty hcb-custom 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 381 84 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X obj 372 384 hradio 15 1 0 8 empty empty vcb-custom 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 555 45 vu 15 120 empty empty -1 -8 0 10 -66577 -1 1 0;
+#X obj 564 264 vu 15 120 empty vumeter-custom -1 -8 0 10 -66577 -1
+1 0;
+#X obj 628 47 cnv 15 100 60 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 627 291 cnv 15 100 60 empty empty cnv-custom 20 12 0 14 -233017
+-66577 0;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array array-custom 10 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 10 -1 100 100 1 0 0;
+#X restore 743 215 graph;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array array1 10 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 10 -1 100 100 1 0 0;
+#X restore 741 26 graph;
+#N canvas 66 78 450 300 sub 0;
+#X obj 132 124 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X coords 0 -1 1 1 85 60 1 100 100;
+#X restore 885 52 pd sub;
+#N canvas 66 78 450 300 sub-custom 0;
+#X obj 132 124 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X coords 0 -1 1 1 85 60 1 100 100;
+#X restore 883 247 pd sub-custom;
+#X text 65 75 comment;
+#X text 75 339 custom comment;
