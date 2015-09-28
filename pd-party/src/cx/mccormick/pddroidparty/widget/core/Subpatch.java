@@ -1,8 +1,12 @@
 package cx.mccormick.pddroidparty.widget.core;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.puredata.core.PdBase;
 
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.widget.Widget;
@@ -30,9 +34,11 @@ public class Subpatch extends Widget
 	private Array array;
 	
 	// TODO use dRect instead
-	private int top, bottom, left, right, zoneWidth, zoneHeight;
+	private int top, bottom, left, right, zoneWidth, zoneHeight, HMargin, VMargin;
 	private int x, y;
 	boolean graphOnParent;
+	
+	public List<Widget> widgets = new ArrayList<Widget>();
 	
 	public Subpatch(PdDroidPatchView app, String[] atomline) {
 		super(app);
@@ -85,6 +91,13 @@ public class Subpatch extends Widget
 				zoneHeight = Integer.parseInt(atomline[7]);
 				graphOnParent = Integer.parseInt(atomline[8]) != 0;
 				// TODO optional margin h/v
+				
+				// optional margin h/v
+				if(atomline.length >= 11)
+				{
+					HMargin = Integer.parseInt(atomline[9]);
+					VMargin = Integer.parseInt(atomline[10]);
+				}
 				
 				dRect.right += zoneWidth;
 				dRect.bottom += zoneHeight;
@@ -205,6 +218,19 @@ public class Subpatch extends Widget
 			paint.setTypeface(font);
 			canvas.drawText(array.name, dRect.left, dRect.top - paint.descent() - 2, paint);
 
+		}
+		// sub patch mode !
+		else
+		{
+			canvas.save();
+			Matrix matrix = new Matrix();
+			matrix.postTranslate(x - left - HMargin, y - top - VMargin);
+			canvas.concat(matrix);
+			for(Widget widget : widgets)
+			{
+				widget.draw(canvas);
+			}
+			canvas.restore();
 		}
 
 	}

@@ -330,6 +330,10 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 					}
 					else
 					{
+						List<Widget> widgets;
+						if(subpatches.isEmpty()) widgets = this.widgets; else{
+							widgets = subpatches.peekLast().widgets;
+						}
 						Subpatch subpatch = new Subpatch(this, line);
 						subpatches.addLast(subpatch);
 						widgets.add(subpatch);
@@ -339,7 +343,14 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 					subpatch.parse(line);
 					level -= 1;
 				// find different types of UI element in the top level patch
-				} else if (level == 1) {
+				} else {
+					
+					List<Widget> widgets;
+					if(subpatches.isEmpty()) widgets = this.widgets; else{
+						widgets = subpatches.peekLast().widgets;
+						subpatches.peekLast().parse(line);
+					}
+					
 					if (line.length >= 2) {
 						// builtin pd things
 						if (line[1].equals("text")) {
@@ -383,10 +394,6 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 							}
 						}
 					}
-				} else {
-					Subpatch subpatch = subpatches.peekLast();
-					if(subpatch != null)
-						subpatch.parse(line);
 				}
 				
 				// things that can be found at any depth and still work
