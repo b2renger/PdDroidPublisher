@@ -1,5 +1,5 @@
-#N struct 1131template-marker float a float b;
-#N canvas 554 204 477 291 10;
+#N struct 1161template-marker float a float b;
+#N canvas 552 205 477 291 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 36 15 declare -path ../../../../pd-party/droidparty-abstractions
 ;
@@ -21,11 +21,22 @@
 0;
 #X obj 151 79 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
 0;
-#X obj 70 177 r taplist.s;
+#X obj 29 182 r taplist.s;
 #X obj 117 250 print;
-#X obj 306 110 bng 32 250 50 0 myLoadSave empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 169 171 r myTouch;
-#X obj 332 181 _OVERVIEW;
+#X obj 308 130 bng 32 250 50 0 load empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 117 183 r myTouch;
+#X obj 309 174 r load;
+#X msg 309 196 \; myLoadSave load .;
+#X text 308 107 load;
+#X obj 359 130 bng 32 250 50 0 save empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 359 107 save;
+#X obj 327 233 r save;
+#X msg 327 255 \; myLoadSave save .;
+#X obj 186 183 r myLoadSave;
 #X connect 13 0 14 0;
 #X connect 16 0 14 0;
+#X connect 17 0 18 0;
+#X connect 22 0 23 0;
+#X connect 24 0 14 0;
