@@ -1,6 +1,7 @@
 package cx.mccormick.pddroidparty.widget.abs;
 
 import android.graphics.Canvas;
+import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.widget.Widget;
@@ -32,18 +33,35 @@ public class Touch extends Widget {
 		off.load(TAG, "off", sendname);
 	}
 	
-	public void draw(Canvas canvas) {
-		if (down) {
-			paint.setStrokeWidth(2);
-		} else {
-			paint.setStrokeWidth(1);
+	public void draw(Canvas canvas) 
+	{
+		if(down)
+		{
+			if(on.draw(canvas))
+			{
+				paint.setStyle(Style.FILL);
+				paint.setColor(bgcolor);
+				canvas.drawRect(dRect, paint);
+				
+				paint.setStyle(Style.STROKE);
+				paint.setStrokeWidth(2);
+				paint.setColor(fgcolor);
+				canvas.drawRect(dRect, paint);
+			}
 		}
-		
-		if (down ? on.draw(canvas) : off.draw(canvas)) {
-			canvas.drawLine(dRect.left + 1, dRect.top, dRect.right - 1, dRect.top, paint);
-			canvas.drawLine(dRect.left + 1, dRect.bottom, dRect.right - 1, dRect.bottom, paint);
-			canvas.drawLine(dRect.left, dRect.top + 1, dRect.left, dRect.bottom - 1, paint);
-			canvas.drawLine(dRect.right, dRect.top, dRect.right, dRect.bottom, paint);
+		else
+		{
+			if(off.draw(canvas))
+			{
+				paint.setStyle(Style.FILL);
+				paint.setColor(bgcolor);
+				canvas.drawRect(dRect, paint);
+				
+				paint.setStyle(Style.STROKE);
+				paint.setStrokeWidth(1);
+				paint.setColor(fgcolor);
+				canvas.drawRect(dRect, paint);
+			}
 		}
 	}
 	
