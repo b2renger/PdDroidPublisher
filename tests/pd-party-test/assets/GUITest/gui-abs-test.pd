@@ -1,0 +1,75 @@
+#N struct 1079template-marker float a float b;
+#N struct 1080template-marker float a float b;
+#N struct 1086template-marker float a float b;
+#N struct 1087template-marker float a float b;
+#N struct 1089template-marker float a float b;
+#N canvas 556 203 551 291 10;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X obj 36 15 declare -path ../../../../pd-party/droidparty-abstractions
+;
+#X obj 48 79 taplist 32 32 taplist.r taplist.s A B C D;
+#X text 47 55 taplist;
+#X obj 161 84 display 32 32 Disp.;
+#X text 154 58 display;
+#X obj 274 83 wordbutton 32 32 WB;
+#X text 263 55 wordbutton;
+#X obj 59 293 droidnetclient dnc;
+#X text 431 63 ribbon;
+#X obj 208 295 droidnetreceive 1200 recname -u;
+#X obj 208 317 print;
+#X obj 33 208 loadsave myLoadSave;
+#X text 32 187 load/save;
+#X text 169 183 menubang;
+#X text 293 178 numberbox;
+#X obj 455 21 _OVERVIEW;
+#X obj 406 198 touch 64 64 myTouch;
+#X text 407 175 touch;
+#X obj 46 41 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 21 77 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 159 46 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 134 82 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 272 45 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 247 81 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 412 50 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 387 86 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 31 170 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 6 206 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 166 168 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 141 204 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 290 166 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 265 202 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 404 160 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 379 196 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 168 206 menubang myMenubang;
+#X obj 44 352 r taplist.s;
+#X obj 91 425 print;
+#X obj 152 362 r wordbutton-WB;
+#X obj 414 88 ribbon 64 32 myRibbon;
+#X obj 275 370 r myRibbon;
+#X obj 38 236 bng 32 250 50 0 myLoadSave empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 295 425 r nb.s;
+#X obj 292 204 numberbox 64 32 nb.r nb.s 0 10 5;
+#X obj 369 395 r myTouch;
+#X connect 9 0 10 0;
+#X connect 35 0 36 0;
+#X connect 37 0 36 0;
+#X connect 39 0 36 0;
+#X connect 41 0 36 0;
+#X connect 43 0 36 0;
