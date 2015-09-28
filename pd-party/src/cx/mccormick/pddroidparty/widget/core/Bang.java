@@ -16,7 +16,7 @@ import cx.mccormick.pddroidparty.widget.Widget;
 public class Bang extends Widget {
 	private static final String TAG = "Bang";
 
-	volatile boolean bang = false;
+	volatile protected boolean bang = false;
 	int interrpt,hold; //interrupt and hold time, in ms.
 	
 	WImage on = new WImage();

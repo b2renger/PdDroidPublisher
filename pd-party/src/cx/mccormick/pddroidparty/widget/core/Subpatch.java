@@ -1,9 +1,15 @@
 package cx.mccormick.pddroidparty.widget.core;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.puredata.core.PdBase;
 
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.Region.Op;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.widget.Widget;
 
@@ -30,29 +36,44 @@ public class Subpatch extends Widget
 	private Array array;
 	
 	// TODO use dRect instead
-	private int top, bottom, left, right, zoneWidth, zoneHeight;
+	private int top, bottom, left, right, zoneWidth, zoneHeight, HMargin, VMargin;
 	private int x, y;
 	boolean graphOnParent;
+	
+	public List<Widget> widgets = new ArrayList<Widget>();
 	
 	public Subpatch(PdDroidPatchView app, String[] atomline) {
 		super(app);
 	}
 	
+	public boolean isGraphOnParent() {
+		return graphOnParent;
+	}
+	
 	@Override
 	public boolean touchmove(int pid, float x, float y) 
 	{
-		if(x < this.x || x > this.x + this.zoneWidth) return false;
-		if(y < this.y || y > this.y + this.zoneHeight) return false;
-		
-		if(array != null)
+		if(dRect.contains(x, y))
 		{
-			int index = (int)(left + (float)(right - left) * (x - this.x) / (float)(this.zoneWidth));
-			if(index >= 0 && index < array.length)
+			if(array != null)
 			{
-				float value = ((y - this.y) / (float)(zoneHeight)) * (top - bottom) + bottom;
-				array.buffer[index] = value;
-				PdBase.writeArray(array.name, index, array.buffer, index, 1);
-				return true;
+				int index = (int)(left + (float)(right - left) * (x - this.x) / (float)(this.zoneWidth));
+				if(index >= 0 && index < array.length)
+				{
+					float value = ((y - this.y) / (float)(zoneHeight)) * (top - bottom) + bottom;
+					array.buffer[index] = value;
+					PdBase.writeArray(array.name, index, array.buffer, index, 1);
+					return true;
+				}
+			}
+			else
+			{
+				float localX = x - (this.x - HMargin);
+				float localY = y - (this.y - VMargin);
+				for(Widget widget : widgets)
+				{
+					if(widget.touchmove(pid, localX, localY)) return true;
+				}
 			}
 		}
 		return false;
@@ -84,7 +105,13 @@ public class Subpatch extends Widget
 				zoneWidth = Integer.parseInt(atomline[6]);
 				zoneHeight = Integer.parseInt(atomline[7]);
 				graphOnParent = Integer.parseInt(atomline[8]) != 0;
-				// TODO optional margin h/v
+				
+				// optional margin h/v
+				if(atomline.length >= 11)
+				{
+					HMargin = Integer.parseInt(atomline[9]);
+					VMargin = Integer.parseInt(atomline[10]);
+				}
 				
 				dRect.right += zoneWidth;
 				dRect.bottom += zoneHeight;
@@ -108,6 +135,13 @@ public class Subpatch extends Widget
 		if(array != null)
 		{
 			PdBase.readArray(array.buffer, 0, array.name, 0, array.buffer.length);
+		}
+		else
+		{
+			for(Widget widget : widgets)
+			{
+				widget.updateData();
+			}
 		}
 	}
 	
@@ -206,7 +240,94 @@ public class Subpatch extends Widget
 			canvas.drawText(array.name, dRect.left, dRect.top - paint.descent() - 2, paint);
 
 		}
+		// sub patch mode !
+		else
+		{
+			canvas.save();
+			Matrix matrix = new Matrix();
+			matrix.postTranslate(x - HMargin, y - VMargin);
+			canvas.concat(matrix);
+			canvas.clipRect(new RectF(HMargin, VMargin, HMargin + dRect.width(), VMargin + dRect.height()), Op.INTERSECT);
+			for(Widget widget : widgets)
+			{
+				widget.draw(canvas);
+			}
+			canvas.restore();
+		}
 
 	}
+	
+	@Override
+	public boolean touchdown(int pid, float x, float y) 
+	{
+		if(dRect.contains(x, y))
+		{
+			float localX = x - (this.x - HMargin);
+			float localY = y - (this.y - VMargin);
+			for(Widget widget : widgets)
+			{
+				if(widget.touchdown(pid, localX, localY)) return true;
+			}
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean touchup(int pid, float x, float y) {
+		if(dRect.contains(x, y))
+		{
+			float localX = x - (this.x - HMargin);
+			float localY = y - (this.y - VMargin);
+			for(Widget widget : widgets)
+			{
+				if(widget.touchup(pid, localX, localY)) return true;
+			}
+		}
+		return false;
+	}
+	
+	@Override
+	public void receiveAny() {
+		for(Widget widget : widgets)
+		{
+			widget.receiveAny();
+		}
+	}
+	@Override
+	public void receiveBang() {
+		for(Widget widget : widgets)
+		{
+			widget.receiveBang();;
+		}
+	}
+	@Override
+	public void receiveFloat(float x) {
+		for(Widget widget : widgets)
+		{
+			widget.receiveFloat(x);
+		}
+	}
+	@Override
+	public void receiveList(Object... args) {
+		for(Widget widget : widgets)
+		{
+			widget.receiveList(args);
+		}
+	}
+	@Override
+	public void receiveMessage(String symbol, Object... args) {
+		for(Widget widget : widgets)
+		{
+			widget.receiveMessage(symbol, args);
+		}
+	}
+	@Override
+	public void receiveSymbol(String symbol) {
+		for(Widget widget : widgets)
+		{
+			widget.receiveSymbol(symbol);
+		}
+	}
+	
 
 }

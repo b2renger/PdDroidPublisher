@@ -91,6 +91,10 @@ abstract public class Widget {
 		
 	}
 	
+	public String getLabel() {
+		return label;
+	}
+	
 	public void setTextParametersFromSVG(SVGRenderer svg) {
 		if (svg != null) {
 			if (svg.getInfo().getTextFont() != null) {

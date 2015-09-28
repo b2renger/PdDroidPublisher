@@ -51,6 +51,12 @@
             </intent-filter>
         </activity> 
         
+        <activity android:name=".GUIWidgetAbstractActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity> 
+        
         <activity android:name=".GUIThemeMonoDarkActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,6 +64,18 @@
         </activity> 
         
         <activity android:name=".GUIThemeMonoLightActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity> 
+        
+        <activity android:name=".GUIThemeBTFActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity> 
+        
+        <activity android:name=".custom.CustomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

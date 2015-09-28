@@ -11,7 +11,7 @@ import cx.mccormick.pddroidparty.widget.Widget;
 public class Slider extends Widget {
 	private static final String TAG = "Slider";
 	
-	float min, max;
+	protected float min, max;
 	int log;
 	
 	int pid0=-1;			// pointer id,
@@ -93,7 +93,7 @@ public class Slider extends Widget {
 	
 	public void draw(Canvas canvas) {
 		canvas.save();
-		canvas.clipRect(dRect.left, dRect.top, dRect.right, dRect.bottom + 1, Op.REPLACE);
+		canvas.clipRect(dRect.left, dRect.top, dRect.right, dRect.bottom + 1, Op.INTERSECT);
 		if (bg.draw(canvas)) {
 			paint.setColor(bgcolor);
 			paint.setStyle(Paint.Style.FILL);

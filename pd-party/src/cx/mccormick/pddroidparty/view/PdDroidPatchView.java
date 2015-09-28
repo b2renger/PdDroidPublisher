@@ -1,6 +1,8 @@
 package cx.mccormick.pddroidparty.view;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -38,16 +40,9 @@ import cx.mccormick.pddroidparty.pd.PdHelper;
 import cx.mccormick.pddroidparty.pd.PdPatch;
 import cx.mccormick.pddroidparty.svg.SVGRenderer;
 import cx.mccormick.pddroidparty.widget.Widget;
-import cx.mccormick.pddroidparty.widget.abs.Display;
-import cx.mccormick.pddroidparty.widget.abs.DroidNetClient;
-import cx.mccormick.pddroidparty.widget.abs.DroidNetReceive;
-import cx.mccormick.pddroidparty.widget.abs.DroidSystem;
 import cx.mccormick.pddroidparty.widget.abs.LoadSave;
-import cx.mccormick.pddroidparty.widget.abs.MenuBang;
-import cx.mccormick.pddroidparty.widget.abs.Numberboxfixed;
 import cx.mccormick.pddroidparty.widget.abs.Taplist;
 import cx.mccormick.pddroidparty.widget.abs.Touch;
-import cx.mccormick.pddroidparty.widget.abs.Wordbutton;
 import cx.mccormick.pddroidparty.widget.core.Bang;
 import cx.mccormick.pddroidparty.widget.core.Canvasrect;
 import cx.mccormick.pddroidparty.widget.core.Comment;
@@ -58,7 +53,6 @@ import cx.mccormick.pddroidparty.widget.core.Slider;
 import cx.mccormick.pddroidparty.widget.core.Subpatch;
 import cx.mccormick.pddroidparty.widget.core.Toggle;
 import cx.mccormick.pddroidparty.widget.core.VUMeter;
-import cx.mccormick.pddroidparty.widget.ext.Knob;
 
 public class PdDroidPatchView extends View implements OnTouchListener {
 	
@@ -319,6 +313,15 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		LinkedList<Subpatch> subpatches = new LinkedList<Subpatch>();
 		
 		for (String[] line: atomlines) {
+			
+			List<Widget> widgets;
+			if(subpatches.isEmpty()) widgets = this.widgets; else{
+				widgets = subpatches.peekLast().widgets;
+				subpatches.peekLast().parse(line);
+			}
+
+			int widgetsSize = widgets.size();
+			
 			if (line.length >= 4) {
 				// find canvas begin and end lines
 				if (line[1].equals("canvas")) {
@@ -332,14 +335,21 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 					{
 						Subpatch subpatch = new Subpatch(this, line);
 						subpatches.addLast(subpatch);
-						widgets.add(subpatch);
 					}
 				} else if (line[1].equals("restore")) {
 					Subpatch subpatch = subpatches.removeLast();
-					subpatch.parse(line);
+					if(subpatch.isGraphOnParent())
+					{
+						if(subpatches.isEmpty()){
+							this.widgets.add(subpatch);
+						}else{
+							subpatches.peekLast().widgets.add(subpatch);
+						}
+					}
 					level -= 1;
 				// find different types of UI element in the top level patch
-				} else if (level == 1) {
+				} else {
+					
 					if (line.length >= 2) {
 						// builtin pd things
 						if (line[1].equals("text")) {
@@ -366,41 +376,60 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 								widgets.add(new Radio(this, line, true));
 							} else if (line[4].equals("vu")) {
 								widgets.add(new VUMeter(this, line));
-							} else if (line[4].equals("mknob")) {
-								widgets.add(new Knob(this, line));
 							}
 							// special PdDroidParty abstractions
-							else if (line[4].equals("wordbutton")) {
-								widgets.add(new Wordbutton(this, line));
-							} else if (line[4].equals("numberbox")) {
-								widgets.add(new Numberboxfixed(this, line));
-							} else if (line[4].equals("taplist")) {
+							else if (line[4].equals("taplist")) {
 								widgets.add(new Taplist(this, line));
-							} else if (line[4].equals("display")) {
-								widgets.add(new Display(this, line));
 							} else if (line[4].equals("touch")) {
 								widgets.add(new Touch(this, line));
 							}
 						}
 					}
-				} else {
-					Subpatch subpatch = subpatches.peekLast();
-					if(subpatch != null)
-						subpatch.parse(line);
 				}
 				
 				// things that can be found at any depth and still work
 				if (line.length >= 5) {
-					if (line[4].equals("droidnetreceive")) {
-						widgets.add(new DroidNetReceive(this, line));
-					} else if (line[4].equals("droidnetclient")) {
-						widgets.add(new DroidNetClient(this, line));
-					} else if (line[4].equals("menubang")) {
-						new MenuBang(this, line);
-					} else if (line[4].equals("loadsave")) {
+					if (line[4].equals("loadsave")) {
 						new LoadSave(this, line);
-					} else if (line[4].equals("droidsystem")) {
-						new DroidSystem(this, line);
+					}
+				}
+			}
+			
+			// overrides
+			if(widgetsSize != widgets.size())
+			{
+				Widget lastWidget = widgets.get(widgets.size() -1);
+				
+				// resolve class
+				Class<? extends Widget> cls = null;
+				if(lastWidget.getLabel() != null)
+				{
+					cls = config.objectOverrides.get(lastWidget.getLabel());
+				}
+				if(cls == null)
+				{
+					cls = config.typeOverrides.get(lastWidget.getClass());
+				}
+				
+				if(cls != null)
+				{
+					try {
+						Constructor<? extends Widget> cons = cls.getConstructor(PdDroidPatchView.class, String[].class);
+						Widget newWidget = cons.newInstance(this, line);
+						widgets.remove(lastWidget);
+						widgets.add(newWidget);
+					} catch (NoSuchMethodException e) {
+						throw new Error(e);
+					} catch (SecurityException e) {
+						throw new Error(e);
+					} catch (InstantiationException e) {
+						throw new Error(e);
+					} catch (IllegalAccessException e) {
+						throw new Error(e);
+					} catch (IllegalArgumentException e) {
+						throw new Error(e);
+					} catch (InvocationTargetException e) {
+						throw new Error(e);
 					}
 				}
 			}
@@ -408,15 +437,24 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		
 		// Apply theme to all widgets
 		backgroundColor = config.theme.getBackgroundColor();
+		applyTheme(widgets);
+		
+		threadSafeInvalidate();
+	}
+	
+	private void applyTheme(List<Widget> widgets)
+	{
 		for(Widget widget : widgets)
 		{
 			widget.fgcolor = config.theme.getForegroundColor(widget);
 			widget.bgcolor = config.theme.getBackgroundColor(widget);
 			widget.labelcolor = config.theme.getLabelColor(widget);
+			
+			if(widget instanceof Subpatch)
+			{
+				applyTheme(((Subpatch) widget).widgets);
+			}
 		}
-		
-		
-		threadSafeInvalidate();
 	}
 
 	public String replaceDollarZero(String name) 
