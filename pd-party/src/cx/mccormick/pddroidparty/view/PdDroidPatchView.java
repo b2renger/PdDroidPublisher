@@ -415,15 +415,24 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		
 		// Apply theme to all widgets
 		backgroundColor = config.theme.getBackgroundColor();
+		applyTheme(widgets);
+		
+		threadSafeInvalidate();
+	}
+	
+	private void applyTheme(List<Widget> widgets)
+	{
 		for(Widget widget : widgets)
 		{
 			widget.fgcolor = config.theme.getForegroundColor(widget);
 			widget.bgcolor = config.theme.getBackgroundColor(widget);
 			widget.labelcolor = config.theme.getLabelColor(widget);
+			
+			if(widget instanceof Subpatch)
+			{
+				applyTheme(((Subpatch) widget).widgets);
+			}
 		}
-		
-		
-		threadSafeInvalidate();
 	}
 
 	public String replaceDollarZero(String name) 
