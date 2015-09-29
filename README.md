@@ -23,6 +23,8 @@ Steps :
   - The midi project needs to be cleaned (since bin directory has been unfortunately source controled). Right click on the project and **clean...**
   - All projects should be OK now.
 
+Note : if you want to import samples, you need to generate icons first (see tools/icon/readme.md for instructions)
+
 # create a new project :
 
 - duplicate a sample project, change its name an copy your patch in assets
