@@ -159,7 +159,7 @@ public class Slider extends Widget {
 	{
 		if(pid0 == pid) {
 			pid0 = -1;
-			//return true;
+			return true;
 		}
 		return false;
 	}
