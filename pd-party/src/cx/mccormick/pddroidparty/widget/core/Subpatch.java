@@ -234,6 +234,7 @@ public class Subpatch extends Widget
 			}
 			
 			paint.setStrokeWidth(0);
+			paint.setStyle(Paint.Style.FILL);
 			paint.setColor(labelcolor);
 			paint.setTextSize(fontsize);
 			paint.setTypeface(font);
