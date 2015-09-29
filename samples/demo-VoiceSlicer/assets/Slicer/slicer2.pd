@@ -1,0 +1,194 @@
+#N canvas 476 294 526 408 10;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array monitor 44100 float 2;
+#X coords 0 1 44100 -1 200 140 1;
+#X restore 296 102 graph;
+#N canvas 130 116 879 649 core 0;
+#X obj 104 106 adc~;
+#X obj 31 436 tabwrite~ monitor;
+#X obj 105 348 loadbang;
+#X obj 185 353 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 104 405 metro 1100;
+#X obj 32 355 clip~ -1 1;
+#X obj 32 313 *~ 3;
+#X obj 347 222 + 1;
+#X obj 355 513 tabread4~;
+#X obj 347 256 t b f;
+#X msg 372 426 set sample\$1;
+#X obj 354 610 dac~;
+#X obj 277 456 line~;
+#X obj 514 134 r autorec.s;
+#X obj 514 156 f 0;
+#X obj 543 155 + 1;
+#X msg 514 237 \; rec.\$1.r 1;
+#X obj 513 207 + 1;
+#X obj 398 19 r seq.s;
+#X obj 347 196 random 2;
+#X obj 316 133 randrum;
+#X obj 514 178 mod 2;
+#X obj 321 165 t b b;
+#X obj 278 364 + 22050;
+#X obj 277 391 pack f;
+#X msg 276 425 0 \, \$1 1000;
+#X obj 278 320 random 44100;
+#X obj 399 279 r pitch.delta.s;
+#X obj 398 315 r pitch.base.s;
+#X obj 384 122 r tracks.range.s;
+#X obj 384 144 + 1;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array mutes 4 float 3;
+#A 0 1 1 1 1;
+#X coords 0 1 4 0 200 140 1 0 0;
+#X restore 519 467 graph;
+#X obj 236 124 track~ 4;
+#X obj 355 569 *~ 1;
+#X obj 407 547 tabread mutes;
+#X obj 411 487 - 1;
+#X obj 392 232 spigot 1;
+#X obj 688 211 select 0;
+#X obj 688 157 r tracks.solo.s;
+#X obj 639 244 i 1;
+#X obj 732 237 bang;
+#X obj 732 291 i 0;
+#X obj 553 320 spigot;
+#X obj 643 317 +;
+#X obj 674 254 i 0;
+#X obj 775 292 i 1;
+#X obj 248 20 clock, f 12;
+#X obj 317 81 spigot 0;
+#X obj 101 230 track~ 1;
+#X obj 158 200 track~ 2;
+#X obj 197 165 track~ 3;
+#X obj 399 370 +;
+#X obj 446 344 r pitch.bend.s;
+#X obj 446 366 t b f;
+#X obj 647 22 r pitch.reset;
+#X obj 608 81 s pitch.base.r;
+#X obj 608 59 f 44100;
+#X obj 711 57 f 0;
+#X obj 711 79 s pitch.bend.r;
+#X connect 0 0 6 0;
+#X connect 0 0 32 0;
+#X connect 0 0 48 0;
+#X connect 0 0 49 0;
+#X connect 0 0 50 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 4 0 1 0;
+#X connect 5 0 1 0;
+#X connect 6 0 5 0;
+#X connect 7 0 36 0;
+#X connect 8 0 33 0;
+#X connect 9 0 26 0;
+#X connect 9 1 10 0;
+#X connect 9 1 35 0;
+#X connect 10 0 8 0;
+#X connect 12 0 8 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 14 0 21 0;
+#X connect 15 0 14 1;
+#X connect 17 0 16 0;
+#X connect 18 0 47 1;
+#X connect 19 0 7 0;
+#X connect 20 0 22 0;
+#X connect 20 0 43 0;
+#X connect 21 0 17 0;
+#X connect 22 1 19 0;
+#X connect 23 0 24 0;
+#X connect 24 0 25 0;
+#X connect 25 0 12 0;
+#X connect 26 0 23 0;
+#X connect 27 0 26 1;
+#X connect 28 0 51 0;
+#X connect 29 0 30 0;
+#X connect 30 0 21 1;
+#X connect 30 0 19 1;
+#X connect 32 0 9 0;
+#X connect 33 0 11 0;
+#X connect 34 0 33 1;
+#X connect 35 0 34 0;
+#X connect 36 0 9 0;
+#X connect 37 0 39 0;
+#X connect 37 0 44 0;
+#X connect 37 1 40 0;
+#X connect 37 1 43 1;
+#X connect 38 0 37 0;
+#X connect 39 0 36 1;
+#X connect 40 0 41 0;
+#X connect 40 0 45 0;
+#X connect 41 0 36 1;
+#X connect 42 0 9 0;
+#X connect 43 0 42 0;
+#X connect 44 0 42 1;
+#X connect 45 0 42 1;
+#X connect 46 2 47 0;
+#X connect 47 0 20 0;
+#X connect 48 0 9 0;
+#X connect 49 0 9 0;
+#X connect 50 0 9 0;
+#X connect 51 0 23 1;
+#X connect 52 0 53 0;
+#X connect 53 0 51 0;
+#X connect 53 1 51 1;
+#X connect 54 0 56 0;
+#X connect 54 0 57 0;
+#X connect 56 0 55 0;
+#X connect 57 0 58 0;
+#X restore 336 64 pd core;
+#X obj 74 205 tgl 32 0 enable.1.s empty empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X text 14 115 Record;
+#X obj 131 47 bng 32 250 50 0 autorec.s empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 73 107 tgl 32 0 rec.1.s rec.1.r empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 73 155 bng 32 250 50 0 play.1.s empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 117 205 tgl 32 0 enable.2.s empty empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 116 107 tgl 32 0 rec.2.s rec.2.r empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 116 155 bng 32 250 50 0 play.2.s empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 440 285 tgl 32 0 seq.s empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 24 163 Shot;
+#X text 424 255 Sequencer;
+#X obj 268 374 hsl 128 15 -22050 22050 0 1 pitch.bend.s pitch.bend.r
+Bend -2 -8 0 10 -262144 -1 -1 6350 1;
+#X obj 264 286 hsl 128 15 0 44100 0 1 pitch.delta.s empty Pitch_Mod.
+-2 -8 0 10 -262144 -1 -1 0 1;
+#X obj 48 327 hradio 36 1 1 5 tracks.solo.s empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 159 204 tgl 32 0 enable.3.s empty empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 158 106 tgl 32 0 rec.3.s rec.3.r empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 158 154 bng 32 250 50 0 play.3.s empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 202 204 tgl 32 0 enable.4.s empty empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 201 106 tgl 32 0 rec.4.s rec.4.r empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 201 154 bng 32 250 50 0 play.4.s empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 83 282 hradio 36 1 1 4 tracks.range.s empty empty 0 -8 0 10
+-262144 -1 -1 3;
+#X obj 395 64 clock-gui;
+#X text 8 337 Solo;
+#X text 53 367 Off;
+#X text 18 287 Range;
+#X text 50 55 AutoRecCycle;
+#X obj 15 262 cnv 15 400 1 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 16 30 cnv 15 400 1 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 425 23 Recorder;
+#X text 15 210 Mutes;
+#X obj 267 337 hsl 128 15 22050 66150 0 1 pitch.base.s pitch.base.r
+Pitch -2 -8 0 10 -262144 -1 -1 6350 1;
+#X obj 442 347 bng 32 250 50 0 pitch.reset empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 439 328 Reset;

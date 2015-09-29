@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty.wobbler;
+package cx.mccormick.pddroidparty.slicer;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -15,9 +15,9 @@ public class MainActivity extends Activity {
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
         config.midiClockMaxBPM = 480;
-        config.theme = new MonochromeTheme(0xff101933, 0xff202943, 0xff004ce6);
-        
-        PdDroidPartyLauncher.launch(this, "Wobbler/wobbler.pd", config);
+        config.theme = new MonochromeTheme(300, false);
+        config.objectOverrides.put("Bend", PitchBend.class);
+        PdDroidPartyLauncher.launch(this, "Slicer/slicer2.pd", config);
     }
     
 

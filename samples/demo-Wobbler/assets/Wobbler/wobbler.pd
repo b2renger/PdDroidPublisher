@@ -1,16 +1,16 @@
-#N canvas 461 117 443 381 10;
+#N canvas 525 132 447 427 10;
 #X declare -path ./rj;
-#X obj 18 277 hsl 250 25 0 1 0 0 wobble.s wobble.r WOBBLE 40 7 1 10
--262144 -1 -1 0 1;
-#X obj 18 200 hsl 250 25 0 1 0 0 glide.s glide.r GLIDE 40 7 1 10 -262144
--1 -1 0 1;
-#X obj 18 239 hsl 250 25 0 1 0 0 tone.s tone.r TONE 40 7 1 10 -262144
--1 -1 0 1;
+#X obj 19 343 hsl 250 25 30 60 0 0 tune.s tune.r TUNE 40 7 1 10 -262144
+-1 -4160 7700 1;
+#X obj 19 200 hsl 250 25 0 1 0 0 glide.s glide.r GLIDE 40 7 1 10 -262144
+-1 -4160 0 1;
+#X obj 19 239 hsl 250 25 0 1 0 0 tone.s tone.r TONE 40 7 1 10 -262144
+-1 -4160 8100 1;
 #X obj 61 20 tgl 25 0 autoplay.s autoplay.r AUTOPLAY 0 -10 1 10 -262144
--1 -1 0 1;
-#X obj 16 21 tgl 25 0 bass.s bass.r BASS 0 -10 1 10 -262144 -1 -1 0
-1;
-#N canvas 65 152 450 300 guts 1;
+-1 -4160 1 1;
+#X obj 16 20 tgl 25 0 bass.s bass.r BASS 0 -10 1 10 -262144 -1 -4160
+1 1;
+#N canvas 66 155 450 300 guts 0;
 #N canvas 65 54 1301 714 BASS 0;
 #X obj 19 271 osc~;
 #X obj 51 226 *~;
@@ -476,7 +476,7 @@
 #X connect 84 0 83 0;
 #X connect 85 0 1 0;
 #X restore 36 78 pd BASS;
-#N canvas 381 154 450 300 TIMEBASE 0;
+#N canvas 379 155 450 300 TIMEBASE 0;
 #X obj 121 109 + 1;
 #X obj 23 15 declare -path ./rj;
 #X obj 87 61 clock;
@@ -490,7 +490,7 @@
 #X connect 3 0 0 0;
 #X connect 3 0 5 0;
 #X restore 36 38 pd TIMEBASE;
-#N canvas 65 157 450 300 PATTERN 0;
+#N canvas 66 158 450 300 PATTERN 0;
 #X obj 127 277 outlet;
 #X obj 127 48 spigot;
 #X obj 127 68 mod 16;
@@ -522,7 +522,7 @@
 #X connect 12 0 6 1;
 #X connect 13 0 7 1;
 #X restore 36 58 pd PATTERN;
-#N canvas 158 198 316 271 IO 0;
+#N canvas 156 227 316 271 IO 0;
 #X obj 44 46 catch~ RIGHT;
 #X obj 6 25 catch~ LEFT;
 #X obj 33 189 dac~;
@@ -537,7 +537,7 @@
 #X connect 5 0 2 0;
 #X connect 6 0 2 1;
 #X restore 36 139 pd IO;
-#N canvas 726 191 450 300 msg_fwd 0;
+#N canvas 153 183 610 467 msg_fwd 0;
 #X obj 28 42 r glide.s;
 #X obj 88 72 r tone.s;
 #X obj 157 100 r wobble.s;
@@ -548,18 +548,77 @@
 #X obj 159 178 s Wobble;
 #X obj 251 177 s bass;
 #X obj 345 177 s autoplay;
+#X obj 219 248 r sel1.s;
+#X obj 219 363 + 42;
+#X obj 219 389 s note1.s;
+#X obj 219 335 -;
+#X obj 219 283 t b f;
+#X obj 219 307 12;
+#X obj 293 364 + 42;
+#X obj 293 336 -;
+#X obj 293 284 t b f;
+#X obj 293 308 12;
+#X obj 360 365 + 42;
+#X obj 360 337 -;
+#X obj 360 285 t b f;
+#X obj 360 309 12;
+#X obj 432 364 + 42;
+#X obj 432 336 -;
+#X obj 432 284 t b f;
+#X obj 432 308 12;
+#X obj 293 249 r sel2.s;
+#X obj 360 250 r sel3.s;
+#X obj 432 249 r sel4.s;
+#X obj 293 390 s note2.s;
+#X obj 360 391 s note3.s;
+#X obj 432 390 s note4.s;
+#X obj 532 256 r tune.s;
+#X obj 532 278 t b f;
 #X connect 0 0 5 0;
 #X connect 1 0 6 0;
 #X connect 2 0 7 0;
 #X connect 3 0 8 0;
 #X connect 4 0 9 0;
+#X connect 10 0 14 0;
+#X connect 11 0 12 0;
+#X connect 13 0 11 0;
+#X connect 14 0 15 0;
+#X connect 14 1 13 1;
+#X connect 15 0 13 0;
+#X connect 16 0 31 0;
+#X connect 17 0 16 0;
+#X connect 18 0 19 0;
+#X connect 18 1 17 1;
+#X connect 19 0 17 0;
+#X connect 20 0 32 0;
+#X connect 21 0 20 0;
+#X connect 22 0 23 0;
+#X connect 22 1 21 1;
+#X connect 23 0 21 0;
+#X connect 24 0 33 0;
+#X connect 25 0 24 0;
+#X connect 26 0 27 0;
+#X connect 26 1 25 1;
+#X connect 27 0 25 0;
+#X connect 28 0 18 0;
+#X connect 29 0 22 0;
+#X connect 30 0 26 0;
+#X connect 34 0 35 0;
+#X connect 35 0 24 0;
+#X connect 35 0 20 0;
+#X connect 35 0 16 0;
+#X connect 35 0 11 0;
+#X connect 35 1 24 1;
+#X connect 35 1 20 1;
+#X connect 35 1 16 1;
+#X connect 35 1 11 1;
 #X restore 36 118 pd msg_fwd;
 #X text 43 156 based on dubstep_bass pd patch by Joe White;
 #X text 34 235 + de vitesse dans les pattern lfo;
 #X text 33 260 3 synthés noise;
 #X connect 2 0 0 0;
-#X restore 288 260 pd guts;
-#X obj 288 340 clock-gui;
+#X restore 453 24 pd guts;
+#X obj 453 104 clock-gui;
 #N canvas 711 286 613 463 loadsave-interface 0;
 #X obj 44 15 s cb-save;
 #X obj 44 -6 r storage-save;
@@ -578,7 +637,7 @@
 #X connect 5 0 6 0;
 #X connect 7 0 9 0;
 #X connect 8 0 10 0;
-#X restore 288 301 pd loadsave-interface;
+#X restore 453 65 pd loadsave-interface;
 #N canvas 218 89 651 686 loadsave 0;
 #X obj 98 189 sssad/auto bass.s bass.r;
 #X obj 97 212 sssad/auto autoplay.s autoplay.r;
@@ -593,19 +652,25 @@
 #X obj 110 441 sssad/auto phalvl.s phalvl.r;
 #X obj 115 470 sssad/auto noilvl.s noilvl.r;
 #X obj 121 500 sssad/auto noiq.r noiq.r;
-#X restore 288 321 pd loadsave;
-#X obj 288 282 loadsave storage;
+#X restore 453 85 pd loadsave;
+#X obj 453 46 loadsave storage;
 #X obj 19 129 hsl 250 25 0 1 0 0 noilvl.s noilvl.r NOISE_LEVEL 40 7
-1 10 -262144 -1 -1 0 1;
+1 10 -262144 -1 -4160 0 1;
 #X obj 19 52 hsl 250 25 0 1 0 0 osclvl.s osclvl.r OSC_LEVEL 40 7 1
-10 -262144 -1 -1 0 1;
+10 -262144 -1 -4160 8000 1;
 #X obj 19 91 hsl 250 25 0 1 0 0 phalvl.s phalvl.r PHASOR_LEVEL 40 7
-1 10 -262144 -1 -1 0 1;
+1 10 -262144 -1 -4160 24900 1;
 #X obj 19 163 hsl 250 25 5 100 0 0 noiq.s noiq.r NOISE_RESONANCE 40
-7 1 10 -262144 -1 -1 0 1;
+7 1 10 -262144 -1 -4160 0 1;
 #X obj 220 24 wordbutton 50 20 save;
 #X obj 134 24 wordbutton 50 20 load;
-#X obj 36 315 numberbox 50 25 note1.r note1.s 24 127 48;
-#X obj 89 315 numberbox 50 25 note2.r note2.s 24 127 49;
-#X obj 142 315 numberbox 50 25 note3.r note3.s 24 127 48;
-#X obj 195 315 numberbox 50 25 note4.r note4.s 24 127 55;
+#X obj 325 22 vradio 28 1 0 13 sel2.s empty empty 0 -8 0 10 -262144
+-1 -1 9;
+#X obj 359 22 vradio 28 1 0 13 sel3.s empty empty 0 -8 0 10 -262144
+-1 -1 1;
+#X obj 394 22 vradio 28 1 0 13 sel4.s empty empty 0 -8 0 10 -262144
+-1 -1 9;
+#X obj 291 22 vradio 28 1 0 13 sel1.s empty empty 0 -8 0 10 -262144
+-1 -1 12;
+#X obj 19 277 hsl 250 25 0 1 0 0 wobble.s wobble.r WOBBLE 40 7 1 10
+-262144 -1 -4160 0 1;
