@@ -1,0 +1,47 @@
+#N canvas 278 249 500 235 10;
+#X obj 35 25 vsl 15 128 1 100 0 1 vls.s vls.r Lin_S 0 -9 0 10 -262144
+-1 -1 6300 1;
+#X obj 73 27 vsl 15 128 1 100 1 1 vgs.s vgs.r Log_S 0 -9 0 10 -262144
+-1 -1 10795 1;
+#X obj 109 27 vsl 15 128 1 100 0 1 vlj.s vlj.r Lin_J 0 -9 0 10 -262144
+-1 -1 6300 0;
+#X obj 146 28 vsl 15 128 1 100 1 1 vgj.s vgj.r Log_J 0 -9 0 10 -262144
+-1 -1 10795 0;
+#X floatatom 19 196 5 0 0 0 - vls.s -, f 5;
+#X floatatom 60 197 5 0 0 0 - vgs.s -, f 5;
+#X floatatom 103 197 5 0 0 0 - vlj.s -, f 5;
+#X floatatom 145 198 5 0 0 0 - vgj.s -, f 5;
+#X obj 196 27 vsl 15 128 1 100 0 0 v.s empty empty 0 -9 0 10 -262144
+-1 -1 6300 1;
+#X obj 115 253 r v.s;
+#X obj 13 317 s vls.r;
+#X obj 63 317 s vgs.r;
+#X obj 115 317 s vlj.r;
+#X obj 166 317 s vgj.r;
+#X obj 293 61 hsl 128 15 1 100 1 1 hgs.s hgs.r Log_S -2 -8 0 10 -262144
+-1 -1 10837 1;
+#X obj 294 91 hsl 128 15 1 100 0 1 hlj.s hlj.r Lin_J -2 -8 0 10 -262144
+-1 -1 6400 0;
+#X obj 293 119 hsl 128 15 1 100 1 1 hgj.s hgj.r Log_J -2 -8 0 10 -262144
+-1 -1 10837 0;
+#X obj 293 31 hsl 128 15 1 100 0 1 hls.s hls.r Lin_S -2 -8 0 10 -262144
+-1 -1 6400 1;
+#X floatatom 434 31 5 0 0 0 - hls.s -, f 5;
+#X floatatom 434 61 5 0 0 0 - hgs.s -, f 5;
+#X floatatom 435 94 5 0 0 0 - hlj.s -, f 5;
+#X floatatom 433 118 5 0 0 0 - hgj.s -, f 5;
+#X obj 393 255 r h.s;
+#X obj 291 319 s hls.r;
+#X obj 341 319 s hgs.r;
+#X obj 393 319 s hlj.r;
+#X obj 444 319 s hgj.r;
+#X obj 293 162 hsl 128 15 1 100 0 0 h.s empty empty -2 -8 0 10 -262144
+-1 -1 6400 1;
+#X connect 9 0 10 0;
+#X connect 9 0 11 0;
+#X connect 9 0 12 0;
+#X connect 9 0 13 0;
+#X connect 22 0 23 0;
+#X connect 22 0 24 0;
+#X connect 22 0 25 0;
+#X connect 22 0 26 0;
