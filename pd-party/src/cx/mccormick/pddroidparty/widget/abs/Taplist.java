@@ -1,6 +1,7 @@
 package cx.mccormick.pddroidparty.widget.abs;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.puredata.core.PdBase;
 
@@ -84,7 +85,7 @@ public class Taplist extends Widget {
 		drawCenteredText(canvas, atoms.get((int) val));
 	}
 
-	private void doSend() {
+	public void doSend() {
 		PdBase.sendFloat(sendname + "/idx", val);
 		PdHelper.send(sendname, atoms.get((int) val));
 	}
@@ -126,4 +127,9 @@ public class Taplist extends Widget {
 			receiveFloat((Float)args[0]);
 		}
 	}
+	
+	public List<String> getValues(){	
+		return atoms;
+	}
+	
 }
