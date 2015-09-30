@@ -1,4 +1,4 @@
-#N canvas 165 157 483 510 10;
+#N canvas 219 181 491 510 10;
 #X declare -path ./rj;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 32 177 hsl 250 25 0 1 0 0 glide.s glide.r GLIDE 40 7 1 10 -262144
@@ -6,10 +6,10 @@
 #X obj 33 225 hsl 250 50 0 1 0 0 tone.s tone.r TONE 40 7 1 10 -262144
 -1 -4160 0 1;
 #X obj 74 24 tgl 25 0 autoplay.s autoplay.r AUTOPLAY 0 -10 1 10 -262144
--1 -4160 0 1;
+-1 -4160 1 1;
 #X obj 29 24 tgl 25 0 bass.s bass.r BASS 0 -10 1 10 -262144 -1 -4160
-0 1;
-#N canvas 480 352 450 300 guts 0;
+1 1;
+#N canvas 915 430 450 300 guts 1;
 #N canvas 66 125 1301 554 BASS 0;
 #X obj 19 271 osc~;
 #X obj 19 252 +~;
@@ -541,7 +541,7 @@
 #X connect 3 0 5 0;
 #X connect 6 0 4 0;
 #X restore 37 51 pd TIMEBASE;
-#N canvas 329 292 706 430 PATTERN 0;
+#N canvas 327 293 706 430 PATTERN 0;
 #X obj 127 389 outlet;
 #X obj 127 48 spigot;
 #X obj 127 68 mod 16;
@@ -660,7 +660,7 @@
 #X connect 5 0 2 0;
 #X connect 6 0 2 1;
 #X restore 37 180 pd IO;
-#N canvas 151 184 610 467 msg_fwd 0;
+#N canvas 520 131 610 482 msg_fwd 0;
 #X obj 28 42 r glide.s;
 #X obj 88 72 r tone.s;
 #X obj 157 100 r wobble.s;
@@ -725,7 +725,7 @@
 #X connect 2 0 0 0;
 #X restore 539 37 pd guts;
 #X obj 539 117 clock-gui;
-#N canvas 707 288 613 463 loadsave-interface 0;
+#N canvas 705 289 613 463 loadsave-interface 0;
 #X obj 44 15 s cb-save;
 #X obj 44 -6 r storage-save;
 #X obj 194 -6 r storage-load;
@@ -744,21 +744,21 @@
 #X connect 9 0 7 0;
 #X connect 10 0 8 0;
 #X restore 539 78 pd loadsave-interface;
-#N canvas 657 81 651 686 loadsave 0;
+#N canvas 649 81 651 686 loadsave 1;
 #X obj 98 189 sssad/auto bass.s bass.r;
 #X obj 97 212 sssad/auto autoplay.s autoplay.r;
 #X obj 99 234 sssad/auto glide.s glide.r;
 #X obj 101 256 sssad/auto tone.s tone.r;
 #X obj 101 282 sssad/auto wobble.s wobble.r;
-#X obj 104 309 sssad/auto note1.s note1.r;
-#X obj 103 330 sssad/auto note2.s note2.r;
-#X obj 106 372 sssad/auto note4.s note4.r;
-#X obj 107 351 sssad/auto note3.s note3.r;
 #X obj 115 470 sssad/auto noilvl.s noilvl.r;
-#X obj 121 500 sssad/auto noiq.r noiq.r;
 #X obj 108 413 sssad/auto oscmix.s oscmix.r;
-#X obj 107 545 sssad/auto tune.s tune.r;
 #X obj 106 569 sssad/auto octavia.s octavia.r;
+#X obj 121 500 sssad/auto noiq.s noiq.r;
+#X obj 104 309 sssad/auto sel1.s sel1.r;
+#X obj 103 330 sssad/auto sel2.s sel2.r;
+#X obj 107 351 sssad/auto sel3.s sel3.r;
+#X obj 106 372 sssad/auto sel4.s sel4.r;
+#X obj 107 539 sssad/auto tune.s/idx tune.r;
 #X restore 539 98 pd loadsave;
 #X obj 539 59 loadsave storage;
 #X obj 32 99 hsl 250 25 0 1 0 0 noilvl.s noilvl.r NOISE_LEVEL 40 7
@@ -767,25 +767,25 @@
 -262144 -1 -4160 0 1;
 #X obj 32 131 hsl 250 25 1 100 1 0 noiq.s noiq.r NOISE_RESONANCE 40
 7 1 10 -262144 -1 -4160 0 1;
-#X obj 359 71 vradio 28 1 0 13 sel2.s empty empty 0 -8 0 10 -262144
--1 -1 0;
-#X obj 393 71 vradio 28 1 0 13 sel3.s empty empty 0 -8 0 10 -262144
--1 -1 0;
-#X obj 428 71 vradio 28 1 0 13 sel4.s empty empty 0 -8 0 10 -262144
--1 -1 0;
-#X obj 325 71 vradio 28 1 0 13 sel1.s empty empty 0 -8 0 10 -262144
--1 -1 12;
+#X obj 359 71 vradio 28 1 0 13 sel2.s sel2.r empty 0 -8 0 10 -262144
+-1 -1 5;
+#X obj 393 71 vradio 28 1 0 13 sel3.s sel3.r empty 0 -8 0 10 -262144
+-1 -1 5;
+#X obj 428 71 vradio 28 1 0 13 sel4.s sel4.r empty 0 -8 0 10 -262144
+-1 -1 5;
+#X obj 325 71 vradio 28 1 0 13 sel1.s sel1.r empty 0 -8 0 10 -262144
+-1 -1 5;
 #X obj 34 298 hsl 250 50 0 1 0 0 wobble.s wobble.r WOBBLE 40 7 1 10
 -262144 -1 -4160 0 1;
 #X text 2 61 SIN;
 #X text 285 61 TRI;
 #X obj 322 446 hradio 34 1 0 4 empty pattern.led TrackLeds 0 40 0 10
--262144 -1 -1 2;
+-262144 -1 -1 1;
 #X obj 294 16 hradio 26 1 1 5 octavia.s octavia.r empty 0 -8 0 10 -262144
 -1 -1 2;
 #X text 332 42 Octavia;
 #X obj 32 382 hradio 36 1 0 7 wobble.binary.select.s wobble.binary.select.r
-WobbleBinary 0 -16 0 10 -262144 -1 -1 2;
+WobbleBinary 0 -16 0 10 -262144 -1 -1 0;
 #X obj 51 444 hradio 36 1 0 6 wobble.ternary.select.s wobble.ternary.select.r
 WobbleTernary 0 -16 0 10 -262144 -1 -1 1;
 #X text 77 367 1;
