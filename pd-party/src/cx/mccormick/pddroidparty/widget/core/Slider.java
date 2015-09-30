@@ -12,14 +12,14 @@ public class Slider extends Widget {
 	private static final String TAG = "Slider";
 	
 	protected float min, max;
-	int log;
+	protected boolean log;
 	
 	int pid0=-1;			// pointer id,
 	float x0,y0,val0 ; 	// position of pointer, and value when pointer down.
 	
 	boolean orientation_horizontal = true;
 	boolean down = false;
-	int steady = 1;
+	protected boolean steady = true;
 	
 	WImage bg = new WImage();
 	WImage slider = new WImage();
@@ -39,7 +39,7 @@ public class Slider extends Widget {
 		
 		min = Float.parseFloat(atomline[7]);
 		max = Float.parseFloat(atomline[8]);
-		log = Integer.parseInt(atomline[9]);
+		log = Integer.parseInt(atomline[9]) != 0;
 		init = Integer.parseInt(atomline[10]);
 		sendname = app.replaceDollarZero(atomline[11]);
 		receivename = atomline[12];
@@ -51,7 +51,7 @@ public class Slider extends Widget {
 		bgcolor = PdGUI.getColor(Integer.parseInt(atomline[18]));
 		fgcolor = PdGUI.getColor(Integer.parseInt(atomline[19]));
 		labelcolor = PdGUI.getColor(Integer.parseInt(atomline[20]));
-		steady = Integer.parseInt(atomline[22]);
+		steady = Integer.parseInt(atomline[22]) != 0;
 
 		setval((float)(Float.parseFloat(atomline[21]) * 0.01 * (max - min) / ((horizontal ? Float.parseFloat(atomline[5]) : Float.parseFloat(atomline[6])) - 1) + min), min);
 		
@@ -91,6 +91,23 @@ public class Slider extends Widget {
 		setval(val);
 	}
 	
+	protected float getNormalizedPosition()
+	{
+		return getNormalizedPosition(val);
+	}
+	
+	protected float getNormalizedPosition(float v)
+	{
+		if(log)
+		{
+			return (float)((Math.log10(v) - Math.log10(min)) / (Math.log10(max) - Math.log10(min)));
+		}
+		else
+		{
+			return (v - min) / (max - min);
+		}
+	}
+	
 	public void draw(Canvas canvas) {
 		canvas.save();
 		canvas.clipRect(dRect.left, dRect.top, dRect.right, dRect.bottom + 1, Op.INTERSECT);
@@ -108,16 +125,16 @@ public class Slider extends Widget {
 			paint.setColor(fgcolor);
 			paint.setStrokeWidth(3);
 			if (orientation_horizontal) {
-				canvas.drawLine(Math.round(dRect.left + ((val - min) / (max - min)) * dRect.width()), Math.round(dRect.top /*+ 2*/), Math.round(dRect.left + ((val - min) / (max - min)) * dRect.width()), Math.round(dRect.bottom /*- 2*/), paint);
+				canvas.drawLine(Math.round(dRect.left + getNormalizedPosition() * dRect.width()), Math.round(dRect.top /*+ 2*/), Math.round(dRect.left + getNormalizedPosition() * dRect.width()), Math.round(dRect.bottom /*- 2*/), paint);
 			} else {
-				canvas.drawLine(Math.round(dRect.left /*+ 2*/), Math.round(dRect.bottom - ((val - min) / (max - min)) * dRect.height()), Math.round(dRect.right /*- 2*/), Math.round(dRect.bottom - ((val - min) / (max - min)) * dRect.height()), paint);
+				canvas.drawLine(Math.round(dRect.left /*+ 2*/), Math.round(dRect.bottom - getNormalizedPosition() * dRect.height()), Math.round(dRect.right /*- 2*/), Math.round(dRect.bottom - getNormalizedPosition() * dRect.height()), paint);
 			}
 
 		} else if (!slider.none()) {
 			if (orientation_horizontal) {
-				sRect.offsetTo((val - min) / (max - min) * (dRect.width() - sRect.width()) + dRect.left, dRect.top);
+				sRect.offsetTo(getNormalizedPosition() * (dRect.width() - sRect.width()) + dRect.left, dRect.top);
 			} else {
-				sRect.offsetTo(dRect.left, (1 - (val - min) / (max - min)) * (dRect.height() - sRect.height()) + dRect.top);
+				sRect.offsetTo(dRect.left, (1 - getNormalizedPosition()) * (dRect.height() - sRect.height()) + dRect.top);
 			}
 			slider.draw(canvas,sRect);
 			fg.draw(canvas);
@@ -131,11 +148,26 @@ public class Slider extends Widget {
 	}
 	
 	public float get_horizontal_val(float x) {
-		return (((x - dRect.left) / dRect.width()) * (max - min) + min);
+		if(log)
+			return (float)Math.pow(10, (((x - dRect.left) / dRect.width()) * (Math.log10(max) - Math.log10(min)) + Math.log10(min)));
+		else
+			return (((x - dRect.left) / dRect.width()) * (max - min) + min);
 	}
 	
 	public float get_vertical_val(float y) {
-		return (((dRect.height() - (y - dRect.top)) / dRect.height()) * (max - min) + min);
+		if(log)
+			return (float)Math.pow(10, ((dRect.height() - (y - dRect.top)) / dRect.height()) * (Math.log10(max) - Math.log10(min)) + Math.log10(min));
+		else
+			return (((dRect.height() - (y - dRect.top)) / dRect.height()) * (max - min) + min);
+	}
+	public float get_horizontal_val(float x, float x0) {
+		float xBase = dRect.left + getNormalizedPosition(val0) * dRect.width();
+		return get_horizontal_val(xBase + x - x0);
+	}
+	
+	public float get_vertical_val(float y, float y0) {
+		float yBase = dRect.bottom - getNormalizedPosition(val0) * dRect.height();
+		return get_vertical_val(yBase + y - y0);
 	}
 	
 	public boolean touchdown(int pid,float x,float y)
@@ -145,7 +177,7 @@ public class Slider extends Widget {
 			x0=x;
 			y0=y;
 			pid0=pid;
-			if(steady==0) {
+			if(!steady) {
 				if (orientation_horizontal) val = get_horizontal_val(x);
 				else val = get_vertical_val(y);
 			}
@@ -168,9 +200,23 @@ public class Slider extends Widget {
 	{
 		if(pid0 == pid) {
 			if (orientation_horizontal) {
-				val = steady * val0 + get_horizontal_val(x) - get_horizontal_val(x0) * steady;
+				if(steady)
+				{
+					val = get_horizontal_val(x, x0);
+				}
+				else
+				{
+					val = get_horizontal_val(x);
+				}
 			} else {
-				val = steady * val0 + get_vertical_val(y) - get_vertical_val(y0) * steady;
+				if(steady)
+				{
+					val = get_vertical_val(y, y0);
+				}
+				else
+				{
+					val = get_vertical_val(y);
+				}
 			}
 			// clamp the value
 			setval(val);
