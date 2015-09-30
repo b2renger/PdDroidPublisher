@@ -15,7 +15,10 @@ public class MainActivity extends Activity {
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
         config.midiClockMaxBPM = 480;
+        config.factory = WobblerFactory.class;
         config.objectOverrides.put("TrackLeds", TrackLed.class);
+        config.objectOverrides.put("WobbleBinary", WobbleSelector.class);
+        config.objectOverrides.put("WobbleTernary", WobbleSelector.class);
         config.theme = new MonochromeTheme(0xff101933, 0xff202943, 0xff004ce6);
         
         PdDroidPartyLauncher.launch(this, "Wobbler/wobbler.pd", config);

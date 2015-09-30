@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import cx.mccormick.pddroidparty.widget.Widget;
-
+import cx.mccormick.pddroidparty.widget.WidgetFactory;
 import cx.mccormick.pddroidparty.theme.Theme;
 
 @SuppressWarnings("serial")
@@ -31,4 +31,5 @@ public class PdDroidPartyConfig implements Serializable
 	
 	public Map<Class<? extends Widget>, Class<? extends Widget>> typeOverrides = new HashMap<Class<? extends Widget>, Class<? extends Widget>>();
 	public Map<String, Class<? extends Widget>> objectOverrides = new HashMap<String, Class<? extends Widget>>();
+	public Class<? extends WidgetFactory> factory = WidgetFactory.class;
 }

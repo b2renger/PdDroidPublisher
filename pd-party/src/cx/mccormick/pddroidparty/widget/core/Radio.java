@@ -75,9 +75,7 @@ public class Radio extends Widget
 		setupreceive();
 	}
 	
-	@Override
-	public void draw(Canvas canvas) 
-	{
+	protected void drawBackground(Canvas canvas) {
 		if (bg.draw(canvas)) 
 		{
 			if(!bgCell.none())
@@ -134,6 +132,9 @@ public class Radio extends Widget
 				}
 			}
 		}
+	}
+	
+	protected void drawForeground(Canvas canvas) {
 		RectF sRect = new RectF();
 		int index = (int)val;
 		if(horizontal)
@@ -172,7 +173,13 @@ public class Radio extends Widget
 			
 			canvas.drawRect(cellRect,paint);
 		}
-		
+	}
+	
+	@Override
+	public void draw(Canvas canvas) 
+	{
+		drawBackground(canvas);
+		drawForeground(canvas);
 		drawLabel(canvas);
 	}
 	

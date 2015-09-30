@@ -1,14 +1,14 @@
-#N canvas 167 156 483 510 10;
+#N canvas 165 157 483 510 10;
 #X declare -path ./rj;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 32 177 hsl 250 25 0 1 0 0 glide.s glide.r GLIDE 40 7 1 10 -262144
 -1 -4160 0 1;
 #X obj 33 225 hsl 250 50 0 1 0 0 tone.s tone.r TONE 40 7 1 10 -262144
--1 -4160 9100 1;
+-1 -4160 0 1;
 #X obj 74 24 tgl 25 0 autoplay.s autoplay.r AUTOPLAY 0 -10 1 10 -262144
--1 -4160 1 1;
+-1 -4160 0 1;
 #X obj 29 24 tgl 25 0 bass.s bass.r BASS 0 -10 1 10 -262144 -1 -4160
-1 1;
+0 1;
 #N canvas 480 352 450 300 guts 0;
 #N canvas 66 125 1301 554 BASS 0;
 #X obj 19 271 osc~;
@@ -764,7 +764,7 @@
 #X obj 32 99 hsl 250 25 0 1 0 0 noilvl.s noilvl.r NOISE_LEVEL 40 7
 1 10 -262144 -1 -4160 0 1;
 #X obj 32 56 hsl 250 25 0 1 0 0 oscmix.s oscmix.r OSC_MIX 40 7 1 10
--262144 -1 -4160 5800 1;
+-262144 -1 -4160 0 1;
 #X obj 32 131 hsl 250 25 1 100 1 0 noiq.s noiq.r NOISE_RESONANCE 40
 7 1 10 -262144 -1 -4160 0 1;
 #X obj 359 71 vradio 28 1 0 13 sel2.s empty empty 0 -8 0 10 -262144
@@ -776,7 +776,7 @@
 #X obj 325 71 vradio 28 1 0 13 sel1.s empty empty 0 -8 0 10 -262144
 -1 -1 12;
 #X obj 34 298 hsl 250 50 0 1 0 0 wobble.s wobble.r WOBBLE 40 7 1 10
--262144 -1 -4160 7500 1;
+-262144 -1 -4160 0 1;
 #X text 2 61 SIN;
 #X text 285 61 TRI;
 #X obj 322 446 hradio 34 1 0 4 empty pattern.led TrackLeds 0 40 0 10
@@ -785,9 +785,9 @@
 -1 -1 2;
 #X text 332 42 Octavia;
 #X obj 32 382 hradio 36 1 0 7 wobble.binary.select.s wobble.binary.select.r
-empty 0 -8 0 10 -262144 -1 -1 2;
+WobbleBinary 0 -16 0 10 -262144 -1 -1 2;
 #X obj 51 444 hradio 36 1 0 6 wobble.ternary.select.s wobble.ternary.select.r
-empty 0 -8 0 10 -262144 -1 -1 1;
+WobbleTernary 0 -16 0 10 -262144 -1 -1 1;
 #X text 77 367 1;
 #X text 152 367 4;
 #X text 117 367 2;
