@@ -1,0 +1,49 @@
+#N canvas 424 371 827 301 10;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X obj 236 7 declare -path ../../../../pd-party/droidparty-abstractions
+;
+#X obj 182 134 r note.s;
+#X obj 184 90 r note.s/idx;
+#X obj 503 102 s note.r/idx;
+#X obj 582 247 s note.r;
+#X msg 182 151 \; canvas label \$1;
+#X obj 123 133 cnv 15 50 50 empty canvas A 10 25 0 40 -233017 -66577
+0;
+#X text 24 151 Symbol received;
+#X obj 422 137 bng 30 250 50 0 b1.s empty A 8 14 0 25 -262144 -1 -1
+;
+#X obj 184 107 s idx.r;
+#X obj 118 91 nbx 5 30 -1e+37 1e+37 0 0 empty idx.r empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X text 20 94 Index received;
+#X obj 422 83 nbx 5 30 -1e+37 1e+37 0 0 idx.s empty empty 0 -8 0 10
+-262144 -1 -1 1 256;
+#X text 324 86 Send Index;
+#X obj 503 82 r idx.s;
+#X obj 582 140 r b1.s;
+#X obj 456 137 bng 30 250 50 0 b2.s empty B 8 14 0 25 -262144 -1 -1
+;
+#X obj 490 137 bng 30 250 50 0 b3.s empty C 8 14 0 25 -262144 -1 -1
+;
+#X obj 524 137 bng 30 250 50 0 b4.s empty D 8 14 0 25 -262144 -1 -1
+;
+#X text 329 144 Send Symbol;
+#X obj 637 140 r b2.s;
+#X obj 641 189 r b3.s;
+#X obj 696 189 r b4.s;
+#X obj 43 21 taplist 100 40 note.r note.s taplabel A B C D;
+#X msg 582 164 A;
+#X msg 638 164 B;
+#X msg 641 213 C;
+#X msg 697 213 D;
+#X connect 1 0 5 0;
+#X connect 2 0 9 0;
+#X connect 14 0 3 0;
+#X connect 15 0 24 0;
+#X connect 20 0 25 0;
+#X connect 21 0 26 0;
+#X connect 22 0 27 0;
+#X connect 24 0 4 0;
+#X connect 25 0 4 0;
+#X connect 26 0 4 0;
+#X connect 27 0 4 0;
