@@ -33,7 +33,8 @@ public class CustomActivity extends Activity {
         
         // TODO can't bind to specific object since taplist
         // do not have name !
-        config.typeOverrides.put(Taplist.class, CustomTaplist.class);
+        //config.typeOverrides.put(Taplist.class, CustomTaplist.class);
+        config.objectOverrides.put("custom-taplist", CustomTaplist.class);
         
         // Global override (all types hidden)
         config.typeOverrides.put(Bang.class, HiddenWidget.class);
