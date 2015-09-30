@@ -40,6 +40,7 @@ import cx.mccormick.pddroidparty.pd.PdHelper;
 import cx.mccormick.pddroidparty.pd.PdPatch;
 import cx.mccormick.pddroidparty.svg.SVGRenderer;
 import cx.mccormick.pddroidparty.widget.Widget;
+import cx.mccormick.pddroidparty.widget.WidgetFactory;
 import cx.mccormick.pddroidparty.widget.abs.LoadSave;
 import cx.mccormick.pddroidparty.widget.abs.Taplist;
 import cx.mccormick.pddroidparty.widget.abs.Touch;
@@ -310,6 +311,15 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		//ArrayList<String> canvases = new ArrayList<String>();
 		int level = 0;
 		
+		WidgetFactory factory;
+		try {
+			factory = config.factory.newInstance();
+		} catch (InstantiationException e) {
+			throw new Error(e);
+		} catch (IllegalAccessException e) {
+			throw new Error(e);
+		}
+		
 		LinkedList<Subpatch> subpatches = new LinkedList<Subpatch>();
 		
 		for (String[] line: atomlines) {
@@ -418,6 +428,7 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 						Widget newWidget = cons.newInstance(this, line);
 						widgets.remove(lastWidget);
 						widgets.add(newWidget);
+						lastWidget = newWidget;
 					} catch (NoSuchMethodException e) {
 						throw new Error(e);
 					} catch (SecurityException e) {
@@ -432,6 +443,7 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 						throw new Error(e);
 					}
 				}
+				factory.onNewWidget(lastWidget);
 			}
 		}
 		
