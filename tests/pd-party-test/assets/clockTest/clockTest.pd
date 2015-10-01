@@ -1,0 +1,64 @@
+#N canvas 391 156 471 326 10;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X obj 75 271 declare -path ../../../../pd-party/droidparty-abstractions
+;
+#X obj 9 158 nbx 5 30 -1e+37 1e+37 0 0 empty bpm bpm 0 -8 0 10 -262144
+-1 -1 120 256;
+#X obj 9 209 nbx 5 30 -1e+37 1e+37 0 0 empty dt dt_(ms) 0 -8 0 10 -262144
+-1 -1 500 256;
+#X obj 105 162 bng 80 250 50 0 empty beat beat 0 -7 0 10 -262144 -1
+-1;
+#X obj 335 165 bng 80 250 50 0 empty reset reset 0 -7 0 10 -262144
+-1 -1;
+#X obj 12 2 cnv 15 250 100 empty empty empty 20 12 0 14 -232576 -66577
+0;
+#X obj 16 11 tgl 25 0 clockmode.s clockmode.r Switch_clocks 30 10 0
+12 -262144 -1 -1 0 1;
+#X obj 82 45 nbx 5 20 0 800 0 0 localbpm.s localbpm.r empty 0 -8 0
+10 -262144 -1 -1 120 256;
+#X obj 83 72 bng 25 250 50 0 1x.s 1x.r 1x 6 12 0 12 -262144 -1 -1;
+#X obj 113 72 bng 25 250 50 0 2x.s 2x.r 2x 6 12 0 12 -262144 -1 -1
+;
+#X obj 143 72 bng 25 250 50 0 3x.s 3x.r 3x 6 12 0 12 -262144 -1 -1
+;
+#X obj 173 72 bng 25 250 50 0 4x.s 4x.r 4x 6 12 0 12 -262144 -1 -1
+;
+#X obj 203 72 bng 25 250 50 0 6x.s 6x.r 6x 6 12 0 12 -262144 -1 -1
+;
+#X obj 233 72 bng 25 250 50 0 8x.s 8x.r 8x 6 12 0 12 -262144 -1 -1
+;
+#X obj 15 45 cnv 15 60 25 clocktag clocktag local 2 12 0 14 -233017
+-66577 0;
+#N canvas 819 135 450 300 movingcanvas 0;
+#X obj 125 -31 r clockmode.s;
+#X obj 58 46 * 30;
+#X msg 216 126 \; clocktag label \$1;
+#X obj 220 37 sel 0 1;
+#X obj 219 80 symbol local;
+#X obj 243 105 symbol net;
+#X msg 59 96 \; clocktag pos 15 \$1;
+#X obj 58 74 + 45;
+#X connect 0 0 1 0;
+#X connect 0 0 3 0;
+#X connect 1 0 7 0;
+#X connect 3 0 4 0;
+#X connect 3 1 5 0;
+#X connect 4 0 2 0;
+#X connect 5 0 2 0;
+#X connect 7 0 6 0;
+#X restore 168 103 pd movingcanvas;
+#X obj 215 166 bng 80 250 50 0 empty rawmidi rawmidi 0 -7 0 10 -262144
+-1 -1;
+#X obj 278 5 clock;
+#X obj 278 27 s bpm;
+#X obj 284 52 s dt;
+#X obj 291 74 s beat;
+#X obj 298 97 s rawmidi;
+#X obj 305 120 s reset;
+#X obj 178 11 tgl 25 0 audioon.s empty bip 30 10 0 12 -262144 -1 -1
+0 1;
+#X connect 17 0 18 0;
+#X connect 17 1 19 0;
+#X connect 17 2 20 0;
+#X connect 17 3 21 0;
+#X connect 17 4 22 0;

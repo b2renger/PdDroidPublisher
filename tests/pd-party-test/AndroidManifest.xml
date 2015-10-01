@@ -99,6 +99,12 @@
             </intent-filter>
         </activity> 
         
+         <activity android:name=".clockTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity> 
+        
         
         <activity android:name="cx.mccormick.pddroidparty.PdDroidParty" android:launchMode="singleTask" android:label="@string/app_name" android:screenOrientation="landscape"></activity>
         <service android:name="org.puredata.android.service.PdService" />
