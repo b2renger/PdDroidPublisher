@@ -1,0 +1,37 @@
+#N canvas 615 213 302 121 10;
+#X obj 5 4 tgl 25 1 clockmode.s clockmode.r Switch_clocks 30 10 0 12
+-262144 -1 -1 0 1;
+#X obj 71 38 nbx 5 20 0 800 0 1 localbpm.s localbpm.r empty 0 -8 0
+10 -262144 -1 -1 169 256;
+#X obj 72 65 bng 25 250 50 0 1x.s 1x.r 1x 6 12 0 12 -262144 -1 -1;
+#X obj 102 65 bng 25 250 50 0 2x.s 2x.r 2x 6 12 0 12 -262144 -1 -1
+;
+#X obj 132 65 bng 25 250 50 0 3x.s 3x.r 3x 6 12 0 12 -262144 -1 -1
+;
+#X obj 162 65 bng 25 250 50 0 4x.s 4x.r 4x 6 12 0 12 -262144 -1 -1
+;
+#X obj 192 65 bng 25 250 50 0 6x.s 6x.r 6x 6 12 0 12 -262144 -1 -1
+;
+#X obj 222 65 bng 25 250 50 0 8x.s 8x.r 8x 6 12 0 12 -262144 -1 -1
+;
+#X obj 5 35 cnv 15 60 25 clocktag clocktag local 2 12 0 14 -233017
+-66577 0;
+#N canvas 65 82 450 300 movingcanvas 0;
+#X obj 125 -31 r clockmode.s;
+#X obj 58 46 * 30;
+#X msg 216 126 \; clocktag label \$1;
+#X obj 220 37 sel 0 1;
+#X obj 219 80 symbol local;
+#X obj 243 105 symbol net;
+#X msg 59 96 \; clocktag pos 5 \$1;
+#X obj 58 70 + 35;
+#X connect 0 0 1 0;
+#X connect 0 0 3 0;
+#X connect 1 0 7 0;
+#X connect 3 0 4 0;
+#X connect 3 1 5 0;
+#X connect 4 0 2 0;
+#X connect 5 0 2 0;
+#X connect 7 0 6 0;
+#X restore 155 94 pd movingcanvas;
+#X coords 0 121 1 120 250 100 0;

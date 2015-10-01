@@ -1,0 +1,74 @@
+#N canvas 65 82 670 357 10;
+#X obj 91 107 clock;
+#X obj 8 162 nbx 5 30 -1e+37 1e+37 0 0 empty empty bpm 0 -8 0 10 -262144
+-1 -1 58 256;
+#X obj 8 213 nbx 5 30 -1e+37 1e+37 0 0 empty empty dt_(ms) 0 -8 0 10
+-262144 -1 -1 1034.48 256;
+#X obj 104 166 bng 80 250 50 0 empty empty beat 0 -7 0 10 -262144 -1
+-1;
+#X obj 334 169 bng 80 250 50 0 empty empty reset 0 -7 0 10 -262144
+-1 -1;
+#X obj 11 6 cnv 15 250 100 empty empty empty 20 12 0 14 -232576 -66577
+0;
+#X obj 15 15 tgl 25 1 clockmode.s clockmode.r Switch_clocks 30 10 0
+12 -262144 -1 -1 1 1;
+#X obj 81 49 nbx 5 20 0 800 0 1 localbpm.s localbpm.r empty 0 -8 0
+10 -262144 -1 -1 58 256;
+#X obj 82 76 bng 25 250 50 0 1x.s 1x.r 1x 6 12 0 12 -262144 -1 -1;
+#X obj 112 76 bng 25 250 50 0 2x.s 2x.r 2x 6 12 0 12 -262144 -1 -1
+;
+#X obj 142 76 bng 25 250 50 0 3x.s 3x.r 3x 6 12 0 12 -262144 -1 -1
+;
+#X obj 172 76 bng 25 250 50 0 4x.s 4x.r 4x 6 12 0 12 -262144 -1 -1
+;
+#X obj 202 76 bng 25 250 50 0 6x.s 6x.r 6x 6 12 0 12 -262144 -1 -1
+;
+#X obj 232 76 bng 25 250 50 0 8x.s 8x.r 8x 6 12 0 12 -262144 -1 -1
+;
+#X obj 15 75 cnv 15 60 25 clocktag clocktag net 2 12 0 14 -233017 -66577
+0;
+#N canvas 819 135 450 300 movingcanvas 0;
+#X obj 125 -31 r clockmode.s;
+#X obj 58 46 * 30;
+#X msg 216 126 \; clocktag label \$1;
+#X obj 220 37 sel 0 1;
+#X obj 219 80 symbol local;
+#X obj 243 105 symbol net;
+#X msg 59 96 \; clocktag pos 15 \$1;
+#X obj 58 74 + 45;
+#X connect 0 0 1 0;
+#X connect 0 0 3 0;
+#X connect 1 0 7 0;
+#X connect 3 0 4 0;
+#X connect 3 1 5 0;
+#X connect 4 0 2 0;
+#X connect 5 0 2 0;
+#X connect 7 0 6 0;
+#X restore 167 107 pd movingcanvas;
+#X text 266 7 this is the content of clock-gui it lets you control
+the clock from pd \, this controls are duplicated in the main bar of
+the android app;
+#X text 267 60 Note that with pd on desktop for now you cannot be master
+in a net jam and control the master bpm.;
+#X text 9 259 Reset bangs when switching clock or when reset is pressed
+on the android clock gui.;
+#N canvas 590 221 450 300 android-clock-binding 0;
+#X text 28 32 - clockmode.s : you should send a 0 for local clock and
+1 for net clock;
+#X text 28 69 - localbpm.s : send a bpm value to the local clock;
+#X text 28 102 - 1x.s : send a bang to enable normal speed;
+#X text 30 119 - 2x.s : send a bang to enable 2x speed;
+#X text 30 140 - 3x.s : send a bang to enable 3x speed;
+#X text 32 157 - 4x.s : send a bang to enable 4x speed;
+#X text 34 177 - 6x.s : send a bang to enable 6x speed;
+#X text 36 194 - 8x.s : send a bang to enable 8x speed;
+#X restore 8 322 pd android-clock-binding;
+#X obj 214 170 bng 80 250 50 0 empty empty rawmidi 0 -7 0 10 -262144
+-1 -1;
+#X text 9 291 Raw midi is the bpm x24;
+#X text 171 322 Raw midi is the bpm x24;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 0 2 3 0;
+#X connect 0 3 20 0;
+#X connect 0 4 4 0;
