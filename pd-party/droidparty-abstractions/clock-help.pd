@@ -1,4 +1,4 @@
-#N canvas 65 82 670 357 10;
+#N canvas 65 87 670 357 10;
 #X obj 91 107 clock;
 #X obj 8 162 nbx 5 30 -1e+37 1e+37 0 0 empty empty bpm 0 -8 0 10 -262144
 -1 -1 58 256;
@@ -67,6 +67,8 @@ on the android clock gui.;
 -1 -1;
 #X text 9 291 Raw midi is the bpm x24;
 #X text 171 322 Raw midi is the bpm x24;
+#X obj 167 15 tgl 25 1 audioon.s audioon.r bip 30 10 0 12 -262144 -1
+-1 1 1;
 #X connect 0 0 1 0;
 #X connect 0 1 2 0;
 #X connect 0 2 3 0;
