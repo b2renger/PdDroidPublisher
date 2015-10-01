@@ -56,6 +56,11 @@ public class Taplist extends Widget {
 
 		// listen out for floats from Pd
 		setupreceive();
+		
+		if (isValidSymbolName(receivename)) {
+			parent.registerReceiver(receivename + "/idx", this);
+		}
+
 
 		// try and load images
 		on.load(TAG, "on", label, sendname, receivename);
@@ -123,6 +128,12 @@ public class Taplist extends Widget {
 	
 	public void receiveMessage(String symbol, Object... args) {
 		if(widgetreceiveSymbol(symbol,args)) return;
+		if(args.length == 0)
+		{
+			int index = atoms.indexOf(symbol);
+			if(index >= 0)
+			receiveFloat(index);
+		}
 		if (args.length > 0 && args[0].getClass().equals(Float.class)) {
 			receiveFloat((Float)args[0]);
 		}
