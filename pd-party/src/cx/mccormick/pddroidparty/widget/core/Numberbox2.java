@@ -72,6 +72,8 @@ public class Numberbox2 extends Numberbox {
 		
 		// draw value
 		canvas.drawText(fmt.format(val), dRect.left + 3 + dRect.height()/2, dRect.centerY() - paint.ascent()/2, paint);
+		drawLabel(canvas);
+	
 	}
 }
 
