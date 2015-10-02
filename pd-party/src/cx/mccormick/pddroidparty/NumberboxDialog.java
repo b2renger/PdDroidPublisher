@@ -17,6 +17,8 @@ public class NumberboxDialog extends Activity {
 		//Context context = getApplicationContext();
 		final EditText number = (EditText)findViewById(R.id.number);
 		Intent intent = getIntent();
+		number.setSelectAllOnFocus(true);
+		number.setInputType(2);
 		number.setText("" + intent.getFloatExtra("number", 0));
 		
 		Button ok = (Button)findViewById(R.id.ok);

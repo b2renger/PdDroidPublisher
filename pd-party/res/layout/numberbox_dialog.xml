@@ -29,7 +29,6 @@
 		
 		<EditText
 			android:id="@+id/number"
-			android:inputType="number|numberSigned|numberDecimal"
 			android:padding="5dip"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"/>
