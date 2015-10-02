@@ -1,4 +1,4 @@
-#N canvas 65 87 670 357 10;
+#N canvas 65 92 670 357 10;
 #X obj 91 107 clock;
 #X obj 8 162 nbx 5 30 -1e+37 1e+37 0 0 empty empty bpm 0 -8 0 10 -262144
 -1 -1 58 256;
@@ -10,9 +10,9 @@
 -1 -1;
 #X obj 11 6 cnv 15 250 100 empty empty empty 20 12 0 14 -232576 -66577
 0;
-#X obj 15 15 tgl 25 1 clockmode.s clockmode.r Switch_clocks 30 10 0
-12 -262144 -1 -1 1 1;
-#X obj 81 49 nbx 5 20 0 800 0 1 localbpm.s localbpm.r empty 0 -8 0
+#X obj 15 15 tgl 25 0 clockmode.s clockmode.r Switch_clocks 30 10 0
+12 -262144 -1 -1 0 1;
+#X obj 81 49 nbx 5 20 0 800 0 0 localbpm.s localbpm.r empty 0 -8 0
 10 -262144 -1 -1 58 256;
 #X obj 82 76 bng 25 250 50 0 1x.s 1x.r 1x 6 12 0 12 -262144 -1 -1;
 #X obj 112 76 bng 25 250 50 0 2x.s 2x.r 2x 6 12 0 12 -262144 -1 -1
@@ -25,8 +25,8 @@
 ;
 #X obj 232 76 bng 25 250 50 0 8x.s 8x.r 8x 6 12 0 12 -262144 -1 -1
 ;
-#X obj 15 75 cnv 15 60 25 clocktag clocktag net 2 12 0 14 -233017 -66577
-0;
+#X obj 15 45 cnv 15 60 25 clocktag clocktag local 2 12 0 14 -233017
+-66577 0;
 #N canvas 819 135 450 300 movingcanvas 0;
 #X obj 125 -31 r clockmode.s;
 #X obj 58 46 * 30;
@@ -68,7 +68,7 @@ on the android clock gui.;
 #X text 9 291 Raw midi is the bpm x24;
 #X text 171 322 Raw midi is the bpm x24;
 #X obj 167 15 tgl 25 1 audioon.s audioon.r bip 30 10 0 12 -262144 -1
--1 1 1;
+-1 0 1;
 #X connect 0 0 1 0;
 #X connect 0 1 2 0;
 #X connect 0 2 3 0;

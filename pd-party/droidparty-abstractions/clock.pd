@@ -107,7 +107,7 @@
 #X text 455 34 // 250 == start;
 #X text 65 5 net clock connected to Publisher's java code;
 #X text 114 218 local clock;
-#N canvas 1004 167 450 300 receiveFROMgui 0;
+#N canvas 916 172 450 300 receiveFROMgui 0;
 #X obj 26 17 r 1x.s;
 #X msg 26 37 1;
 #X obj 26 60 s netclockspeed.s;
@@ -123,9 +123,9 @@
 #X obj 225 134 s netclockspeed.s;
 #X obj 225 91 r 6x.s;
 #X obj 225 206 s netclockspeed.s;
-#X msg 225 183 4;
 #X obj 225 163 r 8x.s;
 #X msg 225 111 6;
+#X msg 225 183 8;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 4 0 5 0;
@@ -134,10 +134,10 @@
 #X connect 8 0 6 0;
 #X connect 10 0 11 0;
 #X connect 11 0 9 0;
-#X connect 13 0 17 0;
-#X connect 15 0 14 0;
-#X connect 16 0 15 0;
-#X connect 17 0 12 0;
+#X connect 13 0 16 0;
+#X connect 15 0 17 0;
+#X connect 16 0 12 0;
+#X connect 17 0 14 0;
 #X restore 84 72 pd receiveFROMgui;
 #X obj 338 296 list prepend;
 #X obj 407 269 r netclockspeed.s;
@@ -150,7 +150,7 @@
 #X obj 709 146 outlet reset;
 #X obj 338 537 t b b;
 #X obj 338 441 t b b;
-#X obj 643 300 outlet midiraw;
+#X obj 601 301 outlet midiraw;
 #X obj 515 485 r audioon.s;
 #X obj 515 506 sel 1 0;
 #X connect 0 0 1 0;
