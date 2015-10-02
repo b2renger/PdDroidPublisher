@@ -1,12 +1,12 @@
-#N canvas 84 118 1275 602 10;
+#N canvas 81 123 1275 602 10;
 #X floatatom 33 18 5 0 0 0 - - nombre.2.r, f 5;
 #X text 74 17 comment;
 #X obj 130 19 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 152 18 tgl 15 0 toggle.2.r empty empty 17 7 0 10 -262144 -1
 -1 0 1;
-#X obj 179 18 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 0 256;
+#X obj 179 18 nbx 5 14 -1e+37 1e+37 0 0 empty empty Nombre2 0 -8 0
+10 -262144 -1 -1 0 256;
 #X obj 242 21 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 268 20 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
