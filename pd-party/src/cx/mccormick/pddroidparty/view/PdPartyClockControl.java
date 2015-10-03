@@ -166,6 +166,8 @@ public class PdPartyClockControl extends RelativeLayout
 				int bpm = progress + config.midiClockMinBPM;
 				midiManager.setBpm(bpm);
 				bpmLabel.setText(String.valueOf(bpm)); 
+				PdBase.sendFloat("localbpm.s", bpm);
+				PdBase.sendFloat("localbpm.r", bpm);// mimic in the gui abstraction.
 			}
 		});
 		
