@@ -1,4 +1,4 @@
-#N canvas 382 171 471 326 10;
+#N canvas 379 176 471 326 10;
 #X declare -path ../../../pd-party/droidparty-abstractions;
 #X obj 9 158 nbx 5 30 -1e+37 1e+37 0 0 empty bpm bpm 0 -8 0 10 -262144
 -1 -1 0 256;
@@ -52,8 +52,8 @@
 #X obj 291 74 s beat;
 #X obj 298 97 s rawmidi;
 #X obj 305 120 s reset;
-#X obj 178 11 tgl 25 0 audioon.s empty bip 30 10 0 12 -262144 -1 -1
-0 1;
+#X obj 178 11 tgl 25 0 audioon.s audioon.r bip 30 10 0 12 -262144 -1
+-1 0 1;
 #X obj 75 271 declare -path ../../../pd-party/droidparty-abstractions
 ;
 #X obj 278 5 clock;

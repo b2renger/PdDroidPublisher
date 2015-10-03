@@ -118,10 +118,12 @@ public class PdPartyClockControl extends RelativeLayout {
 						audioOn = false;
 						btAudio.setImageResource(R.drawable.ic_action_soundoff);
 						PdBase.sendFloat("audioon.s", 0);
+						PdBase.sendFloat("audioon.r", 0);
 					} else {
 						audioOn = true;
 						btAudio.setImageResource(R.drawable.ic_action_soundon);
 						PdBase.sendFloat("audioon.s", 1);
+						PdBase.sendFloat("audioon.r", 1);
 					}
 				}
 				return true;
