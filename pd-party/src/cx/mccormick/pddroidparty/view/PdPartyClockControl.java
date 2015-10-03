@@ -1,5 +1,7 @@
 package cx.mccormick.pddroidparty.view;
 
+import org.puredata.core.PdBase;
+
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
@@ -24,9 +26,11 @@ public class PdPartyClockControl extends RelativeLayout
 	
 	private ImageButton btStart;
 	private ImageButton btReStart;
+	private ImageButton btAudio;
 	
 	private boolean started;
 	private boolean startedOnce;
+	private boolean audioOn = false;
 	
 	private MidiConfigDialog dialog;
 
@@ -110,6 +114,35 @@ public class PdPartyClockControl extends RelativeLayout
 			}
 		});
 		
+		btAudio = new ImageButton(context);
+		btAudio.setImageResource(R.drawable.ic_action_soundon);
+		btAudio.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if(event.getAction() == MotionEvent.ACTION_UP)
+				{
+					return v.performClick();
+				}
+				if(event.getAction() == MotionEvent.ACTION_DOWN)
+				{
+					
+					if (audioOn){
+						audioOn = false;
+						btAudio.setImageResource(R.drawable.ic_action_soundoff);
+						PdBase.sendFloat("audioon.s", 0);
+						
+					}
+					else {
+						audioOn = true;
+						btAudio.setImageResource(R.drawable.ic_action_soundon);
+						PdBase.sendFloat("audioon.s", 1);
+					}
+					
+				}
+				return true;
+			}
+		});
+		
 		final TextView bpmLabel = new TextView(context);
 		bpmLabel.setText(String.valueOf(config.midiClockDefaultBPM));
 		
@@ -165,10 +198,13 @@ public class PdPartyClockControl extends RelativeLayout
 				offsetLabel.setText(String.valueOf(value) + "ms"); 
 			}
 		});
+		
+		
 
 		
 		main.addView(btStart);
 		main.addView(btReStart);
+		main.addView(btAudio);
 		main.addView(slider);
 		main.addView(bpmLabel);
 		main.addView(offsetSlider);
