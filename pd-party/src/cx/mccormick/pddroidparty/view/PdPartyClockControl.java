@@ -57,6 +57,7 @@ public class PdPartyClockControl extends RelativeLayout
 		started = true;
 		midiManager.startClock();
 		btStart.setImageResource(R.drawable.ic_action_pause);
+		//PdBase.sendFloat(recv, x)
 	}
 	
 	private void stop()
@@ -115,7 +116,7 @@ public class PdPartyClockControl extends RelativeLayout
 		});
 		
 		btAudio = new ImageButton(context);
-		btAudio.setImageResource(R.drawable.ic_action_soundon);
+		btAudio.setImageResource(R.drawable.ic_action_soundoff);
 		btAudio.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -124,20 +125,17 @@ public class PdPartyClockControl extends RelativeLayout
 					return v.performClick();
 				}
 				if(event.getAction() == MotionEvent.ACTION_DOWN)
-				{
-					
+				{				
 					if (audioOn){
 						audioOn = false;
 						btAudio.setImageResource(R.drawable.ic_action_soundoff);
-						PdBase.sendFloat("audioon.s", 0);
-						
+						PdBase.sendFloat("audioon.s", 0);			
 					}
 					else {
 						audioOn = true;
 						btAudio.setImageResource(R.drawable.ic_action_soundon);
 						PdBase.sendFloat("audioon.s", 1);
 					}
-					
 				}
 				return true;
 			}
