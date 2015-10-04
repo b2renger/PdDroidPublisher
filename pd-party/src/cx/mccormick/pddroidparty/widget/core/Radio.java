@@ -5,9 +5,9 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import cx.mccormick.pddroidparty.pd.PdGUI;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
-import cx.mccormick.pddroidparty.widget.Widget;
+import cx.mccormick.pddroidparty.widget.OrientedWidget;
 
-public class Radio extends Widget
+public class Radio extends OrientedWidget
 {
 	private static final String TAG = "Radio";
 
@@ -15,14 +15,11 @@ public class Radio extends Widget
 	WImage bg = new WImage();
 	WImage button = new WImage();
 
-	protected boolean horizontal;
 	protected int size, count;
 	
 	public Radio(PdDroidPatchView app, String[] atomline, boolean horizontal) 
 	{
-		super(app);
-		
-		this.horizontal = horizontal;
+		super(app, horizontal);
 		
 		// parse
 		float x = Float.parseFloat(atomline[2]) ;

@@ -39,6 +39,7 @@ import cx.mccormick.pddroidparty.pd.DroidPartyReceiver;
 import cx.mccormick.pddroidparty.pd.PdHelper;
 import cx.mccormick.pddroidparty.pd.PdPatch;
 import cx.mccormick.pddroidparty.svg.SVGRenderer;
+import cx.mccormick.pddroidparty.widget.OrientedWidget;
 import cx.mccormick.pddroidparty.widget.Widget;
 import cx.mccormick.pddroidparty.widget.WidgetFactory;
 import cx.mccormick.pddroidparty.widget.abs.LoadSave;
@@ -424,8 +425,25 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 				if(cls != null)
 				{
 					try {
-						Constructor<? extends Widget> cons = cls.getConstructor(PdDroidPatchView.class, String[].class);
-						Widget newWidget = cons.newInstance(this, line);
+						Widget newWidget;
+						if(lastWidget instanceof OrientedWidget)
+						{
+							try
+							{
+								Constructor<? extends Widget> cons = cls.getConstructor(PdDroidPatchView.class, String[].class, boolean.class);
+								newWidget = cons.newInstance(this, line, ((OrientedWidget) lastWidget).isHorizontal());
+							}
+							catch(NoSuchMethodException e)
+							{
+								Constructor<? extends Widget> cons = cls.getConstructor(PdDroidPatchView.class, String[].class);
+								newWidget = cons.newInstance(this, line);
+							}
+						}
+						else
+						{
+							Constructor<? extends Widget> cons = cls.getConstructor(PdDroidPatchView.class, String[].class);
+							newWidget = cons.newInstance(this, line);
+						}
 						widgets.remove(lastWidget);
 						widgets.add(newWidget);
 						lastWidget = newWidget;

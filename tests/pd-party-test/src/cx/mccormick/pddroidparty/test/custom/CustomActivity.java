@@ -27,7 +27,8 @@ public class CustomActivity extends Activity {
         config.midiClockMaxBPM = 480;
         
         // specific override examples
-        config.objectOverrides.put("hsl-custom", CustomSlider.class);
+        config.objectOverrides.put("hsl-custom-square", CustomSlider.class);
+        config.objectOverrides.put("hsl-custom", RibbonSlider.class);
         config.objectOverrides.put("vsl-custom", RibbonSlider.class);
         config.objectOverrides.put("bang-custom", CustomBang.class);
         

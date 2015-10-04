@@ -8,9 +8,9 @@ public class WobbleSelector extends Radio
 {
 	WobbleSelectorGroup group;
 	
-	public WobbleSelector(PdDroidPatchView app, String[] atomline) 
+	public WobbleSelector(PdDroidPatchView app, String[] atomline, boolean horizontal) 
 	{
-		super(app, atomline, true);
+		super(app, atomline, horizontal);
 	}
 
 	@Override
