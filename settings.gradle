@@ -1,5 +1,5 @@
 
-include 'pd-for-android', 'midi', 'pd-party', 'svg-android', 'lib', 'svg-android-test', 'pd-party-test', 'demo-AcidBox', 'demo-Wobbler', 'demo-Glitcher', 'demo-ChipSequencer', 'demo-VoiceSlicer'
+include 'pd-for-android', 'midi', 'pd-party', 'svg-android', 'lib', 'svg-android-test', 'pd-party-test', 'demo-AcidBass', 'demo-AcidDrums', 'demo-Wobbler', 'demo-Glitcher', 'demo-ChipSequencer', 'demo-VoiceSlicer'
 
 project(':pd-for-android').projectDir = new File(settingsDir, "pd-for-android/PdCore")
 project(':midi').projectDir = new File(settingsDir, "pd-for-android/midi/AndroidMidi")
@@ -7,7 +7,8 @@ project(':midi').projectDir = new File(settingsDir, "pd-for-android/midi/Android
 project(':svg-android-test').projectDir = new File(settingsDir, "tests/svg-android-test")
 project(':pd-party-test').projectDir = new File(settingsDir, "tests/pd-party-test")
 
-project(':demo-AcidBox').projectDir = new File(settingsDir, "samples/demo-AcidBox")
+project(':demo-AcidBass').projectDir = new File(settingsDir, "samples/demo-AcidBass")
+project(':demo-AcidDrums').projectDir = new File(settingsDir, "samples/demo-AcidDrums")
 project(':demo-Wobbler').projectDir = new File(settingsDir, "samples/demo-Wobbler")
 project(':demo-Glitcher').projectDir = new File(settingsDir, "samples/demo-Glitcher")
 project(':demo-ChipSequencer').projectDir = new File(settingsDir, "samples/demo-ChipSequencer")
