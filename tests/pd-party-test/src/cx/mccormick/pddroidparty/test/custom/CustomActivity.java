@@ -5,6 +5,7 @@ import android.os.Bundle;
 import cx.mccormick.pddroidparty.PdDroidPartyConfig;
 import cx.mccormick.pddroidparty.PdDroidPartyLauncher;
 import cx.mccormick.pddroidparty.widget.abs.Taplist;
+import cx.mccormick.pddroidparty.widget.abs.Touch;
 import cx.mccormick.pddroidparty.widget.core.Bang;
 import cx.mccormick.pddroidparty.widget.core.Canvasrect;
 import cx.mccormick.pddroidparty.widget.core.Comment;
@@ -31,11 +32,9 @@ public class CustomActivity extends Activity {
         config.objectOverrides.put("hsl-custom", RibbonSlider.class);
         config.objectOverrides.put("vsl-custom", RibbonSlider.class);
         config.objectOverrides.put("bang-custom", CustomBang.class);
-        
-        // TODO can't bind to specific object since taplist
-        // do not have name !
-        //config.typeOverrides.put(Taplist.class, CustomTaplist.class);
+        config.objectOverrides.put("array-custom", CustomArray.class);
         config.objectOverrides.put("custom-taplist", CustomTaplist.class);
+        config.objectOverrides.put("sub-custom", CustomSubpatch.class);
         
         // Global override (all types hidden)
         config.typeOverrides.put(Bang.class, HiddenWidget.class);
@@ -45,9 +44,12 @@ public class CustomActivity extends Activity {
         config.typeOverrides.put(Numberbox2.class, HiddenWidget.class);
         config.typeOverrides.put(Radio.class, HiddenWidget.class);
         config.typeOverrides.put(Slider.class, HiddenWidget.class);
-        config.typeOverrides.put(Subpatch.class, HiddenWidget.class);
+        config.typeOverrides.put(Subpatch.class, HiddenSubpatch.class);
         config.typeOverrides.put(Toggle.class, HiddenWidget.class);
         config.typeOverrides.put(VUMeter.class, HiddenWidget.class);
+        
+        config.typeOverrides.put(Taplist.class, HiddenWidget.class);
+        config.typeOverrides.put(Touch.class, HiddenWidget.class);
         
         PdDroidPartyLauncher.launch(this, "custom/custom.pd", config);
     }

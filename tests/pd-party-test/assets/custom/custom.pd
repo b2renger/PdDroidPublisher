@@ -1,4 +1,5 @@
 #N struct 1041template-marker float a float b;
+#N struct 1046template-marker float a float b;
 #N canvas 100 172 1216 484 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 363 430 hsl 128 15 0 1 0 0 volume empty hsl-custom -2 -8 0 10
@@ -65,7 +66,8 @@
 #X obj 853 6 declare -path ../../../../pd-party/droidparty-abstractions
 ;
 #X obj 1069 54 touch 64 64 myTouch;
-#X obj 993 104 taplist 32 32 tl.r tl.s normal-taplist A B C D;
-#X obj 993 50 taplist 32 32 tl.r tl.s custom-taplist A B C D;
+#X obj 996 56 taplist 32 32 tl.r tl.s normal-taplist A B C D;
+#X obj 994 242 taplist 32 32 tl.r tl.s custom-taplist A B C D;
 #X obj 380 40 hsl 128 15 0 1 0 0 volume empty vsl-Volume -2 -8 0 10
 -262144 -1 -1 0 1;
+#X obj 1075 238 touch 64 64 customTouch;

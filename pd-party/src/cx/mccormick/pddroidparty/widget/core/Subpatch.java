@@ -31,16 +31,40 @@ public class Subpatch extends Widget
 		float [] buffer;
 	}
 	
-	WImage background = new WImage();
+	protected WImage background = new WImage();
 	
-	private Array array;
+	protected Array array;
 	
 	// TODO use dRect instead
-	private int top, bottom, left, right, zoneWidth, zoneHeight, HMargin, VMargin;
-	private int x, y;
-	boolean graphOnParent;
+	protected int top, bottom, left, right, zoneWidth, zoneHeight, HMargin, VMargin;
+	protected int x, y;
+	protected boolean graphOnParent;
 	
 	public List<Widget> widgets = new ArrayList<Widget>();
+	
+	/**
+	 * Constructor overridden by custom Subpatch.
+	 * @param subpatch
+	 */
+	public Subpatch(Subpatch subpatch) {
+		super(subpatch.parent);
+		background = subpatch.background;
+		array = subpatch.array;
+		top = subpatch.top;
+		bottom = subpatch.bottom;
+		left = subpatch.left;
+		right = subpatch.right;
+		zoneWidth = subpatch.zoneWidth;
+		zoneHeight = subpatch.zoneHeight;
+		HMargin = subpatch.HMargin;
+		VMargin = subpatch.VMargin;
+		x = subpatch.x;
+		y = subpatch.y;
+		graphOnParent = subpatch.graphOnParent;
+		widgets = subpatch.widgets;
+		dRect = subpatch.dRect;
+		label = subpatch.label;
+	}
 	
 	public Subpatch(PdDroidPatchView app, String[] atomline) {
 		super(app);
@@ -86,7 +110,7 @@ public class Subpatch extends Widget
 			if(atomline[1].equals("array"))
 			{
 				array = new Array();
-				array.name = atomline[2];
+				label = array.name = atomline[2];
 				array.length = Integer.parseInt(atomline[3]);
 				array.type = atomline[4];
 				int options = Integer.parseInt(atomline[5]);
@@ -124,6 +148,10 @@ public class Subpatch extends Widget
 				dRect.right += x;
 				dRect.top += y;
 				dRect.bottom += y;
+				if(atomline.length >= 6)
+				{
+					label = atomline[5];
+				}
 			}
 			// TODO handle array definition (saved)
 		}
@@ -145,117 +173,141 @@ public class Subpatch extends Widget
 		}
 	}
 	
-	@Override
-	public void draw(Canvas canvas) 
+	protected void drawBackground(Canvas canvas)
 	{
-		if(!graphOnParent) return;
-		
 		if(background.draw(canvas))
 		{
 			paint.setStyle(Paint.Style.FILL);
 			paint.setColor(bgcolor);	
 			canvas.drawRect(x, y, x + zoneWidth, y + zoneHeight, paint);
 		}
-		
+	}
+	
+	protected void drawEdges(Canvas canvas)
+	{
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setColor(fgcolor);
 		paint.setStrokeWidth(1);
 		canvas.drawRect(x, y, x + zoneWidth, y + zoneHeight, paint);
+	}
+	
+	protected void drawArrayCurve(Canvas canvas)
+	{
+		paint.setStyle(Paint.Style.STROKE);
+		paint.setColor(fgcolor);
 		paint.setStrokeWidth(3);
-		if(array != null)
+		if(array.drawType == Array.DRAWTYPE_POINTS)
 		{
-			if(array.drawType == Array.DRAWTYPE_POINTS)
+			float ppx = 0, ppy = 0;
+			if(array.length < zoneWidth)
 			{
-				float ppx = 0, ppy = 0;
-				if(array.length < zoneWidth)
+				for(int i=0 ; i<array.buffer.length+1 ; i++)
 				{
-					for(int i=0 ; i<array.buffer.length+1 ; i++)
-					{
-						float px = x + (float)i * (float)zoneWidth / (float)array.buffer.length;
-						if(i > 0){
-							float value = array.buffer[i-1];
-							float py = y + zoneHeight * (float)(value - bottom) / (float)(top - bottom);
-							canvas.drawLine(ppx, py, px, py, paint);
-						}
-						ppx = px;
-					}
-				}
-				else
-				{
-					for(int i=0 ; i<zoneWidth ; i++)
-					{
-						int index = (int)((float)array.buffer.length * (float)i / (float)(zoneWidth));
-						float value = array.buffer[index];
-						float px = x + (float)i;
+					float px = x + (float)i * (float)zoneWidth / (float)array.buffer.length;
+					if(i > 0){
+						float value = array.buffer[i-1];
 						float py = y + zoneHeight * (float)(value - bottom) / (float)(top - bottom);
-						if(i > 0){
-							canvas.drawLine(ppx, ppy, px, py, paint);
-						}
-						ppx = px;
-						ppy = py;
+						canvas.drawLine(ppx, py, px, py, paint);
 					}
+					ppx = px;
 				}
-				
 			}
-			// TODO handle bezier drawing
 			else
 			{
-			
-				float ppx = 0, ppy = 0;
-				if(array.length < zoneWidth)
+				for(int i=0 ; i<zoneWidth ; i++)
 				{
-					for(int i=0 ; i<array.buffer.length ; i++)
-					{
-						float value = array.buffer[i];
-						float px = x + (float)i * (float)zoneWidth / (float)array.buffer.length;
-						float py = y + zoneHeight * (float)(value - bottom) / (float)(top - bottom);
-						if(i > 0){
-							canvas.drawLine(ppx, ppy, px, py, paint);
-						}
-						ppx = px;
-						ppy = py;
+					int index = (int)((float)array.buffer.length * (float)i / (float)(zoneWidth));
+					float value = array.buffer[index];
+					float px = x + (float)i;
+					float py = y + zoneHeight * (float)(value - bottom) / (float)(top - bottom);
+					if(i > 0){
+						canvas.drawLine(ppx, ppy, px, py, paint);
 					}
-				}
-				else
-				{
-					for(int i=0 ; i<zoneWidth ; i++)
-					{
-						int index = (int)((float)array.buffer.length * (float)i / (float)(zoneWidth));
-						float value = array.buffer[index];
-						float px = x + (float)i;
-						float py = y + zoneHeight * (float)(value - bottom) / (float)(top - bottom);
-						if(i > 0){
-							canvas.drawLine(ppx, ppy, px, py, paint);
-						}
-						ppx = px;
-						ppy = py;
-					}
+					ppx = px;
+					ppy = py;
 				}
 			}
 			
-			paint.setStrokeWidth(0);
-			paint.setStyle(Paint.Style.FILL);
-			paint.setColor(labelcolor);
-			paint.setTextSize(fontsize);
-			paint.setTypeface(font);
-			canvas.drawText(array.name, dRect.left, dRect.top - paint.descent() - 2, paint);
-
+		}
+		// TODO handle bezier drawing
+		else
+		{
+		
+			float ppx = 0, ppy = 0;
+			if(array.length < zoneWidth)
+			{
+				for(int i=0 ; i<array.buffer.length ; i++)
+				{
+					float value = array.buffer[i];
+					float px = x + (float)i * (float)zoneWidth / (float)array.buffer.length;
+					float py = y + zoneHeight * (float)(value - bottom) / (float)(top - bottom);
+					if(i > 0){
+						canvas.drawLine(ppx, ppy, px, py, paint);
+					}
+					ppx = px;
+					ppy = py;
+				}
+			}
+			else
+			{
+				for(int i=0 ; i<zoneWidth ; i++)
+				{
+					int index = (int)((float)array.buffer.length * (float)i / (float)(zoneWidth));
+					float value = array.buffer[index];
+					float px = x + (float)i;
+					float py = y + zoneHeight * (float)(value - bottom) / (float)(top - bottom);
+					if(i > 0){
+						canvas.drawLine(ppx, ppy, px, py, paint);
+					}
+					ppx = px;
+					ppy = py;
+				}
+			}
+		}
+	}
+	
+	protected void drawArrayLabel(Canvas canvas)
+	{
+		paint.setStrokeWidth(0);
+		paint.setStyle(Paint.Style.FILL);
+		paint.setColor(labelcolor);
+		paint.setTextSize(fontsize);
+		paint.setTypeface(font);
+		canvas.drawText(array.name, dRect.left, dRect.top - paint.descent() - 2, paint);
+	}
+	
+	protected void drawSubpatchContent(Canvas canvas)
+	{
+		canvas.save();
+		Matrix matrix = new Matrix();
+		matrix.postTranslate(x - HMargin, y - VMargin);
+		canvas.concat(matrix);
+		canvas.clipRect(new RectF(HMargin, VMargin, HMargin + dRect.width(), VMargin + dRect.height()), Op.INTERSECT);
+		for(Widget widget : widgets)
+		{
+			widget.draw(canvas);
+		}
+		canvas.restore();
+	}
+	
+	@Override
+	public void draw(Canvas canvas) 
+	{
+		if(!graphOnParent) return;
+		
+		drawBackground(canvas);
+		drawEdges(canvas);
+		
+		if(array != null)
+		{
+			drawArrayCurve(canvas);
+			drawArrayLabel(canvas);
 		}
 		// sub patch mode !
 		else
 		{
-			canvas.save();
-			Matrix matrix = new Matrix();
-			matrix.postTranslate(x - HMargin, y - VMargin);
-			canvas.concat(matrix);
-			canvas.clipRect(new RectF(HMargin, VMargin, HMargin + dRect.width(), VMargin + dRect.height()), Op.INTERSECT);
-			for(Widget widget : widgets)
-			{
-				widget.draw(canvas);
-			}
-			canvas.restore();
+			drawSubpatchContent(canvas);
 		}
-
 	}
 	
 	@Override
