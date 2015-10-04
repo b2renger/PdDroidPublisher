@@ -1,10 +1,10 @@
 #N struct 2273template-marker float a float b;
-#N canvas 95 100 901 609 10;
+#N canvas 95 100 828 609 10;
 #X declare -path z_nrci_abs;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#X obj 631 70 cnv 15 40 240 empty \$0-cursor empty 20 12 0 14 -258113
+#X obj 743 70 cnv 15 40 240 empty \$0-cursor empty 20 12 0 14 -258113
 -66577 0;
-#N canvas 65 54 1301 714 audio 0;
+#N canvas 935 82 651 686 audio 1;
 #N canvas 478 102 862 680 synthetiser 0;
 #X obj 198 101 line~;
 #X obj 126 19 mtof;
@@ -120,12 +120,12 @@ des objets volants.;
 #X connect 53 0 18 0;
 #X connect 54 0 10 0;
 #X connect 55 0 54 0;
-#X restore 137 62 pd synthetiser;
+#X restore 299 184 pd synthetiser;
 #N canvas 687 108 667 680 synth-seq 0;
 #X obj 75 -88 r pos;
 #X obj 75 -59 sel 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15;
 #X msg 127 380 set \$1 \$2 \$3;
-#X msg 130 401 0 0 1;
+#X msg 130 401 0 0 0;
 #X obj 56 462 outlet;
 #X obj 75 343 t a;
 #X obj 29 376 route 0;
@@ -214,12 +214,12 @@ des objets volants.;
 #X connect 21 0 5 0;
 #X connect 23 0 2 0;
 #X connect 23 0 5 0;
-#X restore 137 39 pd synth-seq;
-#X obj 107 537 dac~;
-#X obj 256 -173 loadbang;
-#X obj 256 -27 s \$0-loadbang;
-#X obj 340 -166 r wordbutton-reset;
-#X msg 300 -93 0;
+#X restore 299 161 pd synth-seq;
+#X obj 269 659 dac~;
+#X obj 474 59 loadbang;
+#X obj 474 205 s \$0-loadbang;
+#X obj 558 66 r wordbutton-reset;
+#X msg 518 139 0;
 #N canvas 639 82 450 300 ringmod 0;
 #X obj 211 40 inlet;
 #X obj 46 34 inlet~;
@@ -303,7 +303,7 @@ des objets volants.;
 #X connect 23 0 7 0;
 #X connect 23 1 16 0;
 #X connect 24 0 23 1;
-#X restore 138 231 pd ringmod;
+#X restore 300 353 pd ringmod;
 #N canvas 0 50 450 300 Quantiz 0;
 #X obj -64 53 inlet~;
 #X obj 48 360 outlet~;
@@ -371,42 +371,42 @@ des objets volants.;
 #X connect 10 0 1 0;
 #X connect 10 1 2 0;
 #X connect 11 0 10 1;
-#X restore 138 252 pd Quantiz;
-#X obj 213 156 unpack f f;
-#X obj 211 203 * 100;
-#X obj 268 203 * 8;
-#X obj 213 134 r fxcontrol1;
-#X obj 116 446 tanh~, f 10;
-#X text 152 18 SYNTHE;
-#X obj 270 177 route 0;
-#X obj 213 177 route 0;
-#X obj 138 410 *~;
-#X obj 157 324 / 127;
-#X msg 157 345 \$1 5;
-#X obj 157 366 line~;
+#X restore 300 374 pd Quantiz;
+#X obj 375 278 unpack f f;
+#X obj 373 325 * 100;
+#X obj 430 325 * 8;
+#X obj 375 256 r fxcontrol1;
+#X obj 278 568 tanh~, f 10;
+#X text 314 140 SYNTHE;
+#X obj 432 299 route 0;
+#X obj 375 299 route 0;
+#X obj 300 532 *~;
+#X obj 319 446 / 127;
+#X msg 319 467 \$1 5;
+#X obj 319 488 line~;
 #N canvas 559 329 591 316 reset 0;
 #X obj 31 20 inlet;
 #X obj 51 163 s cb-load;
 #X msg 42 115 ../savefiles/empty;
 #X connect 0 0 2 0;
 #X connect 2 0 1 0;
-#X restore 438 -76 pd reset;
-#X obj 387 -134 b;
-#X obj 156 303 r fromVolume;
-#X obj 158 523 s~ audio, f 10;
-#X obj 1 169 s pos;
-#X obj -44 133 mod 16;
-#X obj 8 193 s beat;
-#X obj -142 82 s notetime;
-#X obj -44 80 f 0;
-#X obj -18 80 + 1;
-#X obj -125 -5 clock, f 16;
-#X obj -43 341 pack f \$0;
-#X obj -44 289 * 41;
-#X floatatom 10 141 5 0 0 0 - - -, f 5;
-#X msg -43 364 \; \$2-cursor pos \$1 70;
-#X floatatom -21 220 5 0 0 0 - - -, f 5;
-#X obj -43 314 + 98;
+#X restore 656 156 pd reset;
+#X obj 605 98 b;
+#X obj 318 425 r fromVolume;
+#X obj 320 645 s~ audio, f 10;
+#X obj 163 291 s pos;
+#X obj 118 255 mod 16;
+#X obj 170 315 s beat;
+#X obj 20 204 s notetime;
+#X obj 118 202 f 0;
+#X obj 144 202 + 1;
+#X obj 37 117 clock, f 16;
+#X obj 119 463 pack f \$0;
+#X floatatom 172 263 5 0 0 0 - - -, f 5;
+#X msg 119 486 \; \$2-cursor pos \$1 70;
+#X floatatom 141 342 5 0 0 0 - - -, f 5;
+#X obj 119 436 + 53;
+#X obj 118 408 * 46;
 #X connect 0 0 7 0;
 #X connect 1 0 0 0;
 #X connect 3 0 4 0;
@@ -434,111 +434,111 @@ des objets volants.;
 #X connect 23 0 18 0;
 #X connect 26 0 25 0;
 #X connect 26 0 27 0;
-#X connect 26 0 33 0;
+#X connect 26 0 37 0;
 #X connect 29 0 30 0;
 #X connect 29 0 26 0;
-#X connect 29 0 34 0;
+#X connect 29 0 33 0;
 #X connect 30 0 29 1;
 #X connect 31 1 28 0;
 #X connect 31 2 29 0;
 #X connect 31 4 29 1;
-#X connect 32 0 35 0;
-#X connect 33 0 37 0;
-#X connect 36 0 33 0;
-#X connect 37 0 32 0;
+#X connect 32 0 34 0;
+#X connect 35 0 37 0;
+#X connect 36 0 32 0;
+#X connect 37 0 36 0;
 #X restore 44 26 pd audio;
-#X obj 100 220 tgl 36 0 accent1.s accent1.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 141 220 tgl 36 0 accent2.s accent2.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 182 220 tgl 36 0 accent3.s accent3.r empty 17 7 0 10 -262144
+#X obj 55 220 tgl 36 0 accent1.s accent1.r empty 17 7 0 10 -262144
 -1 -1 1 1;
-#X obj 223 220 tgl 36 0 accent4.s accent4.r empty 17 7 0 10 -262144
+#X obj 101 220 tgl 36 0 accent2.s accent2.r empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 147 220 tgl 36 0 accent3.s accent3.r empty 17 7 0 10 -262144
 -1 -1 0 1;
-#X obj 264 220 tgl 36 0 accent5.s accent5.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 305 220 tgl 36 0 accent6.s accent6.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 346 220 tgl 36 0 accent7.s accent7.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 387 220 tgl 36 0 accent8.s accent8.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 428 220 tgl 36 0 accent9.s accent9.r empty 17 7 0 10 -262144
--1 -1 0 1;
+#X obj 193 220 tgl 36 0 accent4.s accent4.r empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 239 220 tgl 36 0 accent5.s accent5.r empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 285 220 tgl 36 0 accent6.s accent6.r empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 331 220 tgl 36 0 accent7.s accent7.r empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 377 220 tgl 36 0 accent8.s accent8.r empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 423 220 tgl 36 0 accent9.s accent9.r empty 17 7 0 10 -262144
+-1 -1 1 1;
 #X obj 469 220 tgl 36 0 accent10.s accent10.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 510 220 tgl 36 0 accent11.s accent11.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 551 220 tgl 36 0 accent12.s accent12.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 592 220 tgl 36 0 accent13.s accent13.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 633 220 tgl 36 0 accent14.s accent14.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 674 220 tgl 36 0 accent15.s accent15.r empty 17 7 0 10 -262144
 -1 -1 1 1;
-#X obj 715 220 tgl 36 0 accent16.s accent16.r empty 17 7 0 10 -262144
+#X obj 515 220 tgl 36 0 accent11.s accent11.r empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 561 220 tgl 36 0 accent12.s accent12.r empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 607 220 tgl 36 0 accent13.s accent13.r empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 653 220 tgl 36 0 accent14.s accent14.r empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 699 220 tgl 36 0 accent15.s accent15.r empty 17 7 0 10 -262144
 -1 -1 0 1;
-#X text 54 79 Note;
-#X text 50 228 Accent;
-#X text 49 125 Octave;
-#X obj 100 266 tgl 36 0 glide1.s glide1.r empty 17 7 0 10 -262144 -1
+#X obj 745 220 tgl 36 0 accent16.s accent16.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X text 10 79 Note;
+#X text 6 228 Accent;
+#X text 5 125 Octave;
+#X obj 55 266 tgl 36 0 glide1.s glide1.r empty 17 7 0 10 -262144 -1
+-1 1 1;
+#X obj 101 266 tgl 36 0 glide2.s glide2.r empty 17 7 0 10 -262144 -1
+-1 1 1;
+#X obj 147 266 tgl 36 0 glide3.s glide3.r empty 17 7 0 10 -262144 -1
+-1 1 1;
+#X obj 193 266 tgl 36 0 glide4.s glide4.r empty 17 7 0 10 -262144 -1
 -1 0 1;
-#X obj 141 266 tgl 36 0 glide2.s glide2.r empty 17 7 0 10 -262144 -1
+#X obj 239 266 tgl 36 0 glide5.s glide5.r empty 17 7 0 10 -262144 -1
 -1 0 1;
-#X obj 182 266 tgl 36 0 glide3.s glide3.r empty 17 7 0 10 -262144 -1
+#X obj 285 266 tgl 36 0 glide6.s glide6.r empty 17 7 0 10 -262144 -1
 -1 0 1;
-#X obj 223 266 tgl 36 0 glide4.s glide4.r empty 17 7 0 10 -262144 -1
--1 1 1;
-#X obj 264 266 tgl 36 0 glide5.s glide5.r empty 17 7 0 10 -262144 -1
--1 1 1;
-#X obj 305 266 tgl 36 0 glide6.s glide6.r empty 17 7 0 10 -262144 -1
--1 1 1;
-#X obj 346 266 tgl 36 0 glide7.s glide7.r empty 17 7 0 10 -262144 -1
--1 1 1;
-#X obj 387 266 tgl 36 0 glide8.s glide8.r empty 17 7 0 10 -262144 -1
--1 1 1;
-#X obj 428 266 tgl 36 0 glide9.s glide9.r empty 17 7 0 10 -262144 -1
--1 1 1;
+#X obj 331 266 tgl 36 0 glide7.s glide7.r empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 377 266 tgl 36 0 glide8.s glide8.r empty 17 7 0 10 -262144 -1
+-1 0 1;
+#X obj 423 266 tgl 36 0 glide9.s glide9.r empty 17 7 0 10 -262144 -1
+-1 0 1;
 #X obj 469 266 tgl 36 0 glide10.s glide10.r empty 17 7 0 10 -262144
--1 -1 1 1;
-#X obj 510 266 tgl 36 0 glide11.s glide11.r empty 17 7 0 10 -262144
--1 -1 1 1;
-#X obj 551 266 tgl 36 0 glide12.s glide12.r empty 17 7 0 10 -262144
--1 -1 1 1;
-#X obj 592 266 tgl 36 0 glide13.s glide13.r empty 17 7 0 10 -262144
--1 -1 1 1;
-#X obj 633 266 tgl 36 0 glide14.s glide14.r empty 17 7 0 10 -262144
--1 -1 1 1;
-#X obj 674 266 tgl 36 0 glide15.s glide15.r empty 17 7 0 10 -262144
--1 -1 1 1;
-#X obj 715 266 tgl 36 0 glide16.s glide16.r empty 17 7 0 10 -262144
--1 -1 1 1;
-#X text 52 274 Glide;
-#X text 43 175 Duration;
-#X obj 568 356 hsl 200 35 0 1 0 0 fromattack toattack empty -2 -6 1
-8 -258113 -1 -1 2300 1;
-#X obj 569 411 hsl 200 35 0 1 0 0 fromdecay todecay empty -2 -6 1 8
--258113 -1 -1 4500 1;
-#X obj 568 465 hsl 200 35 0 1 0 0 fromshape toshape empty -2 -6 1 8
--258113 -1 -1 8600 1;
-#X text 565 340 Attack;
-#X text 564 396 Decay;
-#X text 564 450 Shape;
-#X text 86 520 |;
-#X text 537 314 >;
-#X text 532 309 _;
-#X text 86 524 v;
-#X obj 61 332 tgl 35 0 RMon1 empty empty 17 7 0 10 -262144 -1 -1 0
+-1 -1 0 1;
+#X obj 515 266 tgl 36 0 glide11.s glide11.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 561 266 tgl 36 0 glide12.s glide12.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 607 266 tgl 36 0 glide13.s glide13.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 653 266 tgl 36 0 glide14.s glide14.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 699 266 tgl 36 0 glide15.s glide15.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 745 266 tgl 36 0 glide16.s glide16.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X text 8 274 Glide;
+#X text -1 175 Duration;
+#X obj 571 354 hsl 200 45 0 1 0 0 fromattack toattack empty -2 -6 1
+8 -258113 -1 -1 3178 1;
+#X obj 572 417 hsl 200 45 0 1 0 0 fromdecay todecay empty -2 -6 1 8
+-258113 -1 -1 6219 1;
+#X obj 571 483 hsl 200 45 0 1 0 0 fromshape toshape empty -2 -6 1 8
+-258113 -1 -1 11885 1;
+#X text 573 338 Attack;
+#X text 567 402 Decay;
+#X text 567 468 Shape;
+#X text 89 532 |;
+#X text 555 326 >;
+#X text 511 321 _;
+#X text 89 536 v;
+#X obj 64 344 tgl 35 0 RMon1 empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 61 383 tgl 35 0 Quantize1 empty empty 17 7 0 10 -262144 -1 -1
+#X obj 64 395 tgl 35 0 Quantize1 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
-#X text 4 339 Ring Mod;
-#X text 480 313 Ring mod;
-#X text 3 394 Quantize;
-#X text 28 562 Quantizer;
-#X obj 101 332 touch 450 250 fxcontrol1;
-#X obj 100 80 taplist 35 35 note1.r note1.s note1 Off C C# D Eb E F
+#X text 7 351 Ring Mod;
+#X text 493 325 Ring mod;
+#X text 6 406 Quantize;
+#X text 31 574 Quantizer;
+#X obj 104 344 touch 450 250 fxcontrol1;
+#X obj 55 80 taplist 35 35 note1.r note1.s note1 Off C C# D Eb E F
 F# G G# A Bb B;
 #X obj 45 3 loadsave storage;
 #N canvas 723 294 613 463 loadsave-interface 0;
@@ -560,83 +560,83 @@ F# G G# A Bb B;
 #X connect 9 0 4 0;
 #X connect 10 0 5 0;
 #X restore 147 3 pd loadsave-interface;
-#X obj 141 80 taplist 35 35 note2.r note2.s note2 Off C C# D Eb E F
+#X obj 101 80 taplist 35 35 note2.r note2.s note2 Off C C# D Eb E F
 F# G G# A Bb B;
-#X obj 182 80 taplist 35 35 note3.r note3.s note3 Off C C# D Eb E F
+#X obj 147 80 taplist 35 35 note3.r note3.s note3 Off C C# D Eb E F
 F# G G# A Bb B;
-#X obj 223 80 taplist 35 35 note4.r note4.s note4 Off C C# D Eb E F
+#X obj 193 80 taplist 35 35 note4.r note4.s note4 Off C C# D Eb E F
 F# G G# A Bb B;
-#X obj 264 80 taplist 35 35 note5.r note5.s note5 Off C C# D Eb E F
+#X obj 239 80 taplist 35 35 note5.r note5.s note5 Off C C# D Eb E F
 F# G G# A Bb B;
-#X obj 305 80 taplist 35 35 note6.r note6.s note6 Off C C# D Eb E F
+#X obj 285 80 taplist 35 35 note6.r note6.s note6 Off C C# D Eb E F
 F# G G# A Bb B;
-#X obj 346 80 taplist 35 35 note7.r note7.s note7 Off C C# D Eb E F
+#X obj 331 80 taplist 35 35 note7.r note7.s note7 Off C C# D Eb E F
 F# G G# A Bb B;
-#X obj 387 80 taplist 35 35 note8.r note8.s note8 Off C C# D Eb E F
+#X obj 377 80 taplist 35 35 note8.r note8.s note8 Off C C# D Eb E F
 F# G G# A Bb B;
-#X obj 428 80 taplist 35 35 note9.r note9.s note9 Off C C# D Eb E F
+#X obj 423 80 taplist 35 35 note9.r note9.s note9 Off C C# D Eb E F
 F# G G# A Bb B;
 #X obj 469 80 taplist 35 35 note10.r note10.s note10 Off C C# D Eb
 E F F# G G# A Bb B;
-#X obj 551 80 taplist 35 35 note11.r note11.s note11 Off C C# D Eb
+#X obj 561 80 taplist 35 35 note11.r note11.s note11 Off C C# D Eb
 E F F# G G# A Bb B;
-#X obj 592 80 taplist 35 35 note12.r note12.s note12 Off C C# D Eb
+#X obj 607 80 taplist 35 35 note12.r note12.s note12 Off C C# D Eb
 E F F# G G# A Bb B;
-#X obj 510 80 taplist 35 35 note13.r note13.s note13 Off C C# D Eb
+#X obj 515 80 taplist 35 35 note13.r note13.s note13 Off C C# D Eb
 E F F# G G# A Bb B;
-#X obj 633 80 taplist 35 35 note14.r note14.s note14 Off C C# D Eb
+#X obj 653 80 taplist 35 35 note14.r note14.s note14 Off C C# D Eb
 E F F# G G# A Bb B;
-#X obj 674 80 taplist 35 35 note15.r note15.s note15 Off C C# D Eb
+#X obj 699 80 taplist 35 35 note15.r note15.s note15 Off C C# D Eb
 E F F# G G# A Bb B;
-#X obj 715 80 taplist 35 35 note16.r note16.s note16 Off C C# D Eb
+#X obj 745 80 taplist 35 35 note16.r note16.s note16 Off C C# D Eb
 E F F# G G# A Bb B;
-#X obj 100 172 taplist 35 35 half1.r half1.s half1 /1 /2 /3 /4;
-#X obj 141 172 taplist 35 35 half2.r half2.s half2 /1 /2 /3 /4;
-#X obj 182 172 taplist 35 35 half3.r half3.s half3 /1 /2 /3 /4;
-#X obj 223 172 taplist 35 35 half4.r half4.s half4 /1 /2 /3 /4;
-#X obj 264 172 taplist 35 35 half5.r half5.s half5 /1 /2 /3 /4;
-#X obj 305 172 taplist 35 35 half6.r half6.s half6 /1 /2 /3 /4;
-#X obj 346 172 taplist 35 35 half7.r half7.s half7 /1 /2 /3 /4;
-#X obj 387 172 taplist 35 35 half8.r half8.s half8 /1 /2 /3 /4;
-#X obj 428 172 taplist 35 35 half9.r half9.s half9 /1 /2 /3 /4;
+#X obj 55 172 taplist 35 35 half1.r half1.s half1 /1 /2 /3 /4;
+#X obj 101 172 taplist 35 35 half2.r half2.s half2 /1 /2 /3 /4;
+#X obj 147 172 taplist 35 35 half3.r half3.s half3 /1 /2 /3 /4;
+#X obj 193 172 taplist 35 35 half4.r half4.s half4 /1 /2 /3 /4;
+#X obj 239 172 taplist 35 35 half5.r half5.s half5 /1 /2 /3 /4;
+#X obj 285 172 taplist 35 35 half6.r half6.s half6 /1 /2 /3 /4;
+#X obj 331 172 taplist 35 35 half7.r half7.s half7 /1 /2 /3 /4;
+#X obj 377 172 taplist 35 35 half8.r half8.s half8 /1 /2 /3 /4;
+#X obj 423 172 taplist 35 35 half9.r half9.s half9 /1 /2 /3 /4;
 #X obj 469 172 taplist 35 35 half10.r half10.s half10 /1 /2 /3 /4;
-#X obj 510 172 taplist 35 35 half11.r half11.s half11 /1 /2 /3 /4;
-#X obj 551 172 taplist 35 35 half12.r half12.s half12 /1 /2 /3 /4;
-#X obj 592 172 taplist 35 35 half13.r half13.s half13 /1 /2 /3 /4;
-#X obj 633 172 taplist 35 35 half14.r half14.s half14 /1 /2 /3 /4;
-#X obj 674 172 taplist 35 35 half15.r half15.s half15 /1 /2 /3 /4;
-#X obj 715 172 taplist 35 35 half16.r half16.s half16 /1 /2 /3 /4;
-#X obj 715 126 taplist 35 35 octave16.r octave16.s octave16 *0 *1 *2
+#X obj 515 172 taplist 35 35 half11.r half11.s half11 /1 /2 /3 /4;
+#X obj 561 172 taplist 35 35 half12.r half12.s half12 /1 /2 /3 /4;
+#X obj 607 172 taplist 35 35 half13.r half13.s half13 /1 /2 /3 /4;
+#X obj 653 172 taplist 35 35 half14.r half14.s half14 /1 /2 /3 /4;
+#X obj 699 172 taplist 35 35 half15.r half15.s half15 /1 /2 /3 /4;
+#X obj 745 172 taplist 35 35 half16.r half16.s half16 /1 /2 /3 /4;
+#X obj 745 126 taplist 35 35 octave16.r octave16.s octave16 *0 *1 *2
 *3;
-#X obj 674 126 taplist 35 35 octave15.r octave15.s octave15 *0 *1 *2
+#X obj 699 126 taplist 35 35 octave15.r octave15.s octave15 *0 *1 *2
 *3;
-#X obj 633 126 taplist 35 35 octave14.r octave14.s octave14 *0 *1 *2
+#X obj 653 126 taplist 35 35 octave14.r octave14.s octave14 *0 *1 *2
 *3;
-#X obj 592 126 taplist 35 35 octave13.r octave13.s octave13 *0 *1 *2
+#X obj 607 126 taplist 35 35 octave13.r octave13.s octave13 *0 *1 *2
 *3;
-#X obj 551 126 taplist 35 35 octave12.r octave12.s octave12 *0 *1 *2
+#X obj 561 126 taplist 35 35 octave12.r octave12.s octave12 *0 *1 *2
 *3;
-#X obj 100 126 taplist 35 35 octave1.r octave1.s octave1 *0 *1 *2 *3
+#X obj 55 126 taplist 35 35 octave1.r octave1.s octave1 *0 *1 *2 *3
 ;
-#X obj 141 126 taplist 35 35 octave2.r octave2.s octave2 *0 *1 *2 *3
+#X obj 101 126 taplist 35 35 octave2.r octave2.s octave2 *0 *1 *2 *3
 ;
-#X obj 182 126 taplist 35 35 octave3.r octave3.s octave3 *0 *1 *2 *3
+#X obj 147 126 taplist 35 35 octave3.r octave3.s octave3 *0 *1 *2 *3
 ;
-#X obj 223 126 taplist 35 35 octave4.r octave4.s octave4 *0 *1 *2 *3
+#X obj 193 126 taplist 35 35 octave4.r octave4.s octave4 *0 *1 *2 *3
 ;
-#X obj 264 126 taplist 35 35 octave5.r octave5.s octave5 *0 *1 *2 *3
+#X obj 239 126 taplist 35 35 octave5.r octave5.s octave5 *0 *1 *2 *3
 ;
-#X obj 305 126 taplist 35 35 octave6.r octave6.s octave6 *0 *1 *2 *3
+#X obj 285 126 taplist 35 35 octave6.r octave6.s octave6 *0 *1 *2 *3
 ;
-#X obj 346 126 taplist 35 35 octave7.r octave7.s octave7 *0 *1 *2 *3
+#X obj 331 126 taplist 35 35 octave7.r octave7.s octave7 *0 *1 *2 *3
 ;
-#X obj 387 126 taplist 35 35 octave8.r octave8.s octave8 *0 *1 *2 *3
+#X obj 377 126 taplist 35 35 octave8.r octave8.s octave8 *0 *1 *2 *3
 ;
-#X obj 428 126 taplist 35 35 octave9.r octave9.s octave9 *0 *1 *2 *3
+#X obj 423 126 taplist 35 35 octave9.r octave9.s octave9 *0 *1 *2 *3
 ;
 #X obj 469 126 taplist 35 35 octave10.r octave10.s octave10 *0 *1 *2
 *3;
-#X obj 510 126 taplist 35 35 octave11.r octave11.s octave11 *0 *1 *2
+#X obj 515 126 taplist 35 35 octave11.r octave11.s octave11 *0 *1 *2
 *3;
 #N canvas 65 54 1301 714 loadsave 0;
 #X obj 536 134 sssad/auto accent1.s accent1.r;
@@ -727,12 +727,12 @@ E F F# G G# A Bb B;
 #X obj 177 28 clock-gui;
 #X obj 281 3 declare -path ../../../../pd-party/droidparty-abstractions
 ;
-#X obj 554 33 bng 30 250 50 0 empty empty Load 0 -7 0 10 -262144 -1
+#X obj 559 33 bng 30 250 50 0 empty empty Load 0 -7 0 10 -262144 -1
 -1;
-#X obj 635 33 bng 30 250 50 0 save empty Save 0 -7 0 10 -262144 -1
+#X obj 640 33 bng 30 250 50 0 save empty Save 0 -7 0 10 -262144 -1
 -1;
-#X obj 717 33 bng 30 250 50 0 reset empty Reset 0 -7 0 10 -262144 -1
+#X obj 722 33 bng 30 250 50 0 reset empty Reset 0 -7 0 10 -262144 -1
 -1;
-#X obj 568 521 hsl 200 35 0 127 0 0 fromVolume toVolume empty -2 -6
+#X obj 571 548 hsl 200 45 0 127 0 0 fromVolume toVolume empty -2 -6
 1 8 -258113 -1 -1 8500 1;
-#X text 564 506 Volume;
+#X text 567 533 Volume;
