@@ -74,6 +74,7 @@ public class CustomTaplist extends Taplist {
 					if (v != null){
 						val = v;
 						doSend();
+						parent.threadSafeInvalidate();
 					}
 					dialog.dismiss();
 				}
