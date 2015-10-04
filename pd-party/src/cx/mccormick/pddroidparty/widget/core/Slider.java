@@ -6,9 +6,9 @@ import android.graphics.RectF;
 import android.graphics.Region.Op;
 import cx.mccormick.pddroidparty.pd.PdGUI;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
-import cx.mccormick.pddroidparty.widget.Widget;
+import cx.mccormick.pddroidparty.widget.OrientedWidget;
 
-public class Slider extends Widget {
+public class Slider extends OrientedWidget {
 	private static final String TAG = "Slider";
 	
 	protected float min, max;
@@ -17,7 +17,6 @@ public class Slider extends Widget {
 	int pid0=-1;			// pointer id,
 	float x0,y0,val0 ; 	// position of pointer, and value when pointer down.
 	
-	boolean orientation_horizontal = true;
 	boolean down = false;
 	protected boolean steady = true;
 	
@@ -28,9 +27,7 @@ public class Slider extends Widget {
 	RectF sRect = new RectF();
 	
 	public Slider(PdDroidPatchView app, String[] atomline, boolean horizontal) {
-		super(app);
-		
-		orientation_horizontal = horizontal;
+		super(app, horizontal);
 		
 		float x = Float.parseFloat(atomline[2]) ;
 		float y = Float.parseFloat(atomline[3]) ;
@@ -77,7 +74,7 @@ public class Slider extends Widget {
 		
 		if ( (!bg.none()) && (!slider.none()) ) {
 			// create the slider rectangle thingy
-			if (orientation_horizontal) {
+			if (this.horizontal) {
 				float ratio = slider.getHeight() / h;
 				int rel = (int)(slider.getWidth() / ratio);
 				sRect = new RectF(x, y, x + rel, y + h);
@@ -124,14 +121,14 @@ public class Slider extends Widget {
 			canvas.drawLine(dRect.right, dRect.top /*+ 1*/, dRect.right, dRect.bottom, paint);
 			paint.setColor(fgcolor);
 			paint.setStrokeWidth(3);
-			if (orientation_horizontal) {
+			if (horizontal) {
 				canvas.drawLine(Math.round(dRect.left + getNormalizedPosition() * dRect.width()), Math.round(dRect.top /*+ 2*/), Math.round(dRect.left + getNormalizedPosition() * dRect.width()), Math.round(dRect.bottom /*- 2*/), paint);
 			} else {
 				canvas.drawLine(Math.round(dRect.left /*+ 2*/), Math.round(dRect.bottom - getNormalizedPosition() * dRect.height()), Math.round(dRect.right /*- 2*/), Math.round(dRect.bottom - getNormalizedPosition() * dRect.height()), paint);
 			}
 
 		} else if (!slider.none()) {
-			if (orientation_horizontal) {
+			if (horizontal) {
 				sRect.offsetTo(getNormalizedPosition() * (dRect.width() - sRect.width()) + dRect.left, dRect.top);
 			} else {
 				sRect.offsetTo(dRect.left, (1 - getNormalizedPosition()) * (dRect.height() - sRect.height()) + dRect.top);
@@ -178,7 +175,7 @@ public class Slider extends Widget {
 			y0=y;
 			pid0=pid;
 			if(!steady) {
-				if (orientation_horizontal) val = get_horizontal_val(x);
+				if (horizontal) val = get_horizontal_val(x);
 				else val = get_vertical_val(y);
 			}
 			send("" + val);
@@ -199,7 +196,7 @@ public class Slider extends Widget {
 	public boolean touchmove(int pid,float x,float y)
 	{
 		if(pid0 == pid) {
-			if (orientation_horizontal) {
+			if (horizontal) {
 				if(steady)
 				{
 					val = get_horizontal_val(x, x0);

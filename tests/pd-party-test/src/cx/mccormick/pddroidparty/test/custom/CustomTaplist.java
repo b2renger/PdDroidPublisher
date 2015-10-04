@@ -10,9 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import cx.mccormick.pddroidparty.view.MidiConfigDialog;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.widget.abs.Taplist;
 
@@ -77,6 +74,7 @@ public class CustomTaplist extends Taplist {
 					if (v != null){
 						val = v;
 						doSend();
+						parent.threadSafeInvalidate();
 					}
 					dialog.dismiss();
 				}

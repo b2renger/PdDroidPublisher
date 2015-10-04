@@ -7,8 +7,8 @@ import cx.mccormick.pddroidparty.widget.core.Slider;
 
 public class RibbonSlider extends Slider 
 {
-	public RibbonSlider(PdDroidPatchView app, String[] atomline) {
-		super(app, atomline, false);
+	public RibbonSlider(PdDroidPatchView app, String[] atomline, boolean horizontal) {
+		super(app, atomline, horizontal);
 	}
 	
 	public void draw(Canvas canvas) 
@@ -19,8 +19,17 @@ public class RibbonSlider extends Slider
 
 		paint.setColor(fgcolor);
 		paint.setStyle(Paint.Style.FILL);
-		float offset = dRect.height() * (val - min) / (max - min);
-		canvas.drawRect(dRect.left, dRect.bottom - offset, dRect.right, dRect.bottom, paint);
+		
+		if(horizontal)
+		{
+			float offset = dRect.width() * (val - min) / (max - min);
+			canvas.drawRect(dRect.left, dRect.top, dRect.left + offset, dRect.bottom, paint);
+		}
+		else
+		{
+			float offset = dRect.height() * (val - min) / (max - min);
+			canvas.drawRect(dRect.left, dRect.bottom - offset, dRect.right, dRect.bottom, paint);
+		}
 
 		paint.setColor(fgcolor);
 		paint.setStyle(Paint.Style.STROKE);

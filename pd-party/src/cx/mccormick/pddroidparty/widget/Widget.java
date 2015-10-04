@@ -13,6 +13,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.graphics.Paint.Align;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -174,6 +175,7 @@ abstract public class Widget {
 	
 	public void drawLabel(Canvas canvas) {
 		if (label != null) {
+			paint.setTextAlign(Align.LEFT);
 			paint.setStrokeWidth(0);
 			paint.setColor(labelcolor);
 			paint.setTextSize(labelsize);

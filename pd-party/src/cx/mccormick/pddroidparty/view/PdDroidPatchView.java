@@ -39,6 +39,7 @@ import cx.mccormick.pddroidparty.pd.DroidPartyReceiver;
 import cx.mccormick.pddroidparty.pd.PdHelper;
 import cx.mccormick.pddroidparty.pd.PdPatch;
 import cx.mccormick.pddroidparty.svg.SVGRenderer;
+import cx.mccormick.pddroidparty.widget.OrientedWidget;
 import cx.mccormick.pddroidparty.widget.Widget;
 import cx.mccormick.pddroidparty.widget.WidgetFactory;
 import cx.mccormick.pddroidparty.widget.abs.LoadSave;
@@ -351,9 +352,9 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 					if(subpatch.isGraphOnParent())
 					{
 						if(subpatches.isEmpty()){
-							this.widgets.add(subpatch);
+							this.widgets.add(resolve(subpatch, factory));
 						}else{
-							subpatches.peekLast().widgets.add(subpatch);
+							subpatches.peekLast().widgets.add(resolve(subpatch, factory));
 						}
 					}
 					level -= 1;
@@ -409,41 +410,7 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 			if(widgetsSize != widgets.size())
 			{
 				Widget lastWidget = widgets.get(widgets.size() -1);
-				
-				// resolve class
-				Class<? extends Widget> cls = null;
-				if(lastWidget.getLabel() != null)
-				{
-					cls = config.objectOverrides.get(lastWidget.getLabel());
-				}
-				if(cls == null)
-				{
-					cls = config.typeOverrides.get(lastWidget.getClass());
-				}
-				
-				if(cls != null)
-				{
-					try {
-						Constructor<? extends Widget> cons = cls.getConstructor(PdDroidPatchView.class, String[].class);
-						Widget newWidget = cons.newInstance(this, line);
-						widgets.remove(lastWidget);
-						widgets.add(newWidget);
-						lastWidget = newWidget;
-					} catch (NoSuchMethodException e) {
-						throw new Error(e);
-					} catch (SecurityException e) {
-						throw new Error(e);
-					} catch (InstantiationException e) {
-						throw new Error(e);
-					} catch (IllegalAccessException e) {
-						throw new Error(e);
-					} catch (IllegalArgumentException e) {
-						throw new Error(e);
-					} catch (InvocationTargetException e) {
-						throw new Error(e);
-					}
-				}
-				factory.onNewWidget(lastWidget);
+				resolve(lastWidget, widgets, factory, line);
 			}
 		}
 		
@@ -452,6 +419,98 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		applyTheme(widgets);
 		
 		threadSafeInvalidate();
+	}
+	
+	private Widget resolve(Subpatch subpatch, WidgetFactory factory)
+	{
+		Widget widget = subpatch;
+		
+		// resolve class
+		Class<? extends Widget> cls = resolveClass(widget);
+		
+		if(cls != null)
+		{
+			try {
+				Constructor<? extends Widget> cons = cls.getConstructor(Subpatch.class);
+				widget = cons.newInstance(subpatch);
+			} catch (NoSuchMethodException e) {
+				throw new Error(e);
+			} catch (SecurityException e) {
+				throw new Error(e);
+			} catch (InstantiationException e) {
+				throw new Error(e);
+			} catch (IllegalAccessException e) {
+				throw new Error(e);
+			} catch (IllegalArgumentException e) {
+				throw new Error(e);
+			} catch (InvocationTargetException e) {
+				throw new Error(e);
+			}
+		}
+		factory.onNewWidget(widget);
+		return widget;
+	}
+	
+	private Class<? extends Widget> resolveClass(Widget lastWidget)
+	{
+		// resolve class
+		Class<? extends Widget> cls = null;
+		if(lastWidget.getLabel() != null)
+		{
+			cls = config.objectOverrides.get(lastWidget.getLabel());
+		}
+		if(cls == null)
+		{
+			cls = config.typeOverrides.get(lastWidget.getClass());
+		}
+		return cls;
+	}
+	
+	private void resolve(Widget lastWidget, List<Widget> widgets, WidgetFactory factory, String [] line)
+	{
+		// resolve class
+		Class<? extends Widget> cls = resolveClass(lastWidget);
+		
+		if(cls != null)
+		{
+			try {
+				Widget newWidget;
+				if(lastWidget instanceof OrientedWidget)
+				{
+					try
+					{
+						Constructor<? extends Widget> cons = cls.getConstructor(PdDroidPatchView.class, String[].class, boolean.class);
+						newWidget = cons.newInstance(this, line, ((OrientedWidget) lastWidget).isHorizontal());
+					}
+					catch(NoSuchMethodException e)
+					{
+						Constructor<? extends Widget> cons = cls.getConstructor(PdDroidPatchView.class, String[].class);
+						newWidget = cons.newInstance(this, line);
+					}
+				}
+				else
+				{
+					Constructor<? extends Widget> cons = cls.getConstructor(PdDroidPatchView.class, String[].class);
+					newWidget = cons.newInstance(this, line);
+				}
+				widgets.remove(lastWidget);
+				widgets.add(newWidget);
+				lastWidget = newWidget;
+			} catch (NoSuchMethodException e) {
+				throw new Error(e);
+			} catch (SecurityException e) {
+				throw new Error(e);
+			} catch (InstantiationException e) {
+				throw new Error(e);
+			} catch (IllegalAccessException e) {
+				throw new Error(e);
+			} catch (IllegalArgumentException e) {
+				throw new Error(e);
+			} catch (InvocationTargetException e) {
+				throw new Error(e);
+			}
+		}
+		factory.onNewWidget(lastWidget);
 	}
 	
 	private void applyTheme(List<Widget> widgets)

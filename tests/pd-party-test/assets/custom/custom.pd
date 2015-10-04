@@ -1,10 +1,11 @@
-#N struct 1013template-marker float a float b;
-#N canvas 102 171 1216 484 10;
+#N struct 1041template-marker float a float b;
+#N struct 1046template-marker float a float b;
+#N canvas 100 172 1216 484 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#X obj 380 40 hsl 128 15 0 1 0 0 volume empty vsl-Volume -2 -8 0 10
+#X obj 363 430 hsl 128 15 0 1 0 0 volume empty hsl-custom -2 -8 0 10
 -262144 -1 -1 0 1;
-#X obj 366 238 hsl 128 128 200 600 0 0 frequency empty hsl-custom -2
--8 0 10 -262144 -1 -1 8300 1;
+#X obj 366 238 hsl 128 128 200 600 0 0 frequency empty hsl-custom-square
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X floatatom 15 28 5 0 0 3 nombre - -, f 5;
 #X obj 97 181 cnv 15 1000 1 empty empty empty 20 12 0 14 -233017 -66577
 0;
@@ -15,8 +16,8 @@
 -1 -1;
 #X obj 201 34 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 200 275 tgl 15 0 empty empty toggle-custom 17 7 0 10 -262144
--1 -1 0 1;
+#X obj 211 292 tgl 48 0 toggle.custom.s empty toggle-custom 0 -7 0
+10 -262144 -1 -1 0 1;
 #X obj 260 37 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 -262144 -1 -1 0 256;
 #X obj 246 220 nbx 5 14 -1e+37 1e+37 0 0 empty empty nombre2-custom
@@ -65,5 +66,13 @@
 #X obj 853 6 declare -path ../../../../pd-party/droidparty-abstractions
 ;
 #X obj 1069 54 touch 64 64 myTouch;
-#X obj 993 104 taplist 32 32 tl.r tl.s normal-taplist A B C D;
-#X obj 993 50 taplist 32 32 tl.r tl.s custom-taplist A B C D;
+#X obj 996 56 taplist 32 32 tl.r tl.s normal-taplist A B C D;
+#X obj 994 242 taplist 32 32 tl.r tl.s custom-taplist A B C D;
+#X obj 380 40 hsl 128 15 0 1 0 0 volume empty vsl-Volume -2 -8 0 10
+-262144 -1 -1 0 1;
+#X obj 1075 238 touch 64 64 customTouch;
+#X obj 205 424 r toggle.custom.s;
+#X obj 205 446 print;
+#X obj 178 402 r frequency;
+#X connect 33 0 34 0;
+#X connect 35 0 34 0;
