@@ -36,6 +36,7 @@ public class CustomActivity extends Activity {
         config.objectOverrides.put("custom-taplist", CustomTaplist.class);
         config.objectOverrides.put("sub-custom", CustomSubpatch.class);
         config.objectOverrides.put("custom comment", CustomComment.class);
+        config.objectOverrides.put("toggle-custom", CustomToggle.class);
         
         // Global override (all types hidden)
         config.typeOverrides.put(Bang.class, HiddenWidget.class);

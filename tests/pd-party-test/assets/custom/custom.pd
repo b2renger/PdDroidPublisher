@@ -16,8 +16,8 @@
 -1 -1;
 #X obj 201 34 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 200 275 tgl 15 0 empty empty toggle-custom 17 7 0 10 -262144
--1 -1 0 1;
+#X obj 211 292 tgl 48 0 toggle.custom.s empty toggle-custom 0 -7 0
+10 -262144 -1 -1 0 1;
 #X obj 260 37 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 -262144 -1 -1 0 256;
 #X obj 246 220 nbx 5 14 -1e+37 1e+37 0 0 empty empty nombre2-custom
@@ -71,3 +71,8 @@
 #X obj 380 40 hsl 128 15 0 1 0 0 volume empty vsl-Volume -2 -8 0 10
 -262144 -1 -1 0 1;
 #X obj 1075 238 touch 64 64 customTouch;
+#X obj 205 424 r toggle.custom.s;
+#X obj 205 446 print;
+#X obj 178 402 r frequency;
+#X connect 33 0 34 0;
+#X connect 35 0 34 0;
