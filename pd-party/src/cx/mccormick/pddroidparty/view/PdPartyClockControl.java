@@ -34,6 +34,7 @@ public class PdPartyClockControl extends RelativeLayout {
 	private boolean audioOn = false;
 
 	private MidiConfigDialog dialog;
+	private ClockSettingsDialog dialogClock;
 
 	public PdPartyClockControl(final Activity context, MidiManager midiManager, PdDroidPartyConfig config) {
 		super(context);
@@ -217,8 +218,13 @@ public class PdPartyClockControl extends RelativeLayout {
 		main.addView(offsetLabel);
 		main.addView(clockSwitch);
 
+		
+		
+		//LinearLayout settings = new LinearLayout(context);
+		//settings.setOrientation(LinearLayout.HORIZONTAL);
+		
 		ImageButton btMidiConfig = new ImageButton(context);
-		btMidiConfig.setImageResource(R.drawable.ic_action_time);
+		btMidiConfig.setImageResource(R.drawable.ic_action_io);
 		btMidiConfig.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -237,6 +243,28 @@ public class PdPartyClockControl extends RelativeLayout {
 				dialog.show();
 			}
 		});
+		
+		/*
+		ImageButton btClockSettings = new ImageButton(context);
+		btClockSettings.setImageResource(R.drawable.ic_action_time);
+		btClockSettings.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dialogClock = new ClockSettingsDialog(context);
+				dialogClock.setOnDismissListener(new OnDismissListener() {
+					@Override
+					public void onDismiss(DialogInterface dialog) {
+						//boolean master = midiManager.getInput() == null;
+						//btStart.setEnabled(master);
+						//btReStart.setEnabled(master);
+						//slider.setEnabled(master);
+						dialogClock = null;
+					}
+				});
+				dialogClock.show();
+			}
+		});*/
 
 		RelativeLayout.LayoutParams params;
 
@@ -246,11 +274,22 @@ public class PdPartyClockControl extends RelativeLayout {
 		params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 		main.setLayoutParams(params);
 
+		
+		
 		addView(btMidiConfig);
 		params = (RelativeLayout.LayoutParams) btMidiConfig.getLayoutParams();
 		params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
 		params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 		btMidiConfig.setLayoutParams(params);
+		
+		//settings.addView(btClockSettings);
+		//params = (RelativeLayout.LayoutParams) btClockSettings.getLayoutParams();
+		//params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
+		//params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+		//btClockSettings.setLayoutParams(params);
+		
+		
+		
 
 	}
 
