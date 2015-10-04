@@ -37,6 +37,12 @@ public class CustomActivity extends Activity {
         config.objectOverrides.put("sub-custom", CustomSubpatch.class);
         config.objectOverrides.put("custom comment", CustomComment.class);
         config.objectOverrides.put("toggle-custom", CustomToggle.class);
+        config.objectOverrides.put("vcb-custom", CustomRadio.class);
+        config.objectOverrides.put("hcb-custom", CustomRadio.class);
+        // TODO custom VUMeter
+        // TODO custom Numberbox1&2
+        // TODO custom canvasrect
+        // TODO custom touch
         
         // Global override (all types hidden)
         config.typeOverrides.put(Bang.class, HiddenWidget.class);
