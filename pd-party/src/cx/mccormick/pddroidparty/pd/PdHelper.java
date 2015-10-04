@@ -19,8 +19,9 @@ public class PdHelper
 		dispatcher = new PdDispatcher() {
 			@Override
 			public void print(String s) {
-				if(s.equals("\n"))
+				if(s.endsWith("\n"))
 				{
+					message.append(s.substring(0, s.length()-1));
 					Log.i("Pd [print]", message.toString());
 					message = new StringBuilder();
 				}
