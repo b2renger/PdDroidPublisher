@@ -266,14 +266,15 @@ public class Subpatch extends Widget
 		}
 	}
 	
-	protected void drawArrayLabel(Canvas canvas)
+	@Override
+	public void drawLabel(Canvas canvas)
 	{
 		paint.setStrokeWidth(0);
 		paint.setStyle(Paint.Style.FILL);
 		paint.setColor(labelcolor);
 		paint.setTextSize(fontsize);
 		paint.setTypeface(font);
-		canvas.drawText(array.name, dRect.left, dRect.top - paint.descent() - 2, paint);
+		canvas.drawText(label, dRect.left, dRect.top - paint.descent() - 2, paint);
 	}
 	
 	protected void drawSubpatchContent(Canvas canvas)
@@ -301,13 +302,13 @@ public class Subpatch extends Widget
 		if(array != null)
 		{
 			drawArrayCurve(canvas);
-			drawArrayLabel(canvas);
 		}
 		// sub patch mode !
 		else
 		{
 			drawSubpatchContent(canvas);
 		}
+		drawLabel(canvas);
 	}
 	
 	@Override
