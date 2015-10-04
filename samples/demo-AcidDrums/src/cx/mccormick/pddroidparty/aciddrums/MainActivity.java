@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty.acidbox;
+package cx.mccormick.pddroidparty.aciddrums;
 
 import android.app.Activity;
 import android.os.Bundle;
