@@ -1,0 +1,12 @@
+apply plugin: 'android-library'
+apply plugin: "eclipse"
+
+
+
+task copyAbstractions(type: Copy) {
+    from 'droidparty-abstractions/clock.pd'
+    into 'res/raw'
+}
+
+compileJava.dependsOn copyAbstractions
+tasks.eclipse.dependsOn copyAbstractions
