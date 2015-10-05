@@ -1,5 +1,6 @@
 package cx.mccormick.pddroidparty;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -30,6 +31,7 @@ import cx.mccormick.pddroidparty.net.NetworkHelper;
 import cx.mccormick.pddroidparty.pd.PdHelper;
 import cx.mccormick.pddroidparty.pd.PdParser;
 import cx.mccormick.pddroidparty.pd.PdPatch;
+import cx.mccormick.pddroidparty.util.FileHelper;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.view.PdPartyClockControl;
 import cx.mccormick.pddroidparty.widget.Widget;
@@ -91,6 +93,10 @@ public class PdDroidParty extends Activity {
 		patch = new PdPatch(path);
 		
 		config = (PdDroidPartyConfig)intent.getSerializableExtra(PdDroidPartyConfig.class.getName());
+		
+		// copy necessary abstractions
+        FileHelper.copyResource(this, R.raw.clock, new File(patch.getFile().getParentFile(), "clock.pd"));
+
 		
 		usbMidiManager = new UsbMidiManager(this, new UsbMidiHandler() {
 			@Override

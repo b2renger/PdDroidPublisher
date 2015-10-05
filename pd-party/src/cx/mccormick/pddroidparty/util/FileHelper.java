@@ -114,27 +114,32 @@ public class FileHelper {
 
 	    File f = new File(context.getCacheDir(), uniqueName);
 
-	    try
-	    {
-		    InputStream is = context.getResources().openRawResource(resource);
-	        byte[] buffer = new byte[is.available()];
-	        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(f));
+    	copyResource(context, resource, f);
 
+        tf = Typeface.createFromFile(f);
+
+	    return tf;      
+	}
+
+	public static void copyResource(Context context, int resID, File destination) 
+	{
+		InputStream is = context.getResources().openRawResource(resID);
+        try
+        {
+            byte[] buffer = new byte[is.available()];
+	        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(destination));
+	
 	        int l = 0;
 	        while((l = is.read(buffer)) > 0)
 	        {
 	            bos.write(buffer, 0, l);
 	        }
 	        bos.close();
-
-	        tf = Typeface.createFromFile(f);
-	    }
-	    catch (IOException e)
-	    {
-	        throw new Error(e);
-	    }
-
-	    return tf;      
+        } 
+        catch(IOException e)
+        {
+        	throw new Error(e);
+        }
 	}
 
 
