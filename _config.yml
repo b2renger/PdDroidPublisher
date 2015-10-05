@@ -1,0 +1,12 @@
+# Site settings
+title: Pure Data Android Publisher
+email: ppp@mgsx.net
+description: Publish your Pure Data patches on Android with enhanced GUI and Jamming features.
+baseurl: "/PdDroidPublisher" # the subpath of your site, e.g. /blog/
+url: "http://b2renger.github.io" # the base hostname & protocol for your site
+twitter_username: 
+github_username:  b2renger
+github_repositoryname: PdDroidPublisher
+
+# Build settings
+markdown: kramdown
