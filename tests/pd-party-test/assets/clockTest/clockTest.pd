@@ -1,9 +1,9 @@
-#N canvas 866 171 471 326 10;
+#N canvas 304 177 495 326 10;
 #X declare -path ../../../pd-party/droidparty-abstractions;
 #X obj 9 158 nbx 5 30 -1e+37 1e+37 0 0 empty bpm bpm 0 -8 0 10 -262144
--1 -1 95 256;
+-1 -1 240 256;
 #X obj 9 209 nbx 5 30 -1e+37 1e+37 0 0 empty dt dt_(ms) 0 -8 0 10 -262144
--1 -1 631.579 256;
+-1 -1 250 256;
 #X obj 105 162 bng 80 250 50 0 empty beat beat 0 -7 0 10 -262144 -1
 -1;
 #X obj 335 165 bng 80 250 50 0 empty reset reset 0 -7 0 10 -262144
@@ -13,7 +13,7 @@
 #X obj 16 11 tgl 25 0 clockmode.s clockmode.r Switch_clocks 30 10 0
 12 -262144 -1 -1 0 1;
 #X obj 82 45 nbx 5 20 0 800 0 0 localbpm.s localbpm.r empty 0 -8 0
-10 -262144 -1 -1 107 256;
+10 -262144 -1 -1 115 256;
 #X obj 144 72 bng 25 250 50 0 1x.s 1x.r 1x 6 12 0 12 -262144 -1 -1
 ;
 #X obj 174 72 bng 25 250 50 0 2x.s 2x.r 2x 6 12 0 12 -262144 -1 -1
@@ -53,7 +53,7 @@
 #X obj 341 105 s beat;
 #X obj 347 86 s rawmidi;
 #X obj 264 11 tgl 25 0 audioon.s audioon.r bip 30 10 0 12 -262144 -1
--1 1 1;
+-1 0 1;
 #X obj 75 271 declare -path ../../../pd-party/droidparty-abstractions
 ;
 #X obj 341 7 clock;
