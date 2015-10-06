@@ -1,9 +1,9 @@
-#N canvas 551 180 495 326 10;
-#X declare -path ../../../pd-party/droidparty-abstractions;
+#N canvas 561 248 495 326 10;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 9 158 nbx 5 30 -1e+37 1e+37 0 0 empty bpm bpm 0 -8 0 10 -262144
--1 -1 0 256;
+-1 -1 2500 256;
 #X obj 9 209 nbx 5 30 -1e+37 1e+37 0 0 empty dt dt_(ms) 0 -8 0 10 -262144
--1 -1 0 256;
+-1 -1 24 256;
 #X obj 105 162 bng 80 250 50 0 empty beat beat 0 -7 0 10 -262144 -1
 -1;
 #X obj 335 165 bng 80 250 50 0 empty reset reset 0 -7 0 10 -262144
@@ -26,9 +26,9 @@
 ;
 #X obj 294 72 bng 25 250 50 0 8x.s 8x.r 8x 6 12 0 12 -262144 -1 -1
 ;
-#X obj 15 45 cnv 15 60 25 clocktag clocktag local 2 12 0 14 -233017
+#X obj 15 45 cnv 15 60 25 clocktag clocktag master 2 12 0 14 -233017
 -66577 0;
-#N canvas 816 140 450 300 movingcanvas 1;
+#N canvas 810 143 450 300 movingcanvas 0;
 #X obj 125 -31 r clockmode.s;
 #X obj 58 46 * 30;
 #X msg 216 126 \; clocktag label \$1;
@@ -46,7 +46,7 @@
 #X connect 6 0 2 0;
 #X connect 7 0 2 0;
 #X restore 168 103 pd movingcanvas;
-#X obj 215 166 bng 80 250 50 0 empty rawmidi rawmidi 0 -7 0 10 -262144
+#X obj 215 166 bng 80 50 40 0 empty rawmidi rawmidi 0 -7 0 10 -262144
 -1 -1;
 #X obj 354 66 s bpm;
 #X obj 361 47 s dt;
@@ -62,8 +62,10 @@
 #X obj 160 10 tgl 25 0 startstop.s startstop.r startstop 30 10 0 12
 -262144 -1 -1 0 1;
 #X obj 341 7 clock;
-#X obj 75 271 declare -path ../../../pd-party/droidparty-abstractions
+#X obj 75 271 declare -path ../../../../pd-party/droidparty-abstractions
 ;
+#X floatatom 145 141 5 0 0 0 - beat -, f 5;
+#X floatatom 265 143 5 0 0 0 - rawmidi -, f 5;
 #X connect 25 0 18 0;
 #X connect 25 1 19 0;
 #X connect 25 2 16 0;
