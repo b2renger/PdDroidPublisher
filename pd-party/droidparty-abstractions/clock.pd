@@ -1,4 +1,4 @@
-#N canvas 217 110 989 617 10;
+#N canvas 512 187 989 617 10;
 #X floatatom 749 41 5 0 0 0 - - -, f 5;
 #X obj 655 38 midirealtimein;
 #X text 820 57 // 248 == beat;
@@ -182,7 +182,7 @@
 #X obj 179 222 f 25;
 #N canvas 210 223 520 449 midimock 0;
 #X obj 74 22 hsl 300 15 60 180 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12500 1;
+-1 -1 0 1;
 #X floatatom 71 42 5 0 0 0 - - -, f 5;
 #X msg 117 170 1;
 #X obj 71 68 swap 2500;
@@ -265,6 +265,10 @@
 #X obj 38 441 t b b;
 #X msg 842 394 \; localbpm.r 120 \; audioon.r 0 \; clockmode.r 0 \;
 1x.s 0 \;;
+#X obj 426 34 r startstop.s;
+#X obj 426 56 route 0 1;
+#X obj 426 100 s midistop;
+#X obj 451 79 s midistart;
 #X connect 1 0 13 0;
 #X connect 1 1 0 0;
 #X connect 8 0 40 0;
@@ -329,3 +333,6 @@
 #X connect 60 1 32 1;
 #X connect 61 0 57 0;
 #X connect 61 1 42 0;
+#X connect 63 0 64 0;
+#X connect 64 0 65 0;
+#X connect 64 1 66 0;
