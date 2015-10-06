@@ -1,6 +1,7 @@
 package cx.mccormick.pddroidparty.view;
 
 import org.puredata.core.PdBase;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -34,7 +35,6 @@ public class PdPartyClockControl extends RelativeLayout {
 	private boolean audioOn = false;
 
 	private MidiConfigDialog dialog;
-	private ClockSettingsDialog dialogClock;
 
 	public PdPartyClockControl(final Activity context, MidiManager midiManager, PdDroidPartyConfig config) {
 		super(context);
@@ -156,9 +156,6 @@ public class PdPartyClockControl extends RelativeLayout {
 				int bpm = progress + config.midiClockMinBPM;
 				midiManager.setBpm(bpm);
 				bpmLabel.setText(String.valueOf(bpm));
-				//PdBase.sendFloat("localbpm.s", bpm);
-				//PdBase.sendFloat("localbpm.r", bpm);// mimic in the gui
-													// abstraction.
 			}
 		});
 
@@ -184,7 +181,7 @@ public class PdPartyClockControl extends RelativeLayout {
 
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-				int value = (progress - 50) * 10;
+				int value = (progress) * 10;
 				midiManager.setOffsetMs(value);
 				offsetLabel.setText(String.valueOf(value) + "ms");
 			}
@@ -219,10 +216,6 @@ public class PdPartyClockControl extends RelativeLayout {
 		main.addView(clockSwitch);
 
 		
-		
-		//LinearLayout settings = new LinearLayout(context);
-		//settings.setOrientation(LinearLayout.HORIZONTAL);
-		
 		ImageButton btMidiConfig = new ImageButton(context);
 		btMidiConfig.setImageResource(R.drawable.ic_action_io);
 		btMidiConfig.setOnClickListener(new OnClickListener() {
@@ -244,27 +237,6 @@ public class PdPartyClockControl extends RelativeLayout {
 			}
 		});
 		
-		/*
-		ImageButton btClockSettings = new ImageButton(context);
-		btClockSettings.setImageResource(R.drawable.ic_action_time);
-		btClockSettings.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				dialogClock = new ClockSettingsDialog(context);
-				dialogClock.setOnDismissListener(new OnDismissListener() {
-					@Override
-					public void onDismiss(DialogInterface dialog) {
-						//boolean master = midiManager.getInput() == null;
-						//btStart.setEnabled(master);
-						//btReStart.setEnabled(master);
-						//slider.setEnabled(master);
-						dialogClock = null;
-					}
-				});
-				dialogClock.show();
-			}
-		});*/
 
 		RelativeLayout.LayoutParams params;
 
@@ -282,15 +254,6 @@ public class PdPartyClockControl extends RelativeLayout {
 		params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 		btMidiConfig.setLayoutParams(params);
 		
-		//settings.addView(btClockSettings);
-		//params = (RelativeLayout.LayoutParams) btClockSettings.getLayoutParams();
-		//params.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
-		//params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-		//btClockSettings.setLayoutParams(params);
-		
-		
-		
-
 	}
 
 	public void updateMidiConfiguration() {
