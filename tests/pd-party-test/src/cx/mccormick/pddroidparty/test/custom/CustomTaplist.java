@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.widget.abs.Taplist;
 
@@ -31,8 +32,11 @@ public class CustomTaplist extends Taplist {
 
 			setTitle("Select value");
 
-			LinearLayout view = new LinearLayout(getContext());
+			final LinearLayout view = new LinearLayout(getContext());
+			final ScrollView sview = new ScrollView(getContext());
 			view.setOrientation(LinearLayout.VERTICAL);
+			sview.setVerticalScrollBarEnabled(true);
+
 
 			for (int i = 0; i < values.size(); i++) {
 				final Button button = new Button(getContext());
@@ -41,15 +45,18 @@ public class CustomTaplist extends Taplist {
 				button.setId(i);
 
 				button.setOnClickListener(new View.OnClickListener() {
-					@Override
+					@Override	
 					public void onClick(View v) {
+					
+						//view.setVerticalScrollbarPosition(0);
 						selectedValue = (Integer) button.getId();
 						Selector.this.dismiss();
 					}
 				});
 				view.addView(button);
 			}
-			setContentView(view);
+			sview.addView(view);
+			setContentView(sview);
 		}
 		
 		public Integer getSelectedValue(){
