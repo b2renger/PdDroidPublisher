@@ -9,13 +9,11 @@ import android.content.DialogInterface.OnDismissListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.Switch;
 import android.widget.TextView;
 import cx.mccormick.pddroidparty.PdDroidPartyConfig;
 import cx.mccormick.pddroidparty.R;
@@ -187,24 +185,6 @@ public class PdPartyClockControl extends RelativeLayout {
 			}
 		});
 		
-		final Switch clockSwitch = new Switch(getContext());
-		clockSwitch.setTextOff("local");
-		clockSwitch.setTextOn("net");
-		clockSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-		    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-		        // do something, the isChecked will be
-		        // true if the switch is in the On position
-		    	if(isChecked){
-		    	PdBase.sendFloat("clockmode.s", 1);
-		    	PdBase.sendFloat("clockmode.r", 1);
-		    	}
-		    	else {
-		    		PdBase.sendFloat("clockmode.s", 0);
-		    		PdBase.sendFloat("clockmode.r", 0);
-		    	}   	
-		    }
-		});
-				
 
 		main.addView(btStart);
 		main.addView(btReStart);
@@ -213,7 +193,6 @@ public class PdPartyClockControl extends RelativeLayout {
 		main.addView(bpmLabel);
 		main.addView(offsetSlider);
 		main.addView(offsetLabel);
-		main.addView(clockSwitch);
 
 		
 		ImageButton btMidiConfig = new ImageButton(context);
