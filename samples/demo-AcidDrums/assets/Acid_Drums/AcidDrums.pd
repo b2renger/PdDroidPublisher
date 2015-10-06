@@ -1,8 +1,8 @@
-#N struct 1437template-marker float a float b;
-#N canvas 65 104 975 582 10;
+#N struct 7456template-marker float a float b;
+#N canvas 65 114 975 582 10;
 #X declare -path z_nrci_abs;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#N canvas 702 97 651 686 audio 1;
+#N canvas 693 82 651 686 audio 1;
 #X obj 303 312 r fxcontrol;
 #X obj 303 334 unpack f f;
 #X obj 238 538 dac~;
@@ -527,12 +527,12 @@ probablement plus simple;
 #X obj 92 122 f 0;
 #X obj 118 122 + 1;
 #X obj 92 294 + 63;
-#X obj 51 68 clock, f 15;
+#X obj 45 23 clock, f 15;
 #X floatatom 103 254 5 0 0 0 - - -, f 5;
 #X obj 93 330 pack f \$0;
 #X msg 92 352 \; \$2-cursor pos \$1 50;
 #X obj 92 271 * 55;
-#X obj 114 98 s \$0-rawmidi;
+#X obj 84 61 s \$0-rawmidi;
 #N canvas 642 154 1301 686 drum-seq 0;
 #X obj 17 34 step 0 sound1-01.s channel1;
 #X obj 17 54 step 1 sound1-02.s channel1;
@@ -599,6 +599,10 @@ probablement plus simple;
 #X obj 623 314 step 14 sound4-15.s channel4;
 #X obj 623 334 step 15 sound4-16.s channel4;
 #X restore 275 111 pd drum-seq;
+#X text 227 25 add funky parameters (select funk speed / select funky
+buzyness);
+#X text 229 58 replace samples with synths;
+#X text 231 79 replace samples with synths;
 #X connect 0 0 1 0;
 #X connect 1 0 14 0;
 #X connect 1 1 13 0;
@@ -629,8 +633,8 @@ probablement plus simple;
 #X connect 25 0 23 0;
 #X connect 26 0 25 1;
 #X connect 27 0 30 0;
-#X connect 28 2 25 0;
-#X connect 28 3 33 0;
+#X connect 28 0 25 0;
+#X connect 28 1 33 0;
 #X connect 28 4 25 1;
 #X connect 29 0 32 0;
 #X connect 30 0 31 0;
@@ -649,7 +653,7 @@ probablement plus simple;
 #X text 40 517 Quantizer;
 #X text 549 314 _;
 #X obj 933 457 vsl 30 100 0 127 0 0 drum_mix drum_mix.r empty 0 -9
-0 10 -262144 -1 -1 7600 1;
+0 10 -262144 -1 -1 0 1;
 #X obj 10 4 loadsave storage;
 #X text 935 435 Drums;
 #N canvas 729 284 613 463 loadsave-interface 0;
@@ -684,10 +688,10 @@ probablement plus simple;
 ;
 #X obj 861 7 taplist 80 45 soundpack.r soundpack.s soundpack SB1 SB2
 SB3 SB4 SB5;
-#X obj 63 50 cnv 15 49 240 empty \$0-cursor empty 20 12 0 14 -258113
+#X obj 283 50 cnv 15 49 240 empty \$0-cursor empty 20 12 0 14 -258113
 -66577 0;
 #X obj 65 63 tgl 45 0 sound1-01.s sound1-01.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 120 63 tgl 45 0 sound1-02.s sound1-02.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 175 63 tgl 45 0 sound1-03.s sound1-03.r empty 17 7 0 10 -262144
@@ -699,7 +703,7 @@ SB3 SB4 SB5;
 #X obj 340 63 tgl 45 0 sound1-06.s sound1-06.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 395 63 tgl 45 0 sound1-07.s sound1-07.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 450 63 tgl 45 0 sound1-08.s sound1-08.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 505 63 tgl 45 0 sound1-09.s sound1-09.r empty 17 7 0 10 -262144
@@ -711,9 +715,9 @@ SB3 SB4 SB5;
 #X obj 670 63 tgl 45 0 sound1-12.s sound1-12.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 725 63 tgl 45 0 sound1-13.s sound1-13.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 780 63 tgl 45 0 sound1-14.s sound1-14.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 835 63 tgl 45 0 sound1-15.s sound1-15.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 890 63 tgl 45 0 sound1-16.s sound1-16.r empty 17 7 0 10 -262144
@@ -721,7 +725,7 @@ SB3 SB4 SB5;
 #X obj 65 118 tgl 45 0 sound2-01.s sound2-01.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 120 118 tgl 45 0 sound2-02.s sound2-02.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 175 118 tgl 45 0 sound2-03.s sound2-03.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 230 118 tgl 45 0 sound2-04.s sound2-04.r empty 17 7 0 10 -262144
@@ -729,11 +733,11 @@ SB3 SB4 SB5;
 #X obj 285 118 tgl 45 0 sound2-05.s sound2-05.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 340 118 tgl 45 0 sound2-06.s sound2-06.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 395 118 tgl 45 0 sound2-07.s sound2-07.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 450 118 tgl 45 0 sound2-08.s sound2-08.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 505 118 tgl 45 0 sound2-09.s sound2-09.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 560 118 tgl 45 0 sound2-10.s sound2-10.r empty 17 7 0 10 -262144
@@ -741,13 +745,13 @@ SB3 SB4 SB5;
 #X obj 616 118 tgl 45 0 sound2-11.s sound2-11.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 670 118 tgl 45 0 sound2-12.s sound2-12.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 725 118 tgl 45 0 sound2-13.s sound2-13.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 780 118 tgl 45 0 sound2-14.s sound2-14.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 835 118 tgl 45 0 sound2-15.s sound2-15.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 890 118 tgl 45 0 sound2-16.s sound2-16.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 65 173 tgl 45 0 sound3-01.s sound3-01.r empty 17 7 0 10 -262144
@@ -755,11 +759,11 @@ SB3 SB4 SB5;
 #X obj 120 173 tgl 45 0 sound3-02.s sound2-03.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 175 173 tgl 45 0 sound3-03.s sound2-03.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 230 173 tgl 45 0 sound3-04.s sound2-03.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 285 173 tgl 45 0 sound3-05.s sound2-03.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 340 173 tgl 45 0 sound3-06.s sound2-03.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 395 173 tgl 45 0 sound3-07.s sound2-03.r empty 17 7 0 10 -262144
@@ -767,11 +771,11 @@ SB3 SB4 SB5;
 #X obj 450 173 tgl 45 0 sound3-08.s sound2-03.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 505 173 tgl 45 0 sound3-09.s sound2-03.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 560 173 tgl 45 0 sound3-10.s sound2-13.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 616 173 tgl 45 0 sound3-11.s sound2-13.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 670 173 tgl 45 0 sound3-12.s sound2-13.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 725 173 tgl 45 0 sound3-13.s sound2-13.r empty 17 7 0 10 -262144
@@ -781,7 +785,7 @@ SB3 SB4 SB5;
 #X obj 835 173 tgl 45 0 sound3-15.s sound2-13.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 890 173 tgl 45 0 sound3-16.s sound2-13.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 65 228 tgl 45 0 sound4-01.s sound4-01.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 120 228 tgl 45 0 sound4-02.s sound4-02.r empty 17 7 0 10 -262144
@@ -789,7 +793,7 @@ SB3 SB4 SB5;
 #X obj 175 228 tgl 45 0 sound4-03.s sound4-03.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 230 228 tgl 45 0 sound4-04.s sound4-04.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 285 228 tgl 45 0 sound4-05.s sound4-05.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 340 228 tgl 45 0 sound4-06.s sound4-06.r empty 17 7 0 10 -262144
@@ -801,7 +805,7 @@ SB3 SB4 SB5;
 #X obj 505 228 tgl 45 0 sound4-09.s sound4-09.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 560 228 tgl 45 0 sound4-10.s sound4-10.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 616 228 tgl 45 0 sound4-11.s sound4-11.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 670 228 tgl 45 0 sound4-12.s sound4-12.r empty 17 7 0 10 -262144
