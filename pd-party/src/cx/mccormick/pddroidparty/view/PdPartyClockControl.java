@@ -164,7 +164,7 @@ public class PdPartyClockControl extends RelativeLayout {
 
 		final SeekBar offsetSlider = new SeekBar(context);
 		offsetSlider.setMax(100);
-		offsetSlider.setProgress(50);
+		offsetSlider.setProgress(0);
 
 		// TODO 300 is maybe too huge for some devices ...
 		offsetSlider.setLayoutParams(new ViewGroup.LayoutParams(300, ViewGroup.LayoutParams.WRAP_CONTENT));
