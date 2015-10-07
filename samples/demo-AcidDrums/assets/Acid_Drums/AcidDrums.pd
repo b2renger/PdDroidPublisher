@@ -1,5 +1,5 @@
-#N struct 10389template-marker float a float b;
-#N canvas 65 144 1288 576 10;
+#N struct 12366template-marker float a float b;
+#N canvas 65 149 1288 576 10;
 #X declare -path z_nrci_abs;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #N canvas 663 102 651 686 audio 0;
@@ -481,7 +481,7 @@
 #X text 40 525 Quantizer;
 #X text 355 373 _;
 #X obj 1223 400 vsl 40 145 0 127 0 0 drum_mix drum_mix.r Master 0 -9
-0 10 -262144 -1 -1 13100 1;
+0 10 -262144 -1 -1 0 1;
 #X obj 8 4 loadsave storage;
 #N canvas 726 289 613 463 loadsave-interface 0;
 #X obj 44 15 s cb-save;
@@ -797,28 +797,32 @@
 -2 -8 0 10 -262144 -1 -1 14900 1;
 #X obj 113 396 touch 250 150 fxcontrol;
 #X obj 401 397 vsl 40 145 0 1 0 0 kick_tone.s kick_tone.r KickT 0 -9
-0 10 -262144 -1 -1 8600 1;
+0 10 -262144 -1 -1 0 1;
 #X obj 457 398 vsl 40 145 0.25 0.75 0 0 kick_decay.s kick_decay.r KickD
-0 -9 0 10 -262144 -1 -1 1200 1;
+0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 515 399 vsl 40 145 0 1 0 0 kick_gain.s kick_gain.r KickG 0 -9
-0 10 -262144 -1 -1 9300 1;
+0 10 -262144 -1 -1 0 1;
 #X obj 650 399 vsl 40 145 0.05 0.5 0 0 snare_decay.s snare_decay.r
-SnareD 0 -9 0 10 -262144 -1 -1 6100 1;
+SnareD 0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 594 399 vsl 40 145 0.01 0.3 0 0 snare_tone.s snare_tone.r SnareT
-0 -9 0 10 -262144 -1 -1 2000 1;
+0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 704 399 vsl 40 145 0 1 0 0 snare_gain.s snare_gain.r SnareG
-0 -9 0 10 -262144 -1 -1 11400 1;
+0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 777 400 vsl 40 145 0 1 0 0 clap_tone.s clap_tone.r ClapT 0 -9
-0 10 -262144 -1 -1 3900 1;
+0 10 -262144 -1 -1 0 1;
 #X obj 833 400 vsl 40 145 0 1 0 0 clap_decay.s clap_decay.r ClapD 0
--9 0 10 -262144 -1 -1 1700 1;
+-9 0 10 -262144 -1 -1 0 1;
 #X obj 892 401 vsl 40 145 0 1 0 0 clap_gain.s clap_gain.r ClapG 0 -9
-0 10 -262144 -1 -1 7300 1;
+0 10 -262144 -1 -1 0 1;
 #X obj 1021 401 vsl 40 145 0.45 0.65 0 0 hihat_decay.s hithat_decay.r
-HihatD 0 -9 0 10 -262144 -1 -1 6100 1;
+HihatD 0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 1078 402 vsl 40 145 0 1 0 0 hihat_gain.s hihat_gain.r HihatG
-0 -9 0 10 -262144 -1 -1 8700 1;
+0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 964 402 vsl 40 145 0 1 0 0 hihat_tone.s hihat_tone.r HihatT
-0 -9 0 10 -262144 -1 -1 3400 1;
+0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 1151 400 vsl 40 145 0 1 0 0 cowbell_gain.s cowbell_gain.r CowbellG
-0 -9 0 10 -262144 -1 -1 10800 1;
+0 -9 0 10 -262144 -1 -1 0 1;
+#X obj 721 5 bng 45 250 50 0 load empty Load 0 -7 0 10 -262144 -1 -1
+;
+#X obj 831 4 bng 45 250 50 0 save empty Save 0 -7 0 10 -262144 -1 -1
+;
