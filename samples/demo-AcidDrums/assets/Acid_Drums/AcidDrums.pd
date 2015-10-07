@@ -1,8 +1,8 @@
-#N struct 5204template-marker float a float b;
-#N canvas 68 82 1273 686 10;
+#N struct 10389template-marker float a float b;
+#N canvas 65 144 1288 576 10;
 #X declare -path z_nrci_abs;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#N canvas 666 97 651 686 audio 0;
+#N canvas 663 102 651 686 audio 0;
 #X obj 303 312 r fxcontrol;
 #X obj 303 334 unpack f f;
 #X obj 238 538 dac~;
@@ -349,7 +349,7 @@
 #X obj 59 492 pack f \$0;
 #X msg 58 514 \; \$2-cursor pos \$1 50;
 #X obj 58 433 * 55;
-#N canvas 65 82 1301 686 drum-seq 0;
+#N canvas 65 87 1301 686 drum-seq 0;
 #X obj 17 34 step 0 sound1-01.s channel1 s1-repeat.s s1-prob.s;
 #X obj 17 54 step 1 sound1-02.s channel1 s1-repeat.s s1-prob.s;
 #X obj 17 74 step 2 sound1-03.s channel1 s1-repeat.s s1-prob.s;
@@ -481,7 +481,7 @@
 #X text 40 525 Quantizer;
 #X text 355 373 _;
 #X obj 1223 400 vsl 40 145 0 127 0 0 drum_mix drum_mix.r Master 0 -9
-0 10 -262144 -1 -1 14400 1;
+0 10 -262144 -1 -1 13100 1;
 #X obj 8 4 loadsave storage;
 #N canvas 726 289 613 463 loadsave-interface 0;
 #X obj 44 15 s cb-save;
@@ -504,6 +504,111 @@
 #X restore 110 4 pd loadsave-interface;
 #N canvas 65 54 1301 714 loadsave 0;
 #X obj 41 20 sssad/auto drum_mix drum_mix.r;
+#X obj 41 20 sssad/auto sound1-01.s sound1-01.r;
+#X obj 41 20 sssad/auto sound1-02.s sound1-02.r;
+#X obj 41 20 sssad/auto sound1-03.s sound1-03.r;
+#X obj 41 20 sssad/auto sound1-04.s sound1-04.r;
+#X obj 41 20 sssad/auto sound1-05.s sound1-05.r;
+#X obj 41 20 sssad/auto sound1-06.s sound1-06.r;
+#X obj 41 20 sssad/auto sound1-07.s sound1-07.r;
+#X obj 41 20 sssad/auto sound1-08.s sound1-08.r;
+#X obj 41 20 sssad/auto sound1-09.s sound1-09.r;
+#X obj 41 20 sssad/auto sound1-10.s sound1-10.r;
+#X obj 41 20 sssad/auto sound1-11.s sound1-11.r;
+#X obj 41 20 sssad/auto sound1-12.s sound1-12.r;
+#X obj 41 20 sssad/auto sound1-13.s sound1-13.r;
+#X obj 41 20 sssad/auto sound1-14.s sound1-14.r;
+#X obj 41 20 sssad/auto sound1-15.s sound1-15.r;
+#X obj 41 20 sssad/auto sound1-16.s sound1-16.r;
+#X obj 41 20 sssad/auto sound2-01.s sound2-01.r;
+#X obj 41 20 sssad/auto sound2-02.s sound2-02.r;
+#X obj 41 20 sssad/auto sound2-03.s sound2-03.r;
+#X obj 41 20 sssad/auto sound2-04.s sound2-04.r;
+#X obj 41 20 sssad/auto sound2-05.s sound2-05.r;
+#X obj 41 20 sssad/auto sound2-06.s sound2-06.r;
+#X obj 41 20 sssad/auto sound2-07.s sound2-07.r;
+#X obj 41 20 sssad/auto sound2-08.s sound2-08.r;
+#X obj 41 20 sssad/auto sound2-09.s sound2-09.r;
+#X obj 41 20 sssad/auto sound2-10.s sound2-10.r;
+#X obj 41 20 sssad/auto sound2-11.s sound2-11.r;
+#X obj 41 20 sssad/auto sound2-12.s sound2-12.r;
+#X obj 41 20 sssad/auto sound2-13.s sound2-13.r;
+#X obj 41 20 sssad/auto sound2-14.s sound2-14.r;
+#X obj 41 20 sssad/auto sound2-15.s sound2-15.r;
+#X obj 41 20 sssad/auto sound2-16.s sound2-16.r;
+#X obj 41 20 sssad/auto sound3-01.s sound3-01.r;
+#X obj 41 20 sssad/auto sound3-02.s sound3-02.r;
+#X obj 41 20 sssad/auto sound3-03.s sound3-03.r;
+#X obj 41 20 sssad/auto sound3-04.s sound3-04.r;
+#X obj 41 20 sssad/auto sound3-05.s sound3-05.r;
+#X obj 41 20 sssad/auto sound3-06.s sound3-06.r;
+#X obj 41 20 sssad/auto sound3-07.s sound3-07.r;
+#X obj 41 20 sssad/auto sound3-08.s sound3-08.r;
+#X obj 41 20 sssad/auto sound3-09.s sound3-09.r;
+#X obj 41 20 sssad/auto sound3-10.s sound3-10.r;
+#X obj 41 20 sssad/auto sound3-11.s sound3-11.r;
+#X obj 41 20 sssad/auto sound3-12.s sound3-12.r;
+#X obj 41 20 sssad/auto sound3-13.s sound3-13.r;
+#X obj 41 20 sssad/auto sound3-14.s sound3-14.r;
+#X obj 41 20 sssad/auto sound3-15.s sound3-15.r;
+#X obj 41 20 sssad/auto sound3-16.s sound3-16.r;
+#X obj 41 20 sssad/auto sound4-01.s sound4-01.r;
+#X obj 41 20 sssad/auto sound4-02.s sound4-02.r;
+#X obj 41 20 sssad/auto sound4-03.s sound4-03.r;
+#X obj 41 20 sssad/auto sound4-04.s sound4-04.r;
+#X obj 41 20 sssad/auto sound4-05.s sound4-05.r;
+#X obj 41 20 sssad/auto sound4-06.s sound4-06.r;
+#X obj 41 20 sssad/auto sound4-07.s sound4-07.r;
+#X obj 41 20 sssad/auto sound4-08.s sound4-08.r;
+#X obj 41 20 sssad/auto sound4-09.s sound4-09.r;
+#X obj 41 20 sssad/auto sound4-10.s sound4-10.r;
+#X obj 41 20 sssad/auto sound4-11.s sound4-11.r;
+#X obj 41 20 sssad/auto sound4-12.s sound4-12.r;
+#X obj 41 20 sssad/auto sound4-13.s sound4-13.r;
+#X obj 41 20 sssad/auto sound4-14.s sound4-14.r;
+#X obj 41 20 sssad/auto sound4-15.s sound4-15.r;
+#X obj 41 20 sssad/auto sound4-16.s sound4-16.r;
+#X obj 41 20 sssad/auto sound5-01.s sound5-01.r;
+#X obj 41 20 sssad/auto sound5-02.s sound5-02.r;
+#X obj 41 20 sssad/auto sound5-03.s sound5-03.r;
+#X obj 41 20 sssad/auto sound5-04.s sound5-04.r;
+#X obj 41 20 sssad/auto sound5-05.s sound5-05.r;
+#X obj 41 20 sssad/auto sound5-06.s sound5-06.r;
+#X obj 41 20 sssad/auto sound5-07.s sound5-07.r;
+#X obj 41 20 sssad/auto sound5-08.s sound5-08.r;
+#X obj 41 20 sssad/auto sound5-09.s sound5-09.r;
+#X obj 41 20 sssad/auto sound5-10.s sound5-10.r;
+#X obj 41 20 sssad/auto sound5-11.s sound5-11.r;
+#X obj 41 20 sssad/auto sound5-12.s sound5-12.r;
+#X obj 41 20 sssad/auto sound5-13.s sound5-13.r;
+#X obj 41 20 sssad/auto sound5-14.s sound5-14.r;
+#X obj 41 20 sssad/auto sound5-15.s sound5-15.r;
+#X obj 41 20 sssad/auto sound5-16.s sound5-16.r;
+#X obj 41 20 sssad/auto kick_tone.s kick_tone.r;
+#X obj 41 20 sssad/auto kick_decay.s kick_decay.r;
+#X obj 41 20 sssad/auto kick_gain.s kick_gain.r;
+#X obj 41 20 sssad/auto snare_tone.s snare_tone.r;
+#X obj 41 20 sssad/auto snare_decay.s snare_decay.r;
+#X obj 41 20 sssad/auto snare_gain.s snare_gain.r;
+#X obj 41 20 sssad/auto clap_tone.s clap_tone.r;
+#X obj 41 20 sssad/auto clap_decay.s clap_decay.r;
+#X obj 41 20 sssad/auto clap_gain.s clap_gain.r;
+#X obj 41 20 sssad/auto hihat_tone.s hihat_tone.r;
+#X obj 41 20 sssad/auto hihat_decay.s hihat_decay.r;
+#X obj 41 20 sssad/auto hihat_gain.s hihat_gain.r;
+#X obj 41 20 sssad/auto cowbell_tone.s cowbell_tone.r;
+#X obj 41 20 sssad/auto cowbell_decay.s cowbell_decay.r;
+#X obj 41 20 sssad/auto cowbell_gain.s cowbell_gain.r;
+#X obj 41 20 sssad/auto s1-repeat.s s1-repeat.r;
+#X obj 41 20 sssad/auto s2-repeat.s s2-repeat.r;
+#X obj 41 20 sssad/auto s3-repeat.s s3-repeat.r;
+#X obj 41 20 sssad/auto s4-repeat.s s4-repeat.r;
+#X obj 41 20 sssad/auto s5-repeat.s s5-repeat.r;
+#X obj 41 20 sssad/auto s1-prob.s s1-prob.r;
+#X obj 41 20 sssad/auto s2-prob.s s2-prob.r;
+#X obj 41 20 sssad/auto s3-prob.s s3-prob.r;
+#X obj 41 20 sssad/auto s4-prob.s s4-prob.r;
+#X obj 41 20 sssad/auto s5-prob.s s5-prob.r;
 #X restore 62 27 pd loadsave;
 #X obj 153 26 clock-gui;
 #X obj 260 7 declare -path ../../../../pd-party/droidparty-abstractions
@@ -511,7 +616,7 @@
 #X obj 499 50 cnv 15 49 320 empty \$0-cursor empty 20 12 0 14 -258113
 -66577 0;
 #X obj 6 63 tgl 45 0 sound1-01.s sound1-01.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 61 63 tgl 45 0 sound1-02.s sound1-02.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 116 63 tgl 45 0 sound1-03.s sound1-03.r empty 17 7 0 10 -262144
@@ -521,7 +626,7 @@
 #X obj 226 63 tgl 45 0 sound1-05.s sound1-05.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 281 63 tgl 45 0 sound1-06.s sound1-06.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 336 63 tgl 45 0 sound1-07.s sound1-07.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 391 63 tgl 45 0 sound1-08.s sound1-08.r empty 17 7 0 10 -262144
@@ -533,13 +638,13 @@
 #X obj 557 63 tgl 45 0 sound1-11.s sound1-11.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 611 63 tgl 45 0 sound1-12.s sound1-12.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 666 63 tgl 45 0 sound1-13.s sound1-13.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 721 63 tgl 45 0 sound1-14.s sound1-14.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 776 63 tgl 45 0 sound1-15.s sound1-15.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 831 63 tgl 45 0 sound1-16.s sound1-16.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 6 124 tgl 45 0 sound2-01.s sound2-01.r empty 17 7 0 10 -262144
@@ -547,7 +652,7 @@
 #X obj 61 124 tgl 45 0 sound2-02.s sound2-02.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 116 124 tgl 45 0 sound2-03.s sound2-03.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 171 124 tgl 45 0 sound2-04.s sound2-04.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 226 124 tgl 45 0 sound2-05.s sound2-05.r empty 17 7 0 10 -262144
@@ -561,13 +666,13 @@
 #X obj 446 124 tgl 45 0 sound2-09.s sound2-09.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 501 124 tgl 45 0 sound2-10.s sound2-10.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 557 124 tgl 45 0 sound2-11.s sound2-11.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 611 124 tgl 45 0 sound2-12.s sound2-12.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 666 124 tgl 45 0 sound2-13.s sound2-13.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 721 124 tgl 45 0 sound2-14.s sound2-14.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 776 124 tgl 45 0 sound2-15.s sound2-15.r empty 17 7 0 10 -262144
@@ -581,13 +686,13 @@
 #X obj 116 189 tgl 45 0 sound3-03.s sound2-03.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 171 189 tgl 45 0 sound3-04.s sound2-03.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 226 189 tgl 45 0 sound3-05.s sound2-03.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 281 189 tgl 45 0 sound3-06.s sound2-03.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 336 189 tgl 45 0 sound3-07.s sound2-03.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 391 189 tgl 45 0 sound3-08.s sound2-03.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 446 189 tgl 45 0 sound3-09.s sound2-03.r empty 17 7 0 10 -262144
@@ -595,7 +700,7 @@
 #X obj 501 189 tgl 45 0 sound3-10.s sound2-13.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 557 189 tgl 45 0 sound3-11.s sound2-13.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 611 189 tgl 45 0 sound3-12.s sound2-13.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 666 189 tgl 45 0 sound3-13.s sound2-13.r empty 17 7 0 10 -262144
@@ -603,45 +708,45 @@
 #X obj 721 189 tgl 45 0 sound3-14.s sound2-13.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 776 189 tgl 45 0 sound3-15.s sound2-13.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 831 189 tgl 45 0 sound3-16.s sound2-13.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 6 250 tgl 45 0 sound4-01.s sound4-01.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 61 250 tgl 45 0 sound4-02.s sound4-02.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 116 250 tgl 45 0 sound4-03.s sound4-03.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 171 250 tgl 45 0 sound4-04.s sound4-04.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 226 250 tgl 45 0 sound4-05.s sound4-05.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 281 250 tgl 45 0 sound4-06.s sound4-06.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 336 250 tgl 45 0 sound4-07.s sound4-07.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 391 250 tgl 45 0 sound4-08.s sound4-08.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 446 250 tgl 45 0 sound4-09.s sound4-09.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 501 250 tgl 45 0 sound4-10.s sound4-10.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 557 250 tgl 45 0 sound4-11.s sound4-11.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 611 250 tgl 45 0 sound4-12.s sound4-12.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 666 250 tgl 45 0 sound4-13.s sound4-13.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 721 250 tgl 45 0 sound4-14.s sound4-14.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 776 250 tgl 45 0 sound4-15.s sound4-15.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 831 250 tgl 45 0 sound4-16.s sound4-16.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 6 310 tgl 45 0 sound5-01.s sound5-01.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 61 310 tgl 45 0 sound5-02.s sound5-02.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 116 310 tgl 45 0 sound5-03.s sound5-03.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 171 310 tgl 45 0 sound5-04.s sound5-04.r empty 17 7 0 10 -262144
@@ -653,7 +758,7 @@
 #X obj 336 310 tgl 45 0 sound5-07.s sound5-07.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 391 310 tgl 45 0 sound5-08.s sound5-08.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 446 310 tgl 45 0 sound5-09.s sound5-09.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 501 310 tgl 45 0 sound5-10.s sound5-10.r empty 17 7 0 10 -262144
@@ -670,50 +775,50 @@
 -1 -1 0 1;
 #X obj 831 310 tgl 45 0 sound5-16.s sound5-16.r empty 17 7 0 10 -262144
 -1 -1 0 1;
-#X obj 886 68 hradio 35 1 0 6 s1-repeat.s s1-repeat.r Kick_repeat 0
--8 0 10 -262144 -1 -1 4;
-#X obj 1111 68 hsl 150 35 0 100 0 0 s1-prob.s s1-prob.r Kick_probability
--2 -8 0 10 -262144 -1 -1 9000 1;
-#X obj 886 130 hradio 35 1 0 6 s2-repeat.s s2-repeat.r Snare_repeat
-0 -8 0 10 -262144 -1 -1 4;
-#X obj 1111 130 hsl 150 35 0 100 0 0 s2-prob.s s2-prob.r Snare_probability
--2 -8 0 10 -262144 -1 -1 10100 1;
-#X obj 888 192 hradio 35 1 0 6 s3-repeat.s s3-repeat.r Clap_repeat
-0 -8 0 10 -262144 -1 -1 4;
-#X obj 1112 192 hsl 150 35 0 100 0 0 s3-prob.s s3-prob.r Clap_probability
--2 -8 0 10 -262144 -1 -1 10600 1;
-#X obj 889 253 hradio 35 1 0 6 s4-repeat.s s4-repeat.r Hihat_repeat
-0 -8 0 10 -262144 -1 -1 2;
-#X obj 1112 253 hsl 150 35 0 100 0 0 s4-prob.s s4-prob.r Hihat_probability
--2 -8 0 10 -262144 -1 -1 10400 1;
-#X obj 889 314 hradio 35 1 0 6 s5-repeat.s s5-repeat.r Bell_repeat
-0 -8 0 10 -262144 -1 -1 4;
-#X obj 1112 314 hsl 150 35 0 100 0 0 s5-prob.s s5-prob.r Bell_probability
--2 -8 0 10 -262144 -1 -1 8700 1;
+#X obj 886 68 hradio 35 1 1 6 s1-repeat.s s1-repeat.r Kick_repeat 0
+-8 0 10 -262144 -1 -1 0;
+#X obj 1111 68 hsl 150 35 0 100 0 1 s1-prob.s s1-prob.r Kick_probability
+-2 -8 0 10 -262144 -1 -1 14900 1;
+#X obj 886 130 hradio 35 1 1 6 s2-repeat.s s2-repeat.r Snare_repeat
+0 -8 0 10 -262144 -1 -1 0;
+#X obj 1111 130 hsl 150 35 0 100 0 1 s2-prob.s s2-prob.r Snare_probability
+-2 -8 0 10 -262144 -1 -1 14900 1;
+#X obj 888 192 hradio 35 1 1 6 s3-repeat.s s3-repeat.r Clap_repeat
+0 -8 0 10 -262144 -1 -1 0;
+#X obj 1112 192 hsl 150 35 0 100 0 1 s3-prob.s s3-prob.r Clap_probability
+-2 -8 0 10 -262144 -1 -1 14900 1;
+#X obj 889 253 hradio 35 1 1 6 s4-repeat.s s4-repeat.r Hihat_repeat
+0 -8 0 10 -262144 -1 -1 0;
+#X obj 1112 253 hsl 150 35 0 100 0 1 s4-prob.s s4-prob.r Hihat_probability
+-2 -8 0 10 -262144 -1 -1 14900 1;
+#X obj 889 314 hradio 35 1 1 6 s5-repeat.s s5-repeat.r Bell_repeat
+0 -8 0 10 -262144 -1 -1 0;
+#X obj 1112 314 hsl 150 35 0 100 0 1 s5-prob.s s5-prob.r Bell_probability
+-2 -8 0 10 -262144 -1 -1 14900 1;
 #X obj 113 396 touch 250 150 fxcontrol;
 #X obj 401 397 vsl 40 145 0 1 0 0 kick_tone.s kick_tone.r KickT 0 -9
-0 10 -262144 -1 -1 12400 1;
+0 10 -262144 -1 -1 8600 1;
 #X obj 457 398 vsl 40 145 0.25 0.75 0 0 kick_decay.s kick_decay.r KickD
 0 -9 0 10 -262144 -1 -1 1200 1;
 #X obj 515 399 vsl 40 145 0 1 0 0 kick_gain.s kick_gain.r KickG 0 -9
-0 10 -262144 -1 -1 10900 1;
+0 10 -262144 -1 -1 9300 1;
 #X obj 650 399 vsl 40 145 0.05 0.5 0 0 snare_decay.s snare_decay.r
-SnareD 0 -9 0 10 -262144 -1 -1 1800 1;
+SnareD 0 -9 0 10 -262144 -1 -1 6100 1;
 #X obj 594 399 vsl 40 145 0.01 0.3 0 0 snare_tone.s snare_tone.r SnareT
-0 -9 0 10 -262144 -1 -1 4000 1;
+0 -9 0 10 -262144 -1 -1 2000 1;
 #X obj 704 399 vsl 40 145 0 1 0 0 snare_gain.s snare_gain.r SnareG
-0 -9 0 10 -262144 -1 -1 5800 1;
+0 -9 0 10 -262144 -1 -1 11400 1;
 #X obj 777 400 vsl 40 145 0 1 0 0 clap_tone.s clap_tone.r ClapT 0 -9
-0 10 -262144 -1 -1 2200 1;
+0 10 -262144 -1 -1 3900 1;
 #X obj 833 400 vsl 40 145 0 1 0 0 clap_decay.s clap_decay.r ClapD 0
--9 0 10 -262144 -1 -1 3700 1;
+-9 0 10 -262144 -1 -1 1700 1;
 #X obj 892 401 vsl 40 145 0 1 0 0 clap_gain.s clap_gain.r ClapG 0 -9
-0 10 -262144 -1 -1 8700 1;
+0 10 -262144 -1 -1 7300 1;
 #X obj 1021 401 vsl 40 145 0.45 0.65 0 0 hihat_decay.s hithat_decay.r
-HihatD 0 -9 0 10 -262144 -1 -1 8100 1;
+HihatD 0 -9 0 10 -262144 -1 -1 6100 1;
 #X obj 1078 402 vsl 40 145 0 1 0 0 hihat_gain.s hihat_gain.r HihatG
-0 -9 0 10 -262144 -1 -1 2700 1;
+0 -9 0 10 -262144 -1 -1 8700 1;
 #X obj 964 402 vsl 40 145 0 1 0 0 hihat_tone.s hihat_tone.r HihatT
-0 -9 0 10 -262144 -1 -1 14400 1;
+0 -9 0 10 -262144 -1 -1 3400 1;
 #X obj 1151 400 vsl 40 145 0 1 0 0 cowbell_gain.s cowbell_gain.r CowbellG
-0 -9 0 10 -262144 -1 -1 12600 1;
+0 -9 0 10 -262144 -1 -1 10800 1;
