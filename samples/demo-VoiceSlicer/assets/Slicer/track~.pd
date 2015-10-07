@@ -1,4 +1,4 @@
-#N canvas 278 187 654 511 10;
+#N canvas 180 252 654 511 10;
 #X obj 105 137 inlet~;
 #X obj 166 195 rec 1000;
 #X obj 417 3 loadbang;
@@ -6,11 +6,11 @@
 #X obj 136 415 tabwrite~;
 #X obj 211 225 f \$1;
 #X msg 211 252 \; rec.\$1.r 0;
-#X obj 523 355 outlet;
-#X obj 523 301 r play.\$1.s;
-#X obj 523 326 f \$1;
+#X obj 357 412 outlet;
+#X obj 357 358 r play.\$1.s;
+#X obj 357 383 f \$1;
 #X obj 453 129 r enable.\$1.s;
-#X obj 450 223 tabwrite mutes;
+#X obj 464 213 tabwrite mutes;
 #X obj 558 95 - 1;
 #X obj 464 153 swap 1;
 #X obj 464 175 -;
@@ -21,6 +21,8 @@
 #X obj 141 49 t b f f, f 9;
 #X obj 192 98 pack f f;
 #X obj 141 18 r rec.\$1.s;
+#X obj 465 277 r latency.\$1.s;
+#X obj 465 308 tabwrite offsets;
 #X connect 0 0 4 0;
 #X connect 1 0 4 0;
 #X connect 1 1 5 0;
@@ -33,6 +35,7 @@
 #X connect 9 0 7 0;
 #X connect 10 0 13 0;
 #X connect 12 0 11 1;
+#X connect 12 0 23 1;
 #X connect 13 0 14 0;
 #X connect 13 1 14 1;
 #X connect 14 0 11 0;
@@ -43,3 +46,4 @@
 #X connect 19 2 16 0;
 #X connect 20 0 17 0;
 #X connect 21 0 19 0;
+#X connect 22 0 23 0;
