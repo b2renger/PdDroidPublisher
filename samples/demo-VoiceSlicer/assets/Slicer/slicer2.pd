@@ -1,6 +1,6 @@
-#N canvas 362 261 726 383 10;
+#N canvas 534 230 726 383 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#N canvas 425 103 879 659 core 0;
+#N canvas 423 104 879 659 core 0;
 #X obj 84 81 adc~;
 #X obj 315 301 + 1;
 #X obj 315 275 random 2;
@@ -8,7 +8,7 @@
 #X obj 360 250 + 1;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array mutes 4 float 3;
-#A 0 1 1 1 1;
+#A 0 1 1 1 0;
 #X coords 0 1 4 0 100 50 1 0 0;
 #X restore 483 22 graph;
 #X obj 393 336 spigot 1;
@@ -264,7 +264,7 @@
 #X connect 24 0 18 0;
 #X connect 25 0 18 0;
 #X connect 26 0 18 0;
-#X restore 403 18 pd core;
+#X restore 261 18 pd core;
 #X obj 357 78 tgl 32 0 enable.1.s empty empty 17 7 0 10 -262144 -1
 -1 0 1;
 #X text 217 21 Record;
@@ -280,9 +280,8 @@
 -1 0 1;
 #X obj 315 126 bng 32 250 50 0 play.2.s empty empty 17 7 0 10 -262144
 -1 -1;
-#X text 476 285 Sequencer;
-#X obj 25 315 hsl 128 15 0 44100 0 1 pitch.delta.s empty Pitch_Mod.
--2 -8 0 10 -262144 -1 -1 0 1;
+#X obj 25 315 hsl 128 15 0 44100 0 0 pitch.delta.s pitch.delta.r Pitch_Mod.
+-2 -8 0 10 -262144 -1 -1 2600 1;
 #X obj 357 174 tgl 32 0 enable.3.s empty empty 17 7 0 10 -262144 -1
 -1 0 1;
 #X obj 218 174 tgl 32 0 rec.3.s rec.3.r empty 17 7 0 10 -262144 -1
@@ -324,14 +323,14 @@ Pitch -2 -8 0 10 -262144 -1 -1 6350 1;
 #X array smp1 44100 float 0;
 #X coords 0 1 44099 -1 32 32 1 0 0;
 #X restore 265 78 graph;
-#X obj 383 309 hsl 200 48 0 1 0 1 volume.s volume.r Volume -2 -8 0
+#X obj 334 302 hsl 200 48 0 1 0 0 volume.s volume.r Volume -2 -8 0
 10 -262144 -1 -1 19900 1;
 #X obj 284 305 bng 32 250 50 0 autostop.s empty Stop 0 -7 0 10 -262144
 -1 -1;
 #X obj 404 126 hsl 180 32 0 1 0 0 latency.2.s latency.2.r Latency2
 -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 679 15 vradio 32 1 0 11 seq.mode.s seq.mode.r Mode 0 -8 0 10
--262144 -1 -1 0;
+-262144 -1 -1 8;
 #X text 634 57 Random;
 #X text 649 20 Off;
 #X text 658 282 4x;
@@ -343,11 +342,11 @@ Pitch -2 -8 0 10 -262144 -1 -1 6350 1;
 #X text 646 89 1/4x;
 #X text 655 314 6x;
 #X text 657 346 8x;
-#X obj 148 70 vradio 48 1 0 4 tracks.range.s empty empty 0 -8 0 10
--262144 -1 -1 3;
-#X obj 16 22 vradio 48 1 0 5 tracks.solo.s empty empty 0 -8 0 10 -262144
--1 -1 0;
-#X obj 82 72 vsl 48 187 -22050 22050 0 1 pitch.bend.s pitch.bend.r
+#X obj 148 70 vradio 48 1 0 4 tracks.range.s tracks.range.r empty 0
+-8 0 10 -262144 -1 -1 3;
+#X obj 16 22 vradio 48 1 0 5 tracks.solo.s tracks.solo.r empty 0 -8
+0 10 -262144 -1 -1 3;
+#X obj 82 72 vsl 48 187 -22050 22050 0 0 pitch.bend.s pitch.bend.r
 Bend 0 -9 0 10 -262144 -1 -1 9300 1;
 #X obj 404 174 hsl 180 32 0 1 0 0 latency.3.s latency.3.r Latency3
 -2 -8 0 10 -262144 -1 -1 0 1;
@@ -363,3 +362,55 @@ Bend 0 -9 0 10 -262144 -1 -1 9300 1;
 #X text 464 21 Offset;
 #X obj 207 53 cnv 15 1 220 empty empty empty 20 12 0 14 -228856 -66577
 0;
+#N canvas 66 193 235 164 presets 0;
+#X obj 38 27 loadsave storage;
+#N canvas 721 288 426 319 loadsave-interface 0;
+#X obj 65 170 s cb-save;
+#X obj 65 149 r storage-save;
+#X obj 165 149 r storage-load;
+#X obj 165 170 s cb-load;
+#X msg 213 69 \; storage load savefiles cbs;
+#X msg 33 69 \; storage save savefiles cbs;
+#X obj 153 226 r cb-save;
+#X obj 72 226 r cb-load;
+#X obj 72 251 sssad/loadsave;
+#X obj 33 47 r save.s;
+#X obj 213 44 r load.s;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 6 0 8 1;
+#X connect 7 0 8 0;
+#X connect 9 0 5 0;
+#X connect 10 0 4 0;
+#X restore 38 50 pd loadsave-interface;
+#N canvas 653 191 588 316 loadsave 0;
+#X obj 24 22 sssad/tablesave smp1 44100 smp1;
+#X obj 24 45 sssad/tablesave smp2 44100 smp2;
+#X obj 24 69 sssad/tablesave smp3 44100 smp3;
+#X obj 24 93 sssad/tablesave smp4 44100 smp4;
+#X obj 19 227 sssad/auto latency.1.s latency.1.r;
+#X obj 314 32 sssad/auto tracks.range.s tracks.range.r;
+#X obj 313 62 sssad/auto tracks.solo.s tracks.solo.r;
+#X obj 315 92 sssad/auto pitch.delta.s pitch.delta.r;
+#X obj 317 121 sssad/auto pitch.base.s pitch.base.r;
+#X obj 317 150 sssad/auto volume.s volume.r;
+#X obj 317 180 sssad/auto seq.mode.s seq.mode.r;
+#X obj 24 124 sssad/auto mute.1.s mute.1.r;
+#X obj 24 147 sssad/auto mute.2.s mute.2.r;
+#X obj 19 247 sssad/auto latency.2.s latency.2.r;
+#X obj 21 168 sssad/auto mute.3.s mute.3.r;
+#X obj 22 192 sssad/auto mute.4.s mute.4.r;
+#X obj 19 269 sssad/auto latency.3.s latency.3.r;
+#X obj 20 288 sssad/auto latency.4.s latency.4.r;
+#X restore 38 72 pd loadsave;
+#N canvas 220 374 450 300 init 0;
+#X obj 158 43 loadbang;
+#X msg 158 65 \; pitch.bend.r 0 \; pitch.base.r 44100 \; tracks.range.r
+3 \; volume.r 1 \;;
+#X connect 0 0 1 0;
+#X restore 41 108 pd init;
+#X restore 393 18 pd presets;
+#X obj 560 333 bng 32 250 50 0 save.s empty Save 34 16 0 10 -262144
+-1 -1;
+#X obj 560 291 bng 32 250 50 0 load.s empty Load 34 16 0 10 -262144
+-1 -1;
