@@ -195,9 +195,9 @@ public class Subpatch extends Widget
 	{
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setColor(fgcolor);
-		paint.setStrokeWidth(3);
 		if(array.drawType == Array.DRAWTYPE_POINTS)
 		{
+			paint.setStrokeWidth(3);
 			float ppx = 0, ppy = 0;
 			if(array.length < zoneWidth)
 			{
@@ -214,6 +214,7 @@ public class Subpatch extends Widget
 			}
 			else
 			{
+				paint.setStrokeWidth(0);
 				for(int i=0 ; i<zoneWidth ; i++)
 				{
 					int index = (int)((float)array.buffer.length * (float)i / (float)(zoneWidth));
