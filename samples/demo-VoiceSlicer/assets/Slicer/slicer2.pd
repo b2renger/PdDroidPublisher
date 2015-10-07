@@ -1,6 +1,6 @@
-#N canvas 602 161 526 408 10;
+#N canvas 604 186 526 408 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#N canvas 437 97 879 659 core 0;
+#N canvas 435 98 879 659 core 0;
 #X obj 84 81 adc~;
 #X obj 315 301 + 1;
 #X obj 363 70 r seq.s;
@@ -27,7 +27,7 @@
 #X obj 318 103 spigot 0;
 #X obj 17 13 declare -path ../../../../pd-party/droidparty-abstractions
 ;
-#N canvas 66 83 450 440 player 0;
+#N canvas 66 84 450 440 player 0;
 #X obj 174 30 inlet index;
 #X obj 185 301 tabread4~;
 #X obj 174 73 t b f;
@@ -37,11 +37,9 @@
 #X obj 185 342 *~;
 #X obj 296 333 *;
 #X obj 311 310 r volume.s;
-#N canvas 66 165 361 476 envelop 0;
-#X obj 80 384 line~;
+#N canvas 66 194 361 476 envelop 0;
+#X obj 80 423 line~;
 #X obj 80 292 + 22050;
-#X obj 80 319 pack f;
-#X msg 80 353 0 \, \$1 1000;
 #X obj 80 89 random 44100;
 #X obj 149 59 r pitch.delta.s;
 #X obj 119 153 r pitch.base.s;
@@ -49,19 +47,26 @@
 #X obj 137 183 r pitch.bend.s;
 #X obj 137 205 t b f;
 #X obj 80 13 inlet;
-#X obj 80 406 outlet~;
-#X connect 0 0 11 0;
-#X connect 1 0 2 0;
-#X connect 2 0 3 0;
-#X connect 3 0 0 0;
-#X connect 4 0 1 0;
-#X connect 5 0 4 1;
+#X obj 80 445 outlet~;
+#X obj 80 358 pack f f;
+#X obj 161 292 r latency.s;
+#X msg 80 392 \$2 \, \$1 1000;
+#X obj 80 325 +;
+#X connect 0 0 9 0;
+#X connect 1 0 13 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 1;
+#X connect 4 0 5 0;
+#X connect 5 0 1 1;
 #X connect 6 0 7 0;
-#X connect 7 0 1 1;
-#X connect 8 0 9 0;
-#X connect 9 0 7 0;
-#X connect 9 1 7 1;
-#X connect 10 0 4 0;
+#X connect 7 0 5 0;
+#X connect 7 1 5 1;
+#X connect 8 0 2 0;
+#X connect 10 0 12 0;
+#X connect 11 0 10 1;
+#X connect 11 0 13 1;
+#X connect 12 0 0 0;
+#X connect 13 0 10 0;
 #X restore 29 159 pd envelop;
 #X msg 185 260 set smp\$1;
 #X connect 0 0 2 0;
@@ -78,7 +83,7 @@
 #X connect 9 0 1 0;
 #X connect 10 0 1 0;
 #X restore 393 590 pd player;
-#N canvas 66 84 871 481 autorec 1;
+#N canvas 66 85 871 481 autorec 0;
 #X obj 48 33 r autorec.s;
 #X obj 48 55 f 0;
 #X obj 77 54 + 1;
@@ -203,7 +208,7 @@
 -1 0 1;
 #X obj 116 155 bng 32 250 50 0 play.2.s empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 440 285 tgl 32 0 seq.s empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 440 285 tgl 32 0 seq.s empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X text 24 163 Shot;
 #X text 424 255 Sequencer;
@@ -263,3 +268,5 @@ Pitch -2 -8 0 10 -262144 -1 -1 6350 1;
 10 -262144 -1 -1 12700 1;
 #X obj 295 107 bng 32 250 50 0 autostop.s empty Stop 0 -7 0 10 -262144
 -1 -1;
+#X obj 259 67 hsl 128 15 0 10000 0 0 latency.s empty Latency -2 -8
+0 10 -262144 -1 -1 0 1;
