@@ -32,8 +32,8 @@ public class MonochromeTheme implements Theme
 		}
 		else
 		{
-			fgColor = Color.HSVToColor(255, new float[]{hue, 0.5f, 0.4f});
-			bgColor = Color.HSVToColor(255, new float[]{hue, 0.5f, 0.9f});
+			fgColor = Color.HSVToColor(255, new float[]{hue, 1.0f, 0.5f});
+			bgColor = Color.HSVToColor(255, new float[]{hue, 0.1f, 1.0f});
 			mainBgColor = 0xFFFFFFFF;
 		}
 	}
