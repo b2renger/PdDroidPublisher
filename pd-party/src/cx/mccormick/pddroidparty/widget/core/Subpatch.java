@@ -22,13 +22,13 @@ public class Subpatch extends Widget
 		public final static int DRAWTYPE_BEZIER = 2;
 		
 		
-		String name;
-		int length;
-		String type;
+		public String name;
+		public int length;
+		public String type;
 		/** 0 : polygon, 1 : points, 2 : bezier */
-		int drawType; 
-		boolean save;
-		float [] buffer;
+		public int drawType; 
+		public boolean save;
+		public float [] buffer;
 	}
 	
 	protected WImage background = new WImage();
