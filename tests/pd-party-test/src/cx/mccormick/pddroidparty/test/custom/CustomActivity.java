@@ -34,6 +34,7 @@ public class CustomActivity extends Activity {
         config.objectOverrides.put("bang-custom", CustomBang.class);
         config.objectOverrides.put("array-custom", CustomArray.class);
         config.objectOverrides.put("custom-taplist", CustomTaplist.class);
+        config.objectOverrides.put("custom-taplist2", CustomTaplist.class);
         config.objectOverrides.put("sub-custom", CustomSubpatch.class);
         config.objectOverrides.put("custom comment", CustomComment.class);
         config.objectOverrides.put("toggle-custom", CustomToggle.class);

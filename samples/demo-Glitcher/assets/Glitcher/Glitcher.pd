@@ -1,11 +1,12 @@
-#N canvas 329 156 475 307 10;
-#X obj 9 79 hsl 128 25 0 32 0 0 num1.s num1.r Numerator 5 12 0 10 -262144
+#N canvas 320 171 475 379 10;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X obj 9 90 hsl 128 25 0 32 0 0 num1.s num1.r Numerator 5 12 0 10 -262144
 -1 -1 0 1;
-#X obj 9 113 hsl 128 25 0 32 0 0 den1.s den1.r Denominator 5 12 0 10
+#X obj 9 124 hsl 128 25 0 32 0 0 den1.s den1.r Denominator 5 12 0 10
 -262144 -1 -1 0 1;
-#X obj 6 46 tgl 25 0 glitch1.s glitch1.r Glitch_1 30 12 0 10 -262144
+#X obj 6 57 tgl 25 0 glitch1.s glitch1.r Glitch_1 30 12 0 10 -262144
 -1 -1 0 1;
-#N canvas 65 87 651 686 guts 0;
+#N canvas 574 82 651 686 guts 1;
 #X obj 526 657 dac~;
 #X obj 66 256 euclidean 7 16;
 #X obj 415 602 hip~ 25;
@@ -390,6 +391,12 @@
 #X obj 1046 215 r num6.s;
 #X obj 1087 235 r den6.s;
 #X obj 517 36 clock, f 19;
+#X text 61 12 declare path;
+#X text 62 36 remap clock;
+#X text 62 66 remove wordbuttons;
+#X text 65 95 stream some synthesis parameters upwards;
+#X text 58 116 parametrize panners ie radiobutton (left \, center \,
+right \, random);
 #X connect 1 1 15 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
@@ -480,44 +487,44 @@
 #X connect 64 0 7 1;
 #X connect 65 0 58 1;
 #X connect 66 0 58 2;
-#X connect 67 2 59 0;
-#X connect 67 2 50 0;
-#X connect 67 2 41 0;
-#X connect 67 2 32 0;
-#X connect 67 2 23 0;
-#X connect 67 2 12 0;
-#X restore 8 262 pd guts;
-#X obj 158 80 hsl 128 25 0 32 0 0 num2.s num2.r Numerator 5 12 0 10
+#X connect 67 0 12 0;
+#X connect 67 0 23 0;
+#X connect 67 0 32 0;
+#X connect 67 0 41 0;
+#X connect 67 0 50 0;
+#X connect 67 0 59 0;
+#X restore 8 273 pd guts;
+#X obj 158 91 hsl 128 25 0 32 0 0 num2.s num2.r Numerator 5 12 0 10
 -262144 -1 -1 0 1;
-#X obj 158 114 hsl 128 25 0 32 0 0 den2.s den2.r Denominator 5 12 0
+#X obj 158 125 hsl 128 25 0 32 0 0 den2.s den2.r Denominator 5 12 0
 10 -262144 -1 -1 0 1;
-#X obj 155 47 tgl 25 0 glitch2.s glitch2.r Glitch_2 30 12 0 10 -262144
+#X obj 155 58 tgl 25 0 glitch2.s glitch2.r Glitch_2 30 12 0 10 -262144
 -1 -1 0 1;
-#X obj 306 80 hsl 128 25 0 32 0 0 num3.s num3.r Numerator 5 12 0 10
+#X obj 306 91 hsl 128 25 0 32 0 0 num3.s num3.r Numerator 5 12 0 10
 -262144 -1 -1 0 1;
-#X obj 306 114 hsl 128 25 0 32 0 0 den3.s den3.r Denominator 5 12 0
+#X obj 306 125 hsl 128 25 0 32 0 0 den3.s den3.r Denominator 5 12 0
 10 -262144 -1 -1 0 1;
-#X obj 303 47 tgl 25 0 glitch3.s glitch3.r Glitch_3 30 12 0 10 -262144
+#X obj 303 58 tgl 25 0 glitch3.s glitch3.r Glitch_3 30 12 0 10 -262144
 -1 -1 0 1;
-#X obj 10 186 hsl 128 25 0 32 0 0 num4.s num4.r Numerator 5 12 0 10
+#X obj 10 197 hsl 128 25 0 32 0 0 num4.s num4.r Numerator 5 12 0 10
 -262144 -1 -1 0 1;
-#X obj 10 220 hsl 128 25 0 32 0 0 den4.s den4.r Denominator 5 12 0
+#X obj 10 231 hsl 128 25 0 32 0 0 den4.s den4.r Denominator 5 12 0
 10 -262144 -1 -1 0 1;
-#X obj 7 153 tgl 25 0 glitch4.s glitch4.r Glitch_4 30 12 0 10 -262144
+#X obj 7 164 tgl 25 0 glitch4.s glitch4.r Glitch_4 30 12 0 10 -262144
 -1 -1 0 1;
-#X obj 159 187 hsl 128 25 0 32 0 0 num5.s num5.r Numerator 5 12 0 10
+#X obj 159 198 hsl 128 25 0 32 0 0 num5.s num5.r Numerator 5 12 0 10
 -262144 -1 -1 0 1;
-#X obj 159 221 hsl 128 25 0 32 0 0 den5.s den5.r Denominator 5 12 0
+#X obj 159 232 hsl 128 25 0 32 0 0 den5.s den5.r Denominator 5 12 0
 10 -262144 -1 -1 0 1;
-#X obj 156 154 tgl 25 0 glitch5.s glitch5.r Glitch_5 30 12 0 10 -262144
+#X obj 156 165 tgl 25 0 glitch5.s glitch5.r Glitch_5 30 12 0 10 -262144
 -1 -1 0 1;
-#X obj 307 187 hsl 128 25 0 32 0 0 num6.s num6.r Numerator 5 12 0 10
+#X obj 307 198 hsl 128 25 0 32 0 0 num6.s num6.r Numerator 5 12 0 10
 -262144 -1 -1 0 1;
-#X obj 307 221 hsl 128 25 0 32 0 0 den6.s den6.r Denominator 5 12 0
+#X obj 307 232 hsl 128 25 0 32 0 0 den6.s den6.r Denominator 5 12 0
 10 -262144 -1 -1 0 1;
-#X obj 304 154 tgl 25 0 glitch6.s glitch6.r Glitch_6 30 12 0 10 -262144
+#X obj 304 165 tgl 25 0 glitch6.s glitch6.r Glitch_6 30 12 0 10 -262144
 -1 -1 0 1;
-#X obj 10 284 clock-gui;
+#X obj 10 295 clock-gui;
 #N canvas 714 281 613 463 loadsave-interface 0;
 #X obj 44 15 s cb-save;
 #X obj 44 -6 r storage-save;
@@ -536,7 +543,7 @@
 #X connect 5 0 6 0;
 #X connect 7 0 9 0;
 #X connect 8 0 10 0;
-#X restore 86 285 pd loadsave-interface;
+#X restore 86 296 pd loadsave-interface;
 #N canvas 712 87 651 686 loadsave 0;
 #X obj 7 31 sssad/auto num1.s num1.r;
 #X obj 7 52 sssad/auto den1.s den1.r;
@@ -556,7 +563,11 @@
 #X obj 8 154 sssad/auto glitch3.s glitch3.r;
 #X obj 7 10 sssad/auto glitch1.s glitch1.r;
 #X obj 7 83 sssad/auto glitch2.s glitch2.r;
-#X restore 232 285 pd loadsave;
-#X obj 91 4 wordbutton 50 20 save;
-#X obj 5 4 wordbutton 50 20 load;
-#X obj 86 262 loadsave storage;
+#X restore 232 296 pd loadsave;
+#X obj 86 273 loadsave storage;
+#X obj 11 325 declare -path ../../../../pd-party/droidparty-abstractions
+;
+#X obj 6 10 bng 30 250 50 0 empty empty Load 0 -7 0 10 -262144 -1 -1
+;
+#X obj 112 9 bng 30 250 50 0 save empty Save 0 -7 0 10 -262144 -1 -1
+;

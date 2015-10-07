@@ -1,10 +1,10 @@
-#N struct 2273template-marker float a float b;
-#N canvas 95 100 828 609 10;
+#N struct 6078template-marker float a float b;
+#N canvas 340 100 828 609 10;
 #X declare -path z_nrci_abs;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#X obj 743 70 cnv 15 40 240 empty \$0-cursor empty 20 12 0 14 -258113
+#X obj 237 70 cnv 15 40 240 empty \$0-cursor empty 20 12 0 14 -258113
 -66577 0;
-#N canvas 935 82 651 686 audio 1;
+#N canvas 346 97 651 686 audio 0;
 #N canvas 478 102 862 680 synthetiser 0;
 #X obj 198 101 line~;
 #X obj 126 19 mtof;
@@ -121,11 +121,11 @@ des objets volants.;
 #X connect 54 0 10 0;
 #X connect 55 0 54 0;
 #X restore 299 184 pd synthetiser;
-#N canvas 687 108 667 680 synth-seq 0;
+#N canvas 684 85 667 680 synth-seq 0;
 #X obj 75 -88 r pos;
 #X obj 75 -59 sel 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15;
 #X msg 127 380 set \$1 \$2 \$3;
-#X msg 130 401 0 0 0;
+#X msg 130 401 0 0 1;
 #X obj 56 462 outlet;
 #X obj 75 343 t a;
 #X obj 29 376 route 0;
@@ -407,6 +407,9 @@ des objets volants.;
 #X floatatom 141 342 5 0 0 0 - - -, f 5;
 #X obj 119 436 + 53;
 #X obj 118 408 * 46;
+#X text 49 12 remove taplist and replace with arrays !;
+#X text 50 37 add bob~ filter for saturation;
+#X text 50 65 rework effects and remove touch interface;
 #X connect 0 0 7 0;
 #X connect 1 0 0 0;
 #X connect 3 0 4 0;
@@ -439,8 +442,8 @@ des objets volants.;
 #X connect 29 0 26 0;
 #X connect 29 0 33 0;
 #X connect 30 0 29 1;
-#X connect 31 1 28 0;
-#X connect 31 2 29 0;
+#X connect 31 0 29 0;
+#X connect 31 3 28 0;
 #X connect 31 4 29 1;
 #X connect 32 0 34 0;
 #X connect 35 0 37 0;
@@ -452,7 +455,7 @@ des objets volants.;
 #X obj 101 220 tgl 36 0 accent2.s accent2.r empty 17 7 0 10 -262144
 -1 -1 1 1;
 #X obj 147 220 tgl 36 0 accent3.s accent3.r empty 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 193 220 tgl 36 0 accent4.s accent4.r empty 17 7 0 10 -262144
 -1 -1 1 1;
 #X obj 239 220 tgl 36 0 accent5.s accent5.r empty 17 7 0 10 -262144
@@ -476,9 +479,9 @@ des objets volants.;
 #X obj 653 220 tgl 36 0 accent14.s accent14.r empty 17 7 0 10 -262144
 -1 -1 1 1;
 #X obj 699 220 tgl 36 0 accent15.s accent15.r empty 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 745 220 tgl 36 0 accent16.s accent16.r empty 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X text 10 79 Note;
 #X text 6 228 Accent;
 #X text 5 125 Octave;
@@ -489,39 +492,39 @@ des objets volants.;
 #X obj 147 266 tgl 36 0 glide3.s glide3.r empty 17 7 0 10 -262144 -1
 -1 1 1;
 #X obj 193 266 tgl 36 0 glide4.s glide4.r empty 17 7 0 10 -262144 -1
--1 0 1;
+-1 1 1;
 #X obj 239 266 tgl 36 0 glide5.s glide5.r empty 17 7 0 10 -262144 -1
--1 0 1;
+-1 1 1;
 #X obj 285 266 tgl 36 0 glide6.s glide6.r empty 17 7 0 10 -262144 -1
--1 0 1;
+-1 1 1;
 #X obj 331 266 tgl 36 0 glide7.s glide7.r empty 17 7 0 10 -262144 -1
--1 0 1;
+-1 1 1;
 #X obj 377 266 tgl 36 0 glide8.s glide8.r empty 17 7 0 10 -262144 -1
--1 0 1;
+-1 1 1;
 #X obj 423 266 tgl 36 0 glide9.s glide9.r empty 17 7 0 10 -262144 -1
--1 0 1;
+-1 1 1;
 #X obj 469 266 tgl 36 0 glide10.s glide10.r empty 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 515 266 tgl 36 0 glide11.s glide11.r empty 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 561 266 tgl 36 0 glide12.s glide12.r empty 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 607 266 tgl 36 0 glide13.s glide13.r empty 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 653 266 tgl 36 0 glide14.s glide14.r empty 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 699 266 tgl 36 0 glide15.s glide15.r empty 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 745 266 tgl 36 0 glide16.s glide16.r empty 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X text 8 274 Glide;
 #X text -1 175 Duration;
 #X obj 571 354 hsl 200 45 0 1 0 0 fromattack toattack empty -2 -6 1
-8 -258113 -1 -1 3178 1;
+8 -258113 -1 -1 0 1;
 #X obj 572 417 hsl 200 45 0 1 0 0 fromdecay todecay empty -2 -6 1 8
--258113 -1 -1 6219 1;
+-258113 -1 -1 0 1;
 #X obj 571 483 hsl 200 45 0 1 0 0 fromshape toshape empty -2 -6 1 8
--258113 -1 -1 11885 1;
+-258113 -1 -1 0 1;
 #X text 573 338 Attack;
 #X text 567 402 Decay;
 #X text 567 468 Shape;
@@ -734,5 +737,5 @@ E F F# G G# A Bb B;
 #X obj 722 33 bng 30 250 50 0 reset empty Reset 0 -7 0 10 -262144 -1
 -1;
 #X obj 571 548 hsl 200 45 0 127 0 0 fromVolume toVolume empty -2 -6
-1 8 -258113 -1 -1 8500 1;
+1 8 -258113 -1 -1 0 1;
 #X text 567 533 Volume;

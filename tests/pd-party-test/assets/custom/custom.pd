@@ -1,6 +1,6 @@
-#N struct 1041template-marker float a float b;
-#N struct 1046template-marker float a float b;
-#N canvas 100 172 1216 484 10;
+#N struct 2420template-marker float a float b;
+#N struct 2423template-marker float a float b;
+#N canvas 94 182 1216 484 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 363 430 hsl 128 15 0 1 0 0 volume empty hsl-custom -2 -8 0 10
 -262144 -1 -1 0 1;
@@ -74,5 +74,8 @@
 #X obj 205 424 r toggle.custom.s;
 #X obj 205 446 print;
 #X obj 178 402 r frequency;
+#X obj 994 290 taplist 32 32 tl.r tl.s custom-taplist2 0 1 2 3 4 5
+6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+30 31 32;
 #X connect 33 0 34 0;
 #X connect 35 0 34 0;
