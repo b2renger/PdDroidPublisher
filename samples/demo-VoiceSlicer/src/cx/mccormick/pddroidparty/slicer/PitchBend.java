@@ -8,8 +8,8 @@ import cx.mccormick.pddroidparty.widget.core.Slider;
 public class PitchBend extends Slider
 {
 
-	public PitchBend(PdDroidPatchView app, String[] atomline) {
-		super(app, atomline, true);
+	public PitchBend(PdDroidPatchView app, String[] atomline, boolean horizontal) {
+		super(app, atomline, horizontal);
 	}
 
 	@Override
@@ -41,16 +41,25 @@ public class PitchBend extends Slider
 		if(val > 0)
 		{
 			float v = val / max;
-			canvas.drawRect(dRect.left + dRect.width()/2, dRect.top, dRect.left + (1 + v) * dRect.width()/2, dRect.bottom,paint);
+			if(horizontal)
+				canvas.drawRect(dRect.left + dRect.width()/2, dRect.top, dRect.left + (1 + v) * dRect.width()/2, dRect.bottom,paint);
+			else
+				canvas.drawRect(dRect.left, dRect.top + (1 - v) * dRect.height()/2, dRect.right, dRect.top + dRect.height()/2, paint);
 		}
 		else if(val < 0)
 		{
 			float v = val / min;
-			canvas.drawRect(dRect.left + (1 - v) * dRect.width()/2, dRect.top, dRect.left + dRect.width()/2, dRect.bottom,paint);
+			if(horizontal)
+				canvas.drawRect(dRect.left + (1 - v) * dRect.width()/2, dRect.top, dRect.left + dRect.width()/2, dRect.bottom,paint);
+			else
+				canvas.drawRect(dRect.left, dRect.top + dRect.height()/2, dRect.right, dRect.top + (1 + v) * dRect.height()/2, paint);
 		}
 		else
 		{
-			canvas.drawRect(dRect.left + dRect.width()/2 - 1, dRect.top, dRect.left + dRect.width()/2 + 1, dRect.bottom,paint);
+			if(horizontal)
+				canvas.drawRect(dRect.left + dRect.width()/2 - 1, dRect.top, dRect.left + dRect.width()/2 + 1, dRect.bottom,paint);
+			else
+				canvas.drawRect(dRect.left, dRect.top + dRect.height()/2-1, dRect.right, dRect.top + dRect.height()/2 + 1, paint);
 		}
 		
 		drawLabel(canvas);

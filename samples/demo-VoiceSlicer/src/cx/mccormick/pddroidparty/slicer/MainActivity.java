@@ -14,9 +14,12 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
-        config.midiClockMaxBPM = 480;
-        config.theme = new MonochromeTheme(300, false);
+        config.theme = new MonochromeTheme(180, false);
         config.objectOverrides.put("Bend", PitchBend.class);
+        config.objectOverrides.put("smp1", WavePreview.class);
+        config.objectOverrides.put("smp2", WavePreview.class);
+        config.objectOverrides.put("smp3", WavePreview.class);
+        config.objectOverrides.put("smp4", WavePreview.class);
         PdDroidPartyLauncher.launch(this, "Slicer/slicer2.pd", config);
     }
     

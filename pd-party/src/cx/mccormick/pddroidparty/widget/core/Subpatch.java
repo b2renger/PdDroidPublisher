@@ -22,13 +22,13 @@ public class Subpatch extends Widget
 		public final static int DRAWTYPE_BEZIER = 2;
 		
 		
-		String name;
-		int length;
-		String type;
+		public String name;
+		public int length;
+		public String type;
 		/** 0 : polygon, 1 : points, 2 : bezier */
-		int drawType; 
-		boolean save;
-		float [] buffer;
+		public int drawType; 
+		public boolean save;
+		public float [] buffer;
 	}
 	
 	protected WImage background = new WImage();
@@ -195,9 +195,9 @@ public class Subpatch extends Widget
 	{
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setColor(fgcolor);
-		paint.setStrokeWidth(3);
 		if(array.drawType == Array.DRAWTYPE_POINTS)
 		{
+			paint.setStrokeWidth(3);
 			float ppx = 0, ppy = 0;
 			if(array.length < zoneWidth)
 			{
@@ -214,6 +214,7 @@ public class Subpatch extends Widget
 			}
 			else
 			{
+				paint.setStrokeWidth(0);
 				for(int i=0 ; i<zoneWidth ; i++)
 				{
 					int index = (int)((float)array.buffer.length * (float)i / (float)(zoneWidth));
