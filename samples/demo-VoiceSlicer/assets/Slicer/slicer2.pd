@@ -1,6 +1,6 @@
-#N canvas 526 234 726 383 10;
+#N canvas 524 235 726 383 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#N canvas 423 104 879 659 core 0;
+#N canvas 421 105 879 659 core 1;
 #X obj 84 81 adc~;
 #X obj 315 301 + 1;
 #X obj 315 275 random 2;
@@ -21,7 +21,7 @@
 #X obj 644 339 +;
 #X obj 685 173 i 0;
 #X obj 786 211 i 1;
-#X obj 364 51 clock, f 12;
+#X obj 381 51 clock, f 7;
 #X obj 17 13 declare -path ../../../../pd-party/droidparty-abstractions
 ;
 #N canvas 66 86 450 440 player 0;
@@ -160,7 +160,7 @@
 #X connect 3 0 4 0;
 #X restore 597 53 pd reset;
 #X obj 177 192 track~ 3;
-#N canvas 66 79 502 523 sequencer 0;
+#N canvas 66 80 502 523 sequencer 0;
 #X obj 33 354 randrum;
 #X obj 33 327 spigot 0;
 #X obj 78 248 r seq.mode.s;
@@ -257,7 +257,7 @@
 #X connect 13 0 12 0;
 #X connect 14 0 12 1;
 #X connect 15 0 12 1;
-#X connect 16 1 22 0;
+#X connect 16 0 22 0;
 #X connect 21 0 18 0;
 #X connect 22 0 2 0;
 #X connect 22 0 13 0;
@@ -266,7 +266,7 @@
 #X connect 26 0 18 0;
 #X restore 261 18 pd core;
 #X obj 357 78 tgl 32 0 enable.1.s enable.1.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X text 217 21 Record;
 #X obj 237 305 bng 32 250 50 0 autorec.s empty Rec 0 -7 0 10 -262144
 -1 -1;
@@ -275,7 +275,7 @@
 #X obj 315 78 bng 32 250 50 0 play.1.s empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 357 126 tgl 32 0 enable.2.s enable.2.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 218 126 tgl 32 0 rec.2.s rec.2.r empty 17 7 0 10 -262144 -1
 -1 0 1;
 #X obj 315 126 bng 32 250 50 0 play.2.s empty empty 17 7 0 10 -262144
@@ -283,13 +283,13 @@
 #X obj 25 315 hsl 128 15 0 44100 0 0 pitch.delta.s pitch.delta.r Pitch_Mod.
 -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 357 174 tgl 32 0 enable.3.s enable.3.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 218 174 tgl 32 0 rec.3.s rec.3.r empty 17 7 0 10 -262144 -1
 -1 0 1;
 #X obj 315 174 bng 32 250 50 0 play.3.s empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 357 222 tgl 32 0 enable.4.s enable.4.r empty 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 218 222 tgl 32 0 rec.4.s rec.4.r empty 17 7 0 10 -262144 -1
 -1 0 1;
 #X obj 315 222 bng 32 250 50 0 play.4.s empty empty 17 7 0 10 -262144
@@ -362,9 +362,9 @@ Bend 0 -9 0 10 -262144 -1 -1 9300 1;
 #X text 464 21 Offset;
 #X obj 207 53 cnv 15 1 220 empty empty empty 20 12 0 14 -228856 -66577
 0;
-#N canvas 66 338 235 164 presets 1;
+#N canvas 66 367 235 164 presets 0;
 #X obj 38 27 loadsave storage;
-#N canvas 715 291 426 319 loadsave-interface 0;
+#N canvas 713 292 426 319 loadsave-interface 0;
 #X obj 65 170 s cb-save;
 #X obj 65 149 r storage-save;
 #X obj 165 149 r storage-load;
@@ -383,7 +383,7 @@ Bend 0 -9 0 10 -262144 -1 -1 9300 1;
 #X connect 8 0 10 1;
 #X connect 9 0 10 0;
 #X restore 38 50 pd loadsave-interface;
-#N canvas 643 196 588 316 loadsave 0;
+#N canvas 641 197 588 316 loadsave 0;
 #X obj 24 22 persist-table global smp1;
 #X obj 19 227 persist-symbol global latency.1.s latency.1.r;
 #X obj 19 247 persist-symbol global latency.2.s latency.2.r;
