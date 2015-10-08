@@ -1,6 +1,6 @@
-#N canvas 65 85 1228 639 10;
+#N canvas 65 100 1228 639 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#N canvas 503 82 478 686 audio 0;
+#N canvas 497 92 478 686 audio 0;
 #X obj 238 538 dac~;
 #N canvas 65 97 1301 686 drum-synths 0;
 #X obj 29 550 outlet~;
@@ -210,7 +210,7 @@
 #X obj 58 238 clock, f 15;
 #X floatatom 69 416 5 0 0 0 - - -, f 5;
 #X obj 58 492 pack f \$0;
-#N canvas 65 97 1301 686 drum-seq 0;
+#N canvas 65 107 1301 686 drum-seq 0;
 #X obj 17 34 step 0 sound1-01.s channel1 s1-repeat.s s1-prob.s;
 #X obj 17 54 step 1 sound1-02.s channel1 s1-repeat.s s1-prob.s;
 #X obj 17 74 step 2 sound1-03.s channel1 s1-repeat.s s1-prob.s;
@@ -313,7 +313,7 @@
 #X connect 11 0 9 0;
 #X connect 12 0 11 1;
 #X connect 13 0 18 0;
-#X connect 13 1 17 0;
+#X connect 13 0 17 0;
 #X connect 14 0 22 0;
 #X connect 15 0 20 0;
 #X connect 18 0 19 0;
@@ -454,7 +454,7 @@
 #X obj 687 613 clock-gui;
 #X obj 26 613 declare -path ../../../../pd-party/droidparty-abstractions
 ;
-#X obj 437 0 cnv 15 49 325 empty \$0-cursor empty 20 12 0 14 -258113
+#X obj 573 0 cnv 15 49 325 empty \$0-cursor empty 20 12 0 14 -258113
 -66577 0;
 #X obj 31 10 tgl 45 0 sound1-01.s sound1-01.r empty 17 7 0 10 -262144
 -1 -1 0 1;
@@ -617,17 +617,17 @@
 #X obj 1051 269 tgl 45 0 sound5-16.s sound5-16.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 11 345 hradio 35 1 1 6 s1-repeat.s s1-repeat.r Kick_repeat 0
--8 0 10 -262144 -1 -1 0;
+-8 0 10 -262144 -1 -1 4;
 #X obj 37 398 hsl 150 35 0 100 0 1 s1-prob.s s1-prob.r Kick_probability
--2 -8 0 10 -262144 -1 -1 14900 1;
+-2 -8 0 10 -262144 -1 -1 11200 1;
 #X obj 234 346 hradio 35 1 1 6 s2-repeat.s s2-repeat.r Snare_repeat
-0 -8 0 10 -262144 -1 -1 0;
+0 -8 0 10 -262144 -1 -1 3;
 #X obj 264 399 hsl 150 35 0 100 0 1 s2-prob.s s2-prob.r Snare_probability
 -2 -8 0 10 -262144 -1 -1 14900 1;
 #X obj 457 347 hradio 35 1 1 6 s3-repeat.s s3-repeat.r Clap_repeat
-0 -8 0 10 -262144 -1 -1 0;
+0 -8 0 10 -262144 -1 -1 4;
 #X obj 491 399 hsl 150 35 0 100 0 1 s3-prob.s s3-prob.r Clap_probability
--2 -8 0 10 -262144 -1 -1 14900 1;
+-2 -8 0 10 -262144 -1 -1 12700 1;
 #X obj 683 346 hradio 35 1 1 6 s4-repeat.s s4-repeat.r Hihat_repeat
 0 -8 0 10 -262144 -1 -1 0;
 #X obj 710 399 hsl 150 35 0 100 0 1 s4-prob.s s4-prob.r Hihat_probability
@@ -670,9 +670,9 @@ Hihat2D 0 -9 0 10 -262144 -1 -1 0 1;
 0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 940 458 vsl 40 145 0 1 0 0 hihat2_tone.s hihat2_tone.r Hihat2T
 0 -9 0 10 -262144 -1 -1 0 1;
-#X obj 1137 143 bng 45 250 50 0 load empty Load_Synths 0 -7 0 10 -262144
+#X obj 1137 141 bng 45 250 50 0 load empty Load_Synths 0 -7 0 10 -262144
 -1 -1;
-#X obj 1138 209 bng 45 250 50 0 save empty Save_Synths 0 -7 0 10 -262144
+#X obj 1138 207 bng 45 250 50 0 save empty Save_Synths 0 -7 0 10 -262144
 -1 -1;
 #X obj 289 -5 cnv 15 3 335 empty empty empty 20 12 0 14 -261234 -66577
 0;
