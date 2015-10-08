@@ -1,13 +1,13 @@
-#N canvas 65 102 903 357 10;
-#X obj 91 107 clock, f 11;
-#X obj 8 162 nbx 5 30 -1e+37 1e+37 0 0 empty empty bpm 0 -8 0 10 -262144
--1 -1 0 256;
-#X obj 8 213 nbx 5 30 -1e+37 1e+37 0 0 empty empty dt_(ms) 0 -8 0 10
--262144 -1 -1 0 256;
-#X obj 104 166 bng 80 250 50 0 empty empty beat 0 -7 0 10 -262144 -1
+#N canvas 176 172 903 496 10;
+#X obj 187 112 clock, f 11;
+#X obj 17 257 nbx 5 30 -1e+37 1e+37 0 0 empty empty bpm 0 -8 0 10 -262144
+-1 -1 100 256;
+#X obj 17 308 nbx 5 30 -1e+37 1e+37 0 0 empty empty dt_(ms) 0 -8 0
+10 -262144 -1 -1 600 256;
+#X obj 113 261 bng 80 250 50 0 empty empty beat 0 -7 0 10 -262144 -1
 -1;
-#X obj 334 169 bng 80 250 50 0 empty empty reset 0 -7 0 10 -262144
--1 -1;
+#X obj 343 264 bng 80 250 50 0 empty empty Stop 0 -7 0 10 -262144 -1
+-1;
 #N canvas 816 140 450 300 movingcanvas 0;
 #X obj 125 -31 r clockmode.s;
 #X obj 58 46 * 30;
@@ -25,21 +25,21 @@
 #X connect 5 0 4 0;
 #X connect 6 0 2 0;
 #X connect 7 0 2 0;
-#X restore 167 107 pd movingcanvas;
+#X restore 465 115 pd movingcanvas;
 #X text 360 7 this is the content of clock-gui it lets you control
 the clock from pd \, this controls are duplicated in the main bar of
 the android app;
 #X text 361 60 Note that with pd on desktop for now you cannot be master
 in a net jam and control the master bpm.;
-#X text 9 259 Reset bangs when switching clock or when reset is pressed
+#X text 18 354 Reset bangs when switching clock or when reset is pressed
 on the android clock gui.;
-#X obj 214 170 bng 80 250 50 0 empty empty rawmidi 0 -7 0 10 -262144
+#X obj 223 265 bng 80 250 50 0 empty empty rawmidi 0 -7 0 10 -262144
 -1 -1;
-#X text 9 291 Raw midi is the bpm x24;
+#X text 18 386 Raw midi is the bpm x24;
 #X obj 12 2 cnv 15 320 100 empty empty empty 20 12 0 14 -232576 -66577
 0;
 #X obj 16 11 tgl 25 0 clockmode.s clockmode.r Switch_clocks 30 10 0
-12 -262144 -1 -1 0 1;
+12 -262144 -1 -1 1 1;
 #X obj 82 45 nbx 5 20 0 800 0 0 localbpm.s localbpm.r empty 0 -8 0
 10 -262144 -1 -1 120 256;
 #X obj 144 72 bng 25 250 50 0 1x.s 1x.r 1x 6 12 0 12 -262144 -1 -1
@@ -54,7 +54,7 @@ on the android clock gui.;
 ;
 #X obj 294 72 bng 25 250 50 0 8x.s 8x.r 8x 6 12 0 12 -262144 -1 -1
 ;
-#X obj 15 45 cnv 15 60 25 clocktag clocktag master 2 12 0 14 -233017
+#X obj 15 75 cnv 15 60 25 clocktag clocktag slave 2 12 0 14 -233017
 -66577 0;
 #X obj 264 11 tgl 25 0 audioon.s audioon.r bip 30 10 0 12 -262144 -1
 -1 0 1;
@@ -64,8 +64,29 @@ on the android clock gui.;
 -1 -1;
 #X obj 160 10 tgl 25 0 startstop.s startstop.r startstop 30 10 0 12
 -262144 -1 -1 0 1;
-#X connect 0 0 3 0;
-#X connect 0 1 9 0;
-#X connect 0 2 1 0;
-#X connect 0 3 2 0;
-#X connect 0 4 4 0;
+#X obj 17 161 swap 60000;
+#X obj 17 183 /, f 10;
+#X obj 564 169 / 24;
+#X obj 563 230 change;
+#X obj 564 197 i;
+#X floatatom 563 252 5 0 0 0 - - -, f 5;
+#X obj 106 193 mod 24;
+#X obj 106 215 select 0;
+#X floatatom 325 201 5 0 0 0 - - -, f 5;
+#X obj 48 125 * 24;
+#X connect 0 0 27 0;
+#X connect 0 0 31 0;
+#X connect 0 0 9 0;
+#X connect 0 0 33 0;
+#X connect 0 1 34 0;
+#X connect 0 2 4 0;
+#X connect 25 0 26 0;
+#X connect 25 1 26 1;
+#X connect 26 0 1 0;
+#X connect 27 0 29 0;
+#X connect 28 0 30 0;
+#X connect 29 0 28 0;
+#X connect 31 0 32 0;
+#X connect 32 0 3 0;
+#X connect 34 0 25 0;
+#X connect 34 0 2 0;
