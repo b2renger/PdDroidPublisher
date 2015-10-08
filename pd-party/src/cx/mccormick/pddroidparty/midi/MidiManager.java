@@ -2,7 +2,6 @@ package cx.mccormick.pddroidparty.midi;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.puredata.core.PdBase;
 
@@ -164,13 +163,6 @@ public class MidiManager
 		
 		clock.setInternals(internals.toArray(new MidiOutput[]{}));
 		clock.setExternals(externals.toArray(new MidiOutput[]{}));
-	}
-
-
-
-	public void setOffsetMs(int value) 
-	{
-		clock.setOffset(TimeUnit.MILLISECONDS.toNanos(value));
 	}
 
 }

@@ -19,9 +19,13 @@ import cx.mccormick.pddroidparty.PdDroidPartyConfig;
 import cx.mccormick.pddroidparty.R;
 import cx.mccormick.pddroidparty.midi.MidiManager;
 
-public class PdPartyClockControl extends RelativeLayout {
+public class PdPartyClockControl extends RelativeLayout 
+{
 	public static final int SETUP_ACTIVITY_CODE = 666;
 
+	private static final String PdSymbolClockAudio = "clock.audio";
+	private static final String PdSymbolClockDelay = "midiclock.delay";
+	
 	private MidiManager midiManager;
 
 	private ImageButton btStart;
@@ -116,11 +120,11 @@ public class PdPartyClockControl extends RelativeLayout {
 					if (audioOn) {
 						audioOn = false;
 						btAudio.setImageResource(R.drawable.ic_action_soundoff);
-						PdBase.sendFloat("clock.audio", 0);
+						PdBase.sendFloat(PdSymbolClockAudio, 0);
 					} else {
 						audioOn = true;
 						btAudio.setImageResource(R.drawable.ic_action_soundon);
-						PdBase.sendFloat("clock.audio", 1);
+						PdBase.sendFloat(PdSymbolClockAudio, 1);
 					}
 				}
 				return true;
@@ -178,8 +182,7 @@ public class PdPartyClockControl extends RelativeLayout {
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 				int value = (progress) * 10;
-				PdBase.sendFloat("midiclock.delay", value);
-				// midiManager.setOffsetMs(value);
+				PdBase.sendFloat(PdSymbolClockDelay, value);
 				offsetLabel.setText(String.valueOf(value) + "ms");
 			}
 		});

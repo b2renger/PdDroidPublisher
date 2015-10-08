@@ -6,9 +6,8 @@ public class MidiClock
 {
 	private volatile boolean shouldSendClock = false;
 	private volatile int bpm;
-	private volatile long offset;
 	private byte[] buffer = new byte[1];
-	private BiClockScheduler timer;
+	private ClockScheduler timer;
 	private MidiOutput[] externals = new MidiOutput[]{};
 	private MidiOutput[] internals = new MidiOutput[]{};
 	
@@ -74,25 +73,16 @@ public class MidiClock
 			
 			long period = 60000000000L / (long)(bpm * 24);
 			
-			Runnable commandInternal = new Runnable() {
+			Runnable command = new Runnable() {
 				@Override
 				public void run() {
-					
-					dispatchRealTimeMessageInternal(MidiCode.MIDI_REALTIME_CLOCK_TICK);
-				}
-			};
-			Runnable commandExternal = new Runnable() {
-				@Override
-				public void run() {
-					
-					dispatchRealTimeMessageExternal(MidiCode.MIDI_REALTIME_CLOCK_TICK);
+					dispatchRealTimeMessage(MidiCode.MIDI_REALTIME_CLOCK_TICK);
 				}
 			};
 			
-			timer = new BiClockScheduler();
+			timer = new ClockScheduler();
 			timer.setPeriod(period, TimeUnit.NANOSECONDS);
-			timer.start(commandInternal, commandExternal);
-			timer.setOffsetA(offset, TimeUnit.NANOSECONDS);
+			timer.start(command);
 		}
 	}
 	
@@ -149,14 +139,6 @@ public class MidiClock
 
 	public void init() {
 
-	}
-	public void setOffset(long nanos) 
-	{
-		offset = nanos;
-		if(timer != null)
-		{
-			timer.setOffsetA(nanos, TimeUnit.NANOSECONDS);
-		}
 	}
 
 }
