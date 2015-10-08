@@ -1,6 +1,6 @@
 #N canvas 65 98 1288 662 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#N canvas 660 107 651 686 audio 0;
+#N canvas 657 82 651 686 audio 1;
 #X obj 238 538 dac~;
 #N canvas 65 92 1301 686 drum-synths 0;
 #X obj 29 550 outlet~;
@@ -190,7 +190,7 @@
 #X obj 59 492 pack f \$0;
 #X msg 58 514 \; \$2-cursor pos \$1 50;
 #X obj 58 433 * 55;
-#N canvas 65 87 1301 686 drum-seq 0;
+#N canvas 65 92 1301 686 drum-seq 0;
 #X obj 17 34 step 0 sound1-01.s channel1 s1-repeat.s s1-prob.s;
 #X obj 17 54 step 1 sound1-02.s channel1 s1-repeat.s s1-prob.s;
 #X obj 17 74 step 2 sound1-03.s channel1 s1-repeat.s s1-prob.s;
@@ -272,9 +272,11 @@
 #X obj 711 66 step 2 sound5-03.s channel5 s5-repeat.s s5-prob.s;
 #X obj 711 86 step 3 sound5-04.s channel5 s5-repeat.s s5-prob.s;
 #X restore 235 108 pd drum-seq;
-#X obj 50 223 s rawmidi;
+#X obj 78 218 s rawmidi;
 #X obj 58 456 + 4;
 #X obj 435 81 loadbang;
+#X obj 10 239 mod 24;
+#X obj 10 261 select 0;
 #X connect 1 0 4 0;
 #X connect 2 0 0 0;
 #X connect 2 0 0 1;
@@ -289,12 +291,14 @@
 #X connect 11 0 12 0;
 #X connect 11 0 9 0;
 #X connect 12 0 11 1;
-#X connect 13 0 11 0;
+#X connect 13 0 22 0;
 #X connect 13 1 19 0;
 #X connect 14 0 17 0;
 #X connect 15 0 16 0;
 #X connect 17 0 20 0;
 #X connect 20 0 15 0;
+#X connect 22 0 23 0;
+#X connect 23 0 11 0;
 #X restore 7 27 pd audio;
 #X obj 912 489 vsl 40 145 0 127 0 0 drum_mix drum_mix.r Master 0 -9
 0 10 -262144 -1 -1 0 1;
