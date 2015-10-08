@@ -1,0 +1,36 @@
+#N canvas 666 236 450 394 10;
+#X floatatom 307 162 5 0 0 0 - - -, f 5;
+#X obj 106 198 midiclockout, f 34;
+#X obj 307 22 vsl 15 128 10 180 0 1 empty empty BPM 0 -9 0 10 -262144
+-1 -1 3736 1;
+#X msg 53 99 start;
+#X msg 106 99 stop;
+#X msg 150 99 resume;
+#X obj 273 278 midiout;
+#X obj 273 254 spigot 0;
+#X obj 106 339 spigot 0;
+#X obj 151 318 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 223 339 spigot 0;
+#X obj 268 318 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 106 367 print tick;
+#X obj 223 367 print cmd;
+#X obj 318 229 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 106 254 moses 249, f 20;
+#X connect 0 0 1 1;
+#X connect 1 0 7 0;
+#X connect 1 0 15 0;
+#X connect 2 0 0 0;
+#X connect 3 0 1 0;
+#X connect 4 0 1 0;
+#X connect 5 0 1 0;
+#X connect 7 0 6 0;
+#X connect 8 0 12 0;
+#X connect 9 0 8 1;
+#X connect 10 0 13 0;
+#X connect 11 0 10 1;
+#X connect 14 0 7 1;
+#X connect 15 0 8 0;
+#X connect 15 1 10 0;

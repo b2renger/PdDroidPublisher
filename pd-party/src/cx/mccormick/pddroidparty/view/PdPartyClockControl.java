@@ -116,13 +116,11 @@ public class PdPartyClockControl extends RelativeLayout {
 					if (audioOn) {
 						audioOn = false;
 						btAudio.setImageResource(R.drawable.ic_action_soundoff);
-						PdBase.sendFloat("audioon.s", 0);
-						PdBase.sendFloat("audioon.r", 0);
+						PdBase.sendFloat("clock.audio", 0);
 					} else {
 						audioOn = true;
 						btAudio.setImageResource(R.drawable.ic_action_soundon);
-						PdBase.sendFloat("audioon.s", 1);
-						PdBase.sendFloat("audioon.r", 1);
+						PdBase.sendFloat("clock.audio", 1);
 					}
 				}
 				return true;
@@ -180,7 +178,8 @@ public class PdPartyClockControl extends RelativeLayout {
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 				int value = (progress) * 10;
-				midiManager.setOffsetMs(value);
+				PdBase.sendFloat("midiclock.delay", value);
+				// midiManager.setOffsetMs(value);
 				offsetLabel.setText(String.valueOf(value) + "ms");
 			}
 		});

@@ -1,4 +1,31 @@
-#N canvas 609 223 435 184 10;
+#N canvas 898 229 355 218 10;
+#X obj 12 6 cnv 15 320 200 empty empty empty 20 12 0 14 -232576 -66577
+0;
+#X obj 16 15 tgl 25 0 clockmode.s clockmode.r Switch_clocks 30 10 0
+12 -262144 -1 -1 0 1;
+#X obj 82 49 nbx 5 20 0 800 0 0 localbpm.s localbpm.r empty 0 -8 0
+10 -262144 -1 -1 120 256;
+#X obj 144 76 bng 25 250 50 0 1x.s 1x.r 1x 6 12 0 12 -262144 -1 -1
+;
+#X obj 174 76 bng 25 250 50 0 2x.s 2x.r 2x 6 12 0 12 -262144 -1 -1
+;
+#X obj 204 76 bng 25 250 50 0 3x.s 3x.r 3x 6 12 0 12 -262144 -1 -1
+;
+#X obj 234 76 bng 25 250 50 0 4x.s 4x.r 4x 6 12 0 12 -262144 -1 -1
+;
+#X obj 264 76 bng 25 250 50 0 6x.s 6x.r 6x 6 12 0 12 -262144 -1 -1
+;
+#X obj 294 76 bng 25 250 50 0 8x.s 8x.r 8x 6 12 0 12 -262144 -1 -1
+;
+#X obj 15 45 cnv 15 60 25 clocktag clocktag master 2 12 0 14 -233017
+-66577 0;
+#X obj 277 18 tgl 25 0 audioon.s audioon.r bip 30 10 0 12 -262144 -1
+-1 0 1;
+#X obj 83 76 bng 25 250 50 0 halfx.s halfx.r 1/2x 3 14 0 9 -262144
+-1 -1;
+#X obj 115 76 bng 25 250 50 0 quarterx.s quarterx.r 3/4x 3 14 0 9 -262144
+-1 -1;
+#N canvas 817 358 450 333 core 0;
 #N canvas 816 140 450 300 movingcanvas 0;
 #X obj 125 -31 r clockmode.s;
 #X obj 58 46 * 30;
@@ -16,33 +43,90 @@
 #X connect 5 0 4 0;
 #X connect 6 0 2 0;
 #X connect 7 0 2 0;
-#X restore 167 107 pd movingcanvas;
-#X obj 12 2 cnv 15 320 100 empty empty empty 20 12 0 14 -232576 -66577
-0;
-#X obj 16 11 tgl 25 0 clockmode.s clockmode.r Switch_clocks 30 10 0
-12 -262144 -1 -1 0 1;
-#X obj 82 45 nbx 5 20 0 800 0 0 localbpm.s localbpm.r empty 0 -8 0
-10 -262144 -1 -1 0 256;
-#X obj 144 72 bng 25 250 50 0 1x.s 1x.r 1x 6 12 0 12 -262144 -1 -1
-;
-#X obj 174 72 bng 25 250 50 0 2x.s 2x.r 2x 6 12 0 12 -262144 -1 -1
-;
-#X obj 204 72 bng 25 250 50 0 3x.s 3x.r 3x 6 12 0 12 -262144 -1 -1
-;
-#X obj 234 72 bng 25 250 50 0 4x.s 4x.r 4x 6 12 0 12 -262144 -1 -1
-;
-#X obj 264 72 bng 25 250 50 0 6x.s 6x.r 6x 6 12 0 12 -262144 -1 -1
-;
-#X obj 294 72 bng 25 250 50 0 8x.s 8x.r 8x 6 12 0 12 -262144 -1 -1
-;
-#X obj 15 45 cnv 15 60 25 clocktag clocktag master 2 12 0 14 -233017
--66577 0;
-#X obj 264 11 tgl 25 0 audioon.s audioon.r bip 30 10 0 12 -262144 -1
--1 0 1;
-#X obj 83 72 bng 25 250 50 0 halfx.s halfx.r 1/2x 3 14 0 9 -262144
+#X restore 30 20 pd movingcanvas;
+#X obj 31 90 loadbang;
+#X obj 275 182 s internalclock;
+#X msg 265 113 stop;
+#X msg 223 113 start;
+#N canvas 911 178 450 578 mapping_buttons_clockspeed 0;
+#X obj 222 10 r 1x.s;
+#X obj 223 82 r 2x.s;
+#X obj 222 152 r 3x.s;
+#X obj 220 220 r 4x.s;
+#X obj 216 294 r 6x.s;
+#X obj 216 366 r 8x.s;
+#X obj 220 432 r halfx.s;
+#X obj 223 512 r quarterx.s;
+#X msg 222 30 1;
+#X msg 223 102 2;
+#X msg 222 172 3;
+#X msg 220 240 4;
+#X msg 216 314 6;
+#X msg 216 386 8;
+#X msg 220 452 0.5;
+#X msg 223 532 0.25;
+#X obj 15 549 s clock.speed;
+#X connect 0 0 8 0;
+#X connect 1 0 9 0;
+#X connect 2 0 10 0;
+#X connect 3 0 11 0;
+#X connect 4 0 12 0;
+#X connect 5 0 13 0;
+#X connect 6 0 14 0;
+#X connect 7 0 15 0;
+#X connect 8 0 16 0;
+#X connect 9 0 16 0;
+#X connect 10 0 16 0;
+#X connect 11 0 16 0;
+#X connect 12 0 16 0;
+#X connect 13 0 16 0;
+#X connect 14 0 16 0;
+#X connect 15 0 16 0;
+#X restore 30 43 pd mapping_buttons_clockspeed;
+#X obj 223 18 r clock.start;
+#X msg 337 116 resume;
+#X obj 254 56 r clock.stop;
+#X obj 345 46 r clock.resume;
+#X obj 142 186 /, f 9;
+#X obj 240 206 r clockmode.s;
+#X obj 187 229 swap 1;
+#X obj 187 248 -, f 6;
+#X obj 142 162 swap 2500;
+#X obj 142 269 spigot 0;
+#X obj 142 297 s clock.time;
+#X obj 141 115 r localbpm.s;
+#X obj 240 265 s midiclock.enable;
+#X obj 36 203 r audioon.s;
+#X obj 36 225 s clock.audio;
+#X msg 31 123 \; clockmode.s 0 \; localbpm.r 120 \;;
+#X connect 1 0 21 0;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 6 0 4 0;
+#X connect 7 0 2 0;
+#X connect 8 0 3 0;
+#X connect 9 0 7 0;
+#X connect 10 0 15 0;
+#X connect 11 0 12 0;
+#X connect 11 0 18 0;
+#X connect 12 0 13 0;
+#X connect 12 1 13 1;
+#X connect 13 0 15 1;
+#X connect 14 0 10 0;
+#X connect 14 1 10 1;
+#X connect 15 0 16 0;
+#X connect 17 0 14 0;
+#X connect 19 0 20 0;
+#X restore 277 138 pd core;
+#X obj 194 29 bng 24 250 50 0 clock.stop empty Stop 0 -7 0 10 -262144
 -1 -1;
-#X obj 115 72 bng 25 250 50 0 quarterx.s quarterx.r 3/4x 3 14 0 9 -262144
+#X obj 227 29 bng 24 250 50 0 clock.resume empty Resume 0 -7 0 10 -262144
 -1 -1;
-#X obj 160 10 tgl 25 0 startstop.s startstop.r startstop 30 10 0 12
--262144 -1 -1 0 1;
-#X coords 0 184 1 183 250 100 0;
+#X obj 159 29 bng 24 250 50 0 clock.start empty Start 0 -7 0 10 -262144
+-1 -1;
+#X obj 22 155 hsl 128 15 0 1000 0 0 midiclock.delay empty empty -2
+-8 0 10 -262144 -1 -1 0 1;
+#X floatatom 156 156 5 0 0 0 - midiclock.delay -, f 5;
+#X text 191 156 ms;
+#X text 17 133 Midi Clock Input Delay;
+#X coords 0 218 1 217 250 100 0;
