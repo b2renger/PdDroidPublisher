@@ -1,7 +1,10 @@
 package cx.mccormick.pddroidparty;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.puredata.android.io.AudioParameters;
 import org.puredata.android.service.PdService;
@@ -19,9 +22,16 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TabHost;
+import android.widget.TabHost.TabContentFactory;
+import android.widget.TabHost.TabSpec;
+import android.widget.TabWidget;
 import android.widget.Toast;
 import cx.mccormick.pddroidparty.midi.MidiManager;
 import cx.mccormick.pddroidparty.midi.UsbMidiHandler;
@@ -37,14 +47,14 @@ import cx.mccormick.pddroidparty.widget.Widget;
 import cx.mccormick.pddroidparty.widget.abs.LoadSave;
 
 public class PdDroidParty extends Activity {
-	public PdDroidPatchView patchview = null;
+	public List<PdDroidPatchView> patchviews = new ArrayList<PdDroidPatchView>();
 	public static final String INTENT_EXTRA_PATCH_PATH = "PATCH";
 	private static final String PD_CLIENT = "PdDroidParty";
 	private static final String TAG = "PdDroidParty";
 	public static final int DIALOG_NUMBERBOX = 1;
 	public static final int DIALOG_SAVE = 2;
 	public static final int DIALOG_LOAD = 3;
-	
+	private TabHost stack;
 	private UsbMidiManager usbMidiManager;
 	private MidiManager midiManager;
 	
@@ -134,6 +144,33 @@ public class PdDroidParty extends Activity {
 		return true;
 	}
 	
+	public static TabHost createTabHost(Context context) {
+	    // Create the TabWidget (the tabs)
+	    TabWidget tabWidget = new TabWidget(context);
+	    tabWidget.setId(android.R.id.tabs);
+
+	    // Create the FrameLayout (the content area)
+	    FrameLayout frame = new FrameLayout(context);
+	    frame.setId(android.R.id.tabcontent);
+	    LinearLayout.LayoutParams frameLayoutParams = new LinearLayout.LayoutParams(
+	        LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
+	    frameLayoutParams.setMargins(4, 4, 4, 4);
+	    frame.setLayoutParams(frameLayoutParams);
+
+	    // Create the container for the above widgets
+	    LinearLayout tabHostLayout = new LinearLayout(context);
+	    tabHostLayout.setOrientation(LinearLayout.VERTICAL);
+	    tabHostLayout.addView(tabWidget);
+	    tabHostLayout.addView(frame);
+
+	    // Create the TabHost and add the container to it.
+	    TabHost tabHost = new TabHost(context, null);
+	    tabHost.addView(tabHostLayout);
+	    tabHost.setup();
+
+	    return tabHost;
+	}
+	
 	// initialise the GUI with the OpenGL rendering engine
 	private void initGui() {
 		//setContentView(R.layout.main);
@@ -143,18 +180,54 @@ public class PdDroidParty extends Activity {
 		getWindow().setFlags(flags, flags);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
-		patchview = new PdDroidPatchView(this, this, patch, config);
-		
 		LinearLayout layout = new LinearLayout(this);
 		layout.setOrientation(LinearLayout.VERTICAL);
 		
 		clockControl = new PdPartyClockControl(this, midiManager, config);
 		
 		layout.addView(clockControl);
-		layout.addView(patchview);
+
+		if(config.patches.isEmpty())
+		{
+			PdDroidPatchView patchview = new PdDroidPatchView(this, this, patch, config);
+			patchviews.add(patchview);
+			layout.addView(patchview);
+			setContentView(layout);
+			patchview.requestFocus();
+		}
+		else
+		{
+			stack = createTabHost(this);
+			
+			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+			stack.setLayoutParams(params);
+			
+			for(Entry<String, String> entry : config.patches.entrySet())
+			{
+				PdPatch patch = new PdPatch(new File(this.patch.getFile().getParentFile().getParentFile(), entry.getValue()).getAbsolutePath());
+				final PdDroidPatchView patchview = new PdDroidPatchView(this, this, patch, config);
+				patchviews.add(patchview);
+				
+				TabSpec sp = stack.newTabSpec(entry.getValue());
+				sp.setIndicator(entry.getKey(), getResources().getDrawable(R.drawable.ic_action_usb));
+				sp.setContent(new TabContentFactory() {
+					
+					@Override
+					public View createTabContent(String tag) {
+						return patchview;
+					}
+				});
+				stack.addTab(sp);
+			}
+			
+			layout.addView(stack);
+			
+			setContentView(layout);
+			
+			stack.requestFocus();
+		}
 		
-		setContentView(layout);
-		patchview.requestFocus();
+		
 	}
 	
 	// initialise Pd asking for the desired sample rate, parameters, etc.
@@ -207,38 +280,43 @@ public class PdDroidParty extends Activity {
 				Resources res = getResources();
 				
 				PdHelper.init();
-				
 				try {
-					// parse the patch for GUI elements
-					// p.printAtoms(p.parsePatch(path));
-					// get the actual lines of atoms from the patch
-					List<String[]> atomlines = PdParser.parsePatch(patch);
-					// some devices don't have a mic and might be buggy
-					// so don't create the audio in unless we really need it
-					// TODO: check a config option for this
-					//if (!hasADC(atomlines)) {
-					//	nIn = 0;
-					//}
-					// go ahead and intialise the audio
-					try {
-						pdService.initAudio(sRate, nIn, nOut, -1);   // negative values default to PdService preferences
-					} catch (IOException e) {
-						Log.e(TAG, e.toString());
-						finish();
-					}
-					patch.open();
-					patchview.buildUI(atomlines);
-					// start the audio thread
-					String name = res.getString(R.string.app_name);
-					pdService.startAudio(new Intent(PdDroidParty.this, PdDroidParty.class), R.drawable.icon, name, "Return to " + name + ".");
-					// tell the patch view everything has been loaded
-					patchview.loaded();
-					// dismiss the progress meter
-					progress.dismiss();
+					pdService.initAudio(sRate, nIn, nOut, -1);   // negative values default to PdService preferences
 				} catch (IOException e) {
-					post(e.toString() + "; exiting now");
+					Log.e(TAG, e.toString());
 					finish();
 				}
+				
+				for(PdDroidPatchView patchview : patchviews)
+				{
+					PdPatch patch = patchview.getPatch();
+					try {
+						// parse the patch for GUI elements
+						// p.printAtoms(p.parsePatch(path));
+						// get the actual lines of atoms from the patch
+						List<String[]> atomlines = PdParser.parsePatch(patch);
+						// some devices don't have a mic and might be buggy
+						// so don't create the audio in unless we really need it
+						// TODO: check a config option for this
+						//if (!hasADC(atomlines)) {
+						//	nIn = 0;
+						//}
+						// go ahead and intialise the audio
+						patch.open();
+						patchview.buildUI(atomlines);
+						// tell the patch view everything has been loaded
+						patchview.loaded();
+						
+					} catch (IOException e) {
+						post(e.toString() + "; exiting now");
+						finish();
+					}
+				}
+				// start the audio thread
+				String name = res.getString(R.string.app_name);
+				pdService.startAudio(new Intent(PdDroidParty.this, PdDroidParty.class), R.drawable.icon, name, "Return to " + name + ".");
+				// dismiss the progress meter
+				progress.dismiss();
 			}
 		}.start();
 	}
@@ -263,7 +341,10 @@ public class PdDroidParty extends Activity {
 		if (pdService != null) {
 			pdService.stopAudio();
 		}
-		patch.close();
+		for(PdDroidPatchView view : patchviews)
+		{
+			view.getPatch().close();
+		}
 		
 		PdBase.sendMessage("pd", "quit", "bang");
 		PdBase.release();
@@ -322,7 +403,10 @@ public class PdDroidParty extends Activity {
 				// we're done with our originating widget and dialog
 				widgetpopped = null;
 				// force a redraw
-				patchview.invalidate();
+				if(stack != null)
+					stack.invalidate();
+				else
+					patchviews.get(0).invalidate();
 			}
 		}
 	}

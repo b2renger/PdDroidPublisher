@@ -105,7 +105,13 @@
             </intent-filter>
         </activity> 
         
-         <activity android:name=".PersistTestActivity">
+        <activity android:name=".PersistTestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity> 
+       
+         <activity android:name=".MultiPatchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

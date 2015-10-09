@@ -51,5 +51,10 @@ public class PdDroidPartyLauncher extends Activity
 		activity.startActivity(intent);
 		activity.finish();
 	}
+	
+	public static void launch(Activity activity, PdDroidPartyConfig config)
+	{
+		launch(activity, config.patches.entrySet().iterator().next().getValue(), config);
+	}
 
 }
