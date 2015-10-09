@@ -4,7 +4,7 @@ apply plugin: "eclipse"
 
 task copyAbstractions(type:Zip) {
  	from ('droidparty-abstractions/')
-    include 'clock.pd', 'persist.pd', 'persist-symbol.pd', 'persist-table.pd'
+    include 'clock.pd', 'persist-load.pd', 'persist-save.pd', 'persist-map.pd', 'persist-table.pd'
  	archiveName 'abstractions.zip'
  	destinationDir new File(projectDir, 'res/raw')
 }
