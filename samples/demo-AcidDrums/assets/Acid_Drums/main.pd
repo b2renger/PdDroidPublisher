@@ -1,0 +1,199 @@
+#N canvas 132 92 1160 622 10;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X obj 573 4 cnv 15 49 325 empty aciddrums_cursor empty 20 12 0 14
+-258113 -66577 0;
+#X obj 31 14 tgl 45 0 sound1-01.s sound1-01.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 99 14 tgl 45 0 sound1-02.s sound1-02.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 167 14 tgl 45 0 sound1-03.s sound1-03.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 235 14 tgl 45 0 sound1-04.s sound1-04.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 303 14 tgl 45 0 sound1-05.s sound1-05.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 371 14 tgl 45 0 sound1-06.s sound1-06.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 439 14 tgl 45 0 sound1-07.s sound1-07.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 507 14 tgl 45 0 sound1-08.s sound1-08.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 575 14 tgl 45 0 sound1-09.s sound1-09.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 643 14 tgl 45 0 sound1-10.s sound1-10.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 712 14 tgl 45 0 sound1-11.s sound1-11.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 779 14 tgl 45 0 sound1-12.s sound1-12.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 848 14 tgl 45 0 sound1-13.s sound1-13.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 916 14 tgl 45 0 sound1-14.s sound1-14.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 983 14 tgl 45 0 sound1-15.s sound1-15.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 1051 14 tgl 45 0 sound1-16.s sound1-16.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 31 78 tgl 45 0 sound2-01.s sound2-01.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 99 78 tgl 45 0 sound2-02.s sound2-02.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 167 78 tgl 45 0 sound2-03.s sound2-03.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 235 78 tgl 45 0 sound2-04.s sound2-04.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 303 78 tgl 45 0 sound2-05.s sound2-05.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 371 78 tgl 45 0 sound2-06.s sound2-06.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 439 78 tgl 45 0 sound2-07.s sound2-07.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 507 78 tgl 45 0 sound2-08.s sound2-08.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 575 78 tgl 45 0 sound2-09.s sound2-09.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 643 78 tgl 45 0 sound2-10.s sound2-10.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 712 78 tgl 45 0 sound2-11.s sound2-11.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 779 78 tgl 45 0 sound2-12.s sound2-12.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 848 78 tgl 45 0 sound2-13.s sound2-13.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 916 78 tgl 45 0 sound2-14.s sound2-14.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 983 78 tgl 45 0 sound2-15.s sound2-15.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 1051 78 tgl 45 0 sound2-16.s sound2-16.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 31 146 tgl 45 0 sound3-01.s sound3-01.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 99 146 tgl 45 0 sound3-02.s sound2-03.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 167 146 tgl 45 0 sound3-03.s sound2-03.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 235 146 tgl 45 0 sound3-04.s sound2-03.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 303 146 tgl 45 0 sound3-05.s sound2-03.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 371 146 tgl 45 0 sound3-06.s sound2-03.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 439 146 tgl 45 0 sound3-07.s sound2-03.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 507 146 tgl 45 0 sound3-08.s sound2-03.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 575 146 tgl 45 0 sound3-09.s sound2-03.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 643 146 tgl 45 0 sound3-10.s sound2-13.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 712 146 tgl 45 0 sound3-11.s sound2-13.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 779 146 tgl 45 0 sound3-12.s sound2-13.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 848 146 tgl 45 0 sound3-13.s sound2-13.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 916 146 tgl 45 0 sound3-14.s sound2-13.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 983 146 tgl 45 0 sound3-15.s sound2-13.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 1051 146 tgl 45 0 sound3-16.s sound2-13.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 31 210 tgl 45 0 sound4-01.s sound4-01.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 99 210 tgl 45 0 sound4-02.s sound4-02.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 167 210 tgl 45 0 sound4-03.s sound4-03.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 235 210 tgl 45 0 sound4-04.s sound4-04.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 303 210 tgl 45 0 sound4-05.s sound4-05.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 371 210 tgl 45 0 sound4-06.s sound4-06.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 439 210 tgl 45 0 sound4-07.s sound4-07.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 507 210 tgl 45 0 sound4-08.s sound4-08.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 575 210 tgl 45 0 sound4-09.s sound4-09.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 643 210 tgl 45 0 sound4-10.s sound4-10.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 712 210 tgl 45 0 sound4-11.s sound4-11.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 779 210 tgl 45 0 sound4-12.s sound4-12.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 848 210 tgl 45 0 sound4-13.s sound4-13.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 916 210 tgl 45 0 sound4-14.s sound4-14.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 983 210 tgl 45 0 sound4-15.s sound4-15.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 1051 210 tgl 45 0 sound4-16.s sound4-16.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 31 273 tgl 45 0 sound5-01.s sound5-01.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 99 273 tgl 45 0 sound5-02.s sound5-02.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 167 273 tgl 45 0 sound5-03.s sound5-03.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 235 273 tgl 45 0 sound5-04.s sound5-04.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 303 273 tgl 45 0 sound5-05.s sound5-05.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 371 273 tgl 45 0 sound5-06.s sound5-06.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 439 273 tgl 45 0 sound5-07.s sound5-07.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 507 273 tgl 45 0 sound5-08.s sound5-08.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 575 273 tgl 45 0 sound5-09.s sound5-09.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 643 273 tgl 45 0 sound5-10.s sound5-10.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 712 273 tgl 45 0 sound5-11.s sound5-11.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 779 273 tgl 45 0 sound5-12.s sound5-12.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 848 273 tgl 45 0 sound5-13.s sound5-13.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 916 273 tgl 45 0 sound5-14.s sound5-14.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 983 273 tgl 45 0 sound5-15.s sound5-15.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 1051 273 tgl 45 0 sound5-16.s sound5-16.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 15 504 bng 45 250 50 0 load empty Load_Patt 0 -7 0 10 -262144
+-1 -1;
+#X obj 89 504 bng 45 250 50 0 save empty Save_Patt 0 -7 0 10 -262144
+-1 -1;
+#X obj 289 -1 cnv 15 3 335 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 562 -1 cnv 15 3 335 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 833 0 cnv 15 3 335 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 1109 -1 cnv 15 3 335 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 18 -2 cnv 15 3 335 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 11 569 workings;
+#X obj 20 356 hradio 45 1 1 6 s1-repeat.s s1-repeat.r Kick_repeat 0
+-8 0 10 -262144 -1 -1 4;
+#X obj 22 418 hsl 265 45 0 100 0 1 s1-prob.s s1-prob.r Kick_probability
+-2 -8 0 10 -262144 -1 -1 11200 1;
+#X obj 430 355 hradio 45 1 1 6 s2-repeat.s s2-repeat.r Snare_repeat
+0 -8 0 10 -262144 -1 -1 3;
+#X obj 431 417 hsl 265 45 0 100 0 1 s2-prob.s s2-prob.r Snare_probability
+-2 -8 0 10 -262144 -1 -1 14900 1;
+#X obj 428 486 hradio 45 1 1 6 s3-repeat.s s3-repeat.r Clap_repeat
+0 -8 0 10 -262144 -1 -1 4;
+#X obj 430 550 hsl 265 45 0 100 0 1 s3-prob.s s3-prob.r Clap_probability
+-2 -8 0 10 -262144 -1 -1 12700 1;
+#X obj 831 354 hradio 45 1 1 6 s4-repeat.s s4-repeat.r Hihat_repeat
+0 -8 0 10 -262144 -1 -1 0;
+#X obj 833 422 hsl 265 45 0 100 0 1 s4-prob.s s4-prob.r Hihat_probability
+-2 -8 0 10 -262144 -1 -1 14900 1;
+#X obj 831 489 hradio 45 1 1 6 s5-repeat.s s5-repeat.r Hihat2_repeat
+0 -8 0 10 -262144 -1 -1 0;
+#X obj 834 553 hsl 265 45 0 100 0 1 s5-prob.s s5-prob.r Hihat2_probability
+-2 -8 0 10 -262144 -1 -1 14900 1;
