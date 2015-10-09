@@ -1,0 +1,4 @@
+# All have to be ignore in this folder but the folder need to be source controlled (required by tests)
+
+/*
+!/.gitignore

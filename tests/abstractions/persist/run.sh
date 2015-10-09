@@ -1,0 +1,1 @@
+pd -send "pwd symbol $( pwd )" -open PersistTestDesktop.pd
