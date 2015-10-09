@@ -1,0 +1,11 @@
+touch.y 0.3575;
+touch.x 0.135625;
+tap.r Lambda;
+hsr.r 5;
+vsr.r 2;
+hsl.r 98;
+vsl.r 23;
+nb2.r 34;
+tgl.r 1;
+sb.r nothing;
+nb.r 27;
