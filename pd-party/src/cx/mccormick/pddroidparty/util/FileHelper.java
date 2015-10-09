@@ -9,9 +9,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.content.res.Resources.NotFoundException;
 import android.graphics.Typeface;
 
 public class FileHelper {
@@ -140,6 +143,38 @@ public class FileHelper {
         {
         	throw new Error(e);
         }
+	}
+
+	public static void unzipResource(Context context, int resID, File destination) 
+	{
+		try {
+			unzip(destination, context.getResources().openRawResource(resID));
+		} catch (NotFoundException e) {
+			throw new Error(e);
+		} catch (IOException e) {
+			throw new Error(e);
+		}
+	}
+	
+	private static void unzip(File folder, InputStream inputStream) throws IOException
+	{
+	    ZipInputStream zipIs = new ZipInputStream(inputStream); 
+	    ZipEntry ze = null;
+
+        while ((ze = zipIs.getNextEntry()) != null) {
+
+            FileOutputStream fout = new FileOutputStream(new File(folder, ze.getName()));
+
+            byte[] buffer = new byte[1024];
+            int length = 0;
+
+            while ((length = zipIs.read(buffer))>0) {
+            fout.write(buffer, 0, length);
+            }
+            zipIs.closeEntry();
+            fout.close();
+        }
+        zipIs.close();
 	}
 
 

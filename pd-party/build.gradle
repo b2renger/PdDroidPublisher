@@ -2,11 +2,19 @@ apply plugin: 'android-library'
 apply plugin: "eclipse"
 
 
-
-task copyAbstractions(type: Copy) {
-    from 'droidparty-abstractions/clock.pd'
-    into 'res/raw'
+task copyAbstractions(type:Zip) {
+ 	from ('droidparty-abstractions/')
+    include 'clock.pd', 'persist.pd', 'persist-symbol.pd', 'persist-table.pd'
+ 	archiveName 'abstractions.zip'
+ 	destinationDir new File(projectDir, 'res/raw')
 }
+
+task cleanAbstractions(type: Delete) {
+
+	delete(new File(projectDir, 'res/raw/abstractions.zip'))
+}
+
+copyAbstractions.dependsOn cleanAbstractions
 
 compileJava.dependsOn copyAbstractions
 tasks.eclipse.dependsOn copyAbstractions

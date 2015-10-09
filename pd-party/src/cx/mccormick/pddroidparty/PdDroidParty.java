@@ -1,6 +1,5 @@
 package cx.mccormick.pddroidparty;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -95,7 +94,7 @@ public class PdDroidParty extends Activity {
 		config = (PdDroidPartyConfig)intent.getSerializableExtra(PdDroidPartyConfig.class.getName());
 		
 		// copy necessary abstractions
-        FileHelper.copyResource(this, R.raw.clock, new File(patch.getFile().getParentFile(), "clock.pd"));
+        FileHelper.unzipResource(this, R.raw.abstractions, patch.getFile().getParentFile());
 
 		
 		usbMidiManager = new UsbMidiManager(this, new UsbMidiHandler() {
