@@ -1,50 +1,48 @@
-#N canvas 453 135 632 563 10;
+#N canvas 242 141 810 583 10;
+#X text 72 24 Persist Library Documentation;
+#X text 72 61 Persist library allow to save and load presets for your
+patches. You can save/load any messages (integer \, float \, symbol
+\, list \, array \, ...), f 59;
+#X obj 483 117 hsl 128 15 0 127 0 0 slider.s slider.r Slider -2 -8
+0 10 -262144 -1 -1 7500 1;
+#X obj 627 109 r slider.s;
+#X floatatom 627 141 5 0 0 0 - - -, f 5;
+#X text 73 171 Then you configure a mapping. persist-map take a bank
+name \, the message symbol do be capture and the message symbol to
+be recalled. Bank name is discussed later.;
+#X text 74 269 For an array \, you use another atom. persist-array
+take a bank name and the name of the array you want to save/load;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array array2 100 float 2;
-#X coords 0 1 100 -1 100 100 1 0 0;
-#X restore 133 26 graph;
-#X obj 457 79 bng 32 250 50 0 empty empty Save 34 16 0 10 -262144 -1
--1;
-#X obj 276 82 bng 32 250 50 0 empty empty Load 34 16 0 10 -262144 -1
--1;
-#X obj 25 173 hsl 128 15 0 127 0 0 slider.s slider.r empty -2 -8 0
-10 -262144 -1 -1 0 1;
-#X obj 35 206 tgl 15 0 tgl.s tgl.r empty 17 7 0 10 -262144 -1 -1 0
-1;
-#N canvas 0 50 450 250 (subpatch) 0;
-#X array array1 100 float 2;
-#X coords 0 1 100 -1 100 100 1 0 0;
-#X restore 19 26 graph;
-#X obj 261 282 persist-table bayA array1;
-#X obj 261 311 persist-table bayA array2;
-#X obj 370 184 loadsave bayA;
-#X msg 276 126 \; bayA load savefiles cbs;
-#X msg 457 125 \; bayA save savefiles cbs;
-#X obj 266 191 r bayA-load;
-#X obj 385 213 r bayA-save;
-#X obj 464 358 bng 32 250 50 0 empty empty Save 34 16 0 10 -262144
+#X array array1 10 float 0;
+#X coords 0 1 10 -1 100 100 1 0 0;
+#X restore 649 234 graph;
+#X obj 456 280 persist-table store array1;
+#X text 79 350 To save or load your bank \, you use two atoms. These
+take the bank name as argument and file path as a symbol in its inlet
+;
+#X obj 470 406 persist-save store;
+#X obj 470 351 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 283 361 bng 32 250 50 0 empty empty Load 34 16 0 10 -262144
+#X obj 470 377 savepanel;
+#X obj 611 350 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X msg 283 405 \; bayB load savefiles cbs;
-#X msg 464 404 \; bayB save savefiles cbs;
-#X obj 377 463 loadsave bayB;
-#X obj 273 470 r bayB-load;
-#X obj 397 494 r bayB-save;
-#X obj 40 434 hradio 15 1 0 8 sel.s sel.r empty 0 -8 0 10 -262144 -1
--1 3;
-#X obj 15 270 persist-map bayA slider.s slider.r;
-#X obj 14 299 persist-map bayA tgl.s tgl.r;
-#X obj 266 235 persist-load bayA;
-#X obj 385 253 persist-save bayA;
-#X obj 273 516 persist-load bayB;
-#X obj 397 537 persist-save bayB;
-#X obj 25 500 persist-map bayB sel.s sel.r;
-#X connect 1 0 10 0;
-#X connect 2 0 9 0;
-#X connect 11 0 23 0;
-#X connect 12 0 24 0;
-#X connect 13 0 16 0;
+#X obj 611 376 openpanel;
+#X obj 611 405 persist-load store;
+#X text 72 402 Saved file contains all persist-map key/values pairs
+and each array is saved in its own file (for performance reasons).
+Array file is the same as the saved preset postfixed with the array
+name. When you load a preset \, corresponding array files are loaded
+automatically., f 62;
+#X text 71 115 First you need to define mapping from your atoms. For
+simple mapping (all exept arrays) you configure send/receive messages
+as usual.;
+#X text 81 502 Bank name is usefull if you want to split load/save
+preset files. For instance \, if you have a workstation like patch
+\, you may want to save sequencer and effets independently. This can
+map the same value for different banks if you wish., f 114;
+#X obj 455 185 persist-map store slider.s slider.r;
+#X connect 3 0 4 0;
+#X connect 11 0 12 0;
+#X connect 12 0 10 0;
+#X connect 13 0 14 0;
 #X connect 14 0 15 0;
-#X connect 18 0 25 0;
-#X connect 19 0 26 0;
