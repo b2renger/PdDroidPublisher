@@ -1,4 +1,4 @@
-#N canvas 360 417 450 300 10;
+#N canvas 358 418 450 300 10;
 #X obj 34 159 pack s s;
 #X msg 34 210 \; \$2 read \$1;
 #X obj 34 91 pack s s;
@@ -10,7 +10,7 @@
 #X obj 156 33 r persist-save-\$1;
 #X msg 34 123 symbol \$1-\$2;
 #X obj 156 158 pack s s;
-#X msg 155 122 symbol \$1-\$2;
+#X msg 156 122 symbol \$1-\$2;
 #X connect 0 0 1 0;
 #X connect 2 0 9 0;
 #X connect 3 0 6 0;
