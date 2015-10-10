@@ -1,5 +1,4 @@
-#N canvas 132 92 1160 622 10;
-#X declare -path ../../../../pd-party/droidparty-abstractions;
+#N canvas 129 97 1148 622 10;
 #X obj 573 4 cnv 15 49 325 empty aciddrums_cursor empty 20 12 0 14
 -258113 -66577 0;
 #X obj 31 14 tgl 45 0 sound1-01.s sound1-01.r empty 17 7 0 10 -262144
@@ -162,21 +161,20 @@
 -1 -1 0 1;
 #X obj 1051 273 tgl 45 0 sound5-16.s sound5-16.r empty 17 7 0 10 -262144
 -1 -1 0 1;
-#X obj 15 504 bng 45 250 50 0 load empty Load_Patt 0 -7 0 10 -262144
--1 -1;
-#X obj 89 504 bng 45 250 50 0 save empty Save_Patt 0 -7 0 10 -262144
--1 -1;
-#X obj 289 -1 cnv 15 3 335 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 18 504 bng 45 250 50 0 load-pattern empty Load_Patt 0 -7 0 10
+-262144 -1 -1;
+#X obj 92 504 bng 45 250 50 0 save_pattern empty Save_Patt 0 -7 0 10
+-262144 -1 -1;
+#X obj 289 -1 cnv 15 5 335 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 562 -1 cnv 15 3 335 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 562 -1 cnv 15 5 335 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 833 0 cnv 15 3 335 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 833 0 cnv 15 5 335 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 1109 -1 cnv 15 3 335 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 1108 -1 cnv 15 5 335 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 18 -2 cnv 15 3 335 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 18 -2 cnv 15 5 335 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X obj 11 569 workings;
 #X obj 20 356 hradio 45 1 1 6 s1-repeat.s s1-repeat.r Kick_repeat 0
 -8 0 10 -262144 -1 -1 4;
 #X obj 22 418 hsl 265 45 0 100 0 1 s1-prob.s s1-prob.r Kick_probability

@@ -1,4 +1,4 @@
-#N canvas 313 180 880 496 10;
+#N canvas 310 185 880 496 10;
 #X obj 772 25 vsl 80 450 0 127 0 0 drum_mix drum_mix.r Master 0 -9
 0 10 -262144 -1 -1 0 1;
 #X obj 13 271 vsl 60 200 0 1 0 0 kick_tone.s kick_tone.r KickT 0 -9
@@ -31,7 +31,7 @@ Hihat2D 0 -9 0 10 -262144 -1 -1 0 1;
 0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 520 275 vsl 60 200 0 1 0 0 hihat2_tone.s hihat2_tone.r Hihat2T
 0 -9 0 10 -262144 -1 -1 0 1;
-#X obj 16 16 bng 45 250 50 0 load empty Load_Synths 0 -7 0 10 -262144
--1 -1;
-#X obj 121 16 bng 45 250 50 0 save empty Save_Synths 0 -7 0 10 -262144
--1 -1;
+#X obj 16 16 bng 45 250 50 0 load_synth empty Load_Synths 0 -7 0 10
+-262144 -1 -1;
+#X obj 121 16 bng 45 250 50 0 save_synth empty Save_Synths 0 -7 0 10
+-262144 -1 -1;
