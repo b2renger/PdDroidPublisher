@@ -1,4 +1,5 @@
-#N canvas 129 97 1148 622 10;
+#N canvas 117 117 1148 622 10;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 573 4 cnv 15 49 325 empty aciddrums_cursor empty 20 12 0 14
 -258113 -66577 0;
 #X obj 31 14 tgl 45 0 sound1-01.s sound1-01.r empty 17 7 0 10 -262144
@@ -161,7 +162,7 @@
 -1 -1 0 1;
 #X obj 1051 273 tgl 45 0 sound5-16.s sound5-16.r empty 17 7 0 10 -262144
 -1 -1 0 1;
-#X obj 18 504 bng 45 250 50 0 load-pattern empty Load_Patt 0 -7 0 10
+#X obj 18 504 bng 45 250 50 0 load_pattern empty Load_Patt 0 -7 0 10
 -262144 -1 -1;
 #X obj 92 504 bng 45 250 50 0 save_pattern empty Save_Patt 0 -7 0 10
 -262144 -1 -1;
@@ -176,22 +177,27 @@
 #X obj 18 -2 cnv 15 5 335 empty empty empty 20 12 0 14 -261234 -66577
 0;
 #X obj 20 356 hradio 45 1 1 6 s1-repeat.s s1-repeat.r Kick_repeat 0
--8 0 10 -262144 -1 -1 4;
+-8 0 10 -262144 -1 -1 0;
 #X obj 22 418 hsl 265 45 0 100 0 1 s1-prob.s s1-prob.r Kick_probability
--2 -8 0 10 -262144 -1 -1 11200 1;
+-2 -8 0 10 -262144 -1 -1 26400 1;
 #X obj 430 355 hradio 45 1 1 6 s2-repeat.s s2-repeat.r Snare_repeat
-0 -8 0 10 -262144 -1 -1 3;
+0 -8 0 10 -262144 -1 -1 0;
 #X obj 431 417 hsl 265 45 0 100 0 1 s2-prob.s s2-prob.r Snare_probability
--2 -8 0 10 -262144 -1 -1 14900 1;
+-2 -8 0 10 -262144 -1 -1 26400 1;
 #X obj 428 486 hradio 45 1 1 6 s3-repeat.s s3-repeat.r Clap_repeat
-0 -8 0 10 -262144 -1 -1 4;
+0 -8 0 10 -262144 -1 -1 0;
 #X obj 430 550 hsl 265 45 0 100 0 1 s3-prob.s s3-prob.r Clap_probability
--2 -8 0 10 -262144 -1 -1 12700 1;
+-2 -8 0 10 -262144 -1 -1 26400 1;
 #X obj 831 354 hradio 45 1 1 6 s4-repeat.s s4-repeat.r Hihat_repeat
 0 -8 0 10 -262144 -1 -1 0;
 #X obj 833 422 hsl 265 45 0 100 0 1 s4-prob.s s4-prob.r Hihat_probability
--2 -8 0 10 -262144 -1 -1 14900 1;
+-2 -8 0 10 -262144 -1 -1 26400 1;
 #X obj 831 489 hradio 45 1 1 6 s5-repeat.s s5-repeat.r Hihat2_repeat
 0 -8 0 10 -262144 -1 -1 0;
 #X obj 834 553 hsl 265 45 0 100 0 1 s5-prob.s s5-prob.r Hihat2_probability
--2 -8 0 10 -262144 -1 -1 14900 1;
+-2 -8 0 10 -262144 -1 -1 26400 1;
+#X obj 44 612 aciddrums_audiocore;
+#X obj 170 613 loadsave pattern;
+#X obj 278 611 loadsave synth;
+#X obj 177 503 bng 45 250 50 0 reset_pattern empty Reset 0 -7 0 10
+-262144 -1 -1;

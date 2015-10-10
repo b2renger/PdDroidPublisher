@@ -17,11 +17,10 @@ public class MainActivity extends Activity {
         config.midiClockMaxBPM = 480;
         config.guiKeepAspectRatio = true;
         config.theme = new MonochromeTheme(MonochromeTheme.YELLOW,true);
-        
        
-        
-        config.patches.put("Sequencer", "Acid_Drums/main.pd");
-        config.patches.put("Controls", "Acid_Drums/controls.pd");
+       // config.patches.put("Full Stack", "Acid_Drums/aciddrums_fullstack.pd");
+        config.patches.put("Sequencer", "Acid_Drums/aciddrums_sequencer.pd");
+        config.patches.put("Audio Controls", "Acid_Drums/aciddrums_controls.pd");
         
         PdDroidPartyLauncher.launch(this, config);
         //PdDroidPartyLauncher.launch(this,"Acid_Drums/AcidDrums.pd", config);

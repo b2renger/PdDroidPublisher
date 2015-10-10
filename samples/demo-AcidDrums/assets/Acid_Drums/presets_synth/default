@@ -1,0 +1,16 @@
+hihat2_gain.r 0.833333;
+hihat2_decay.r 0.608333;
+hihat2_tone.r;
+hihat_gain.r 0.840278;
+hihat_decay.r;
+hihat_tone.r;
+clap_gain.r 0.847222;
+clap_decay.r 0.486111;
+clap_tone.r 0;
+snare_gain.r 0.8125;
+snare_decay.r 0.30625;
+snare_tone.r 0.01;
+kick_gain.r 1;
+kick_decay.r 0.46875;
+kick_tone.r 1;
+drum_mix.r 97.4177;
