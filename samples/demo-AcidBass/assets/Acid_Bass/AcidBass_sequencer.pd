@@ -1,7 +1,7 @@
-#N canvas 110 131 971 518 10;
+#N canvas 69 210 971 518 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#X obj 653 17 cnv 15 50 468 empty acidbass_cursor empty 20 12 0 14
--258113 -66577 0;
+#X obj 53 17 cnv 15 50 468 empty acidbass_cursor empty 20 12 0 14 -258113
+-66577 0;
 #X obj 60 398 tgl 36 0 accent1.s accent1.r empty 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 110 398 tgl 36 0 accent2.s accent2.r empty 17 7 0 10 -262144
@@ -130,12 +130,11 @@
 #X obj 718 487 AcidBass_audiocore;
 #X obj 409 487 loadsave pattern;
 #X obj 511 487 loadsave synth;
-#N canvas 535 174 613 463 loadsave-maping 0;
-#N canvas 65 54 1301 714 loadsave 0;
+#N canvas 212 115 613 639 loadsave-maping 1;
+#N canvas 715 82 651 686 loadsave 0;
 #X obj 724 -86 persist-map synth fromattack toattack;
 #X obj 724 -67 persist-map synth fromdecay todecay;
 #X obj 724 -48 persist-map synth fromshape toshape;
-#X obj 719 -19 persist-map synth bass_mix bass_mix.r;
 #X obj 199 73 persist-map pattern octave1.s octave1.r;
 #X obj 199 93 persist-map pattern octave2.s octave2.r;
 #X obj 199 114 persist-map pattern octave3.s octave3.r;
@@ -201,7 +200,10 @@
 #X obj 462 359 persist-map pattern half15.s half15.r;
 #X obj 462 379 persist-map pattern half16.s half16.r;
 #X obj 199 27 persist-table pattern Notes;
-#X restore 32 329 pd loadsave;
+#X obj 725 -22 persist-map synth drive.s drive.r;
+#X obj 725 1 persist-map synth dry.s dry.r;
+#X obj 720 31 persist-map synth fromVolume toVolume;
+#X restore 24 250 pd loadsave;
 #X obj 20 96 r pattern-load;
 #X obj 22 203 r pattern-save;
 #X obj 20 116 persist-load pattern;
@@ -218,6 +220,33 @@
 #X msg 21 167 \; pattern save presets_pattern cbs;
 #X obj 397 150 r save_synth;
 #X msg 397 170 \; synth save presets_synth cbs;
+#X obj 37 303 loadbang;
+#X obj 129 303 r reset_synth;
+#X msg 37 352 \; toattack 0.15 \; todecay 0.5 \; toshape 0.1 \; drive.r
+0 \; dry.r 1 \; toVolume 127 \;;
+#X obj 271 264 loadbang;
+#X obj 524 314 s Notes;
+#X obj 363 264 r reset_pattern;
+#X msg 524 292 const 12;
+#X msg 199 388 \; octave1.r/idx 0 \; octave2.r/idx 0 \; octave3.r/idx
+0 \; octave4.r/idx 0 \; octave5.r/idx 0 \; octave6.r/idx 0 \; octave7.r/idx
+0 \; octave8.r/idx 0 \; octave9.r/idx 0 \; octave10.r/idx 0 \; octave11.r/idx
+0 \; octave12.r/idx 0 \; octave13.r/idx 0 \; octave14.r/idx 0 \; octave15.r/idx
+0 \; octave16.r/idx 0 \;;
+#X msg 313 388 \; half1.r/idx 0 \; half2.r/idx 0 \; half3.r/idx 0 \;
+half4.r/idx 0 \; half5.r/idx 0 \; half6.r/idx 0 \; half7.r/idx 0 \;
+half8.r/idx 0 \; half9.r/idx 0 \; half10.r/idx 0 \; half11.r/idx 0
+\; half12.r/idx 0 \; half13.r/idx 0 \; half14.r/idx 0 \; half15.r/idx
+0 \; half16.r/idx 0 \;;
+#X msg 416 388 \; accent1.r 0 \; accent2.r 0 \; accent3.r 0 \; accent4.r
+0 \; accent5.r 0 \; accent6.r 0 \; accent7.r 0 \; accent8.r 0 \; accent9.r
+0 \; accent10.r 0 \; accent11.r 0 \; accent12.r 0 \; accent13.r 0 \;
+accent14.r 0 \; accent15.r 0 \; accent16.r 0 \;;
+#X msg 511 386 \; glide1.r 0 \; glide2.r 0 \; glide3.r 0 \; glide4.r
+0 \; glide5.r 0 \; glide6.r 0 \; glide7.r 0 \; glide8.r 0 \; glide9.r
+0 \; glide10.r 0 \; glide11.r 0 \; glide12.r 0 \; glide13.r 0 \; glide14.r
+0 \; glide15.r 0 \; glide16.r 0 \;;
+#X msg 522 340 \; basenote.r 24 \;;
 #X connect 1 0 3 0;
 #X connect 2 0 4 0;
 #X connect 5 0 6 0;
@@ -226,6 +255,21 @@
 #X connect 10 0 13 0;
 #X connect 11 0 14 0;
 #X connect 15 0 16 0;
+#X connect 17 0 19 0;
+#X connect 18 0 19 0;
+#X connect 20 0 23 0;
+#X connect 20 0 24 0;
+#X connect 20 0 25 0;
+#X connect 20 0 26 0;
+#X connect 20 0 27 0;
+#X connect 20 0 28 0;
+#X connect 22 0 23 0;
+#X connect 22 0 24 0;
+#X connect 22 0 25 0;
+#X connect 22 0 27 0;
+#X connect 22 0 28 0;
+#X connect 22 0 26 0;
+#X connect 23 0 21 0;
 #X restore 602 487 pd loadsave-maping;
 #N canvas 65 87 450 250 (subpatch) 0;
 #X array Notes 16 float 3;
@@ -309,4 +353,4 @@
 #X obj 335 257 table_set_from_gui Notes 13 notes_13.s 11;
 #X obj 335 277 table_set_from_gui Notes 14 notes_14.s 11;
 #X obj 335 296 table_set_from_gui Notes 15 notes_15.s 11;
-#X restore 835 490 pd tablelookup;
+#X restore 835 487 pd tablelookup;

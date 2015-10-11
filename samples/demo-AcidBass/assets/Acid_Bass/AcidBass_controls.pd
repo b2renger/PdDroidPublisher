@@ -1,22 +1,28 @@
-#N canvas 65 97 802 369 10;
+#N canvas 622 104 657 244 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#X obj 571 43 hsl 200 45 0 1 0 0 fromattack toattack empty -2 -6 1
-8 -258113 -1 -1 0 1;
-#X obj 572 106 hsl 200 45 0 1 0 0 fromdecay todecay empty -2 -6 1 8
--258113 -1 -1 0 1;
-#X obj 571 172 hsl 200 45 0 1 0 0 fromshape toshape empty -2 -6 1 8
--258113 -1 -1 0 1;
-#X text 573 27 Attack;
-#X text 567 91 Decay;
-#X text 567 157 Shape;
-#X obj 571 237 hsl 200 45 0 127 0 0 fromVolume toVolume empty -2 -6
-1 8 -258113 -1 -1 0 1;
-#X text 567 222 Volume;
-#X obj 122 -8 declare -path ../../../../pd-party/droidparty-abstractions
+#X obj 20 46 hsl 200 45 0.1 1 0 0 fromattack toattack empty -2 -6 1
+8 -258113 -1 -1 1106 1;
+#X obj 21 109 hsl 200 45 0 1 0 0 fromdecay todecay empty -2 -6 1 8
+-258113 -1 -1 9950 1;
+#X obj 303 47 hsl 200 45 0 1 0 0 fromshape toshape empty -2 -6 1 8
+-258113 -1 -1 1990 1;
+#X text 22 30 Attack;
+#X text 16 94 Decay;
+#X text 299 32 Shape;
+#X obj 20 186 hsl 200 45 0 127 0 0 fromVolume toVolume empty -2 -6
+1 8 -258113 -1 -1 19900 1;
+#X text 18 166 Volume;
+#X obj 17 4 declare -path ../../../../pd-party/droidparty-abstractions
 ;
-#X obj 58 50 bng 30 250 50 0 load_synth empty Load_Synth 0 -7 0 10
+#X obj 562 46 bng 30 250 50 0 load_synth empty Load_Synth 0 -7 0 10
 -262144 -1 -1;
-#X obj 139 50 bng 30 250 50 0 save_synth empty Save_Synth 0 -7 0 10
+#X obj 562 111 bng 30 250 50 0 save_synth empty Save_Synth 0 -7 0 10
 -262144 -1 -1;
-#X obj 221 50 bng 30 250 50 0 reset_synth empty Reset_synth 0 -7 0
+#X obj 564 178 bng 30 250 50 0 reset_synth empty Reset_synth 0 -7 0
 10 -262144 -1 -1;
+#X obj 303 116 hsl 200 45 2 300 0 0 drive.s drive.r empty -2 -6 1 8
+-258113 -1 -1 0 1;
+#X obj 302 188 hsl 200 45 0 1 0 0 dry.s dry.r empty -2 -6 1 8 -258113
+-1 -1 19900 1;
+#X text 299 99 Drive;
+#X text 299 168 Wet/Dry;
