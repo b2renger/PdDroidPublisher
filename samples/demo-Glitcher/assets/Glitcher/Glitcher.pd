@@ -1,4 +1,4 @@
-#N canvas 320 171 475 379 10;
+#N canvas 317 176 475 379 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 9 90 hsl 128 25 0 32 0 0 num1.s num1.r Numerator 5 12 0 10 -262144
 -1 -1 0 1;
@@ -6,7 +6,7 @@
 -262144 -1 -1 0 1;
 #X obj 6 57 tgl 25 0 glitch1.s glitch1.r Glitch_1 30 12 0 10 -262144
 -1 -1 0 1;
-#N canvas 574 82 651 686 guts 1;
+#N canvas 571 87 651 686 guts 1;
 #X obj 526 657 dac~;
 #X obj 66 256 euclidean 7 16;
 #X obj 415 602 hip~ 25;
@@ -259,7 +259,7 @@
 #X obj 660 621 lop~ 20000;
 #X obj 660 641 tanh~;
 #X obj 66 195 spigot;
-#N canvas 65 89 667 679 elliptic 0;
+#N canvas 65 94 667 679 elliptic 0;
 #X obj 191 334 *~;
 #X obj 189 256 osc~ 26000;
 #X obj 259 313 vline~;
@@ -304,7 +304,7 @@
 #X connect 19 0 20 0;
 #X restore 239 276 pd elliptic;
 #X obj 36 338 cos_panner;
-#N canvas 65 107 450 300 tick3 0;
+#N canvas 65 112 578 426 tick3 0;
 #X obj 159 47 noise~;
 #X obj 159 152 *~;
 #X obj 266 203 vline~;
@@ -525,49 +525,42 @@ right \, random);
 #X obj 304 165 tgl 25 0 glitch6.s glitch6.r Glitch_6 30 12 0 10 -262144
 -1 -1 0 1;
 #X obj 10 295 clock-gui;
-#N canvas 714 281 613 463 loadsave-interface 0;
-#X obj 44 15 s cb-save;
-#X obj 44 -6 r storage-save;
-#X obj 194 -6 r storage-load;
-#X obj 194 15 s cb-load;
-#X obj 132 71 r cb-save;
-#X obj 51 71 r cb-load;
-#X obj 51 96 sssad/loadsave;
-#X obj 13 -108 r wordbutton-save;
-#X obj 198 -111 r wordbutton-load;
-#X msg 12 -86 \; storage save savefiles cbs;
-#X msg 198 -86 \; storage load savefiles cbs;
-#X connect 1 0 0 0;
-#X connect 2 0 3 0;
-#X connect 4 0 6 1;
-#X connect 5 0 6 0;
-#X connect 7 0 9 0;
-#X connect 8 0 10 0;
-#X restore 86 296 pd loadsave-interface;
-#N canvas 712 87 651 686 loadsave 0;
-#X obj 7 31 sssad/auto num1.s num1.r;
-#X obj 7 52 sssad/auto den1.s den1.r;
-#X obj 7 104 sssad/auto num2.s num2.r;
-#X obj 7 125 sssad/auto den2.s den2.r;
-#X obj 8 175 sssad/auto num3.s num3.r;
-#X obj 8 195 sssad/auto den3.s den3.r;
-#X obj 7 256 sssad/auto num4.s num4.r;
-#X obj 7 276 sssad/auto den4.s den4.r;
-#X obj 15 343 sssad/auto num5.s num5.r;
-#X obj 15 363 sssad/auto den5.s den5.r;
-#X obj 17 397 sssad/auto glitch6.s glitch6.r;
-#X obj 17 418 sssad/auto num6.s num6.r;
-#X obj 17 438 sssad/auto den6.s den6.r;
-#X obj 15 323 sssad/auto glitch5.s glitch5.r;
-#X obj 7 235 sssad/auto glitch4.s glitch4.r;
-#X obj 8 154 sssad/auto glitch3.s glitch3.r;
-#X obj 7 10 sssad/auto glitch1.s glitch1.r;
-#X obj 7 83 sssad/auto glitch2.s glitch2.r;
+#N canvas 703 102 651 686 loadsave 1;
+#X obj 7 10 persist-map storage glitch1.s glitch1.r;
+#X obj 7 31 persist-map storage num1.s num1.r;
+#X obj 7 52 persist-map storage den1.s den1.r;
+#X obj 7 83 persist-map storage glitch2.s glitch2.r;
+#X obj 7 104 persist-map storage num2.s num2.r;
+#X obj 7 125 persist-map storage den2.s den2.r;
+#X obj 8 154 persist-map storage glitch3.s glitch3.r;
+#X obj 8 175 persist-map storage num3.s num3.r;
+#X obj 8 195 persist-map storage den3.s den3.r;
+#X obj 7 235 persist-map storage glitch4.s glitch4.r;
+#X obj 7 256 persist-map storage num4.s num4.r;
+#X obj 7 276 persist-map storage den4.s den4.r;
+#X obj 15 323 persist-map storage glitch5.s glitch5.r;
+#X obj 15 343 persist-map storage num5.s num5.r;
+#X obj 15 363 persist-map storage den5.s den5.r;
+#X obj 17 397 persist-map storage glitch6.s glitch6.r;
+#X obj 17 418 persist-map storage num6.s num6.r;
+#X obj 17 438 persist-map storage den6.s den6.r;
+#X obj 305 18 r load;
+#X msg 305 39 \; storage load presets cbs;
+#X obj 305 74 r storage-load;
+#X obj 305 94 persist-load storage;
+#X obj 307 201 persist-save storage;
+#X obj 307 181 r storage-save;
+#X msg 306 145 \; storage save presets_pattern cbs;
+#X obj 306 125 r save;
+#X connect 18 0 19 0;
+#X connect 20 0 21 0;
+#X connect 23 0 22 0;
+#X connect 25 0 24 0;
 #X restore 232 296 pd loadsave;
 #X obj 86 273 loadsave storage;
 #X obj 11 325 declare -path ../../../../pd-party/droidparty-abstractions
 ;
-#X obj 6 10 bng 30 250 50 0 empty empty Load 0 -7 0 10 -262144 -1 -1
+#X obj 6 10 bng 30 250 50 0 load empty Load 0 -7 0 10 -262144 -1 -1
 ;
 #X obj 112 9 bng 30 250 50 0 save empty Save 0 -7 0 10 -262144 -1 -1
 ;
