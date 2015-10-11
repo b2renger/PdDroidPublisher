@@ -21,7 +21,12 @@ public class MainActivity extends Activity {
         config.theme = new MonochromeTheme(MonochromeTheme.RED, true);
         config.typeOverrides.put(Taplist.class, CustomTaplist.class);
         
-        PdDroidPartyLauncher.launch(this, "Acid_Bass/AcidBass.pd", config);
+        config.patches.put("Sequencer", "Acid_Bass/AcidBass_sequencer.pd");
+        config.patches.put("Audio Controls", "Acid_Bass/AcidBass_controls.pd");
+        
+        PdDroidPartyLauncher.launch(this, config);
+        
+       // PdDroidPartyLauncher.launch(this, "Acid_Bass/AcidBass.pd", config);
     }
     
 

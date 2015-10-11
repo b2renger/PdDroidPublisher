@@ -1,0 +1,28 @@
+#N canvas 718 141 623 608 10;
+#X text 214 4 takes a table on lookup the value store in it and rouding
+it up;
+#X obj 134 216 i;
+#X obj 134 267 -;
+#X obj 133 30 r tick;
+#X obj 134 102 f \$2;
+#X text 174 102 index to lookup;
+#X obj 134 131 tabread \$1;
+#X text 216 131 table to lookup;
+#X floatatom 53 175 5 0 0 0 - - -, f 5;
+#X obj 134 241 swap \$4;
+#X obj 134 325 s \$3;
+#X text 168 325 send symbol;
+#X obj 133 297 + 1;
+#X obj 136 167 + 0.5;
+#X obj 136 59 b;
+#X connect 1 0 9 0;
+#X connect 2 0 12 0;
+#X connect 3 0 14 0;
+#X connect 4 0 6 0;
+#X connect 6 0 8 0;
+#X connect 6 0 13 0;
+#X connect 9 0 2 0;
+#X connect 9 1 2 1;
+#X connect 12 0 10 0;
+#X connect 13 0 1 0;
+#X connect 14 0 4 0;
