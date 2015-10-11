@@ -1,0 +1,197 @@
+#N canvas 253 85 1128 686 10;
+#X obj 55 560 cnv 15 100 130 empty cursorAccents empty 20 12 0 14 -261234
+-66577 0;
+#X obj 755 420 cnv 15 100 140 empty cursorOctaves empty 20 12 0 14
+-261234 -66577 0;
+#X obj 55 190 cnv 15 100 235 empty cursorNotes empty 20 12 0 14 -261234
+-66577 0;
+#N canvas 65 87 450 250 (subpatch) 0;
+#X array Notes 8 float 3;
+#A 0 12 7 12 7 12 5 12 5;
+#X coords 0 0 8 12 800 200 2 0 0;
+#X restore 54 205 graph;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array Octaves 8 float 3;
+#A 0 6 3 6 6 6 4 6 3;
+#X coords 0 0 8 6 800 100 1 0 0;
+#X restore 54 433 graph;
+#N canvas 65 82 450 250 (subpatch) 0;
+#X array Accents 8 float 3;
+#A 0 3 1 2 0 3 1 2 3;
+#X coords 0 0 8 4 800 100 1 0 0;
+#X restore 55 564 graph;
+#X obj 38 370 cnv 15 815 1 empty empty +2 -20 0 0 14 -162280 -66577
+0;
+#X obj 38 338 cnv 15 815 1 empty empty +4 -20 0 0 14 -162280 -66577
+0;
+#X obj 38 321 cnv 15 815 1 empty empty +5 -20 0 0 14 -162280 -66577
+0;
+#X obj 38 287 cnv 15 815 1 empty empty +7 -20 0 0 14 -162280 -66577
+0;
+#X obj 38 255 cnv 15 815 1 empty empty +9 -20 0 0 14 -162280 -66577
+0;
+#X obj 38 221 cnv 15 815 1 empty empty +11 -25 0 0 14 -162280 -66577
+0;
+#X obj 38 387 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 38 354 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 38 305 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 38 271 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 38 238 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 753 190 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 653 190 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 553 190 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 454 190 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 353 190 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 254 190 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 153 190 cnv 15 1 220 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 653 418 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 553 418 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 454 418 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 353 418 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 254 418 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 153 418 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 753 549 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 652 549 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 553 549 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 454 549 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 353 549 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 254 549 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 152 549 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 39 532 cnv 15 815 1 empty empty 0 -10 0 0 14 -162280 -66577
+0;
+#X obj 38 516 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 38 499 cnv 15 815 1 empty empty 2 -10 0 0 14 -162280 -66577
+0;
+#X obj 38 483 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 38 466 cnv 15 815 1 empty empty 4 -10 0 0 14 -162280 -66577
+0;
+#X obj 38 449 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 38 204 cnv 15 815 1 empty empty +12 -25 0 0 14 -162280 -66577
+0;
+#X obj 39 432 cnv 15 815 1 empty empty 6 -10 0 0 14 -162280 -66577
+0;
+#X obj 39 404 cnv 15 815 1 empty empty +0 -20 0 0 14 -162280 -66577
+0;
+#X obj 40 663 cnv 15 815 1 empty empty mute -35 0 0 14 -162280 -66577
+0;
+#X obj 39 639 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 39 614 cnv 15 815 1 empty empty soft -35 0 0 14 -162280 -66577
+0;
+#X obj 39 589 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 39 564 cnv 15 815 1 empty empty hard -35 0 0 14 -162280 -66577
+0;
+#X obj 753 417 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 324 26 nbx 5 25 0 127 0 0 basnote.r basenote.s Base_Note 0 -8
+0 10 -262144 -1 -1 0 256;
+#X obj 56 25 bng 25 250 50 0 load_pattern empty Load_Patt 0 -10 0 10
+-262144 -1 -1;
+#X obj 123 25 bng 25 250 50 0 save_pattern empty Save_Patt 0 -10 0
+10 -262144 -1 -1;
+#X obj 957 273 nbx 5 25 0 12 0 0 modulonotes.s modulonotes.r Modulo
+0 -8 0 10 -262144 -1 -1 8 256;
+#X obj 957 318 nbx 5 25 0 12 0 0 dephasenotes.s dephasenotes.r Dephase
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 959 448 nbx 5 25 0 12 0 0 modulooctaves.s modulooctaves.r Modulo
+0 -8 0 10 -262144 -1 -1 8 256;
+#X obj 959 493 nbx 5 25 0 12 0 0 dephaseoctaves.s dephaseoctaves.r
+Dephase 0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 962 581 nbx 5 25 0 12 0 0 moduloaccents.s moduloaccents.r Modulo
+0 -8 0 10 -262144 -1 -1 8 256;
+#X obj 962 626 nbx 5 25 0 12 0 0 dephasenotes.s dephasenotes.r Dephase
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 874 258 vradio 35 1 0 3 modenotes.s modenotes.r empty 0 -8 0
+10 -262144 -1 -1 0;
+#X text 914 263 >>;
+#X text 913 302 <<;
+#X text 913 339 ><;
+#X obj 874 429 vradio 35 1 0 3 modeoctaves.s modeoctaves.r empty 0
+-8 0 10 -262144 -1 -1 0;
+#X text 914 434 >>;
+#X text 913 473 <<;
+#X text 913 510 ><;
+#X obj 874 560 vradio 35 1 0 3 modeaccents.s modeaccents.r empty 0
+-8 0 10 -262144 -1 -1 2;
+#X text 914 565 >>;
+#X text 913 604 <<;
+#X text 913 641 ><;
+#X obj 241 57 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 211 57 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 180 57 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 148 57 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 117 57 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 86 57 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 41 171 cnv 15 265 1 empty empty null -35 0 0 14 -162280 -66577
+0;
+#X obj 40 138 cnv 15 265 1 empty empty sinus -40 0 0 14 -162280 -66577
+0;
+#X obj 40 106 cnv 15 265 1 empty empty square -50 0 0 14 -162280 -66577
+0;
+#X obj 40 72 cnv 15 265 1 empty empty noise -40 0 0 14 -162280 -66577
+0;
+#X obj 273 57 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#N canvas 65 92 450 250 (subpatch) 0;
+#X array Synth-Data 8 float 3;
+#A 0 0 1 1 0 0 0 1 1;
+#X coords 0 3 8 0 250 100 1 0 0;
+#X restore 56 72 graph;
+#N canvas 65 97 450 250 (subpatch) 0;
+#X array Synth-Pitch 9 float 1;
+#A 0 -0.48 -0.48 17.28 -4.32 0.480007 -22.56 -9.6 4.32 2.88;
+#X coords 0 24 8 -24 250 100 1 0 0;
+#X restore 323 71 graph;
+#X obj 600 133 hsl 200 35 0 1 0 0 feedback.s feedback.r Feedback -2
+-8 0 10 -262144 -1 -1 0 1;
+#X obj 600 79 hsl 200 35 0 1 0 0 dry.s dry.r Wet/Dry -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 869 133 hsl 200 35 0 15 0 0 bpq.s bpq.r VCF_Q -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 869 79 hsl 200 35 24 127 0 0 bppitch.s bppitch.r VCF_F -2 -8
+0 10 -262144 -1 -1 0 1;
+#X obj 440 26 nbx 5 25 0 200 0 0 notedur.s notedur.r Note_Duration
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 597 26 nbx 5 25 0 12 0 0 dell.s dell.r Left_Del 0 -8 0 10 -262144
+-1 -1 0 256;
+#X obj 704 27 nbx 5 25 0 12 0 0 delr.s delr.r Right_Del 0 -8 0 10 -262144
+-1 -1 0 256;
+#X obj 190 24 bng 25 250 50 0 load_synth empty Load_Synth 0 -10 0 10
+-262144 -1 -1;
+#X obj 257 24 bng 25 250 50 0 save_synth empty Save_Synth 0 -10 0 10
+-262144 -1 -1;

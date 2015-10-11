@@ -1,0 +1,319 @@
+#N canvas 80 134 1069 569 10;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X obj 155 462 cnv 15 100 75 empty cursorAccents empty 20 12 0 14 -261234
+-66577 0;
+#X obj 155 348 cnv 15 100 75 empty cursorOctaves empty 20 12 0 14 -261234
+-66577 0;
+#X obj 155 62 cnv 15 100 260 empty cursorNotes empty 20 12 0 14 -261234
+-66577 0;
+#N canvas 65 87 450 250 (subpatch) 0;
+#X array Notes 8 float 3;
+#A 0 12 12 12 12 12 12 12 12;
+#X coords 0 0 8 12 800 260 2 0 0;
+#X restore 54 62 graph;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array Octaves 8 float 3;
+#A 0 2 2 2 2 2 2 2 2;
+#X coords 0 0 8 2 800 75 1 0 0;
+#X restore 54 347 graph;
+#N canvas 65 82 450 250 (subpatch) 0;
+#X array Accents 8 float 3;
+#A 0 1 1 1 1 1 1 1 1;
+#X coords 0 0 8 2 800 75 1 0 0;
+#X restore 55 461 graph;
+#X obj 38 278 cnv 15 815 1 empty empty +2 -20 0 0 14 -162280 -66577
+0;
+#X obj 38 235 cnv 15 815 1 empty empty +4 -20 0 0 14 -162280 -66577
+0;
+#X obj 38 213 cnv 15 815 1 empty empty +5 -20 0 0 14 -162280 -66577
+0;
+#X obj 38 170 cnv 15 815 1 empty empty +7 -20 0 0 14 -162280 -66577
+0;
+#X obj 38 127 cnv 15 815 1 empty empty +9 -20 0 0 14 -162280 -66577
+0;
+#X obj 38 83 cnv 15 815 1 empty empty +11 -25 0 0 14 -162280 -66577
+0;
+#X obj 38 300 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 38 257 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 38 191 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 38 148 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 38 105 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 39 422 cnv 15 815 1 empty empty 0 -10 0 0 14 -162280 -66577
+0;
+#X obj 38 384 cnv 15 815 1 empty empty 1 -10 0 0 14 -162280 -66577
+0;
+#X obj 38 346 cnv 15 815 1 empty empty 2 -10 0 0 14 -162280 -66577
+0;
+#X obj 38 61 cnv 15 815 1 empty empty +12 -25 0 0 14 -162280 -66577
+0;
+#X obj 39 322 cnv 15 815 1 empty empty +0 -20 0 0 14 -162280 -66577
+0;
+#X obj 40 535 cnv 15 815 1 empty empty mute -35 0 0 14 -162280 -66577
+0;
+#X obj 39 498 cnv 15 815 1 empty empty soft -35 0 0 14 -162280 -66577
+0;
+#X obj 39 461 cnv 15 815 1 empty empty hard -35 0 0 14 -162280 -66577
+0;
+#X obj 265 19 nbx 5 25 0 127 0 0 basenote.s basenote.r Base_Note 0
+-8 0 10 -262144 -1 -1 24 256;
+#X obj 952 77 nbx 5 25 0 12 0 0 modulonotes.s modulonotes.r Modulo
+0 -8 0 10 -262144 -1 -1 8 256;
+#X obj 952 122 nbx 5 25 0 12 0 0 dephasenotes.s dephasenotes.r Dephase
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 959 362 nbx 5 25 0 12 0 0 modulooctaves.s modulooctaves.r Modulo
+0 -8 0 10 -262144 -1 -1 8 256;
+#X obj 959 407 nbx 5 25 0 12 0 0 dephaseoctaves.s dephaseoctaves.r
+Dephase 0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 960 481 nbx 5 25 0 12 0 0 moduloaccents.s moduloaccents.r Modulo
+0 -8 0 10 -262144 -1 -1 8 256;
+#X obj 960 526 nbx 5 25 0 12 0 0 dephasenotes.s dephasenotes.r Dephase
+0 -8 0 10 -262144 -1 -1 0 256;
+#X obj 869 62 vradio 35 1 0 3 modenotes.s modenotes.r empty 0 -8 0
+10 -262144 -1 -1 0;
+#X text 909 67 >>;
+#X text 908 106 <<;
+#X text 908 143 ><;
+#X obj 872 346 vradio 35 1 0 3 modeoctaves.s modeoctaves.r empty 0
+-8 0 10 -262144 -1 -1 0;
+#X text 912 351 >>;
+#X text 911 390 <<;
+#X text 911 427 ><;
+#X obj 872 460 vradio 35 1 0 3 modeaccents.s modeaccents.r empty 0
+-8 0 10 -262144 -1 -1 0;
+#X text 912 465 >>;
+#X text 911 504 <<;
+#X text 911 541 ><;
+#X obj 52 18 bng 25 250 50 0 load_pattern empty Load_Patt 0 -10 0 10
+-262144 -1 -1;
+#X obj 119 18 bng 25 250 50 0 save_pattern empty Save_Patt 0 -10 0
+10 -262144 -1 -1;
+#X obj 415 13 declare -path ../../../../pd-party/droidparty-abstractions
+;
+#X obj 415 35 chip_sequencer_audiocore;
+#X obj 582 36 loadsave pattern;
+#X obj 684 36 loadsave synth;
+#X obj 774 36 clock-gui;
+#N canvas 139 82 651 686 loadsave-maping 0;
+#X obj 20 96 r pattern-load;
+#X obj 22 203 r pattern-save;
+#X obj 20 116 persist-load pattern;
+#X obj 22 223 persist-save pattern;
+#X obj 397 96 r synth-load;
+#X obj 396 116 persist-load synth;
+#X obj 398 206 r synth-save;
+#X obj 398 226 persist-save synth;
+#X obj 20 40 r load_pattern;
+#X obj 397 40 r load_synth;
+#X obj 21 147 r save_pattern;
+#X msg 20 60 \; pattern load presets_pattern cbs;
+#X msg 397 60 \; synth load presets_synth cbs;
+#X msg 21 167 \; pattern save presets_pattern cbs;
+#X obj 397 150 r save_synth;
+#X msg 397 170 \; synth save presets_synth cbs;
+#X obj 21 271 persist-table pattern Notes;
+#X obj 21 288 persist-table pattern Octaves;
+#X obj 21 305 persist-table pattern Accents;
+#X obj 21 330 persist-map pattern basennote.r bsenote.s;
+#X obj 21 354 persist-map pattern modenotes.r modenotes.s;
+#X obj 21 413 persist-map pattern modeoctaves.r modeoctaves.s;
+#X obj 21 473 persist-map pattern modeaccents.r modeaccents.s;
+#X obj 21 371 persist-map pattern modulonotes.r modulonotes.s;
+#X obj 21 388 persist-map pattern dephasenotes.r dephasenotes.s;
+#X obj 21 430 persist-map pattern modulooctaves.r modulooctaves.s;
+#X obj 21 447 persist-map pattern dephaseoctaves.r dephaseoctaves.s
+;
+#X obj 21 490 persist-map pattern moduloaccents.r moduloaccents.s;
+#X obj 21 507 persist-map pattern dephaseaccents.r dephaseaccents.s
+;
+#X obj 397 264 persist-table synth Synth-Data;
+#X obj 397 281 persist-table synth Synth-Pitch;
+#X obj 397 326 persist-map synth notedur.r notedur.s;
+#X obj 399 357 persist-map synth dell.r dell.s;
+#X obj 399 374 persist-map synth delr.r delr.s;
+#X obj 402 406 persist-map synth dry.r dry.s;
+#X obj 402 423 persist-map synth bppitch.r bppitch.s;
+#X obj 402 457 persist-map synth bpq.r bpq.s;
+#X obj 402 440 persist-map synth feedback.r feedback.s;
+#X obj 683 5 loadbang;
+#X obj 714 61 s Notes;
+#X msg 714 41 const 12;
+#X obj 709 105 s Octaves;
+#X obj 695 148 s Accents;
+#X obj 710 486 s Synth-Data;
+#X msg 710 466 const 1;
+#X obj 690 529 s Synth-Pitch;
+#X msg 691 510 const 0;
+#X msg 679 552 \; notedur.r 25 \; dell.r 2 \; delr.r 3 \; dry.r 1 \;
+feedback.r 0.75 \; bppitch.r 50 \; bpq.r 5 \;;
+#X obj 679 405 loadbang;
+#X obj 782 4 r reset_pattern;
+#X obj 741 440 r reset_synth;
+#X msg 695 128 const 1;
+#X msg 709 85 const 2;
+#X msg 683 170 \; moduloaccents.r 8 \; modulonotes.r 8 \; modulooctaves.r
+8 \; dephaseaccents.r 0 \; dephaseoctaves.r 0 \; dephasenotes.r 0 \;
+modeaccents.r 0 \; modeoctaves.r 0 \; modenotes.r 0 \; basenote.r 24
+\;;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 4 0 5 0;
+#X connect 6 0 7 0;
+#X connect 8 0 11 0;
+#X connect 9 0 12 0;
+#X connect 10 0 13 0;
+#X connect 14 0 15 0;
+#X connect 38 0 53 0;
+#X connect 38 0 40 0;
+#X connect 38 0 52 0;
+#X connect 38 0 51 0;
+#X connect 40 0 39 0;
+#X connect 44 0 43 0;
+#X connect 46 0 45 0;
+#X connect 48 0 47 0;
+#X connect 48 0 44 0;
+#X connect 48 0 46 0;
+#X connect 49 0 40 0;
+#X connect 49 0 52 0;
+#X connect 49 0 51 0;
+#X connect 49 0 53 0;
+#X connect 50 0 47 0;
+#X connect 50 0 44 0;
+#X connect 50 0 46 0;
+#X connect 51 0 42 0;
+#X connect 52 0 41 0;
+#X restore 838 37 pd loadsave-maping;
+#N canvas 715 82 651 686 gui-lookup 0;
+#X obj 333 -2 table_set_from_gui Notes 0 notes_0.s 11;
+#X obj 16 97 table_note_rd_lookup Notes 5 notes_5.r 11;
+#X obj 333 17 table_set_from_gui Notes 1 notes_1.s 11;
+#X obj 333 37 table_set_from_gui Notes 2 notes_2.s 11;
+#X obj 333 56 table_set_from_gui Notes 3 notes_3.s 11;
+#X obj 333 76 table_set_from_gui Notes 4 notes_4.s 11;
+#X obj 333 95 table_set_from_gui Notes 5 notes_5.s 11;
+#X obj 333 115 table_set_from_gui Notes 6 notes_6.s 11;
+#X obj 333 134 table_set_from_gui Notes 7 notes_7.s 11;
+#X obj 333 184 table_set_from_gui Octaves 0 octaves_0.s 5;
+#X obj 333 203 table_set_from_gui Octaves 1 octaves_1.s 5;
+#X obj 333 223 table_set_from_gui Octaves 2 octaves_2.s 5;
+#X obj 333 242 table_set_from_gui Octaves 3 octaves_3.s 5;
+#X obj 333 261 table_set_from_gui Octaves 4 octaves_4.s 5;
+#X obj 333 280 table_set_from_gui Octaves 5 octaves_5.s 5;
+#X obj 333 300 table_set_from_gui Octaves 6 octaves_6.s 5;
+#X obj 333 319 table_set_from_gui Octaves 7 octaves_7.s 5;
+#X obj 333 366 table_set_from_gui Accents 0 accents_0.s 3;
+#X obj 333 386 table_set_from_gui Accents 1 accents_1.s 3;
+#X obj 333 406 table_set_from_gui Accents 2 accents_2.s 3;
+#X obj 333 426 table_set_from_gui Accents 3 accents_3.s 3;
+#X obj 333 445 table_set_from_gui Accents 4 accents_4.s 3;
+#X obj 333 465 table_set_from_gui Accents 5 accents_5.s 3;
+#X obj 333 485 table_set_from_gui Accents 6 accents_6.s 3;
+#X obj 333 505 table_set_from_gui Accents 7 accents_7.s 3;
+#X obj 333 539 table_set_from_gui Synth-Data 0 synthdata_0.s 3;
+#X obj 333 558 table_set_from_gui Synth-Data 1 synthdata_1.s 3;
+#X obj 333 578 table_set_from_gui Synth-Data 2 synthdata_2.s 3;
+#X obj 333 597 table_set_from_gui Synth-Data 3 synthdata_3.s 3;
+#X obj 333 617 table_set_from_gui Synth-Data 4 synthdata_4.s 3;
+#X obj 333 636 table_set_from_gui Synth-Data 5 synthdata_5.s 3;
+#X obj 333 656 table_set_from_gui Synth-Data 6 synthdata_6.s 3;
+#X obj 333 675 table_set_from_gui Synth-Data 7 synthdata_7.s 3;
+#X floatatom 625 540 5 0 0 0 - synthdata_0.r synthdata_0.s, f 5;
+#X floatatom 626 558 5 0 0 0 - synthdata_1.r synthdata_1.s, f 5;
+#X floatatom 626 580 5 0 0 0 - synthdata_2.r synthdata_2.s, f 5;
+#X floatatom 627 599 5 0 0 0 - synthdata_3.r synthdata_3.s, f 5;
+#X floatatom 627 619 5 0 0 0 - synthdata_4.r synthdata_4.s, f 5;
+#X floatatom 629 638 5 0 0 0 - synthdata_5.r synthdata_5.s, f 5;
+#X floatatom 629 660 5 0 0 0 - synthdata_6.r synthdata_6.s, f 5;
+#X floatatom 630 681 5 0 0 0 - synthdata_7.r synthdata_7.s, f 5;
+#X floatatom 598 366 7 0 0 0 - accents_0.r accents_0.s, f 7;
+#X floatatom 598 386 7 0 0 0 - accents_1.r accents_1.s, f 7;
+#X floatatom 599 409 7 0 0 0 - accents_2.r accents_2.s, f 7;
+#X floatatom 599 428 7 0 0 0 - accents_3.r accents_3.s, f 7;
+#X floatatom 597 448 7 0 0 0 - accents_4.r accents_4.s, f 7;
+#X floatatom 599 464 7 0 0 0 - accents_5.r accents_5.s, f 7;
+#X floatatom 599 488 7 0 0 0 - accents_6.r accents_6.s, f 7;
+#X floatatom 601 509 7 0 0 0 - accents_7.r accents_7.s, f 7;
+#X floatatom 600 185 7 0 0 0 - octaves_0.r octaves_0.s, f 7;
+#X floatatom 602 205 7 0 0 0 - octaves_1.r octaves_1.s, f 7;
+#X floatatom 602 223 7 0 0 0 - octaves_2.r octaves_2.s, f 7;
+#X floatatom 602 243 7 0 0 0 - octaves_3.r octaves_3.s, f 7;
+#X floatatom 605 263 7 0 0 0 - octaves_4.r octaves_4.s, f 7;
+#X floatatom 606 285 7 0 0 0 - octaves_5.r octaves_5.s, f 7;
+#X floatatom 600 302 7 0 0 0 - octaves_6.r octaves_6.s, f 7;
+#X floatatom 597 319 7 0 0 0 - octaves_7.r octaves_7.s, f 7;
+#X floatatom 575 0 7 0 0 0 - notes_0.r notes_0.s, f 7;
+#X floatatom 576 18 7 0 0 0 - notes_1.r notes_1.s, f 7;
+#X floatatom 577 36 7 0 0 0 - notes_2.r notes_2.s, f 7;
+#X floatatom 575 59 7 0 0 0 - notes_3.r notes_3.s, f 7;
+#X floatatom 577 79 7 0 0 0 - notes_4.r notes_4.s, f 7;
+#X floatatom 576 99 7 0 0 0 - notes_5.r notes_5.s, f 7;
+#X floatatom 577 119 7 0 0 0 - notes_6.r notes_6.s, f 7;
+#X floatatom 576 139 7 0 0 0 - notes_7.r notes_7.s, f 7;
+#X obj 16 0 table_note_rd_lookup Notes 0 notes_0.r 11;
+#X obj 16 19 table_note_rd_lookup Notes 1 notes_1.r 11;
+#X obj 16 39 table_note_rd_lookup Notes 2 notes_2.r 11;
+#X obj 16 58 table_note_rd_lookup Notes 3 notes_3.r 11;
+#X obj 16 78 table_note_rd_lookup Notes 4 notes_4.r 11;
+#X obj 16 117 table_note_rd_lookup Notes 6 notes_6.r 11;
+#X obj 16 136 table_note_rd_lookup Notes 7 notes_7.r 11;
+#X obj 16 184 table_note_rd_lookup Octaves 0 octaves_0.r 5;
+#X obj 16 203 table_note_rd_lookup Octaves 1 octaves_1.r 5;
+#X obj 16 223 table_note_rd_lookup Octaves 2 octaves_2.r 5;
+#X obj 16 242 table_note_rd_lookup Octaves 3 octaves_3.r 5;
+#X obj 16 262 table_note_rd_lookup Octaves 4 octaves_4.r 5;
+#X obj 16 281 table_note_rd_lookup Octaves 5 octaves_5.r 5;
+#X obj 16 301 table_note_rd_lookup Octaves 6 octaves_6.r 5;
+#X obj 16 320 table_note_rd_lookup Octaves 7 octaves_7.r 5;
+#X obj 17 369 table_note_rd_lookup Accents 0 accents_0.r 3;
+#X obj 17 388 table_note_rd_lookup Accents 1 accents_1.r 3;
+#X obj 17 408 table_note_rd_lookup Accents 2 accents_2.r 3;
+#X obj 17 427 table_note_rd_lookup Accents 3 accents_3.r 3;
+#X obj 17 447 table_note_rd_lookup Accents 4 accents_4.r 3;
+#X obj 17 466 table_note_rd_lookup Accents 5 accents_5.r 3;
+#X obj 17 486 table_note_rd_lookup Accents 6 accents_6.r 3;
+#X obj 17 505 table_note_rd_lookup Accents 7 accents_7.r 3;
+#X obj 16 539 table_note_rd_lookup Synth-Data 0 synthdata_0.r 3;
+#X obj 16 559 table_note_rd_lookup Synth-Data 1 synthdata_1.r 3;
+#X obj 17 580 table_note_rd_lookup Synth-Data 2 synthdata_2.r 3;
+#X obj 17 600 table_note_rd_lookup Synth-Data 3 synthdata_3.r 3;
+#X obj 17 620 table_note_rd_lookup Synth-Data 4 synthdata_4.r 3;
+#X obj 17 640 table_note_rd_lookup Synth-Data 5 synthdata_5.r 3;
+#X obj 18 662 table_note_rd_lookup Synth-Data 6 synthdata_6.r 3;
+#X obj 18 683 table_note_rd_lookup Synth-Data 7 synthdata_7.r 3;
+#X floatatom 643 717 5 0 0 0 - synthdata_8.r synthdata_8.s, f 5;
+#X floatatom 644 735 5 0 0 0 - synthdata_9.r synthdata_9.s, f 5;
+#X floatatom 644 757 5 0 0 0 - synthdata_10.r synthdata_10.s, f 5
+;
+#X floatatom 645 776 5 0 0 0 - synthdata_11.r synthdata_11.s, f 5
+;
+#X floatatom 645 796 5 0 0 0 - synthdata_12.r synthdata_12.s, f 5
+;
+#X floatatom 647 815 5 0 0 0 - synthdata_13.r synthdata_13.s, f 5
+;
+#X floatatom 647 837 5 0 0 0 - synthdata_14.r synthdata_14.s, f 5
+;
+#X floatatom 648 858 5 0 0 0 - synthdata_15.r synthdata_15.s, f 5
+;
+#X obj 16 716 table_note_rd_lookup Synth-Data 8 synthdata_8.r 3;
+#X obj 16 736 table_note_rd_lookup Synth-Data 9 synthdata_9.r 3;
+#X obj 17 757 table_note_rd_lookup Synth-Data 10 synthdata_10.r 3;
+#X obj 17 777 table_note_rd_lookup Synth-Data 11 synthdata_11.r 3;
+#X obj 17 797 table_note_rd_lookup Synth-Data 12 synthdata_12.r 3;
+#X obj 17 817 table_note_rd_lookup Synth-Data 13 synthdata_13.r 3;
+#X obj 18 839 table_note_rd_lookup Synth-Data 14 synthdata_14.r 3;
+#X obj 18 860 table_note_rd_lookup Synth-Data 15 synthdata_15.r 3;
+#X obj 333 716 table_set_from_gui Synth-Data 8 synthdata_8.s 3;
+#X obj 333 735 table_set_from_gui Synth-Data 9 synthdata_9.s 3;
+#X obj 333 755 table_set_from_gui Synth-Data 10 synthdata_10.s 3;
+#X obj 333 774 table_set_from_gui Synth-Data 11 synthdata_11.s 3;
+#X obj 333 794 table_set_from_gui Synth-Data 12 synthdata_12.s 3;
+#X obj 333 813 table_set_from_gui Synth-Data 13 synthdata_13.s 3;
+#X obj 333 833 table_set_from_gui Synth-Data 14 synthdata_14.s 3;
+#X obj 333 852 table_set_from_gui Synth-Data 15 synthdata_15.s 3;
+#X restore 775 12 pd gui-lookup;
+#X obj 187 18 bng 25 250 50 0 reset_pattern empty Reset_Patt 0 -10
+0 10 -262144 -1 -1;

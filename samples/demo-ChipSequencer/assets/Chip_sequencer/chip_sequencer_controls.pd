@@ -1,0 +1,38 @@
+#N canvas 389 82 850 485 10;
+#X obj 65 317 cnv 15 315 1 empty empty null -35 0 0 14 -162280 -66577
+0;
+#X obj 64 250 cnv 15 315 1 empty empty sinus -40 0 0 14 -162280 -66577
+0;
+#X obj 64 183 cnv 15 315 1 empty empty square -50 0 0 14 -162280 -66577
+0;
+#X obj 64 117 cnv 15 315 1 empty empty noise -40 0 0 14 -162280 -66577
+0;
+#N canvas 65 92 450 250 (subpatch) 0;
+#X array Synth-Data 16 float 2;
+#X coords 0 3 16 0 300 200 1 0 0;
+#X restore 80 117 graph;
+#N canvas 65 97 450 250 (subpatch) 0;
+#X array Synth-Pitch 16 float 1;
+#A 0 0 0 0 31.68 0 0 -21.12 -21.12 -21.12 -20.16 4.8 0 0 0 48 0;
+#X coords 0 48 15 -48 300 200 1 0 0;
+#X restore 431 117 graph;
+#X obj 83 446 hsl 200 35 0 1 0 0 feedback.s feedback.r Feedback -2
+-8 0 10 -262144 -1 -1 0 1;
+#X obj 83 392 hsl 200 35 0 1 0 0 dry.s dry.r Wet/Dry -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 431 446 hsl 200 35 0 15 0 0 bpq.s bpq.r VCF_Q -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 431 392 hsl 200 35 24 127 0 0 bppitch.s bppitch.r VCF_F -2 -8
+0 10 -262144 -1 -1 0 1;
+#X obj 82 73 nbx 5 25 0 200 0 0 notedur.s notedur.r Note_Duration 0
+-8 0 10 -262144 -1 -1 0 256;
+#X obj 185 347 nbx 5 25 0 12 0 0 dell.s dell.r Left_Del 0 -8 0 10 -262144
+-1 -1 0 256;
+#X obj 80 346 nbx 5 25 0 12 0 0 delr.s delr.r Right_Del 0 -8 0 10 -262144
+-1 -1 0 256;
+#X obj 83 29 bng 25 250 50 0 load_synth empty Load_Synth 0 -10 0 10
+-262144 -1 -1;
+#X obj 161 29 bng 25 250 50 0 save_synth empty Save_Synth 0 -10 0 10
+-262144 -1 -1;
+#X obj 250 29 bng 25 250 50 0 reset_synth empty Reset_Synth 0 -10 0
+10 -262144 -1 -1;

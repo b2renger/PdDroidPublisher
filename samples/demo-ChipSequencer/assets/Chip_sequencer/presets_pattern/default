@@ -1,0 +1,10 @@
+dephaseaccents.s;
+moduloaccents.s;
+dephaseoctaves.s;
+modulooctaves.s;
+dephasenotes.s;
+modulonotes.s;
+modeaccents.s;
+modeoctaves.s;
+modenotes.s;
+bsenote.s;
