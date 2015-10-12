@@ -1,8 +1,8 @@
-#N canvas 663 320 374 211 10;
+#N canvas 660 325 374 211 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X floatatom 67 109 7 0 0 0 - midiclock.delay -, f 7;
 #X text 115 107 ms;
-#N canvas 66 81 450 300 clock 0;
+#N canvas 65 86 450 300 clock 0;
 #X obj 165 40 clock, f 27;
 #X obj 257 264 s bpm;
 #X obj 212 257 s dt;

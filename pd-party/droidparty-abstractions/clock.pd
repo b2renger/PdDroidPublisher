@@ -1,4 +1,4 @@
-#N canvas 219 138 626 617 10;
+#N canvas 213 148 626 617 10;
 #X obj 117 32 midirealtimein;
 #N canvas 66 138 364 537 audio_feedback 0;
 #X obj 132 400 *~;
@@ -47,13 +47,13 @@
 #X obj 150 188 r midiclock.delay;
 #X obj 117 146 spigot 1;
 #X obj 23 35 inlet midi;
-#N canvas 353 141 671 526 midiclockin 0;
+#N canvas 350 146 671 526 midiclockin 0;
 #X text 459 68 // 248 == beat;
 #X text 456 110 // 252 == stop;
 #X text 457 96 // 251 == resume;
 #X text 458 82 // 250 == start;
 #X obj 175 87 route 248 250 251 252, f 43;
-#N canvas 452 355 450 300 timer 0;
+#N canvas 449 360 450 300 timer 0;
 #X obj 122 78 t b b;
 #X obj 122 100 timer;
 #X obj 122 197 spigot 0;
@@ -65,7 +65,6 @@
 #X obj 122 219 outlet;
 #X connect 0 0 1 0;
 #X connect 0 1 1 1;
-#X connect 1 0 2 0;
 #X connect 1 0 4 0;
 #X connect 2 0 8 0;
 #X connect 3 0 2 1;
@@ -103,7 +102,7 @@
 #X connect 12 0 5 1;
 #X connect 12 0 13 0;
 #X restore 117 263 pd midiclockin;
-#N canvas 56 119 909 648 internalclock 1;
+#N canvas 56 119 909 648 internalclock 0;
 #X obj 285 262 spigot, f 9;
 #X obj 238 332 f 0;
 #X obj 310 330 + 1;
