@@ -1,4 +1,4 @@
-#N canvas 578 175 491 510 10;
+#N canvas 572 185 491 510 10;
 #X declare -path ./rj;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 32 177 hsl 250 25 0 1 0 1 glide.s glide.r GLIDE 40 7 1 10 -262144
@@ -9,7 +9,7 @@
 -1 -4160 1 1;
 #X obj 29 24 tgl 25 1 bass.s bass.r BASS 0 -10 1 10 -262144 -1 -4160
 1 1;
-#N canvas 684 377 450 300 guts 0;
+#N canvas 678 387 450 300 guts 0;
 #N canvas 66 127 1301 554 BASS 0;
 #X obj 19 271 osc~;
 #X obj 19 252 +~;
@@ -525,21 +525,28 @@
 #X connect 80 11 74 0;
 #X connect 80 12 71 0;
 #X restore 37 119 pd BASS;
-#N canvas 497 201 450 300 TIMEBASE 0;
-#X obj 121 109 + 1;
+#N canvas 491 211 450 300 TIMEBASE 0;
 #X obj 23 15 declare -path ./rj;
-#X obj 92 109 f 0;
 #X obj 10 116 s bpm;
-#X obj 92 130 s tick;
+#X obj 69 176 s tick;
 #X obj 15 39 r localbpm.s;
 #X obj 65 63 clock, f 10;
-#X connect 0 0 2 1;
-#X connect 2 0 0 0;
-#X connect 2 0 4 0;
-#X connect 5 0 3 0;
-#X connect 6 0 2 0;
-#X connect 6 2 3 0;
-#X connect 6 4 2 1;
+#X obj 123 233 swap 60000;
+#X obj 123 255 /, f 10;
+#X obj 93 89 * 24;
+#X obj 61 95 / 24;
+#X obj 61 117 i;
+#X obj 61 139 change;
+#X connect 3 0 1 0;
+#X connect 4 0 8 0;
+#X connect 4 1 7 0;
+#X connect 5 0 6 0;
+#X connect 5 1 6 1;
+#X connect 6 0 1 0;
+#X connect 7 0 5 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
 #X restore 37 51 pd TIMEBASE;
 #N canvas 567 285 706 430 PATTERN 0;
 #X obj 127 389 outlet;
@@ -735,7 +742,7 @@
 #X text 2 61 SIN;
 #X text 285 61 TRI;
 #X obj 322 446 hradio 34 1 0 4 empty pattern.led TrackLeds 0 40 0 10
--262144 -1 -1 3;
+-262144 -1 -1 0;
 #X obj 294 16 hradio 26 1 1 5 octavia.s octavia.r empty 0 -8 0 10 -262144
 -1 -1 2;
 #X text 332 42 Octavia;
