@@ -1,8 +1,10 @@
 package cx.mccormick.pddroidparty;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import cx.mccormick.pddroidparty.theme.Theme;
@@ -13,6 +15,7 @@ import cx.mccormick.pddroidparty.widget.WidgetFactory;
 public class PdDroidPartyConfig implements Serializable
 {
 	public Map<String, String> patches = new LinkedHashMap<String, String>();
+	public List<String> presetsPaths = new ArrayList<String>();
 	public int audioSampleRate = 44100;
 	public int audioInputs = 1;
 	public int audioOutputs = 2;

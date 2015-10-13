@@ -1,5 +1,6 @@
 package cx.mccormick.pddroidparty.widget.abs;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,14 +48,15 @@ public class LoadSave extends Widget {
 		parent.launchDialog(this, type);
 	}
 	
-	public void gotFilename(String type, String newname) {
+	public void gotFilename(String type, File baseDirectory, String newname) {
 		filename = newname;
+		String directoryPath = new File(baseDirectory, directory).getAbsolutePath();
 		List<Object> details = new ArrayList<Object>();
-		details.add(parent.getPatchRelativePath(directory));
+		details.add(directoryPath);
 		details.add(filename);
 		details.add(extension);
 		Object[] ol = details.toArray();
 		PdBase.sendList(sendreceive + "-" + type + "-detail", ol);
-		PdBase.sendSymbol(sendreceive + "-" + type, parent.getPatchRelativePath(directory) + "/" + filename + "." + extension);
+		PdBase.sendSymbol(sendreceive + "-" + type, directoryPath + "/" + filename + "." + extension);
 	}
 }

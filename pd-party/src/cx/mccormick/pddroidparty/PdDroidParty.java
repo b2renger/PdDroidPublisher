@@ -371,13 +371,13 @@ public class PdDroidParty extends Activity {
 		} else if (type == DIALOG_SAVE) {
 			Intent it = new Intent(this, SaveDialog.class);
 			it.putExtra("filename", ((LoadSave)which).getFilename());
-			it.putExtra("directory", ((LoadSave)which).getDirectory());
+			it.putExtra("directory", getPersistDirectory(((LoadSave)which).getDirectory()).getAbsolutePath());
 			it.putExtra("extension", ((LoadSave)which).getExtension());
 			startActivityForResult(it, DIALOG_SAVE);
 		} else if (type == DIALOG_LOAD) {
 			Intent it = new Intent(this, LoadDialog.class);
 			it.putExtra("filename", ((LoadSave)which).getFilename());
-			it.putExtra("directory", patch.getFile(((LoadSave)which).getDirectory()).getPath());
+			it.putExtra("directory", getPersistDirectory(((LoadSave)which).getDirectory()).getAbsolutePath());
 			it.putExtra("extension", ((LoadSave)which).getExtension());
 			startActivityForResult(it, DIALOG_LOAD);
 		}
@@ -396,9 +396,9 @@ public class PdDroidParty extends Activity {
 					widgetpopped.receiveFloat(data.getFloatExtra("number", 0));
 					widgetpopped.send("" + widgetpopped.getval());
 				} else if (requestCode == DIALOG_SAVE) {
-					((LoadSave)widgetpopped).gotFilename("save", data.getStringExtra("filename"));
+					((LoadSave)widgetpopped).gotFilename("save", getPersistDirectory(), data.getStringExtra("filename"));
 				} else if (requestCode == DIALOG_LOAD) {
-					((LoadSave)widgetpopped).gotFilename("load", data.getStringExtra("filename"));
+					((LoadSave)widgetpopped).gotFilename("load", getPersistDirectory(), data.getStringExtra("filename"));
 				}
 				// we're done with our originating widget and dialog
 				widgetpopped = null;
@@ -410,5 +410,13 @@ public class PdDroidParty extends Activity {
 			}
 		}
 	}
-
+	
+	private File getPersistDirectory()
+	{
+		return PdDroidPartyLauncher.getPersistDirectory(this);
+	}
+	private File getPersistDirectory(String path)
+	{
+		return new File(PdDroidPartyLauncher.getPersistDirectory(this), path);
+	}
 }

@@ -5,6 +5,8 @@ import java.io.IOException;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Environment;
+import android.util.Log;
 import cx.mccormick.pddroidparty.util.FileHelper;
 
 
@@ -44,6 +46,21 @@ public class PdDroidPartyLauncher extends Activity
 		}
         File cachePatchFile = new File(activity.getCacheDir(), patchPath);
 		
+        // deploy preset at first start
+        File persistBase = getPersistDirectory(activity);
+        for(String assetPresetPath : config.presetsPaths)
+        {
+        	File destination = new File(persistBase, new File(assetPresetPath).getName());
+        	if(!destination.exists())
+        	{
+        		try {
+        			FileHelper.copyAssetFolder(activity.getAssets(), assetPresetPath, destination.getAbsolutePath());
+        		} catch (IOException e) {
+        			Log.e("PPP", "Unable to copy preset folder from " + assetPresetPath + " to " + destination.getAbsolutePath(), e);
+        		}
+        	}
+        }
+        
         // start the intent
 		Intent intent = new Intent(activity, PdDroidParty.class);
 		intent.putExtra(PdDroidParty.INTENT_EXTRA_PATCH_PATH, cachePatchFile.getAbsolutePath());
@@ -55,6 +72,11 @@ public class PdDroidPartyLauncher extends Activity
 	public static void launch(Activity activity, PdDroidPartyConfig config)
 	{
 		launch(activity, config.patches.entrySet().iterator().next().getValue(), config);
+	}
+	
+	static File getPersistDirectory(Activity activity) 
+	{
+		return new File(new File(Environment.getExternalStorageDirectory(), "PPP"), activity.getPackageName());
 	}
 
 }
