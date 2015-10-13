@@ -79,12 +79,19 @@ public class FileHelper {
 		String[] files = assetManager.list(fromAssetPath);
 		new File(toPath).mkdirs();
 		for (String file : files)
-			if (file.contains("."))
+		{
+			// try to copy file (will fail if its a directory)
+			try
+			{
 				copyAsset(assetManager, fromAssetPath + "/" + file, toPath
 						+ "/" + file);
-			else
+			}
+			catch(FileNotFoundException e)
+			{
 				copyAssetFolder(assetManager, fromAssetPath + "/" + file,
 						toPath + "/" + file);
+			}
+		}
 	}
 
 	private static void copyAsset(AssetManager assetManager,
