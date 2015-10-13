@@ -20,6 +20,9 @@ public class MainActivity extends Activity {
         config.objectOverrides.put("smp2", WavePreview.class);
         config.objectOverrides.put("smp3", WavePreview.class);
         config.objectOverrides.put("smp4", WavePreview.class);
+        
+        config.presetsPaths.add("savefiles");
+        
         PdDroidPartyLauncher.launch(this, "Slicer/slicer2.pd", config);
     }
     

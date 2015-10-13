@@ -5,9 +5,6 @@ import android.os.Bundle;
 import cx.mccormick.pddroidparty.PdDroidPartyConfig;
 import cx.mccormick.pddroidparty.PdDroidPartyLauncher;
 import cx.mccormick.pddroidparty.theme.mono.MonochromeTheme;
-import cx.mccormick.pddroidparty.widget.core.Bang;
-import cx.mccormick.pddroidparty.widget.core.Slider;
-import cx.mccormick.pddroidparty.widget.core.Toggle;
 
 
 public class MainActivity extends Activity {
@@ -21,6 +18,9 @@ public class MainActivity extends Activity {
         config.guiKeepAspectRatio = true;
         config.theme = new MonochromeTheme(MonochromeTheme.ORANGE, true);
        
+        config.presetsPaths.add("Chip_sequencer/presets_pattern");
+        config.presetsPaths.add("Chip_sequencer/presets_synth");
+        
         PdDroidPartyLauncher.launch(this, "Chip_sequencer/chip_sequencer.pd", config);
     }
     

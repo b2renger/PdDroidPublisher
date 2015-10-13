@@ -22,6 +22,9 @@ public class MainActivity extends Activity {
         config.patches.put("Sequencer", "Acid_Drums/aciddrums_sequencer.pd");
         config.patches.put("Audio Controls", "Acid_Drums/aciddrums_controls.pd");
         
+        config.presetsPaths.add("Acid_Drums/presets_pattern");
+        config.presetsPaths.add("Acid_Drums/presets_synth");
+        
         PdDroidPartyLauncher.launch(this, config);
         //PdDroidPartyLauncher.launch(this,"Acid_Drums/AcidDrums.pd", config);
     }

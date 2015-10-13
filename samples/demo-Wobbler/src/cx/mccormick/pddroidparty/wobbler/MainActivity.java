@@ -21,6 +21,8 @@ public class MainActivity extends Activity {
         config.objectOverrides.put("WobbleTernary", WobbleSelector.class);
         config.theme = new MonochromeTheme(0xff101933, 0xff202943, 0xff004ce6);
         
+        config.presetsPaths.add("Wobbler/savefiles");
+        
         PdDroidPartyLauncher.launch(this, "Wobbler/wobbler.pd", config);
     }
     

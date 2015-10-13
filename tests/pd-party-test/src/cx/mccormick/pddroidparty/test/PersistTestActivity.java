@@ -14,7 +14,7 @@ public class PersistTestActivity extends Activity {
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
         config.guiKeepAspectRatio = true;
-
+        config.presetsPaths.add("PersistTest/presets");
         PdDroidPartyLauncher.launch(this, "PersistTest/PersistTestAndroid.pd", config);
     }
     
