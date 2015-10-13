@@ -1,4 +1,4 @@
-#N canvas 323 159 903 565 10;
+#N canvas 321 160 903 565 10;
 #X obj 101 148 clock, f 33;
 #X obj 227 336 nbx 5 30 -1e+37 1e+37 0 0 empty empty bpm 0 -8 0 10
 -262144 -1 -1 120 256;
@@ -28,8 +28,6 @@ on the android clock gui.;
 #X floatatom 143 294 5 0 0 0 - - -, f 5;
 #X obj 48 22 clock-gui;
 #X text 121 22 <<--- Click to open control panel;
-#X text 109 128 <-- Raw Midi Clock input can be used for debugging
-purposes;
 #X connect 0 0 12 0;
 #X connect 0 0 14 0;
 #X connect 0 0 15 0;

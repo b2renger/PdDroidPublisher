@@ -3,8 +3,6 @@ package cx.mccormick.pddroidparty.midi;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.puredata.core.PdBase;
-
 import android.content.Context;
 import cx.mccormick.pddroidparty.midi.ip.IPMidiDevice;
 import cx.mccormick.pddroidparty.midi.nmj.NMJMidiDevice;
@@ -84,15 +82,9 @@ public class MidiManager
 				midiIn = newMidiInput;
 				midiIn.open(new MidiListener() {
 					@Override
-					public void onMidiMessage(byte[] message) {
-				    	for(byte d : message)
-				    	{
-				    		int result = PdBase.sendSysRealTime(0, d & 0xFF);
-				    		if(result < 0)
-				    		{
-				    			System.out.println("no supported message ...");
-				    		}
-				    	}
+					public void onMidiMessage(byte[] message) 
+					{
+						PdMidiOutput.send(0, message);
 					}
 				});
 			}

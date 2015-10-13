@@ -7,9 +7,11 @@ public class MidiClock
 	private volatile boolean shouldSendClock = false;
 	private volatile int bpm;
 	private byte[] buffer = new byte[1];
+	private byte[] sppBuffer = new byte[]{(byte)MidiCode.SONG_POSITION_POINTER, 0, 0};
 	private ClockScheduler timer;
 	private MidiOutput[] externals = new MidiOutput[]{};
 	private MidiOutput[] internals = new MidiOutput[]{};
+	private volatile int ticksCount;
 	
 	synchronized public void setInternals(MidiOutput[] array) 
 	{
@@ -43,6 +45,22 @@ public class MidiClock
 			output.send(buffer);
 		}
 	}
+	private synchronized void dispatchSPPMessage(int position)
+	{
+		// LSB
+		sppBuffer[1] = (byte)(position & 0x7F);
+		// MSB
+		sppBuffer[2] = (byte)((position >> 7) & 0x7F);
+		
+		for(MidiOutput output : externals)
+		{
+			output.send(sppBuffer);
+		}
+		for(MidiOutput output : internals)
+		{
+			output.send(sppBuffer);
+		}
+	}
 	
 	public void start(final int startBpm)
 	{
@@ -64,6 +82,9 @@ public class MidiClock
 			
 			if(sendStartMessage)
 			{
+				// reset counter
+				ticksCount = 0;
+				
 				dispatchRealTimeMessage(MidiCode.MIDI_REALTIME_CLOCK_START);
 			}
 			else
@@ -76,6 +97,13 @@ public class MidiClock
 			Runnable command = new Runnable() {
 				@Override
 				public void run() {
+					// send SPP to external devices for resync. every 96 ticks.
+					ticksCount++;
+					if(ticksCount % 96 == 0)
+					{
+						// convert ticks to MIDI beat (sixteenth note)
+						dispatchSPPMessage(ticksCount / 6);
+					}
 					dispatchRealTimeMessage(MidiCode.MIDI_REALTIME_CLOCK_TICK);
 				}
 			};
