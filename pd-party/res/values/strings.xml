@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">PdDroid Party</string>
-	<string name="okbutton">ok</string>
-	<string name="cancelbutton">cancel</string>
+	<string name="okbutton">OK</string>
+	<string name="cancelbutton">Cancel</string>
+	<string name="x1">1x</string>
+	<string name="x2">2x</string>
+	<string name="x3">3x</string>
+	<string name="x4">4x</string>
+	<string name="x6">6x</string>
+	<string name="x8">8x</string>
+	<string name="x1_2">Hx</string>
+	<string name="x3_4">Qx</string>
 </resources>

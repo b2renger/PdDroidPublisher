@@ -14,7 +14,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
-        config.midiClockMaxBPM = 480;
         config.factory = WobblerFactory.class;
         config.objectOverrides.put("TrackLeds", TrackLed.class);
         config.objectOverrides.put("WobbleBinary", WobbleSelector.class);

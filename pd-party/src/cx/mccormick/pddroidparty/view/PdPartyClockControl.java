@@ -6,26 +6,26 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import cx.mccormick.pddroidparty.PdDroidPartyConfig;
 import cx.mccormick.pddroidparty.R;
 import cx.mccormick.pddroidparty.midi.MidiManager;
+import cx.mccormick.pddroidparty.pd.PdClock;
 
 public class PdPartyClockControl extends RelativeLayout 
 {
 	public static final int SETUP_ACTIVITY_CODE = 666;
 
-	private static final String PdSymbolClockAudio = "clock.audio";
-	private static final String PdSymbolClockDelay = "midiclock.delay";
-	
 	private MidiManager midiManager;
 
 	private ImageButton btStart;
@@ -120,11 +120,11 @@ public class PdPartyClockControl extends RelativeLayout
 					if (audioOn) {
 						audioOn = false;
 						btAudio.setImageResource(R.drawable.ic_action_soundoff);
-						PdBase.sendFloat(PdSymbolClockAudio, 0);
+						PdBase.sendFloat(PdClock.AudioClockEnableReceiver, 0);
 					} else {
 						audioOn = true;
 						btAudio.setImageResource(R.drawable.ic_action_soundon);
-						PdBase.sendFloat(PdSymbolClockAudio, 1);
+						PdBase.sendFloat(PdClock.AudioClockEnableReceiver, 1);
 					}
 				}
 				return true;
@@ -132,70 +132,63 @@ public class PdPartyClockControl extends RelativeLayout
 		});
 
 		final TextView bpmLabel = new TextView(context);
-		bpmLabel.setText(String.valueOf(config.midiClockDefaultBPM));
+		bpmLabel.setText("BPM : ");
+		bpmLabel.setGravity(Gravity.CENTER_VERTICAL);
+		bpmLabel.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
-		final SeekBar slider = new SeekBar(context);
-		slider.setMax(config.midiClockMaxBPM - config.midiClockMinBPM);
-		slider.setProgress(config.midiClockDefaultBPM);
+		final NumberSelector bpmControl = new NumberSelector(context);
+		bpmControl.setDigits(3);
+		bpmControl.setValuePerInch(30f);
+		bpmControl.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
+		bpmControl.setMax((float)PdDroidPartyConfig.midiClockMaxBPM);
+		bpmControl.setMin((float)PdDroidPartyConfig.midiClockMinBPM);
+		bpmControl.setValue(PdDroidPartyConfig.midiClockDefaultBPM);
 
-		// TODO 300 is maybe too huge for some devices ...
-		slider.setLayoutParams(new ViewGroup.LayoutParams(300, ViewGroup.LayoutParams.WRAP_CONTENT));
-
-		slider.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-
+		bpmControl.setOnValueChangedListener(new NumberSelector.OnValueChangeListener() {
+			
 			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
-			}
-
-			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-			}
-
-			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-				int bpm = progress + config.midiClockMinBPM;
-				midiManager.setBpm(bpm);
-				bpmLabel.setText(String.valueOf(bpm));
-			}
-		});
-
-		final TextView offsetLabel = new TextView(context);
-		offsetLabel.setText("0ms");
-
-		final SeekBar offsetSlider = new SeekBar(context);
-		offsetSlider.setMax(100);
-		offsetSlider.setProgress(0);
-
-		// TODO 300 is maybe too huge for some devices ...
-		offsetSlider.setLayoutParams(new ViewGroup.LayoutParams(300, ViewGroup.LayoutParams.WRAP_CONTENT));
-
-		offsetSlider.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-
-			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
-			}
-
-			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-			}
-
-			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-				int value = (progress) * 10;
-				PdBase.sendFloat(PdSymbolClockDelay, value);
-				offsetLabel.setText(String.valueOf(value) + "ms");
+			public void onValueChange(float oldVal, float newVal) {
+				midiManager.setBpm((int)newVal);
 			}
 		});
 		
-
+		final TextView offsetLabel = new TextView(context);
+		offsetLabel.setText("Delay : ");
+		offsetLabel.setGravity(Gravity.CENTER_VERTICAL);
+		offsetLabel.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
+		
+		NumberSelector delayControl = new NumberSelector(context);
+		delayControl.setDigits(4);
+		delayControl.setDecimal(1);
+		delayControl.setValuePerInch(30f);
+		delayControl.setMin(0f);
+		delayControl.setUnit("ms");
+		delayControl.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
+		delayControl.setOnValueChangedListener(new NumberSelector.OnValueChangeListener() {
+			
+			@Override
+			public void onValueChange(float oldVal, float newVal) {
+				PdBase.sendFloat(PdClock.ClockDelayReceiver, newVal);
+			}
+		});
+		
+		
+		RadioGroup rg = (RadioGroup)LayoutInflater.from(getContext()).inflate(R.layout.tempo_scale, null);
+		rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				onRadioButtonClicked(checkedId);
+			}
+		});
+		
 		main.addView(btStart);
 		main.addView(btReStart);
 		main.addView(btAudio);
-		main.addView(slider);
 		main.addView(bpmLabel);
-		main.addView(offsetSlider);
+		main.addView(bpmControl);
 		main.addView(offsetLabel);
-
+		main.addView(delayControl);
+		main.addView(rg);
 		
 		ImageButton btMidiConfig = new ImageButton(context);
 		btMidiConfig.setImageResource(R.drawable.ic_action_io);
@@ -210,7 +203,7 @@ public class PdPartyClockControl extends RelativeLayout
 						boolean master = midiManager.getInput() == null;
 						btStart.setEnabled(master);
 						btReStart.setEnabled(master);
-						slider.setEnabled(master);
+						bpmControl.setEnabled(master);
 						dialog = null;
 					}
 				});
@@ -237,6 +230,29 @@ public class PdPartyClockControl extends RelativeLayout
 		
 	}
 
+	public void onRadioButtonClicked(int id) {
+	    // Is the button now checked?
+	    // boolean checked = ((RadioButton) view).isChecked();
+
+	    // Check which radio button was clicked
+	    if(R.id.x1 == id) {
+	    	PdClock.setClockDivision(1);
+	    } else if(R.id.x2 == id) {
+	    	PdClock.setClockDivision(2);
+	    } else if(R.id.x3 == id) {
+	    	PdClock.setClockDivision(3);
+	    } else if(R.id.x4 == id) {
+	    	PdClock.setClockDivision(4);
+	    } else if(R.id.x6 == id) {
+	    	PdClock.setClockDivision(6);
+	    } else if(R.id.x8 == id) {
+	    	PdClock.setClockDivision(8);
+	    } else if(R.id.x1_2 == id) {
+	    	PdClock.setClockDivision(0.5f);
+	    } else if(R.id.x3_4 == id) {
+	    	PdClock.setClockDivision(0.75f);
+	    }
+	}	
 	public void updateMidiConfiguration() {
 		if (dialog != null) {
 			dialog.refreshInputList();

@@ -25,7 +25,6 @@ public class CustomActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
-        config.midiClockMaxBPM = 480;
         
         // specific override examples
         config.objectOverrides.put("hsl-custom-square", CustomSlider.class);

@@ -14,7 +14,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
-        config.midiClockMaxBPM = 480;
         config.guiKeepAspectRatio = false;
         config.theme = new MonochromeTheme(MonochromeTheme.ORANGE, true);
        

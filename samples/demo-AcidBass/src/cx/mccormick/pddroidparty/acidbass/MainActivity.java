@@ -15,11 +15,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
-       
-        config.midiClockMaxBPM = 480;
-        config.guiKeepAspectRatio = true;
+
         config.theme = new MonochromeTheme(MonochromeTheme.RED, true);
+       
+        config.guiKeepAspectRatio = true;
+        
         config.typeOverrides.put(Taplist.class, CustomTaplist.class);
+        
         config.presetsPaths.add("Chip_sequencer/presets_pattern");
         config.presetsPaths.add("Chip_sequencer/presets_synth");
         
