@@ -7,11 +7,14 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import cx.mccormick.pddroidparty.PdDroidPartyConfig;
@@ -131,7 +134,6 @@ public class PdPartyClockControl extends RelativeLayout
 		final TextView bpmLabel = new TextView(context);
 		bpmLabel.setText("BPM : ");
 		bpmLabel.setGravity(Gravity.CENTER_VERTICAL);
-		bpmLabel.setPadding(50, 1, 1, 1);
 		bpmLabel.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
 		final NumberSelector bpmControl = new NumberSelector(context);
@@ -153,7 +155,6 @@ public class PdPartyClockControl extends RelativeLayout
 		final TextView offsetLabel = new TextView(context);
 		offsetLabel.setText("Delay : ");
 		offsetLabel.setGravity(Gravity.CENTER_VERTICAL);
-		offsetLabel.setPadding(50, 1, 1, 1);
 		offsetLabel.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
 		
 		NumberSelector delayControl = new NumberSelector(context);
@@ -172,6 +173,13 @@ public class PdPartyClockControl extends RelativeLayout
 		});
 		
 		
+		RadioGroup rg = (RadioGroup)LayoutInflater.from(getContext()).inflate(R.layout.tempo_scale, null);
+		rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				onRadioButtonClicked(checkedId);
+			}
+		});
 		
 		main.addView(btStart);
 		main.addView(btReStart);
@@ -180,6 +188,7 @@ public class PdPartyClockControl extends RelativeLayout
 		main.addView(bpmControl);
 		main.addView(offsetLabel);
 		main.addView(delayControl);
+		main.addView(rg);
 		
 		ImageButton btMidiConfig = new ImageButton(context);
 		btMidiConfig.setImageResource(R.drawable.ic_action_io);
@@ -221,6 +230,29 @@ public class PdPartyClockControl extends RelativeLayout
 		
 	}
 
+	public void onRadioButtonClicked(int id) {
+	    // Is the button now checked?
+	    // boolean checked = ((RadioButton) view).isChecked();
+
+	    // Check which radio button was clicked
+	    if(R.id.x1 == id) {
+	    	PdClock.setClockDivision(1);
+	    } else if(R.id.x2 == id) {
+	    	PdClock.setClockDivision(2);
+	    } else if(R.id.x3 == id) {
+	    	PdClock.setClockDivision(3);
+	    } else if(R.id.x4 == id) {
+	    	PdClock.setClockDivision(4);
+	    } else if(R.id.x6 == id) {
+	    	PdClock.setClockDivision(6);
+	    } else if(R.id.x8 == id) {
+	    	PdClock.setClockDivision(8);
+	    } else if(R.id.x1_2 == id) {
+	    	PdClock.setClockDivision(0.5f);
+	    } else if(R.id.x3_4 == id) {
+	    	PdClock.setClockDivision(0.75f);
+	    }
+	}	
 	public void updateMidiConfiguration() {
 		if (dialog != null) {
 			dialog.refreshInputList();
