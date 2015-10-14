@@ -17,16 +17,17 @@ public class MainActivity extends Activity {
         PdDroidPartyConfig config = new PdDroidPartyConfig();
        
         config.midiClockMaxBPM = 480;
-       // config.guiKeepAspectRatio = true;
+        config.guiKeepAspectRatio = true;
         config.theme = new MonochromeTheme(MonochromeTheme.RED, true);
         config.typeOverrides.put(Taplist.class, CustomTaplist.class);
+        config.presetsPaths.add("Chip_sequencer/presets_pattern");
+        config.presetsPaths.add("Chip_sequencer/presets_synth");
         
         config.patches.put("Sequencer", "Acid_Bass/AcidBass_sequencer.pd");
         config.patches.put("Audio Controls", "Acid_Bass/AcidBass_controls.pd");
         
         PdDroidPartyLauncher.launch(this, config);
         
-       // PdDroidPartyLauncher.launch(this, "Acid_Bass/AcidBass.pd", config);
     }
     
 

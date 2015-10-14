@@ -1,137 +1,13 @@
-#N canvas 69 210 971 518 10;
+#N canvas 90 92 823 523 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#X obj 53 17 cnv 15 50 468 empty acidbass_cursor empty 20 12 0 14 -258113
--66577 0;
-#X obj 60 398 tgl 36 0 accent1.s accent1.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 110 398 tgl 36 0 accent2.s accent2.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 160 398 tgl 36 0 accent3.s accent3.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 209 398 tgl 36 0 accent4.s accent4.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 259 398 tgl 36 0 accent5.s accent5.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 310 398 tgl 36 0 accent6.s accent6.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 360 398 tgl 36 0 accent7.s accent7.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 410 398 tgl 36 0 accent8.s accent8.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 459 398 tgl 36 0 accent9.s accent9.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 509 398 tgl 36 0 accent10.s accent10.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 559 398 tgl 36 0 accent11.s accent11.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 609 398 tgl 36 0 accent12.s accent12.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 659 398 tgl 36 0 accent13.s accent13.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 709 398 tgl 36 0 accent14.s accent14.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 759 398 tgl 36 0 accent15.s accent15.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 810 398 tgl 36 0 accent16.s accent16.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X text 6 409 Accent;
-#X text 5 314 Octave;
-#X obj 60 444 tgl 36 0 glide1.s glide1.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 110 444 tgl 36 0 glide2.s glide2.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 160 444 tgl 36 0 glide3.s glide3.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 209 444 tgl 36 0 glide4.s glide4.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 259 444 tgl 36 0 glide5.s glide5.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 310 444 tgl 36 0 glide6.s glide6.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 360 444 tgl 36 0 glide7.s glide7.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 410 444 tgl 36 0 glide8.s glide8.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 459 444 tgl 36 0 glide9.s glide9.r empty 17 7 0 10 -262144 -1
--1 0 1;
-#X obj 509 444 tgl 36 0 glide10.s glide10.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 559 444 tgl 36 0 glide11.s glide11.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 609 444 tgl 36 0 glide12.s glide12.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 659 444 tgl 36 0 glide13.s glide13.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 709 444 tgl 36 0 glide14.s glide14.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 759 444 tgl 36 0 glide15.s glide15.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X obj 810 444 tgl 36 0 glide16.s glide16.r empty 17 7 0 10 -262144
--1 -1 0 1;
-#X text 8 455 Glide;
-#X text -1 356 Duration;
-#X obj 60 350 taplist 35 35 half1.r half1.s half1 /1 /2 /3 /4;
-#X obj 110 350 taplist 35 35 half2.r half2.s half2 /1 /2 /3 /4;
-#X obj 160 350 taplist 35 35 half3.r half3.s half3 /1 /2 /3 /4;
-#X obj 209 350 taplist 35 35 half4.r half4.s half4 /1 /2 /3 /4;
-#X obj 259 350 taplist 35 35 half5.r half5.s half5 /1 /2 /3 /4;
-#X obj 310 350 taplist 35 35 half6.r half6.s half6 /1 /2 /3 /4;
-#X obj 360 350 taplist 35 35 half7.r half7.s half7 /1 /2 /3 /4;
-#X obj 410 350 taplist 35 35 half8.r half8.s half8 /1 /2 /3 /4;
-#X obj 459 350 taplist 35 35 half9.r half9.s half9 /1 /2 /3 /4;
-#X obj 509 350 taplist 35 35 half10.r half10.s half10 /1 /2 /3 /4;
-#X obj 559 350 taplist 35 35 half11.r half11.s half11 /1 /2 /3 /4;
-#X obj 609 350 taplist 35 35 half12.r half12.s half12 /1 /2 /3 /4;
-#X obj 659 350 taplist 35 35 half13.r half13.s half13 /1 /2 /3 /4;
-#X obj 709 350 taplist 35 35 half14.r half14.s half14 /1 /2 /3 /4;
-#X obj 759 350 taplist 35 35 half15.r half15.s half15 /1 /2 /3 /4;
-#X obj 810 350 taplist 35 35 half16.r half16.s half16 /1 /2 /3 /4;
-#X obj 810 304 taplist 35 35 octave16.r octave16.s octave16 *0 *1 *2
-*3;
-#X obj 759 304 taplist 35 35 octave15.r octave15.s octave15 *0 *1 *2
-*3;
-#X obj 709 304 taplist 35 35 octave14.r octave14.s octave14 *0 *1 *2
-*3;
-#X obj 659 304 taplist 35 35 octave13.r octave13.s octave13 *0 *1 *2
-*3;
-#X obj 609 304 taplist 35 35 octave12.r octave12.s octave12 *0 *1 *2
-*3;
-#X obj 60 304 taplist 35 35 octave1.r octave1.s octave1 *0 *1 *2 *3
+#X obj 805 483 clock-gui;
+#X obj 1 503 declare -path ../../../../pd-party/droidparty-abstractions
 ;
-#X obj 110 304 taplist 35 35 octave2.r octave2.s octave2 *0 *1 *2 *3
-;
-#X obj 160 304 taplist 35 35 octave3.r octave3.s octave3 *0 *1 *2 *3
-;
-#X obj 209 304 taplist 35 35 octave4.r octave4.s octave4 *0 *1 *2 *3
-;
-#X obj 259 304 taplist 35 35 octave5.r octave5.s octave5 *0 *1 *2 *3
-;
-#X obj 310 304 taplist 35 35 octave6.r octave6.s octave6 *0 *1 *2 *3
-;
-#X obj 360 304 taplist 35 35 octave7.r octave7.s octave7 *0 *1 *2 *3
-;
-#X obj 410 304 taplist 35 35 octave8.r octave8.s octave8 *0 *1 *2 *3
-;
-#X obj 459 304 taplist 35 35 octave9.r octave9.s octave9 *0 *1 *2 *3
-;
-#X obj 509 304 taplist 35 35 octave10.r octave10.s octave10 *0 *1 *2
-*3;
-#X obj 559 304 taplist 35 35 octave11.r octave11.s octave11 *0 *1 *2
-*3;
-#X obj 865 459 clock-gui;
-#X obj 55 487 declare -path ../../../../pd-party/droidparty-abstractions
-;
-#X obj 886 74 bng 30 250 50 0 load_pattern empty Load_Patt 0 -7 0 10
--262144 -1 -1;
-#X obj 885 124 bng 30 250 50 0 save_pattern empty Save_Patt 0 -7 0
-10 -262144 -1 -1;
-#X obj 885 176 bng 30 250 50 0 reset_pattern empty Reset_Patt 0 -7
-0 10 -262144 -1 -1;
-#X obj 718 487 AcidBass_audiocore;
-#X obj 409 487 loadsave pattern;
-#X obj 511 487 loadsave synth;
-#N canvas 212 115 613 639 loadsave-maping 1;
-#N canvas 715 82 651 686 loadsave 0;
+#X obj 664 503 AcidBass_audiocore;
+#X obj 355 503 loadsave pattern;
+#X obj 457 503 loadsave synth;
+#N canvas 522 114 709 639 loadsave-maping 1;
+#N canvas 65 54 1301 714 loadsave 1;
 #X obj 724 -86 persist-map synth fromattack toattack;
 #X obj 724 -67 persist-map synth fromdecay todecay;
 #X obj 724 -48 persist-map synth fromshape toshape;
@@ -203,6 +79,9 @@
 #X obj 725 -22 persist-map synth drive.s drive.r;
 #X obj 725 1 persist-map synth dry.s dry.r;
 #X obj 720 31 persist-map synth fromVolume toVolume;
+#X obj 955 -31 persist-map synth reverbfeedback.s reverbfeedback.r
+;
+#X obj 202 -6 persist-map pattern basenote.s basenote.r;
 #X restore 24 250 pd loadsave;
 #X obj 20 96 r pattern-load;
 #X obj 22 203 r pattern-save;
@@ -220,33 +99,39 @@
 #X msg 21 167 \; pattern save presets_pattern cbs;
 #X obj 397 150 r save_synth;
 #X msg 397 170 \; synth save presets_synth cbs;
-#X obj 37 303 loadbang;
-#X obj 129 303 r reset_synth;
-#X msg 37 352 \; toattack 0.15 \; todecay 0.5 \; toshape 0.1 \; drive.r
-0 \; dry.r 1 \; toVolume 127 \;;
-#X obj 271 264 loadbang;
-#X obj 524 314 s Notes;
-#X obj 363 264 r reset_pattern;
-#X msg 524 292 const 12;
-#X msg 199 388 \; octave1.r/idx 0 \; octave2.r/idx 0 \; octave3.r/idx
+#X obj 9 301 loadbang;
+#X obj 31 323 r reset_synth;
+#X obj 212 264 loadbang;
+#X obj 465 314 s Notes;
+#X obj 304 264 r reset_pattern;
+#X msg 465 292 const 12;
+#X msg 140 388 \; octave1.r/idx 0 \; octave2.r/idx 0 \; octave3.r/idx
 0 \; octave4.r/idx 0 \; octave5.r/idx 0 \; octave6.r/idx 0 \; octave7.r/idx
 0 \; octave8.r/idx 0 \; octave9.r/idx 0 \; octave10.r/idx 0 \; octave11.r/idx
 0 \; octave12.r/idx 0 \; octave13.r/idx 0 \; octave14.r/idx 0 \; octave15.r/idx
 0 \; octave16.r/idx 0 \;;
-#X msg 313 388 \; half1.r/idx 0 \; half2.r/idx 0 \; half3.r/idx 0 \;
-half4.r/idx 0 \; half5.r/idx 0 \; half6.r/idx 0 \; half7.r/idx 0 \;
-half8.r/idx 0 \; half9.r/idx 0 \; half10.r/idx 0 \; half11.r/idx 0
-\; half12.r/idx 0 \; half13.r/idx 0 \; half14.r/idx 0 \; half15.r/idx
-0 \; half16.r/idx 0 \;;
-#X msg 416 388 \; accent1.r 0 \; accent2.r 0 \; accent3.r 0 \; accent4.r
+#X msg 357 388 \; accent1.r 0 \; accent2.r 0 \; accent3.r 0 \; accent4.r
 0 \; accent5.r 0 \; accent6.r 0 \; accent7.r 0 \; accent8.r 0 \; accent9.r
 0 \; accent10.r 0 \; accent11.r 0 \; accent12.r 0 \; accent13.r 0 \;
 accent14.r 0 \; accent15.r 0 \; accent16.r 0 \;;
-#X msg 511 386 \; glide1.r 0 \; glide2.r 0 \; glide3.r 0 \; glide4.r
-0 \; glide5.r 0 \; glide6.r 0 \; glide7.r 0 \; glide8.r 0 \; glide9.r
-0 \; glide10.r 0 \; glide11.r 0 \; glide12.r 0 \; glide13.r 0 \; glide14.r
-0 \; glide15.r 0 \; glide16.r 0 \;;
-#X msg 522 340 \; basenote.r 24 \;;
+#X msg 463 340 \; basenote.r 24 \;;
+#X msg 254 388 \; half1.r/idx 5 \; half2.r/idx 5 \; half3.r/idx 5 \;
+half4.r/idx 5 \; half5.r/idx 5 \; half6.r/idx 5 \; half7.r/idx 5 \;
+half8.r/idx 5 \; half9.r/idx 5 \; half10.r/idx 5 \; half11.r/idx 5
+\; half12.r/idx 5 \; half13.r/idx 5 \; half14.r/idx 5 \; half15.r/idx
+5 \; half16.r/idx 5 \;;
+#X msg 568 386 \; glide1.r/idx 12 \; glide2.r/idx 12 \; glide3.r/idx
+12 \; glide4.r/idx 12 \; glide5.r/idx 12 \; glide6.r/idx 12 \; glide7.r/idx
+12 \; glide8.r/idx 12 \; glide9.r/idx 12 \; glide10.r/idx 12 \; glide11.r/idx
+12 \; glide12.r/idx 12 \; glide13.r/idx 12 \; glide14.r/idx 12 \; glide15.r/idx
+12 \; glide16.r/idx 12 \;;
+#X msg 452 386 \; gldur1.r/idx 5 \; gldur2.r/idx 5 \; gldur3.r/idx
+5 \; gldur4.r/idx 5 \; gldur5.r/idx 5 \; gldur6.r/idx 5 \; gldur7.r/idx
+5 \; gldur8.r/idx 5 \; gldur9.r/idx 5 \; gldur10.r/idx 5 \; gldur11.r/idx
+5 \; gldur12.r/idx 5 \; gldur13.r/idx 5 \; gldur14.r/idx 5 \; gldur15.r/idx
+5 \; gldur16.r/idx 5 \;;
+#X msg 9 350 \; toattack 0.15 \; todecay 0.5 \; toshape 0.1 \; drive.r
+0 \; dry.r 1 \; toVolume 127 \; reverbfeedback.r 0 \;;
 #X connect 1 0 3 0;
 #X connect 2 0 4 0;
 #X connect 5 0 6 0;
@@ -255,56 +140,25 @@ accent14.r 0 \; accent15.r 0 \; accent16.r 0 \;;
 #X connect 10 0 13 0;
 #X connect 11 0 14 0;
 #X connect 15 0 16 0;
-#X connect 17 0 19 0;
-#X connect 18 0 19 0;
-#X connect 20 0 23 0;
-#X connect 20 0 24 0;
-#X connect 20 0 25 0;
-#X connect 20 0 26 0;
-#X connect 20 0 27 0;
-#X connect 20 0 28 0;
-#X connect 22 0 23 0;
-#X connect 22 0 24 0;
-#X connect 22 0 25 0;
-#X connect 22 0 27 0;
-#X connect 22 0 28 0;
-#X connect 22 0 26 0;
-#X connect 23 0 21 0;
-#X restore 602 487 pd loadsave-maping;
-#N canvas 65 87 450 250 (subpatch) 0;
-#X array Notes 16 float 3;
-#A 0 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12;
-#X coords 0 0 16 12 800 260 2 0 0;
-#X restore 54 18 graph;
-#X obj 38 234 cnv 15 815 1 empty empty +2 -20 0 0 14 -162280 -66577
-0;
-#X obj 38 191 cnv 15 815 1 empty empty +4 -20 0 0 14 -162280 -66577
-0;
-#X obj 38 169 cnv 15 815 1 empty empty +5 -20 0 0 14 -162280 -66577
-0;
-#X obj 38 126 cnv 15 815 1 empty empty +7 -20 0 0 14 -162280 -66577
-0;
-#X obj 38 83 cnv 15 815 1 empty empty +9 -20 0 0 14 -162280 -66577
-0;
-#X obj 38 39 cnv 15 815 1 empty empty +11 -25 0 0 14 -162280 -66577
-0;
-#X obj 38 256 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
-0;
-#X obj 38 213 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
-0;
-#X obj 38 147 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
-0;
-#X obj 38 104 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
-0;
-#X obj 38 61 cnv 15 815 1 empty empty empty -10 0 0 14 -228856 -66577
-0;
-#X obj 38 17 cnv 15 815 1 empty empty +12 -25 0 0 14 -162280 -66577
-0;
-#X obj 39 278 cnv 15 815 1 empty empty +0 -20 0 0 14 -162280 -66577
-0;
-#X obj 885 27 nbx 5 25 0 127 0 0 basenote.s basenote.r Base_Note 0
--8 0 10 -262144 -1 -1 24 256;
-#N canvas 556 130 754 524 tablelookup 0;
+#X connect 17 0 29 0;
+#X connect 18 0 29 0;
+#X connect 19 0 22 0;
+#X connect 19 0 23 0;
+#X connect 19 0 26 0;
+#X connect 19 0 24 0;
+#X connect 19 0 27 0;
+#X connect 19 0 25 0;
+#X connect 19 0 28 0;
+#X connect 21 0 22 0;
+#X connect 21 0 23 0;
+#X connect 21 0 26 0;
+#X connect 21 0 27 0;
+#X connect 21 0 25 0;
+#X connect 21 0 24 0;
+#X connect 21 0 28 0;
+#X connect 22 0 20 0;
+#X restore 548 503 pd loadsave-maping;
+#N canvas 553 135 754 524 tablelookup 0;
 #X obj 333 -2 table_set_from_gui Notes 0 notes_0.s 11;
 #X obj 16 97 table_note_rd_lookup Notes 5 notes_5.r 11;
 #X obj 333 17 table_set_from_gui Notes 1 notes_1.s 11;
@@ -353,4 +207,213 @@ accent14.r 0 \; accent15.r 0 \; accent16.r 0 \;;
 #X obj 335 257 table_set_from_gui Notes 13 notes_13.s 11;
 #X obj 335 277 table_set_from_gui Notes 14 notes_14.s 11;
 #X obj 335 296 table_set_from_gui Notes 15 notes_15.s 11;
-#X restore 835 487 pd tablelookup;
+#X restore 781 503 pd tablelookup;
+#X obj 2 -1 cnv 15 800 500 empty empty empty 0 -4 0 10 -261682 -66577
+0;
+#X obj 354 0 cnv 15 43 500 empty acidbass_cursor empty 20 12 0 14 -258113
+-66577 0;
+#X obj 95 370 tgl 36 0 accent1.s accent1.r empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 138 370 tgl 36 0 accent2.s accent2.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 182 370 tgl 36 0 accent3.s accent3.r empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 225 370 tgl 36 0 accent4.s accent4.r empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 270 370 tgl 36 0 accent5.s accent5.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 313 370 tgl 36 0 accent6.s accent6.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 357 370 tgl 36 0 accent7.s accent7.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 401 370 tgl 36 0 accent8.s accent8.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 445 370 tgl 36 0 accent9.s accent9.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 488 370 tgl 36 0 accent10.s accent10.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 532 370 tgl 36 0 accent11.s accent11.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 576 370 tgl 36 0 accent12.s accent12.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 620 370 tgl 36 0 accent13.s accent13.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 663 370 tgl 36 0 accent14.s accent14.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 707 370 tgl 36 0 accent15.s accent15.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 751 370 tgl 36 0 accent16.s accent16.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X text 17 381 Accent;
+#X text 19 335 Octave;
+#X text 14 293 Duration;
+#X obj 95 282 taplist 35 35 half1.r half1.s half1 *16 *8 *4 *3 *2 M
+/1 /2 /3 /4;
+#X obj 10 61 bng 30 250 50 0 load_pattern empty Load_Patt 0 -7 0 10
+-262144 -1 -1;
+#X obj 9 111 bng 30 250 50 0 save_pattern empty Save_Patt 0 -7 0 10
+-262144 -1 -1;
+#X obj 9 163 bng 30 250 50 0 reset_pattern empty Rst_Patt 0 -7 0 10
+-262144 -1 -1;
+#N canvas 65 92 450 250 (subpatch) 0;
+#X array Notes 16 float 3;
+#A 0 12 6 6 6 6 6 5 3 3 3 10 4 6 6 11 7;
+#X coords 0 0 16 12 700 260 2 0 0;
+#X restore 92 13 graph;
+#X obj 76 230 cnv 15 715 1 empty empty +2 0 8 0 12 -162280 -66577 0
+;
+#X obj 76 187 cnv 15 715 1 empty empty +4 0 8 0 12 -162280 -66577 0
+;
+#X obj 76 165 cnv 15 715 1 empty empty +5 0 8 0 12 -162280 -66577 0
+;
+#X obj 76 122 cnv 15 715 1 empty empty +7 0 8 0 12 -162280 -66577 0
+;
+#X obj 76 79 cnv 15 715 1 empty empty +9 0 8 0 12 -162280 -66577 0
+;
+#X obj 76 35 cnv 15 715 1 empty empty +11 2 8 0 12 -162280 -66577 0
+;
+#X obj 76 252 cnv 15 715 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 76 209 cnv 15 715 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 76 143 cnv 15 715 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 76 100 cnv 15 715 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 76 57 cnv 15 715 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 76 13 cnv 15 715 1 empty empty +12 2 8 0 12 -162280 -66577 0
+;
+#X obj 77 274 cnv 15 715 1 empty empty +0 0 0 0 12 -162280 -66577 0
+;
+#X obj 9 13 nbx 4 25 0 127 0 0 basenote.s basenote.r Base_Note 0 -8
+0 10 -262144 -1 -1 24 256;
+#X obj 95 414 taplist 35 35 glide1.r glide1.s glide1 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 138 414 taplist 35 35 glide2.r glide2.s glide2 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 182 414 taplist 35 35 glide3.r glide3.s glide3 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 225 414 taplist 35 35 glide4.r glide4.s glide4 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 270 414 taplist 35 35 glide5.r glide5.s glide5 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 313 414 taplist 35 35 glide6.r glide6.s glide6 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 357 414 taplist 35 35 glide7.r glide7.s glide7 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 401 414 taplist 35 35 glide8.r glide8.s glide8 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 445 414 taplist 35 35 glide9.r glide9.s glide9 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 488 414 taplist 35 35 glide10.r glide10.s glide10 -12 -11 -10
+-9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 532 414 taplist 35 35 glide11.r glide11.s glide11 -12 -11 -10
+-9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 576 414 taplist 35 35 glide12.r glide12.s glide12 -12 -11 -10
+-9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 620 414 taplist 35 35 glide13.r glide13.s glide13 -12 -11 -10
+-9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 663 414 taplist 35 35 glide14.r glide14.s glide14 -12 -11 -10
+-9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 707 414 taplist 35 35 glide15.r glide15.s glide15 -12 -11 -10
+-9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 751 414 taplist 35 35 glide16.r glide16.s glide16 -12 -11 -10
+-9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 138 282 taplist 35 35 half2.r half2.s half2 *16 *8 *4 *3 *2
+M /1 /2 /3 /4;
+#X obj 182 282 taplist 35 35 half3.r half3.s half3 *16 *8 *4 *3 *2
+M /1 /2 /3 /4;
+#X obj 225 282 taplist 35 35 half4.r half4.s half4 *16 *8 *4 *3 *2
+M /1 /2 /3 /4;
+#X obj 270 282 taplist 35 35 half5.r half5.s half5 *16 *8 *4 *3 *2
+M /1 /2 /3 /4;
+#X obj 313 282 taplist 35 35 half6.r half6.s half6 *16 *8 *4 *3 *2
+M /1 /2 /3 /4;
+#X obj 357 282 taplist 35 35 half7.r half7.s half7 *16 *8 *4 *3 *2
+M /1 /2 /3 /4;
+#X obj 401 282 taplist 35 35 half8.r half8.s half8 *16 *8 *4 *3 *2
+M /1 /2 /3 /4;
+#X obj 445 282 taplist 35 35 half9.r half9.s half9 *16 *8 *4 *3 *2
+M /1 /2 /3 /4;
+#X obj 488 282 taplist 35 35 half10.r half10.s half10 *16 *8 *4 *3
+*2 M /1 /2 /3 /4;
+#X obj 532 282 taplist 35 35 half11.r half11.s half11 *16 *8 *4 *3
+*2 M /1 /2 /3 /4;
+#X obj 576 282 taplist 35 35 half12.r half12.s half12 *16 *8 *4 *3
+*2 M /1 /2 /3 /4;
+#X obj 620 282 taplist 35 35 half13.r half13.s half13 *16 *8 *4 *3
+*2 M /1 /2 /3 /4;
+#X obj 663 282 taplist 35 35 half14.r half14.s half14 *16 *8 *4 *3
+*2 M /1 /2 /3 /4;
+#X obj 707 282 taplist 35 35 half15.r half15.s half15 *16 *8 *4 *3
+*2 M /1 /2 /3 /4;
+#X obj 751 282 taplist 35 35 half16.r half16.s half16 *16 *8 *4 *3
+*2 M /1 /2 /3 /4;
+#X obj 751 326 taplist 35 35 octave16.r octave16.s octave16 *0 *1 *2
+*3 *4 *5 *6;
+#X obj 707 326 taplist 35 35 octave15.r octave15.s octave15 *0 *1 *2
+*3 *4 *5 *6;
+#X obj 663 326 taplist 35 35 octave14.r octave14.s octave14 *0 *1 *2
+*3 *4 *5 *6;
+#X obj 620 326 taplist 35 35 octave13.r octave13.s octave13 *0 *1 *2
+*3 *4 *5 *6;
+#X obj 576 326 taplist 35 35 octave12.r octave12.s octave12 *0 *1 *2
+*3 *4 *5 *6;
+#X obj 95 326 taplist 35 35 octave1.r octave1.s octave1 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 138 325 taplist 35 35 octave2.r octave2.s octave2 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 182 326 taplist 35 35 octave3.r octave3.s octave3 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 225 326 taplist 35 35 octave4.r octave4.s octave4 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 270 326 taplist 35 35 octave5.r octave5.s octave5 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 313 326 taplist 35 35 octave6.r octave6.s octave6 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 357 326 taplist 35 35 octave7.r octave7.s octave7 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 401 326 taplist 35 35 octave8.r octave8.s octave8 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 445 326 taplist 35 35 octave9.r octave9.s octave9 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 488 326 taplist 35 35 octave10.r octave10.s octave10 *0 *1 *2
+*3 *4 *5 *6;
+#X obj 532 326 taplist 35 35 octave11.r octave11.s octave11 *0 *1 *2
+*3 *4 *5 *6;
+#X text 10 418 Glide from;
+#X text 28 432 note;
+#X obj 95 459 taplist 35 35 gldur1.r gldur1.s gldur1 *16 *8 *4 *3 *2
+*1 /2 /3 /4;
+#X obj 138 459 taplist 35 35 gldur2.r gldur2.s gldur2 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 182 459 taplist 35 35 gldur3.r gldur3.s gldur3 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 225 459 taplist 35 35 gldur4.r gldur4.s gldur4 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 270 459 taplist 35 35 gldur5.r gldur5.s gldur5 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 313 459 taplist 35 35 gldur6.r gldur6.s gldur6 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 357 459 taplist 35 35 gldur7.r gldur7.s gldur7 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 401 459 taplist 35 35 gldur8.r gldur8.s gldur8 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 445 459 taplist 35 35 gldur9.r gldur9.s gldur9 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 488 459 taplist 35 35 gldur10.r gldur10.s gldur10 *16 *8 *4
+*3 *2 *1 /2 /3 /4;
+#X obj 532 459 taplist 35 35 gldur11.r gldur11.s gldur11 *16 *8 *4
+*3 *2 *1 /2 /3 /4;
+#X obj 576 459 taplist 35 35 gldur12.r gldur12.s gldur12 *16 *8 *4
+*3 *2 *1 /2 /3 /4;
+#X obj 620 459 taplist 35 35 gldur13.r gldur13.s gldur13 *16 *8 *4
+*3 *2 *1 /2 /3 /4;
+#X obj 663 459 taplist 35 35 gldur14.r gldur14.s gldur14 *16 *8 *4
+*3 *2 *1 /2 /3 /4;
+#X obj 707 459 taplist 35 35 gldur15.r gldur15.s gldur15 *16 *8 *4
+*3 *2 *1 /2 /3 /4;
+#X obj 751 459 taplist 35 35 gldur16.r gldur16.s gldur16 *16 *8 *4
+*3 *2 *1 /2 /3 /4;
+#X text 3 472 Glide duration;
