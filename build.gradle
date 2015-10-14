@@ -248,3 +248,52 @@ project(":midi") {
 tasks.eclipse.doLast {
     delete ".project"
 }
+
+task publishAsLibrary(type:Zip) {
+ 	
+ 	from ('lib'){
+ 		into ('pd-party')
+ 		include 'src/**/*'
+ 	}
+    
+
+	from ('.'){
+	    include (
+	    	'pd-party/AndroidManifest.xml', 
+	    	'pd-party/project.properties', 
+	    	'pd-party/src/**/*', 
+	    	'pd-party/res/**/*',
+	    	
+	    	'pd-for-android/midi/AndroidMidi/AndroidManifest.xml', 
+	    	'pd-for-android/midi/AndroidMidi/project.properties', 
+	    	'pd-for-android/midi/AndroidMidi/src/**/*', 
+	    	'pd-for-android/midi/AndroidMidi/res/**/*',
+	
+	    	'svg-android/AndroidManifest.xml', 
+	    	'svg-android/project.properties', 
+	    	'svg-android/src/**/*', 
+	    	'svg-android/res/**/*',
+	
+	    	'pd-for-android/PdCore/AndroidManifest.xml', 
+	    	'pd-for-android/PdCore/project.properties', 
+	    	'pd-for-android/PdCore/src/**/*', 
+	    	'pd-for-android/PdCore/res/**/*',
+	    	'pd-for-android/PdCore/libs/**/*'
+	    )
+ 	}
+ 
+ 
+ 	from('pd-for-android/PdCore/jni/libpd/java'){
+ 		into 'pd-for-android/PdCore/src'
+ 		include '**/*'
+ 	}
+
+ 	archiveName 'eclipse-library.zip'
+ 	destinationDir new File(buildDir, 'distrib')
+}
+task cleanLibrary(type: Delete) {
+
+	delete(new File(buildDir, 'distrib/eclipse-library.zip'))
+}
+
+publishAsLibrary.dependsOn cleanLibrary
