@@ -8,6 +8,8 @@ buildscript {
     }
 }
 
+version = '0.0.0'
+
 allprojects {
     apply plugin: "eclipse"
 }
@@ -249,7 +251,7 @@ tasks.eclipse.doLast {
     delete ".project"
 }
 
-task publishAsLibrary(type:Zip) {
+task buildLibrary(type:Copy) {
  	
  	from ('lib'){
  		into ('pd-party')
@@ -287,13 +289,27 @@ task publishAsLibrary(type:Zip) {
  		into 'pd-for-android/PdCore/src'
  		include '**/*'
  	}
-
- 	archiveName 'eclipse-library.zip'
- 	destinationDir new File(buildDir, 'distrib')
+ 	
+ 	from('samples/example-default'){
+ 		into 'example'
+ 		include '**/*'
+ 	}
+ 	
+ 	destinationDir new File(buildDir, 'distrib/eclipse')
 }
 task cleanLibrary(type: Delete) {
 
-	delete(new File(buildDir, 'distrib/eclipse-library.zip'))
+	delete(new File(buildDir, "distrib"))
+	delete(new File(buildDir, "PdPartyPublisher-${project.version}.zip"))
 }
 
-publishAsLibrary.dependsOn cleanLibrary
+task release(type:Zip){
+	from(new File(buildDir, 'distrib')){
+		include '**/*'
+	}
+ 	archiveName "PdPartyPublisher-${project.version}.zip"
+ 	destinationDir buildDir
+}
+
+release.dependsOn buildLibrary
+buildLibrary.dependsOn cleanLibrary
