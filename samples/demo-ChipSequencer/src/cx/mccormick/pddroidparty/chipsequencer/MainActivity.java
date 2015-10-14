@@ -14,13 +14,17 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
-        config.guiKeepAspectRatio = true;
+        config.guiKeepAspectRatio = false;
         config.theme = new MonochromeTheme(MonochromeTheme.ORANGE, true);
        
         config.presetsPaths.add("Chip_sequencer/presets_pattern");
         config.presetsPaths.add("Chip_sequencer/presets_synth");
         
-        PdDroidPartyLauncher.launch(this, "Chip_sequencer/chip_sequencer.pd", config);
+       
+        config.patches.put("Sequencer", "Chip_sequencer/chip_sequencer_sequencer.pd");
+        config.patches.put("Audio Controls", "Chip_sequencer/chip_sequencer_controls.pd");
+        
+        PdDroidPartyLauncher.launch(this, config);
     }
     
 
