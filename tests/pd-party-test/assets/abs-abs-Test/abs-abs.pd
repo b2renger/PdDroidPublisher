@@ -1,0 +1,31 @@
+#N canvas 143 112 591 451 10;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X obj 14 18 declare -path ../../../../pd-party/droidparty-abstractions
+;
+#X obj 270 40 loadsave top;
+#X obj 229 40 myAbs;
+#X obj 36 119 hsl 128 15 0 127 0 0 slidertop.s slidertop.r slider_top
+-2 -8 0 10 -262144 -1 -1 8300 1;
+#X obj 36 82 hsl 128 15 0 127 0 0 sliderabs.s sliderabs.r slider_abs
+-2 -8 0 10 -262144 -1 -1 3400 1;
+#X obj 224 109 bng 15 250 50 0 load_top empty load_top 17 7 0 10 -262144
+-1 -1;
+#X obj 301 108 bng 15 250 50 0 save_top empty save_top 17 7 0 10 -262144
+-1 -1;
+#X obj 224 85 bng 15 250 50 0 load_abs empty load_abs 17 7 0 10 -262144
+-1 -1;
+#X obj 301 84 bng 15 250 50 0 save_abs empty save_abs 17 7 0 10 -262144
+-1 -1;
+#X obj 240 146 r load_top;
+#X obj 240 207 r top-load;
+#X obj 239 227 persist-load top;
+#X obj 240 261 r save_top;
+#X msg 240 281 \; top save presets_top cbs;
+#X msg 240 171 \; top load presets_top cbs;
+#X obj 241 337 persist-save top;
+#X obj 52 380 persist-map top slidertop.s slidertop.r;
+#X obj 241 317 r top-save;
+#X connect 9 0 14 0;
+#X connect 10 0 11 0;
+#X connect 12 0 13 0;
+#X connect 17 0 15 0;

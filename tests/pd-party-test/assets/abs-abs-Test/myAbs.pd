@@ -1,0 +1,15 @@
+#N canvas 65 54 1301 714 10;
+#X obj 45 35 loadsave abs;
+#X obj 30 140 r load_abs;
+#X obj 30 196 r abs-load;
+#X obj 30 216 persist-load abs;
+#X obj 31 248 r save_abs;
+#X obj 32 303 r abs-save;
+#X obj 29 323 persist-save abs;
+#X msg 30 160 \; abs load presets_abs cbs;
+#X msg 31 267 \; abs save presets_abs cbs;
+#X obj 51 102 persist-map abs sliderabs.s sliderabs.r;
+#X connect 1 0 7 0;
+#X connect 2 0 3 0;
+#X connect 4 0 8 0;
+#X connect 5 0 6 0;
