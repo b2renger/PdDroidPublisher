@@ -13,7 +13,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
-        config.midiClockMaxBPM = 480;
         
         PdDroidPartyLauncher.launch(this, "Glitcher/Glitcher.pd", config);
     }

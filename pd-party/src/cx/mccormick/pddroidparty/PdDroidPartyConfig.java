@@ -14,14 +14,15 @@ import cx.mccormick.pddroidparty.widget.WidgetFactory;
 @SuppressWarnings("serial")
 public class PdDroidPartyConfig implements Serializable
 {
+	public static final int midiClockMinBPM = 1; // hard limit
+	public static final int midiClockMaxBPM = 360; // hard limit
+	public static final int midiClockDefaultBPM = 100; // nominal BPM
+
 	public Map<String, String> patches = new LinkedHashMap<String, String>();
 	public List<String> presetsPaths = new ArrayList<String>();
 	public int audioSampleRate = 44100;
 	public int audioInputs = 1;
 	public int audioOutputs = 2;
-	public int midiClockMinBPM = 60;
-	public int midiClockMaxBPM = 180;
-	public int midiClockDefaultBPM = 100;
 	public boolean guiKeepAspectRatio = true;
 	
 	/** global theme : default is PdTheme 

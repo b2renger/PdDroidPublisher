@@ -16,7 +16,6 @@ public class MainActivity extends Activity {
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
        
-        config.midiClockMaxBPM = 480;
        // config.guiKeepAspectRatio = true;
         config.theme = new MonochromeTheme(MonochromeTheme.RED, true);
         config.typeOverrides.put(Taplist.class, CustomTaplist.class);
