@@ -58,7 +58,7 @@ Note : if you want to import samples, you need to generate icons first (see tool
 ### make a distribution
 
 * have a clean local git repository on develop branch
-* update version in main build.gradle for the next release (increment second digit)
+* update version in main build.gradle for the release
 * launch gradle task "release" on sources root (root project PdPartyPublisher)
 * verify release is OK
 * commit version change, add a tag on that commit and push both.
