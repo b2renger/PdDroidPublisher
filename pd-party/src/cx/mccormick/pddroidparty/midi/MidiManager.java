@@ -5,7 +5,6 @@ import java.util.List;
 
 import android.content.Context;
 import cx.mccormick.pddroidparty.midi.ip.IPMidiDevice;
-import cx.mccormick.pddroidparty.midi.nmj.NMJMidiDevice;
 import cx.mccormick.pddroidparty.midi.pd.PdMidiDevice;
 import cx.mccormick.pddroidparty.midi.pd.PdMidiOutput;
 
@@ -34,7 +33,6 @@ public class MidiManager
 		
 		devices = new ArrayList<MidiDevice>();
 		devices.add(pdMidiDevice);
-		devices.add(new NMJMidiDevice());
 		devices.add(ipMidiDevice);
 		
 		for(MidiDevice device : devices)

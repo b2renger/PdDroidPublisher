@@ -1,4 +1,0 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:menuCategory="system" android:id="@+id/item01" android:title="Setup"></item>
-<item android:menuCategory="system" android:id="@+id/item02" android:title="Exit"></item>
-</menu>

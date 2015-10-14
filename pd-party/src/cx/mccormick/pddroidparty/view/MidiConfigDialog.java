@@ -26,7 +26,6 @@ import cx.mccormick.pddroidparty.midi.MidiManager;
 import cx.mccormick.pddroidparty.midi.MidiOutput;
 import cx.mccormick.pddroidparty.midi.ip.MidiInputCreateDialog;
 import cx.mccormick.pddroidparty.midi.ip.MidiOutputCreateDialog;
-import cx.mccormick.pddroidparty.midi.nmj.NMJMidiDevice;
 
 public class MidiConfigDialog extends Dialog
 {
@@ -151,24 +150,6 @@ public class MidiConfigDialog extends Dialog
 		
 		LinearLayout setup = new LinearLayout(getContext());
 		setup.setOrientation(LinearLayout.HORIZONTAL);
-		
-		// TODO use device abstraction
-		for(MidiDevice device : midiManager.getDeveices())
-		{
-			if(device instanceof NMJMidiDevice)
-			{
-				final NMJMidiDevice nmjDevice = (NMJMidiDevice)device;
-				ImageButton btSetup = new ImageButton(getContext());
-				btSetup.setImageResource(R.drawable.ic_action_network_wifi);
-				btSetup.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						nmjDevice.openConfigPanel();
-					}
-				});
-				setup.addView(btSetup);
-			}
-		}
 		
 		// TODO use USBMidiDevice instead ...
 		ImageButton btUsb = new ImageButton(getContext());
