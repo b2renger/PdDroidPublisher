@@ -1,0 +1,16 @@
+#N canvas 132 89 1180 664 10;
+#X obj 23 131 cnv 15 888 500 empty empty 16x9 0 -4 0 10 -204786 -66577
+0;
+#X obj 79 131 cnv 15 833 500 empty empty 5x3 0 -4 0 10 -262130 -66577
+0;
+#X obj 112 131 cnv 15 800 500 empty empty 16x10 0 -4 0 10 -261682 -66577
+0;
+#X obj 162 131 cnv 15 750 500 empty empty 3x2 0 -4 0 10 -261234 -66577
+0;
+#X obj 246 131 cnv 15 666 500 empty empty 4x3 0 -4 0 10 -233017 -66577
+0;
+#X text 23 6 based on this post : http://stackoverflow.com/questions/7199492/what-are-the-aspect-ratios-for-all-android-phone-and-tablet-devices
+;
+#X text 21 56 You can choose a canvas and copy/paste it to your sketch
+to adapt your layout. We recommend going for the 16x10 ratio and call
+'config.guiKeepAspectRatio = true \; ' in your main activity;
