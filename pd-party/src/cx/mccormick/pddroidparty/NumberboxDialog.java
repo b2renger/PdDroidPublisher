@@ -3,6 +3,7 @@ package cx.mccormick.pddroidparty;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +30,7 @@ public class NumberboxDialog extends Dialog
 		//Context context = getApplicationContext();
 		final EditText number = (EditText)findViewById(R.id.number);
 		number.setSelectAllOnFocus(true);
-		number.setInputType(2);
+		number.setInputType(InputType.TYPE_CLASS_NUMBER);
 		number.setText(String.valueOf(defaultValue));
 		
 		Button ok = (Button)findViewById(R.id.ok);
