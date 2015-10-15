@@ -6,6 +6,7 @@ import cx.mccormick.pddroidparty.PdDroidPartyConfig;
 import cx.mccormick.pddroidparty.PdDroidPartyLauncher;
 import cx.mccormick.pddroidparty.theme.mono.MonochromeTheme;
 import cx.mccormick.pddroidparty.widget.abs.Taplist;
+import cx.mccormick.pddroidparty.widget.custom.PopupTaplist;
 
 
 public class MainActivity extends Activity {
@@ -20,7 +21,7 @@ public class MainActivity extends Activity {
        
         config.guiKeepAspectRatio = true;
         
-        config.typeOverrides.put(Taplist.class, CustomTaplist.class);
+        config.typeOverrides.put(Taplist.class, PopupTaplist.class);
         
         config.presetsPaths.add("Chip_sequencer/presets_pattern");
         config.presetsPaths.add("Chip_sequencer/presets_synth");

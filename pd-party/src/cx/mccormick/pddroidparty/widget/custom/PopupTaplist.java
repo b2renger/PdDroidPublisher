@@ -1,4 +1,4 @@
-package cx.mccormick.pddroidparty.test.custom;
+package cx.mccormick.pddroidparty.widget.custom;
 
 import java.util.List;
 
@@ -14,7 +14,10 @@ import android.widget.ScrollView;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.widget.abs.Taplist;
 
-public class CustomTaplist extends Taplist {
+/**
+ * {@link Taplist} customization : value is selected by dialog popup instead of touch. 
+ */
+public class PopupTaplist extends Taplist {
 
 	public final static class Selector extends Dialog {
 		List<String> values;
@@ -48,7 +51,6 @@ public class CustomTaplist extends Taplist {
 					@Override	
 					public void onClick(View v) {
 					
-						//view.setVerticalScrollbarPosition(0);
 						selectedValue = (Integer) button.getId();
 						Selector.this.dismiss();
 					}
@@ -64,7 +66,7 @@ public class CustomTaplist extends Taplist {
 		}
 	}
 
-	public CustomTaplist(PdDroidPatchView app, String[] atomline) {
+	public PopupTaplist(PdDroidPatchView app, String[] atomline) {
 		super(app, atomline);
 	}
 
