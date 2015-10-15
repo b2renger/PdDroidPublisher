@@ -6,7 +6,11 @@ import java.util.List;
 
 import org.puredata.core.PdBase;
 
-import cx.mccormick.pddroidparty.PdDroidParty;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cx.mccormick.pddroidparty.LoadDialog;
+import cx.mccormick.pddroidparty.PdDroidPartyLauncher;
+import cx.mccormick.pddroidparty.SaveDialog;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.widget.Widget;
 
@@ -37,15 +41,35 @@ public class LoadSave extends Widget {
 	}
 	
 	public void receiveMessage(String symbol, Object... args) {
-		int type = 0;
-		if (symbol.equals("save")) {
-			type = PdDroidParty.DIALOG_SAVE;
-		} else if (symbol.equals("load")) {
-			type = PdDroidParty.DIALOG_LOAD;
-		}
 		directory = args.length > 0 ? (String)args[0] : ".";
 		extension = args.length > 1 ? (String)args[1] : "";
-		parent.launchDialog(this, type);
+		if (symbol.equals("save")) {
+			final SaveDialog saveDialog = new SaveDialog(parent.getContext(), filename);
+			saveDialog.setOnDismissListener(new OnDismissListener() {
+				@Override
+				public void onDismiss(DialogInterface dialog) {
+					String selectedFilename = saveDialog.getSelectedFilename();
+					if(selectedFilename != null)
+					{
+						gotFilename("save", PdDroidPartyLauncher.getPersistDirectory(parent.getContext()), selectedFilename);
+					}
+				}
+			});
+			saveDialog.show();
+		} else if (symbol.equals("load")) {
+			final LoadDialog loadDialog = new LoadDialog(parent.getContext(), PdDroidPartyLauncher.getPersistDirectory(parent.getContext()), extension);
+			loadDialog.setOnDismissListener(new OnDismissListener() {
+				@Override
+				public void onDismiss(DialogInterface dialog) {
+					String selectedFilename = loadDialog.getSelectedFilename();
+					if(selectedFilename != null)
+					{
+						gotFilename("load", PdDroidPartyLauncher.getPersistDirectory(parent.getContext()), selectedFilename);
+					}
+				}
+			});
+			loadDialog.show();
+		}
 	}
 	
 	public void gotFilename(String type, File baseDirectory, String newname) {

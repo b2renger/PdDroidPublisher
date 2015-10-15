@@ -24,8 +24,6 @@ import cx.mccormick.pddroidparty.pd.PdClock;
 
 public class PdPartyClockControl extends RelativeLayout 
 {
-	public static final int SETUP_ACTIVITY_CODE = 666;
-
 	private MidiManager midiManager;
 
 	private ImageButton btStart;

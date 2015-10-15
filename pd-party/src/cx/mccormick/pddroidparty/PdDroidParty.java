@@ -44,16 +44,12 @@ import cx.mccormick.pddroidparty.util.FileHelper;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.view.PdPartyClockControl;
 import cx.mccormick.pddroidparty.widget.Widget;
-import cx.mccormick.pddroidparty.widget.abs.LoadSave;
 
 public class PdDroidParty extends Activity {
 	public List<PdDroidPatchView> patchviews = new ArrayList<PdDroidPatchView>();
 	public static final String INTENT_EXTRA_PATCH_PATH = "PATCH";
 	private static final String PD_CLIENT = "PdDroidParty";
 	private static final String TAG = "PdDroidParty";
-	public static final int DIALOG_NUMBERBOX = 1;
-	public static final int DIALOG_SAVE = 2;
-	public static final int DIALOG_LOAD = 3;
 	private TabHost stack;
 	private UsbMidiManager usbMidiManager;
 	private MidiManager midiManager;
@@ -189,7 +185,7 @@ public class PdDroidParty extends Activity {
 
 		if(config.patches.isEmpty())
 		{
-			PdDroidPatchView patchview = new PdDroidPatchView(this, this, patch, config);
+			PdDroidPatchView patchview = new PdDroidPatchView(this, patch, config);
 			patchviews.add(patchview);
 			layout.addView(patchview);
 			setContentView(layout);
@@ -205,7 +201,7 @@ public class PdDroidParty extends Activity {
 			for(Entry<String, String> entry : config.patches.entrySet())
 			{
 				PdPatch patch = new PdPatch(new File(this.patch.getFile().getParentFile().getParentFile(), entry.getValue()).getAbsolutePath());
-				final PdDroidPatchView patchview = new PdDroidPatchView(this, this, patch, config);
+				final PdDroidPatchView patchview = new PdDroidPatchView(this, patch, config);
 				patchviews.add(patchview);
 				
 				TabSpec sp = stack.newTabSpec(entry.getValue());
@@ -362,61 +358,4 @@ public class PdDroidParty extends Activity {
 		NetworkHelper.releaseWifiMulticast();
 	}
 	
-	public void launchDialog(Widget which, int type) {
-		widgetpopped = which;
-		if (type == DIALOG_NUMBERBOX) {
-			Intent it = new Intent(this, NumberboxDialog.class);
-			it.putExtra("number", which.getval());
-			startActivityForResult(it, DIALOG_NUMBERBOX);
-		} else if (type == DIALOG_SAVE) {
-			Intent it = new Intent(this, SaveDialog.class);
-			it.putExtra("filename", ((LoadSave)which).getFilename());
-			it.putExtra("directory", getPersistDirectory(((LoadSave)which).getDirectory()).getAbsolutePath());
-			it.putExtra("extension", ((LoadSave)which).getExtension());
-			startActivityForResult(it, DIALOG_SAVE);
-		} else if (type == DIALOG_LOAD) {
-			Intent it = new Intent(this, LoadDialog.class);
-			it.putExtra("filename", ((LoadSave)which).getFilename());
-			it.putExtra("directory", getPersistDirectory(((LoadSave)which).getDirectory()).getAbsolutePath());
-			it.putExtra("extension", ((LoadSave)which).getExtension());
-			startActivityForResult(it, DIALOG_LOAD);
-		}
-	}
-	
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data); 
-		if(requestCode == PdPartyClockControl.SETUP_ACTIVITY_CODE)
-		{
-			clockControl.updateMidiConfiguration();
-		}
-		else if (resultCode == RESULT_OK) {
-			if (widgetpopped != null) {
-				if (requestCode == DIALOG_NUMBERBOX) {
-					widgetpopped.receiveFloat(data.getFloatExtra("number", 0));
-					widgetpopped.send("" + widgetpopped.getval());
-				} else if (requestCode == DIALOG_SAVE) {
-					((LoadSave)widgetpopped).gotFilename("save", getPersistDirectory(), data.getStringExtra("filename"));
-				} else if (requestCode == DIALOG_LOAD) {
-					((LoadSave)widgetpopped).gotFilename("load", getPersistDirectory(), data.getStringExtra("filename"));
-				}
-				// we're done with our originating widget and dialog
-				widgetpopped = null;
-				// force a redraw
-				if(stack != null)
-					stack.invalidate();
-				else
-					patchviews.get(0).invalidate();
-			}
-		}
-	}
-	
-	private File getPersistDirectory()
-	{
-		return PdDroidPartyLauncher.getPersistDirectory(this);
-	}
-	private File getPersistDirectory(String path)
-	{
-		return new File(PdDroidPartyLauncher.getPersistDirectory(this), path);
-	}
 }

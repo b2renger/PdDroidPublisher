@@ -6,11 +6,10 @@ import java.util.List;
 
 import org.puredata.core.utils.IoUtils;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -18,7 +17,21 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class LoadDialog extends Activity {
+public class LoadDialog extends Dialog {
+	
+	private File directory;
+	private String extension;
+	private String selectedFilename;
+	
+	public LoadDialog(Context context, File directory, String extension) {
+		super(context);
+		this.directory = directory;
+		this.extension = extension;
+	}
+	
+	public String getSelectedFilename() {
+		return selectedFilename;
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +39,7 @@ public class LoadDialog extends Activity {
 		setContentView(R.layout.load_dialog);
 		ArrayList<String> filenames = new ArrayList<String>();
 		final ListView filelist = (ListView)findViewById(R.id.filelist);
-		Intent intent = getIntent();
-		List<File> list = IoUtils.find(new File(intent.getStringExtra("directory")), ".*\\." + intent.getStringExtra("extension") + "$");
+		List<File> list = IoUtils.find(directory, ".*" + (extension == null || extension.isEmpty() ? "" : "\\." + extension) + "$");
 		for (File f: list) {
 			String fn = f.getName();
 			int i = fn.lastIndexOf('.');
@@ -36,17 +48,16 @@ public class LoadDialog extends Activity {
 			}
 		}
 		if (filenames.size() > 0) {
-			ArrayAdapter<String> adapter = new ArrayAdapter<String>(LoadDialog.this, android.R.layout.simple_list_item_1, filenames);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, filenames);
 			filelist.setAdapter(adapter);
 		}
 		
 		Button cancel = (Button)findViewById(R.id.cancel);
-		cancel.setOnClickListener(new OnClickListener() {
+		cancel.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent result = new Intent();
-				setResult(RESULT_CANCELED, result);
-				finish();
+				selectedFilename = null;
+				dismiss();
 			}
 		});
 		
@@ -54,11 +65,8 @@ public class LoadDialog extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
 				TextView item = (TextView) v;
-				String name = item.getText().toString();
-				Intent result = new Intent();
-				result.putExtra("filename", name);
-				setResult(RESULT_OK, result);
-				finish();
+				selectedFilename = item.getText().toString();
+				dismiss();
 			}
 		});
 	}

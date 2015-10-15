@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
 import android.util.Log;
@@ -74,9 +75,9 @@ public class PdDroidPartyLauncher extends Activity
 		launch(activity, config.patches.entrySet().iterator().next().getValue(), config);
 	}
 	
-	static File getPersistDirectory(Activity activity) 
+	public static File getPersistDirectory(Context context) 
 	{
-		return new File(new File(Environment.getExternalStorageDirectory(), "PPP"), activity.getPackageName());
+		return new File(new File(Environment.getExternalStorageDirectory(), "PPP"), context.getPackageName());
 	}
 
 }

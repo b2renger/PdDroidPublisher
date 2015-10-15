@@ -2,12 +2,14 @@ package cx.mccormick.pddroidparty.widget.core;
 
 import java.text.DecimalFormat;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.text.StaticLayout;
 import android.util.Log;
 import android.view.MotionEvent;
-import cx.mccormick.pddroidparty.PdDroidParty;
+import cx.mccormick.pddroidparty.NumberboxDialog;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.widget.Widget;
 
@@ -136,12 +138,30 @@ public class Numberbox extends Widget {
 	
 	public boolean touchup(int pid, float x,float y) {
 		if (pid == pid0) {
-			parent.launchDialog(this, PdDroidParty.DIALOG_NUMBERBOX);
+			openEditDialog();
 			down = false;
 			pid0 = -1;
 			return true;
 		}
 		return false;
+	}
+	
+	private void openEditDialog()
+	{
+		final NumberboxDialog editDialog = new NumberboxDialog(parent.getContext(), val);
+		editDialog.setOnDismissListener(new OnDismissListener() {
+			@Override
+			public void onDismiss(DialogInterface dialog) {
+				Float selectedValue = editDialog.getSelectedValue();
+				if(selectedValue != null)
+				{
+					setval(selectedValue.floatValue());
+					sendFloat(val);
+					parent.invalidate();
+				}
+			}
+		});
+		editDialog.show();
 	}
 
 	
@@ -178,7 +198,7 @@ public class Numberbox extends Widget {
 			ex = event.getX();
 			ey = event.getY();
 			if (dRect.contains(ex, ey)) {
-				parent.launchDialog(this, PdDroidParty.DIALOG_NUMBERBOX);
+				openEditDialog();
 			}
 			down = false;
 			break;
@@ -192,7 +212,7 @@ public class Numberbox extends Widget {
 			ex = event.getX(index);
 			ey = event.getY(index);
 			if (dRect.contains(ex, ey)) {
-				parent.launchDialog(this, PdDroidParty.DIALOG_NUMBERBOX);
+				openEditDialog();
 			}
 			down = false;
 			break;

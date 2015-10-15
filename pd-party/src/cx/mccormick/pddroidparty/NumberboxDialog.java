@@ -1,14 +1,26 @@
 package cx.mccormick.pddroidparty;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class NumberboxDialog extends Activity {
+public class NumberboxDialog extends Dialog 
+{
+	private float defaultValue;
+	private Float selectedValue;
+	
+	public NumberboxDialog(Context context, float defaultValue) {
+		super(context);
+		this.defaultValue = defaultValue;
+	}
+	
+	public Float getSelectedValue() {
+		return selectedValue;
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -16,29 +28,25 @@ public class NumberboxDialog extends Activity {
 		
 		//Context context = getApplicationContext();
 		final EditText number = (EditText)findViewById(R.id.number);
-		Intent intent = getIntent();
 		number.setSelectAllOnFocus(true);
 		number.setInputType(2);
-		number.setText("" + intent.getFloatExtra("number", 0));
+		number.setText(String.valueOf(defaultValue));
 		
 		Button ok = (Button)findViewById(R.id.ok);
-		ok.setOnClickListener(new OnClickListener() {
+		ok.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent result = new Intent();
-				result.putExtra("number", Float.parseFloat(number.getText().toString()));
-				setResult(RESULT_OK, result);
-				finish();
+				selectedValue = Float.parseFloat(number.getText().toString());
+				dismiss();
 			}
 		});
 		
 		Button cancel = (Button)findViewById(R.id.cancel);
-		cancel.setOnClickListener(new OnClickListener() {
+		cancel.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent result = new Intent();
-				setResult(RESULT_CANCELED, result);
-				finish();
+				selectedValue = null;
+				dismiss();
 			}
 		});
 	}

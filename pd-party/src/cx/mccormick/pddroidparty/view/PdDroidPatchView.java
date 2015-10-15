@@ -32,7 +32,6 @@ import android.view.View.OnTouchListener;
 
 import com.larvalabs.svgandroid.SVGParser;
 
-import cx.mccormick.pddroidparty.PdDroidParty;
 import cx.mccormick.pddroidparty.PdDroidPartyConfig;
 import cx.mccormick.pddroidparty.R;
 import cx.mccormick.pddroidparty.pd.DroidPartyReceiver;
@@ -69,7 +68,6 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 
 	public int fontsize;
 	private ArrayList<Widget> widgets = new ArrayList<Widget>();
-	private PdDroidParty app;
 	private int splash_res = 0;
 	private Resources res = null;
 	private Picture background = null;
@@ -84,7 +82,7 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 	private int backgroundColor = Color.WHITE;
 
 	
-	public PdDroidPatchView(Activity activity, PdDroidParty parent, PdPatch patch, PdDroidPartyConfig config) {
+	public PdDroidPatchView(Activity activity, PdPatch patch, PdDroidPartyConfig config) {
 		super(activity);
 		
 		this.patch = patch;
@@ -97,8 +95,6 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 			setSoftwareMode();
 		}
 		
-		app = parent;
-
 		setFocusable(true);
 		setFocusableInTouchMode(true);
 		
@@ -555,14 +551,6 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 		}
 	}
 
-	public String getPatchRelativePath(String dir) {
-		return patch.getFile(dir).getPath();
-	}
-
-	public void launchDialog(Widget which, int type) {
-		app.launchDialog(which, type);
-	}
-	
 	public PdPatch getPatch() 
 	{
 		return patch;

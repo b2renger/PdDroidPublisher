@@ -127,11 +127,6 @@
         <activity android:name="cx.mccormick.pddroidparty.PdDroidParty" android:launchMode="singleTask" android:label="@string/app_name" android:screenOrientation="landscape"></activity>
         <service android:name="org.puredata.android.service.PdService" />
 
-        
-		<activity android:name="cx.mccormick.pddroidparty.NumberboxDialog" android:theme="@android:style/Theme.Dialog" android:configChanges="orientation" android:label="Numberbox"></activity>
-		<activity android:name="cx.mccormick.pddroidparty.SaveDialog" android:theme="@android:style/Theme.Dialog" android:configChanges="orientation" android:label="Save"></activity>
-		<activity android:name="cx.mccormick.pddroidparty.LoadDialog" android:theme="@android:style/Theme.Dialog" android:configChanges="orientation" android:label="Load"></activity>
-
 	</application>
     
 </manifest>
