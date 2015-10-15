@@ -1,4 +1,4 @@
-#N canvas 81 123 1275 602 10;
+#N canvas 76 117 1275 602 10;
 #X floatatom 33 18 5 0 0 0 - - nombre.2.r, f 5;
 #X text 74 17 comment;
 #X obj 130 19 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -164,5 +164,19 @@
 #X obj 153 55 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X restore 1150 349 pd nogop;
+#X symbolatom 293 85 10 0 0 0 - - symbol.1.s, f 10;
+#X symbolatom 283 515 20 0 0 2 MyCustomSymbol symbol.2.r symbol.2.s
+, f 20;
+#X obj 309 422 r symbol.1.s;
+#X obj 309 459 s symbol.2.r;
+#X obj 281 477 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 256 513 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 406 481 cnv 15 1 100 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 324 530 cnv 15 100 1 empty empty empty 20 12 0 14 -258113 -66577
+0;
 #X connect 27 0 28 0;
 #X connect 58 0 59 0;
+#X connect 75 0 76 0;

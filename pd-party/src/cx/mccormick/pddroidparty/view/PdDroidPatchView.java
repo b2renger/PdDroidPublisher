@@ -52,6 +52,7 @@ import cx.mccormick.pddroidparty.widget.core.Numberbox2;
 import cx.mccormick.pddroidparty.widget.core.Radio;
 import cx.mccormick.pddroidparty.widget.core.Slider;
 import cx.mccormick.pddroidparty.widget.core.Subpatch;
+import cx.mccormick.pddroidparty.widget.core.Symbol;
 import cx.mccormick.pddroidparty.widget.core.Toggle;
 import cx.mccormick.pddroidparty.widget.core.VUMeter;
 
@@ -363,6 +364,8 @@ public class PdDroidPatchView extends View implements OnTouchListener {
 							widgets.add(new Comment(this, line));
 						} else if (line[1].equals("floatatom")) {
 							widgets.add(new Numberbox(this, line));
+						} else if (line[1].equals("symbolatom")) {
+							widgets.add(new Symbol(this, line));
 						} else if (line.length >= 5) {
 							// pd objects
 							if (line[4].equals("vsl")) {
