@@ -10,7 +10,9 @@ import android.os.Environment;
 import android.util.Log;
 import cx.mccormick.pddroidparty.util.FileHelper;
 
-
+/**
+ * PdDroidParty entry point. Use one of launch(...) method to start your PureData Activity.
+ */
 public class PdDroidPartyLauncher extends Activity
 {
 	/**
@@ -24,10 +26,12 @@ public class PdDroidPartyLauncher extends Activity
 	{
 		launch(activity, patchPath, new PdDroidPartyConfig());
 	}
+	
 	/**
 	 * Launch a Pure Data Activity
 	 * @param activity calling activity (usually "this" when launched from another activity)
 	 * @param patchPath path to the pure data patch file relative to assets directory.
+	 * @param config user configuration
 	 */
 	public static void launch(Activity activity, String patchPath, PdDroidPartyConfig config)
 	{
@@ -70,11 +74,20 @@ public class PdDroidPartyLauncher extends Activity
 		activity.finish();
 	}
 	
+	/**
+	 * Launch a Pure Data Activity in multiple patch mode.
+	 * @param activity calling activity (usually "this" when launched from another activity)
+	 * @param config user configuration with at least one GUI patch configured.
+	 */
 	public static void launch(Activity activity, PdDroidPartyConfig config)
 	{
 		launch(activity, config.guiPatches.entrySet().iterator().next().getValue(), config);
 	}
 	
+	/**
+	 * @param context current context
+	 * @return directory where application files are saved (such as presets)
+	 */
 	public static File getPersistDirectory(Context context) 
 	{
 		return new File(new File(Environment.getExternalStorageDirectory(), "PPP"), context.getPackageName());

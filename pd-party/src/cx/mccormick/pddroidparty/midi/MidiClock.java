@@ -12,7 +12,6 @@ public class MidiClock
 	private MidiOutput[] externals = new MidiOutput[]{};
 	private MidiOutput[] internals = new MidiOutput[]{};
 	private volatile int ticksCount;
-	
 	synchronized public void setInternals(MidiOutput[] array) 
 	{
 		internals = array;

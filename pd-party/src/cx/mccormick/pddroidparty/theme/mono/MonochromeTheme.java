@@ -4,6 +4,9 @@ import android.graphics.Color;
 import cx.mccormick.pddroidparty.theme.Theme;
 import cx.mccormick.pddroidparty.widget.Widget;
 
+/**
+ * Advanced theme using color shading.
+ */
 @SuppressWarnings("serial")
 public class MonochromeTheme implements Theme
 {

@@ -79,7 +79,7 @@ public class PdDroidParty extends Activity {
 		public void onServiceConnected(ComponentName name, IBinder service) {
 			pdService = ((PdService.PdBinder) service).getService();
 			initPd();
-			midiManager.init(PdDroidParty.this, usbMidiManager, PdDroidPartyConfig.midiClockDefaultBPM);
+			midiManager.init(PdDroidParty.this, usbMidiManager, PdPartyClockControl.midiClockDefaultBPM);
 		}
 		
 		@Override

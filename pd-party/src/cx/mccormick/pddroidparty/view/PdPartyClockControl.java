@@ -24,6 +24,12 @@ import cx.mccormick.pddroidparty.pd.PdClock;
 
 public class PdPartyClockControl extends RelativeLayout 
 {
+	public static final int midiClockMinBPM = 1; // hard limit
+
+	public static final int midiClockMaxBPM = 360; // hard limit
+
+	public static final int midiClockDefaultBPM = 100; // nominal BPM
+
 	private MidiManager midiManager;
 
 	private ImageButton btStart;
@@ -138,9 +144,9 @@ public class PdPartyClockControl extends RelativeLayout
 		bpmControl.setDigits(3);
 		bpmControl.setValuePerInch(30f);
 		bpmControl.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
-		bpmControl.setMax((float)PdDroidPartyConfig.midiClockMaxBPM);
-		bpmControl.setMin((float)PdDroidPartyConfig.midiClockMinBPM);
-		bpmControl.setValue(PdDroidPartyConfig.midiClockDefaultBPM);
+		bpmControl.setMax((float)PdPartyClockControl.midiClockMaxBPM);
+		bpmControl.setMin((float)PdPartyClockControl.midiClockMinBPM);
+		bpmControl.setValue(PdPartyClockControl.midiClockDefaultBPM);
 
 		bpmControl.setOnValueChangedListener(new NumberSelector.OnValueChangeListener() {
 			
