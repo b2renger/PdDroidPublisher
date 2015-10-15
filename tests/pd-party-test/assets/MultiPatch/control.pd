@@ -1,3 +1,7 @@
-#N canvas 182 176 224 271 10;
-#X obj 102 60 vsl 15 128 0 1 0 0 volume.s volume.r Volume 0 -9 0 10
--262144 -1 -1 2100 1;
+#N canvas 723 328 224 271 10;
+#X obj 19 66 vsl 15 128 0 1 0 0 volume.s volume.r Volume 0 -9 0 10
+-262144 -1 -1 0 1;
+#X obj 104 91 bng 15 250 50 0 save empty Save 17 7 0 10 -262144 -1
+-1;
+#X obj 104 116 bng 15 250 50 0 load empty Load 17 7 0 10 -262144 -1
+-1;

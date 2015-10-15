@@ -72,7 +72,7 @@ public class PdDroidPartyLauncher extends Activity
 	
 	public static void launch(Activity activity, PdDroidPartyConfig config)
 	{
-		launch(activity, config.patches.entrySet().iterator().next().getValue(), config);
+		launch(activity, config.guiPatches.entrySet().iterator().next().getValue(), config);
 	}
 	
 	public static File getPersistDirectory(Context context) 

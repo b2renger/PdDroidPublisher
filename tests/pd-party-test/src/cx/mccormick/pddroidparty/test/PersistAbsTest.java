@@ -17,7 +17,7 @@ public class PersistAbsTest extends Activity {
         config.presetsPaths.add("abs-abs-Test/presets_abs");
         config.presetsPaths.add("abs-abs-Test/presets_top");
         
-        config.patches.put("Test",  "abs-abs-Test/abs-abs.pd");
+        config.guiPatches.put("Test",  "abs-abs-Test/abs-abs.pd");
         
         
         PdDroidPartyLauncher.launch(this, config);

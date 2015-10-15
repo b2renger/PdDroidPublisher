@@ -18,8 +18,8 @@ public class MainActivity extends Activity {
         config.theme = new MonochromeTheme(MonochromeTheme.YELLOW,true);
        
        // config.patches.put("Full Stack", "Acid_Drums/aciddrums_fullstack.pd");
-        config.patches.put("Sequencer", "Acid_Drums/aciddrums_sequencer.pd");
-        config.patches.put("Audio Controls", "Acid_Drums/aciddrums_controls.pd");
+        config.guiPatches.put("Sequencer", "Acid_Drums/aciddrums_sequencer.pd");
+        config.guiPatches.put("Audio Controls", "Acid_Drums/aciddrums_controls.pd");
         
         config.presetsPaths.add("Acid_Drums/presets_pattern");
         config.presetsPaths.add("Acid_Drums/presets_synth");

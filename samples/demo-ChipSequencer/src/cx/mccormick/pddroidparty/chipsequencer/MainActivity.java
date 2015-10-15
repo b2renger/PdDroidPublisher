@@ -21,8 +21,8 @@ public class MainActivity extends Activity {
         config.presetsPaths.add("Chip_sequencer/presets_synth");
         
        
-        config.patches.put("Sequencer", "Chip_sequencer/chip_sequencer_sequencer.pd");
-        config.patches.put("Audio Controls", "Chip_sequencer/chip_sequencer_controls.pd");
+        config.guiPatches.put("Sequencer", "Chip_sequencer/chip_sequencer_sequencer.pd");
+        config.guiPatches.put("Audio Controls", "Chip_sequencer/chip_sequencer_controls.pd");
         
         PdDroidPartyLauncher.launch(this, config);
     }

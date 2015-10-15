@@ -18,7 +18,9 @@ public class PdDroidPartyConfig implements Serializable
 	public static final int midiClockMaxBPM = 360; // hard limit
 	public static final int midiClockDefaultBPM = 100; // nominal BPM
 
-	public Map<String, String> patches = new LinkedHashMap<String, String>();
+	public List<String> corePatches = new ArrayList<String>();
+	public Map<String, String> guiPatches = new LinkedHashMap<String, String>();
+	
 	public List<String> presetsPaths = new ArrayList<String>();
 	public int audioSampleRate = 44100;
 	public int audioInputs = 1;

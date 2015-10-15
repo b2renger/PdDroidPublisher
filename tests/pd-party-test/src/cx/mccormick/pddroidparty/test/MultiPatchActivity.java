@@ -14,8 +14,10 @@ public class MultiPatchActivity extends Activity {
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
         config.guiKeepAspectRatio = true;
-        config.patches.put("Main", "MultiPatch/main.pd");
-        config.patches.put("Control", "MultiPatch/control.pd");
+        config.presetsPaths.add("MultiPatch/presets");
+        config.guiPatches.put("Main", "MultiPatch/main.pd");
+        config.guiPatches.put("Control", "MultiPatch/control.pd");
+        config.corePatches.add("MultiPatch/core.pd");
         PdDroidPartyLauncher.launch(this, config);
     }
     

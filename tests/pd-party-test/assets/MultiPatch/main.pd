@@ -1,23 +1,7 @@
-#N canvas 444 193 231 280 10;
-#N canvas 477 417 450 300 core 1;
-#X obj 132 123 phasor~;
-#X obj 132 167 -~ 1;
-#X obj 132 145 *~ 2;
-#X obj 131 231 *~;
-#X obj 131 253 dac~;
-#X obj 132 51 r freq.s;
-#X obj 167 171 r volume.s;
-#X obj 167 193 sig~;
-#X obj 132 80 sig~;
-#X connect 0 0 2 0;
-#X connect 1 0 3 0;
-#X connect 2 0 1 0;
-#X connect 3 0 4 0;
-#X connect 3 0 4 1;
-#X connect 5 0 8 0;
-#X connect 6 0 7 0;
-#X connect 7 0 3 1;
-#X connect 8 0 0 0;
-#X restore 58 27 pd core;
+#N canvas 440 296 231 280 10;
 #X obj 68 76 vsl 15 128 1 10000 1 0 freq.s freq.r Frequency 0 -9 0
-10 -262144 -1 -1 3200 1;
+10 -262144 -1 -1 2200 1;
+#X obj 138 114 bng 15 250 50 0 save empty Save 17 7 0 10 -262144 -1
+-1;
+#X obj 138 139 bng 15 250 50 0 load empty Load 17 7 0 10 -262144 -1
+-1;

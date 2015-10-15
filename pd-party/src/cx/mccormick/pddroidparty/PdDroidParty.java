@@ -44,6 +44,7 @@ import cx.mccormick.pddroidparty.util.FileHelper;
 import cx.mccormick.pddroidparty.view.PdDroidPatchView;
 import cx.mccormick.pddroidparty.view.PdPartyClockControl;
 import cx.mccormick.pddroidparty.widget.Widget;
+import cx.mccormick.pddroidparty.widget.abs.LoadSave;
 
 public class PdDroidParty extends Activity {
 	public List<PdDroidPatchView> patchviews = new ArrayList<PdDroidPatchView>();
@@ -183,7 +184,7 @@ public class PdDroidParty extends Activity {
 		
 		layout.addView(clockControl);
 
-		if(config.patches.isEmpty())
+		if(config.guiPatches.isEmpty())
 		{
 			PdDroidPatchView patchview = new PdDroidPatchView(this, patch, config);
 			patchviews.add(patchview);
@@ -198,7 +199,7 @@ public class PdDroidParty extends Activity {
 			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 			stack.setLayoutParams(params);
 			
-			for(Entry<String, String> entry : config.patches.entrySet())
+			for(Entry<String, String> entry : config.guiPatches.entrySet())
 			{
 				PdPatch patch = new PdPatch(new File(this.patch.getFile().getParentFile().getParentFile(), entry.getValue()).getAbsolutePath());
 				final PdDroidPatchView patchview = new PdDroidPatchView(this, patch, config);
@@ -308,6 +309,27 @@ public class PdDroidParty extends Activity {
 						finish();
 					}
 				}
+				
+				// load core patches if any
+				for(String path : config.corePatches)
+				{
+					PdPatch patch = new PdPatch(new File(PdDroidParty.this.patch.getFile().getParentFile().getParentFile(), path).getAbsolutePath());
+					List<String[]> atomlines = PdParser.parsePatch(patch);
+					for (String[] line: atomlines) {
+						if (line.length >= 5) {
+							if (line[4].equals("loadsave")) {
+								 // XXX first one
+								new LoadSave(patchviews.iterator().next(), line);
+							}
+						}
+					}
+					try {
+						patch.open();
+					} catch (IOException e) {
+						throw new Error(e);
+					}
+				}
+				
 				// start the audio thread
 				String name = res.getString(R.string.app_name);
 				pdService.startAudio(new Intent(PdDroidParty.this, PdDroidParty.class), R.drawable.icon, name, "Return to " + name + ".");
