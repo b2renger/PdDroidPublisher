@@ -769,6 +769,6 @@ WobbleTernary 0 -16 0 10 -262144 -1 -1 3;
 #X obj 222 14 bng 24 250 50 0 save empty empty 17 7 0 10 -262144 -1
 -1;
 #X text 250 17 Save;
-#X obj 439 11 taplist 32 32 tune.r tune.s Tune C C# D D# E F F# G G#
+#X obj 439 11 taplist 32 32 tune.r tune.s TuneTaplist C C# D D# E F F# G G#
 A A# B;
 #X text 439 42 Tune;
