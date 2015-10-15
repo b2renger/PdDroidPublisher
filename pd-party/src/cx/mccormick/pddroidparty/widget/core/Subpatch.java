@@ -270,12 +270,15 @@ public class Subpatch extends Widget
 	@Override
 	public void drawLabel(Canvas canvas)
 	{
-		paint.setStrokeWidth(0);
-		paint.setStyle(Paint.Style.FILL);
-		paint.setColor(labelcolor);
-		paint.setTextSize(fontsize);
-		paint.setTypeface(font);
-		canvas.drawText(label, dRect.left, dRect.top - paint.descent() - 2, paint);
+		if(label != null)
+		{
+			paint.setStrokeWidth(0);
+			paint.setStyle(Paint.Style.FILL);
+			paint.setColor(labelcolor);
+			paint.setTextSize(fontsize);
+			paint.setTypeface(font);
+			canvas.drawText(label, dRect.left, dRect.top - paint.descent() - 2, paint);
+		}
 	}
 	
 	protected void drawSubpatchContent(Canvas canvas)
