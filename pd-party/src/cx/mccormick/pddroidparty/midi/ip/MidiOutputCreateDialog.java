@@ -41,10 +41,10 @@ public class MidiOutputCreateDialog extends Dialog
 		rg.addView(rbUnicast);
 		rg.addView(rbMulticast);
 		
-		rbMulticast.setChecked(true);
+		rbUnicast.setChecked(true);
 		
 		final EditText tvIP = new EditText(getContext());
-		tvIP.setText("225.0.0.37");
+		tvIP.setText("127.0.0.1");
 		
 		final EditText tvPORT = new EditText(getContext());
 		tvPORT.setInputType(InputType.TYPE_CLASS_NUMBER);
