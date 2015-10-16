@@ -2,7 +2,7 @@ package net.mgsx.ppp.example;
 
 import android.app.Activity;
 import android.os.Bundle;
-import cx.mccormick.pddroidparty.PdDroidPartyLauncher;
+import net.mgsx.ppp.PdDroidPartyLauncher;
 
 
 public class Example extends Activity {
