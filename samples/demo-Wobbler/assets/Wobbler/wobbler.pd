@@ -1,16 +1,16 @@
-#N canvas 376 201 532 510 10;
+#N canvas 372 203 532 510 10;
 #X declare -path ./rj;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 32 177 hsl 250 25 0 1 0 1 glide.s glide.r GLIDE 40 7 1 10 -262144
--1 -4160 16200 1;
-#X obj 33 225 hsl 250 50 0 1 0 1 tone.s tone.r TONE 40 7 1 10 -262144
--1 -4160 19600 1;
-#X obj 74 24 tgl 25 1 autoplay.s autoplay.r AUTOPLAY 0 -10 1 10 -262144
 -1 -4160 0 1;
+#X obj 33 225 hsl 250 50 0 1 0 1 tone.s tone.r TONE 40 7 1 10 -262144
+-1 -4160 18600 1;
+#X obj 74 24 tgl 25 1 autoplay.s autoplay.r AUTOPLAY 0 -10 1 10 -262144
+-1 -4160 1 1;
 #X obj 29 24 tgl 25 1 bass.s bass.r BASS 0 -10 1 10 -262144 -1 -4160
-0 1;
-#N canvas 676 388 450 300 guts 0;
-#N canvas 66 128 1301 554 BASS 0;
+1 1;
+#N canvas 670 391 450 300 guts 0;
+#N canvas 66 131 1301 554 BASS 0;
 #X obj 19 271 osc~;
 #X obj 19 252 +~;
 #X obj 19 -53 mtof;
@@ -338,7 +338,6 @@
 #X obj 147 59 r oscmix.s;
 #X obj 80 86 swap 1;
 #X obj 80 112 -, f 6;
-#X obj 105 672 print;
 #X obj 19 672 vcf~ 2;
 #X obj 385 140 r Tone;
 #X obj 385 162 * 10000;
@@ -423,7 +422,7 @@
 #X connect 32 0 0 0;
 #X restore 595 164 pd wobble-control;
 #X obj 595 226 sel 0 1 2 3 4 5 6 7 8 9 10 11 12;
-#X connect 0 0 60 0;
+#X connect 0 0 59 0;
 #X connect 1 0 0 0;
 #X connect 2 0 9 0;
 #X connect 3 0 1 0;
@@ -462,7 +461,7 @@
 #X connect 35 0 36 0;
 #X connect 36 0 37 0;
 #X connect 37 0 38 0;
-#X connect 38 0 60 1;
+#X connect 38 0 59 1;
 #X connect 39 0 16 0;
 #X connect 39 1 11 0;
 #X connect 40 0 7 0;
@@ -484,19 +483,20 @@
 #X connect 52 0 25 0;
 #X connect 53 0 52 1;
 #X connect 54 0 53 0;
-#X connect 55 0 65 0;
+#X connect 55 0 64 0;
 #X connect 56 0 46 1;
 #X connect 56 0 57 0;
 #X connect 57 0 58 0;
 #X connect 57 1 58 1;
 #X connect 58 0 44 1;
-#X connect 60 0 26 0;
-#X connect 60 1 52 0;
+#X connect 59 0 26 0;
+#X connect 59 1 52 0;
+#X connect 60 0 61 0;
 #X connect 61 0 62 0;
 #X connect 62 0 63 0;
-#X connect 63 0 64 0;
-#X connect 64 0 65 1;
-#X connect 65 0 1 1;
+#X connect 63 0 64 1;
+#X connect 64 0 1 1;
+#X connect 65 0 5 0;
 #X connect 66 0 5 0;
 #X connect 67 0 5 0;
 #X connect 68 0 5 0;
@@ -509,23 +509,22 @@
 #X connect 75 0 5 0;
 #X connect 76 0 5 0;
 #X connect 77 0 5 0;
-#X connect 78 0 5 0;
-#X connect 79 0 80 0;
-#X connect 80 0 77 0;
-#X connect 80 1 78 0;
-#X connect 80 2 66 0;
-#X connect 80 3 76 0;
-#X connect 80 4 67 0;
-#X connect 80 5 75 0;
-#X connect 80 6 68 0;
-#X connect 80 7 72 0;
-#X connect 80 8 69 0;
-#X connect 80 9 73 0;
-#X connect 80 10 70 0;
-#X connect 80 11 74 0;
-#X connect 80 12 71 0;
+#X connect 78 0 79 0;
+#X connect 79 0 76 0;
+#X connect 79 1 77 0;
+#X connect 79 2 65 0;
+#X connect 79 3 75 0;
+#X connect 79 4 66 0;
+#X connect 79 5 74 0;
+#X connect 79 6 67 0;
+#X connect 79 7 71 0;
+#X connect 79 8 68 0;
+#X connect 79 9 72 0;
+#X connect 79 10 69 0;
+#X connect 79 11 73 0;
+#X connect 79 12 70 0;
 #X restore 37 119 pd BASS;
-#N canvas 491 211 450 300 TIMEBASE 0;
+#N canvas 485 214 450 300 TIMEBASE 0;
 #X obj 23 15 declare -path ./rj;
 #X obj 10 116 s bpm;
 #X obj 69 176 s tick;
@@ -537,9 +536,11 @@
 #X obj 61 95 / 24;
 #X obj 61 117 i;
 #X obj 61 139 change;
+#X obj 144 126 s stop;
 #X connect 3 0 1 0;
 #X connect 4 0 8 0;
 #X connect 4 1 7 0;
+#X connect 4 2 11 0;
 #X connect 5 0 6 0;
 #X connect 5 1 6 1;
 #X connect 6 0 1 0;
@@ -548,7 +549,7 @@
 #X connect 9 0 10 0;
 #X connect 10 0 2 0;
 #X restore 37 51 pd TIMEBASE;
-#N canvas 567 285 706 430 PATTERN 0;
+#N canvas 563 287 706 430 PATTERN 0;
 #X obj 127 389 outlet;
 #X obj 127 48 spigot;
 #X obj 127 68 mod 16;
@@ -563,7 +564,7 @@
 #X obj 297 142 r note2.s;
 #X obj 324 166 r note3.s;
 #X obj 346 192 r note4.s;
-#N canvas 525 314 450 300 MONITOR 0;
+#N canvas 523 315 450 300 MONITOR 0;
 #X obj 127 47 inlet;
 #X obj 127 69 / 4;
 #X obj 127 91 int;
@@ -607,23 +608,35 @@
 #X connect 20 1 18 1;
 #X connect 21 0 20 0;
 #X restore 37 71 pd PATTERN;
-#N canvas 154 256 316 271 IO 0;
+#N canvas 148 343 316 271 IO 0;
 #X obj 44 46 catch~ RIGHT;
 #X obj 6 25 catch~ LEFT;
-#X obj 33 189 dac~;
+#X obj 30 245 dac~;
 #X obj 46 77 tanh~;
 #X obj 5 75 tanh~;
-#X obj 9 136 *~ 1;
-#X obj 66 136 *~ 1;
-#X obj 140 77 r master.s;
+#X obj 237 83 r master.s;
+#X obj 180 94 line~;
+#X obj 180 38 r stop;
+#X obj 180 134 *~;
+#X obj 63 192 *~;
+#X obj 6 192 *~;
+#X msg 131 66 1 50;
+#X obj 131 38 r tick;
+#X msg 180 70 0 50;
 #X connect 0 0 3 0;
 #X connect 1 0 4 0;
-#X connect 3 0 6 0;
-#X connect 4 0 5 0;
-#X connect 5 0 2 0;
-#X connect 6 0 2 1;
-#X connect 7 0 6 1;
-#X connect 7 0 5 1;
+#X connect 3 0 9 0;
+#X connect 4 0 10 0;
+#X connect 5 0 8 1;
+#X connect 6 0 8 0;
+#X connect 7 0 13 0;
+#X connect 8 0 9 1;
+#X connect 8 0 10 1;
+#X connect 9 0 2 1;
+#X connect 10 0 2 0;
+#X connect 11 0 6 0;
+#X connect 12 0 11 0;
+#X connect 13 0 6 0;
 #X restore 37 180 pd IO;
 #N canvas 518 132 610 482 msg_fwd 0;
 #X obj 28 42 r glide.s;
@@ -745,16 +758,16 @@
 #X obj 325 71 vradio 28 1 1 13 sel1.s sel1.r empty 0 -8 0 10 -262144
 -1 -1 9;
 #X obj 34 298 hsl 250 50 0 1 0 1 wobble.s wobble.r WOBBLE 40 7 1 10
--262144 -1 -4160 22850 1;
+-262144 -1 -4160 12450 1;
 #X text 2 61 SIN;
 #X text 285 61 TRI;
 #X obj 322 446 hradio 34 1 0 4 empty pattern.led TrackLeds 0 40 0 10
--262144 -1 -1 3;
+-262144 -1 -1 0;
 #X obj 325 14 hradio 26 1 1 5 octavia.s octavia.r empty 0 -8 0 10 -262144
--1 -1 3;
+-1 -1 1;
 #X text 363 40 Octavia;
 #X obj 32 382 hradio 36 1 0 7 wobble.binary.select.s wobble.binary.select.r
-WobbleBinary 0 -16 0 10 -262144 -1 -1 6;
+WobbleBinary 0 -16 0 10 -262144 -1 -1 3;
 #X obj 51 444 hradio 36 1 0 6 wobble.ternary.select.s wobble.ternary.select.r
 WobbleTernary 0 -16 0 10 -262144 -1 -1 5;
 #X text 77 367 1;
