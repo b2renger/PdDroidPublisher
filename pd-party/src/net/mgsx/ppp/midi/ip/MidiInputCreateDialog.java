@@ -46,6 +46,7 @@ public class MidiInputCreateDialog extends Dialog
 		
 		final EditText tvIP = new EditText(getContext());
 		tvIP.setText("127.0.0.1");
+		tvIP.setEnabled(rbMulticast.isChecked());
 		
 		final EditText tvPORT = new EditText(getContext());
 		tvPORT.setInputType(InputType.TYPE_CLASS_NUMBER);
