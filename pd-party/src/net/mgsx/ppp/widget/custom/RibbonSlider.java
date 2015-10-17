@@ -1,10 +1,13 @@
-package net.mgsx.ppp.test.custom;
+package net.mgsx.ppp.widget.custom;
 
 import net.mgsx.ppp.view.PdDroidPatchView;
 import net.mgsx.ppp.widget.core.Slider;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+/**
+ * Display slider with filled rectangle (from minimum to current value) instead of a cursor. 
+ */
 public class RibbonSlider extends Slider 
 {
 	public RibbonSlider(PdDroidPatchView app, String[] atomline, boolean horizontal) {
