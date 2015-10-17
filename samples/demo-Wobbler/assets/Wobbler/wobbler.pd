@@ -1,4 +1,4 @@
-#N canvas 380 199 532 510 10;
+#N canvas 376 201 532 510 10;
 #X declare -path ./rj;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 32 177 hsl 250 25 0 1 0 1 glide.s glide.r GLIDE 40 7 1 10 -262144
@@ -690,7 +690,7 @@
 #X connect 2 0 0 0;
 #X restore 620 37 pd guts;
 #X obj 620 116 clock-gui;
-#N canvas 701 291 613 463 loadsave-interface 0;
+#N canvas 699 292 613 463 loadsave-interface 0;
 #X obj 44 15 s cb-save;
 #X obj 44 -6 r storage-save;
 #X obj 194 -6 r storage-load;
@@ -710,7 +710,7 @@
 #X connect 8 0 6 0;
 #X connect 9 0 7 0;
 #X restore 620 77 pd loadsave-interface;
-#N canvas 643 81 651 686 loadsave 0;
+#N canvas 770 81 651 686 loadsave 0;
 #X obj 98 189 persist-map storage bass.s bass.r;
 #X obj 97 212 persist-map storage autoplay.s autoplay.r;
 #X obj 99 234 persist-map storage glide.s glide.r;
@@ -721,11 +721,13 @@
 #X obj 107 351 persist-map storage sel3.s sel3.r;
 #X obj 106 372 persist-map storage sel4.s sel4.r;
 #X obj 108 413 persist-map storage oscmix.s oscmix.r;
-#X obj 107 439 persist-map storage master.s master.r;
 #X obj 115 470 persist-map storage noilvl.s noilvl.r;
 #X obj 121 500 persist-map storage noiq.s noiq.r;
 #X obj 107 539 persist-map storage tune.s/idx tune.r/idx;
 #X obj 106 569 persist-map storage octavia.s octavia.r;
+#X obj 133 34 loadbang;
+#X msg 133 56 \; master.r 0.5;
+#X connect 14 0 15 0;
 #X restore 620 97 pd loadsave;
 #X obj 620 58 loadsave storage;
 #X obj 32 99 hsl 250 25 0 1 0 1 noilvl.s noilvl.r NOISE_LEVEL 40 7
@@ -777,5 +779,5 @@ WobbleTernary 0 -16 0 10 -262144 -1 -1 5;
 #X obj 480 12 taplist 32 32 tune.r tune.s TuneTaplist C C# D D# E F
 F# G G# A A# B;
 #X text 480 43 Tune;
-#X obj 481 73 vsl 32 390 0 1 0 1 master.s master.r Master 0 400 0 10
--262144 -1 -1 21600 1;
+#X obj 481 73 vsl 32 390 0 1 0 0 master.s master.r Master 0 400 0 10
+-262144 -1 -1 19450 1;
