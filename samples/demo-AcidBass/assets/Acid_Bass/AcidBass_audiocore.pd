@@ -1,5 +1,4 @@
-#N canvas 715 82 651 686 10;
-#X declare -path ../../../../pd-party/droidparty-abstractions;
+#N canvas 706 97 651 686 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 72 337 s pos;
 #X obj 27 301 mod 16;
@@ -7,7 +6,7 @@
 #X obj 126 191 s notetime;
 #X obj 27 248 f 0;
 #X obj 53 248 + 1;
-#X obj 27 465 pack f \$0;
+#X obj 27 454 pack f \$0;
 #X floatatom 81 309 5 0 0 0 - - -, f 5;
 #X floatatom 50 388 5 0 0 0 - - -, f 5;
 #X obj 27 153 / 24;
@@ -16,13 +15,10 @@
 #X obj 27 224 b;
 #X obj 126 169 * 24;
 #X obj 102 241 s tick;
-#X obj 27 443 + 92;
-#X obj 27 415 * 43.75;
-#X msg 27 486 \; acidbass_cursor pos \$1 0;
-#X obj 26 5 declare -path ../../../../pd-party/droidparty-abstractions
-;
+#X obj 27 432 + 92;
+#X obj 27 404 * 43.75;
+#X msg 27 475 \; acidbass_cursor pos \$1 0;
 #X obj 27 118 clock, f 16;
-#X obj 320 25 clock-gui;
 #N canvas 550 140 754 524 tablelookup 0;
 #X obj 333 -2 table_set_from_gui Notes 0 notes_0.s 11;
 #X obj 16 97 table_note_rd_lookup Notes 5 notes_5.r 11;
@@ -612,11 +608,8 @@ half16.s gldur16.s, f 80;
 #X connect 37 0 33 0;
 #X connect 38 0 30 0;
 #X restore 27 99 pd audio;
-#X text 390 24 <- open this to control the clock in pd;
-#X obj 272 44 AcidBass_controls;
-#X obj 266 63 AcidBass_sequencer;
-#X text 391 42 <- open sound controls in pd;
-#X text 391 65 <- open sound sequencer in pd;
+#X obj 26 5 declare -path ../../../../pd-party/droidparty-abstractions
+;
 #X connect 1 0 0 0;
 #X connect 1 0 2 0;
 #X connect 1 0 16 0;
@@ -634,5 +627,5 @@ half16.s gldur16.s, f 80;
 #X connect 13 0 3 0;
 #X connect 15 0 6 0;
 #X connect 16 0 15 0;
-#X connect 19 0 9 0;
-#X connect 19 1 13 0;
+#X connect 18 0 9 0;
+#X connect 18 1 13 0;

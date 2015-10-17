@@ -1,0 +1,10 @@
+#N canvas 65 82 450 300 10;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X obj 26 5 declare -path ../../../../pd-party/droidparty-abstractions
+;
+#X obj 27 44 AcidBass_controls;
+#X obj 27 63 AcidBass_sequencer;
+#X obj 319 25 clock-gui;
+#X obj 27 25 AcidBass_audiocore;

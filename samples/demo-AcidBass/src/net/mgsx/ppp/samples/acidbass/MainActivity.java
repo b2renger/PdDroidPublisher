@@ -26,8 +26,10 @@ public class MainActivity extends Activity {
         config.presetsPaths.add("Chip_sequencer/presets_pattern");
         config.presetsPaths.add("Chip_sequencer/presets_synth");
         
+        
         config.guiPatches.put("Sequencer", "Acid_Bass/AcidBass_sequencer.pd");
         config.guiPatches.put("Audio Controls", "Acid_Bass/AcidBass_controls.pd");
+        config.corePatches.add("Acid_Bass/AcidBass_audiocore.pd");
         
         PdDroidPartyLauncher.launch(this, config);
         
