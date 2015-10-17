@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import net.mgsx.ppp.midi.MidiManager;
+import net.mgsx.ppp.midi.MidiManagerHandler;
 import net.mgsx.ppp.midi.UsbMidiHandler;
 import net.mgsx.ppp.midi.UsbMidiManager;
 import net.mgsx.ppp.net.NetworkHelper;
@@ -80,7 +81,12 @@ public class PdDroidParty extends Activity {
 		public void onServiceConnected(ComponentName name, IBinder service) {
 			pdService = ((PdService.PdBinder) service).getService();
 			initPd();
-			midiManager.init(PdDroidParty.this, usbMidiManager, PdPartyClockControl.midiClockDefaultBPM);
+			midiManager.init(PdDroidParty.this, usbMidiManager, PdPartyClockControl.midiClockDefaultBPM, new MidiManagerHandler(){
+				@Override
+				public void onStatusMessage(String message) {
+					post(message);
+				}
+			});
 		}
 		
 		@Override

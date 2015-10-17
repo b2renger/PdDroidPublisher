@@ -1,12 +1,14 @@
 package net.mgsx.ppp.midi.ip;
 
 import java.io.IOException;
+import java.net.BindException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.SocketTimeoutException;
 
+import android.util.Log;
 import net.mgsx.ppp.midi.MidiInput;
 import net.mgsx.ppp.midi.MidiListener;
 
@@ -47,8 +49,10 @@ public class IPMidiInput implements MidiInput
 			public void run() {
 				try {
 					recvSocket();
+				} catch (BindException e) {
+					IPMidiInput.this.listener.onStatusMessage("Port " + port + " already used");
 				} catch (IOException e) {
-					throw new Error(e);
+					Log.e("Network", "Network error", e);
 				}
 			}
 

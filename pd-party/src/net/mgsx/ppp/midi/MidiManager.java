@@ -22,11 +22,14 @@ public class MidiManager
 	
 	public UsbMidiManager usbMidiManager;
 	
-	public void init(final Context ctx, UsbMidiManager usbMidiManager, int bpm)
+	private MidiManagerHandler handler;
+	
+	public void init(final Context ctx, UsbMidiManager usbMidiManager, int bpm, MidiManagerHandler handler)
 	{
 		this.ctx = ctx;
 		this.usbMidiManager = usbMidiManager;
 		this.bpm = bpm;
+		this.handler = handler;
 		this.ipMidiDevice = new IPMidiDevice();
 		
 		PdMidiDevice pdMidiDevice = new PdMidiDevice();
@@ -83,6 +86,10 @@ public class MidiManager
 					public void onMidiMessage(byte[] message) 
 					{
 						PdMidiOutput.send(0, message);
+					}
+					@Override
+					public void onStatusMessage(String message) {
+						handler.onStatusMessage(message);
 					}
 				});
 			}
