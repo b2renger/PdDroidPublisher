@@ -7,8 +7,6 @@
 	<string name="x2">2x</string>
 	<string name="x3">3x</string>
 	<string name="x4">4x</string>
-	<string name="x6">6x</string>
-	<string name="x8">8x</string>
-	<string name="x1_2">Hx</string>
-	<string name="x3_4">Qx</string>
+	<string name="x1_2">1/2x</string>
+	<string name="x3_4">3/4x</string>
 </resources>

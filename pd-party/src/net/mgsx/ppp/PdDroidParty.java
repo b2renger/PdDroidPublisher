@@ -306,8 +306,8 @@ public class PdDroidParty extends Activity {
 						//	nIn = 0;
 						//}
 						// go ahead and intialise the audio
-						patch.open();
 						patchview.buildUI(atomlines);
+						patch.open();
 						// tell the patch view everything has been loaded
 						patchview.loaded();
 						

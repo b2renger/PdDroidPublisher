@@ -1,4 +1,4 @@
-#N canvas 655 95 626 672 10;
+#N canvas 230 107 626 672 10;
 #N canvas 66 138 364 537 audio_feedback 0;
 #X obj 132 400 *~;
 #X obj 132 456 dac~;
@@ -106,7 +106,7 @@
 #X connect 14 0 15 0;
 #X connect 15 0 9 0;
 #X restore 117 263 pd midiclockin;
-#N canvas 135 119 909 648 internalclock 1;
+#N canvas 129 119 909 648 internalclock 0;
 #X obj 285 262 spigot, f 9;
 #X obj 238 332 f 0;
 #X obj 310 330 + 1;
@@ -155,7 +155,7 @@
 #X restore 117 501 pd internalclock;
 #X obj 444 500 outlet stop;
 #X obj 444 348 route stop;
-#N canvas 306 218 679 468 timeadjust 1;
+#N canvas 306 218 679 468 timeadjust 0;
 #X obj 46 103 t b f;
 #X obj 46 56 swap 1;
 #X obj 46 78 /, f 6;
@@ -174,7 +174,7 @@
 #X connect 6 0 1 0;
 #X connect 7 0 4 0;
 #X restore 163 350 pd timeadjust;
-#X obj 307 465 r internalclock;
+#X obj 444 271 r internalclock;
 #X obj 231 314 r clock.time;
 #X obj 162 120 r midiclock.enable;
 #X obj 264 608 r clock.audio;
@@ -252,6 +252,7 @@ one message), f 67;
 #X connect 8 0 5 1;
 #X connect 8 0 1 0;
 #X connect 9 0 5 2;
+#X connect 9 0 7 0;
 #X connect 10 0 8 0;
 #X connect 11 0 3 1;
 #X connect 12 0 0 1;

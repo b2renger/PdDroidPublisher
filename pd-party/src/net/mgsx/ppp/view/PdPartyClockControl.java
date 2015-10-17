@@ -185,6 +185,8 @@ public class PdPartyClockControl extends RelativeLayout
 				onRadioButtonClicked(checkedId);
 			}
 		});
+		rg.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
 		
 		main.addView(btStart);
 		main.addView(btReStart);
@@ -248,10 +250,6 @@ public class PdPartyClockControl extends RelativeLayout
 	    	PdClock.setClockDivision(3);
 	    } else if(R.id.x4 == id) {
 	    	PdClock.setClockDivision(4);
-	    } else if(R.id.x6 == id) {
-	    	PdClock.setClockDivision(6);
-	    } else if(R.id.x8 == id) {
-	    	PdClock.setClockDivision(8);
 	    } else if(R.id.x1_2 == id) {
 	    	PdClock.setClockDivision(0.5f);
 	    } else if(R.id.x3_4 == id) {
