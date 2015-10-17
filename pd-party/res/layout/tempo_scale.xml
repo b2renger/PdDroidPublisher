@@ -28,12 +28,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/x4"/>
-    <RadioButton android:id="@+id/x6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/x6"/>
-    <RadioButton android:id="@+id/x8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/x8"/>
 </RadioGroup>
