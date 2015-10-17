@@ -44,6 +44,7 @@ public class LoadSave extends Widget {
 	public void receiveMessage(String symbol, Object... args) {
 		directory = args.length > 0 ? (String)args[0] : ".";
 		extension = args.length > 1 ? (String)args[1] : "";
+		final File path = new File(PdDroidPartyLauncher.getPersistDirectory(parent.getContext()), directory);
 		if (symbol.equals("save")) {
 			final SaveDialog saveDialog = new SaveDialog(parent.getContext(), filename);
 			saveDialog.setOnDismissListener(new OnDismissListener() {
@@ -52,20 +53,20 @@ public class LoadSave extends Widget {
 					String selectedFilename = saveDialog.getSelectedFilename();
 					if(selectedFilename != null)
 					{
-						gotFilename("save", PdDroidPartyLauncher.getPersistDirectory(parent.getContext()), selectedFilename);
+						gotFilename("save", path, selectedFilename);
 					}
 				}
 			});
 			saveDialog.show();
 		} else if (symbol.equals("load")) {
-			final LoadDialog loadDialog = new LoadDialog(parent.getContext(), PdDroidPartyLauncher.getPersistDirectory(parent.getContext()), extension);
+			final LoadDialog loadDialog = new LoadDialog(parent.getContext(), path, extension);
 			loadDialog.setOnDismissListener(new OnDismissListener() {
 				@Override
 				public void onDismiss(DialogInterface dialog) {
 					String selectedFilename = loadDialog.getSelectedFilename();
 					if(selectedFilename != null)
 					{
-						gotFilename("load", PdDroidPartyLauncher.getPersistDirectory(parent.getContext()), selectedFilename);
+						gotFilename("load", path, selectedFilename);
 					}
 				}
 			});
@@ -75,7 +76,7 @@ public class LoadSave extends Widget {
 	
 	public void gotFilename(String type, File baseDirectory, String newname) {
 		filename = newname;
-		String directoryPath = new File(baseDirectory, directory).getAbsolutePath();
+		String directoryPath = baseDirectory.getAbsolutePath();
 		List<Object> details = new ArrayList<Object>();
 		details.add(directoryPath);
 		details.add(filename);

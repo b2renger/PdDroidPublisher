@@ -25,9 +25,9 @@ import android.widget.TextView;
 
 public class PdPartyClockControl extends RelativeLayout 
 {
-	public static final int midiClockMinBPM = 1; // hard limit
+	public static final int midiClockMinBPM = 30; // hard limit
 
-	public static final int midiClockMaxBPM = 360; // hard limit
+	public static final int midiClockMaxBPM = 300; // hard limit
 
 	public static final int midiClockDefaultBPM = 100; // nominal BPM
 

@@ -89,7 +89,7 @@ public class BiClockScheduler
 							dl.nextAt(period, TimeUnit.NANOSECONDS);
 							dq.add(dl);
 						} catch (InterruptedException e) {
-							throw new Error(e);
+							// Thread interruption is fine.
 						}
 					}
 				}finally{

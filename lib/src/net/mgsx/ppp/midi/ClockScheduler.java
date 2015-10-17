@@ -61,7 +61,7 @@ public class ClockScheduler
 						try {
 							dq.take();
 						} catch (InterruptedException e) {
-							throw new Error(e);
+							// Thread interruption is fine.
 						}
 					}
 				}finally{

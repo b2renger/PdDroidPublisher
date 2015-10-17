@@ -6,6 +6,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 
+import android.util.Log;
 import net.mgsx.ppp.midi.MidiCode;
 import net.mgsx.ppp.midi.MidiOutput;
 
@@ -41,7 +42,7 @@ public class IPMidiOutput implements MidiOutput
 			tickPacket = new DatagramPacket(new byte[]{(byte)0xF8}, 1, IPAddress, port);
 		}
 		catch(IOException e){
-			throw new Error(e);
+			Log.e("Network", "Cannot open", e);
 		}
 
 	}
@@ -71,7 +72,7 @@ public class IPMidiOutput implements MidiOutput
 		try {
 			clientSocket.send(packet);
 		} catch (IOException e) {
-			throw new Error(e);
+			Log.e("Network", "Cannot send packet", e);
 		}
 	}
 
