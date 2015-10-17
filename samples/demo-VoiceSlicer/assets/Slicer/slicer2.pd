@@ -1,6 +1,6 @@
-#N canvas 227 207 726 383 10;
+#N canvas 303 286 726 383 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#N canvas 419 106 879 659 core 0;
+#N canvas 417 107 879 659 core 0;
 #X obj 84 81 adc~;
 #X obj 315 301 + 1;
 #X obj 315 275 random 2;
@@ -8,7 +8,7 @@
 #X obj 360 250 + 1;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array mutes 4 float 3;
-#A 0 0 0 0 0;
+#A 0 1 1 1 1;
 #X coords 0 1 4 0 100 50 1 0 0;
 #X restore 483 22 graph;
 #X obj 393 336 spigot 1;
@@ -24,7 +24,7 @@
 #X obj 381 51 clock, f 7;
 #X obj 17 13 declare -path ../../../../pd-party/droidparty-abstractions
 ;
-#N canvas 66 86 450 440 player 0;
+#N canvas 66 88 450 440 player 0;
 #X obj 174 30 inlet index;
 #X obj 185 301 tabread4~;
 #X obj 184 398 dac~;
@@ -148,7 +148,7 @@
 #X connect 27 0 28 0;
 #X connect 28 0 10 0;
 #X restore 597 24 pd autorec;
-#N canvas 66 79 450 300 reset 0;
+#N canvas 66 80 450 300 reset 0;
 #X obj 74 28 r pitch.reset;
 #X obj 35 87 s pitch.base.r;
 #X obj 35 65 f 44100;
