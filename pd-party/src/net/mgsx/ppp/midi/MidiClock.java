@@ -127,7 +127,7 @@ public class MidiClock
 					try {
 						timer.stopAndWait();
 					} catch (InterruptedException e) {
-						throw new Error(e);
+						// Thread interruption is fine.
 					}
 					
 					dispatchRealTimeMessage(MidiCode.MIDI_REALTIME_CLOCK_STOP);
