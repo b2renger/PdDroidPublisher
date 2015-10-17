@@ -15,6 +15,7 @@ import net.mgsx.ppp.widget.core.Subpatch;
 import net.mgsx.ppp.widget.core.Toggle;
 import net.mgsx.ppp.widget.core.VUMeter;
 import net.mgsx.ppp.widget.custom.PopupTaplist;
+import net.mgsx.ppp.widget.custom.RibbonSlider;
 import android.app.Activity;
 import android.os.Bundle;
 
