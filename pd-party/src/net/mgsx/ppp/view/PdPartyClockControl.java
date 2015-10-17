@@ -185,6 +185,8 @@ public class PdPartyClockControl extends RelativeLayout
 				onRadioButtonClicked(checkedId);
 			}
 		});
+		rg.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
 		
 		main.addView(btStart);
 		main.addView(btReStart);
