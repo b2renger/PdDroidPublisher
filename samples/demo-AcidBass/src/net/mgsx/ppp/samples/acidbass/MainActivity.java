@@ -1,12 +1,14 @@
 package net.mgsx.ppp.samples.acidbass;
 
+import android.app.Activity;
+import android.os.Bundle;
 import net.mgsx.ppp.PdDroidPartyConfig;
 import net.mgsx.ppp.PdDroidPartyLauncher;
 import net.mgsx.ppp.theme.mono.MonochromeTheme;
 import net.mgsx.ppp.widget.abs.Taplist;
 import net.mgsx.ppp.widget.custom.PopupTaplist;
-import android.app.Activity;
-import android.os.Bundle;
+import net.mgsx.ppp.widget.core.Slider;
+import net.mgsx.ppp.widget.custom.RibbonSlider;
 
 
 public class MainActivity extends Activity {
@@ -22,14 +24,16 @@ public class MainActivity extends Activity {
         config.guiKeepAspectRatio = true;
         
         config.typeOverrides.put(Taplist.class, PopupTaplist.class);
+        config.typeOverrides.put(Slider.class, RibbonSlider.class);
         
         config.presetsPaths.add("Chip_sequencer/presets_pattern");
         config.presetsPaths.add("Chip_sequencer/presets_synth");
         
         
-        config.guiPatches.put("Sequencer", "Acid_Bass/AcidBass_sequencer.pd");
-        config.guiPatches.put("Audio Controls", "Acid_Bass/AcidBass_controls.pd");
-        config.corePatches.add("Acid_Bass/AcidBass_audiocore.pd");
+        config.guiPatches.put("Harmony", "Acid_Bass/AcidBass_noteSelector.pd");
+        config.guiPatches.put("Note Options", "Acid_Bass/AcidBass_noteOptions.pd");
+        config.guiPatches.put("Audio Controls", "Acid_Bass/AcidBass_audioControls.pd");
+        config.corePatches.add("Acid_Bass/AcidBass_core.pd");
         
         PdDroidPartyLauncher.launch(this, config);
         

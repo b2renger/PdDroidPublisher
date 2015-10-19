@@ -1,0 +1,157 @@
+#N canvas 65 177 823 523 10;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X obj 745 65 cnv 15 48 430 empty acidbass_cursor empty 20 12 0 14
+-258113 -66577 0;
+#X obj 28 122 tgl 41 0 accent1.s accent1.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 76 122 tgl 41 0 accent2.s accent2.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 124 122 tgl 41 0 accent3.s accent3.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 172 122 tgl 41 0 accent4.s accent4.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 220 122 tgl 41 0 accent5.s accent5.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 269 122 tgl 41 0 accent6.s accent6.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 316 122 tgl 41 0 accent7.s accent7.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 365 122 tgl 41 0 accent8.s accent8.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 412 122 tgl 41 0 accent9.s accent9.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 461 122 tgl 41 0 accent10.s accent10.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 508 122 tgl 41 0 accent11.s accent11.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 557 122 tgl 41 0 accent12.s accent12.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 605 122 tgl 41 0 accent13.s accent13.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 652 122 tgl 41 0 accent14.s accent14.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 700 122 tgl 41 0 accent15.s accent15.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X obj 749 122 tgl 41 0 accent16.s accent16.r empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X text 27 100 Accent;
+#X text 27 199 Duration;
+#X obj 28 221 taplist 40 40 half1.r half1.s half1 *16 *8 *4 *3 *2 *1
+M /2 /3 /4;
+#X obj 358 13 bng 35 250 50 0 load_pattern empty Load_Pattern 40 18
+0 14 -262144 -1 -1;
+#X obj 507 12 bng 35 250 50 0 save_pattern empty Save_Pattern 40 18
+0 14 -262144 -1 -1;
+#X obj 650 12 bng 35 250 50 0 reset_pattern empty Reset_Pattern 40
+18 0 14 -262144 -1 -1;
+#X obj 29 327 taplist 40 40 glide1.r glide1.s glide1 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 76 327 taplist 40 40 glide2.r glide2.s glide2 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 124 327 taplist 40 40 glide3.r glide3.s glide3 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 172 327 taplist 40 40 glide4.r glide4.s glide4 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 220 327 taplist 40 40 glide5.r glide5.s glide5 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 268 327 taplist 40 40 glide6.r glide6.s glide6 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 316 327 taplist 40 40 glide7.r glide7.s glide7 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 364 327 taplist 40 40 glide8.r glide8.s glide8 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 412 327 taplist 40 40 glide9.r glide9.s glide9 -12 -11 -10 -9
+-8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 460 327 taplist 40 40 glide10.r glide10.s glide10 -12 -11 -10
+-9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 508 327 taplist 40 40 glide11.r glide11.s glide11 -12 -11 -10
+-9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 556 327 taplist 40 40 glide12.r glide12.s glide12 -12 -11 -10
+-9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 604 327 taplist 40 40 glide13.r glide13.s glide13 -12 -11 -10
+-9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 652 327 taplist 40 40 glide14.r glide14.s glide14 -12 -11 -10
+-9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 700 327 taplist 40 40 glide15.r glide15.s glide15 -12 -11 -10
+-9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 748 327 taplist 40 40 glide16.r glide16.s glide16 -12 -11 -10
+-9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 75 221 taplist 40 40 half2.r half2.s half2 *16 *8 *4 *3 *2 *1
+M /2 /3 /4;
+#X obj 124 221 taplist 40 40 half3.r half3.s half3 *16 *8 *4 *3 *2
+*1 M /2 /3 /4;
+#X obj 172 221 taplist 40 40 half4.r half4.s half4 *16 *8 *4 *3 *2
+*1 M /2 /3 /4;
+#X obj 220 221 taplist 40 40 half5.r half5.s half5 *16 *8 *4 *3 *2
+*1 M /2 /3 /4;
+#X obj 269 221 taplist 40 40 half6.r half6.s half6 *16 *8 *4 *3 *2
+*1 M /2 /3 /4;
+#X obj 316 221 taplist 40 40 half7.r half7.s half7 *16 *8 *4 *3 *2
+*1 M /2 /3 /4;
+#X obj 365 221 taplist 40 40 half8.r half8.s half8 *16 *8 *4 *3 *2
+*1 M /2 /3 /4;
+#X obj 412 221 taplist 40 40 half9.r half9.s half9 *16 *8 *4 *3 *2
+*1 M /2 /3 /4;
+#X obj 460 221 taplist 40 40 half10.r half10.s half10 *16 *8 *4 *3
+*2 *1 M /2 /3 /4;
+#X obj 508 221 taplist 40 40 half11.r half11.s half11 *16 *8 *4 *3
+*2 *1 M /2 /3 /4;
+#X obj 557 221 taplist 40 40 half12.r half12.s half12 *16 *8 *4 *3
+*2 *1 M /2 /3 /4;
+#X obj 604 221 taplist 40 40 half13.r half13.s half13 *16 *8 *4 *3
+*2 *1 M /2 /3 /4;
+#X obj 652 221 taplist 40 40 half14.r half14.s half14 *16 *8 *4 *3
+*2 *1 M /2 /3 /4;
+#X obj 700 221 taplist 40 40 half15.r half15.s half15 *16 *8 *4 *3
+*2 *1 M /2 /3 /4;
+#X obj 748 221 taplist 40 40 half16.r half16.s half16 *16 *8 *4 *3
+*2 *1 M /2 /3 /4;
+#X text 30 303 Glide from;
+#X obj 29 430 taplist 40 40 gldur1.r gldur1.s gldur1 *16 *8 *4 *3 *2
+*1 /2 /3 /4;
+#X obj 76 430 taplist 40 40 gldur2.r gldur2.s gldur2 *16 *8 *4 *3 *2
+*1 /2 /3 /4;
+#X obj 124 430 taplist 40 40 gldur3.r gldur3.s gldur3 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 172 430 taplist 40 40 gldur4.r gldur4.s gldur4 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 220 430 taplist 40 40 gldur5.r gldur5.s gldur5 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 268 430 taplist 40 40 gldur6.r gldur6.s gldur6 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 316 430 taplist 40 40 gldur7.r gldur7.s gldur7 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 364 430 taplist 40 40 gldur8.r gldur8.s gldur8 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 412 430 taplist 40 40 gldur9.r gldur9.s gldur9 *16 *8 *4 *3
+*2 *1 /2 /3 /4;
+#X obj 460 430 taplist 40 40 gldur10.r gldur10.s gldur10 *16 *8 *4
+*3 *2 *1 /2 /3 /4;
+#X obj 508 430 taplist 40 40 gldur11.r gldur11.s gldur11 *16 *8 *4
+*3 *2 *1 /2 /3 /4;
+#X obj 556 430 taplist 40 40 gldur12.r gldur12.s gldur12 *16 *8 *4
+*3 *2 *1 /2 /3 /4;
+#X obj 604 430 taplist 40 40 gldur13.r gldur13.s gldur13 *16 *8 *4
+*3 *2 *1 /2 /3 /4;
+#X obj 652 430 taplist 40 40 gldur14.r gldur14.s gldur14 *16 *8 *4
+*3 *2 *1 /2 /3 /4;
+#X obj 700 430 taplist 40 40 gldur15.r gldur15.s gldur15 *16 *8 *4
+*3 *2 *1 /2 /3 /4;
+#X obj 748 430 taplist 40 40 gldur16.r gldur16.s gldur16 *16 *8 *4
+*3 *2 *1 /2 /3 /4;
+#X text 30 404 Glide duration;
+#X obj 749 74 tgl 41 0 setallaccent.s setallaccent.r empty 17 7 0 10
+-262144 -1 -1 0 1;
+#X obj 748 172 taplist 40 40 setallhalf.r setallhalf.s setallhalf *16
+*8 *4 *3 *2 *1 M /2 /3 /4;
+#X obj 748 279 taplist 40 40 setallglide.r setallglide.s setallglide
+-12 -11 -10 -9 -8 -7 -6 -5 -4 -3 -2 -1 N 1 2 3 4 5 6 7 8 9 10 11 12
+;
+#X obj 747 382 taplist 40 40 setallgldur.r setallgldur.s setallgldur
+*16 *8 *4 *3 *2 *1 /2 /3 /4;
+#X text 638 183 Set all Durations;
+#X text 650 87 Set all Accents;
+#X text 656 292 Set all Glides;
+#X text 603 398 Set all Glide Durations;
+#X obj 23 483 declare -path ../../../../pd-party/droidparty-abstractions
+;

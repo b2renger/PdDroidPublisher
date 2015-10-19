@@ -1,0 +1,79 @@
+#N canvas 65 102 819 513 10;
+#X obj 214 70 cnv 15 47 445 empty acidbass_notescursor empty 20 12
+0 14 -258113 -66577 0;
+#N canvas 65 92 450 250 (subpatch) 0;
+#X array Notes 16 float 3;
+#A 0 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12;
+#X coords 0 0 16 12 760 360 2 0 0;
+#X restore 24 91 graph;
+#X obj 8 331 cnv 15 775 1 empty empty +4 0 8 0 12 -162280 -66577 0
+;
+#X obj 8 301 cnv 15 775 1 empty empty +5 0 8 0 12 -162280 -66577 0
+;
+#X obj 8 241 cnv 15 775 1 empty empty +7 0 8 0 12 -162280 -66577 0
+;
+#X obj 8 181 cnv 15 775 1 empty empty +9 0 8 0 12 -162280 -66577 0
+;
+#X obj 8 121 cnv 15 775 1 empty empty +11 2 8 0 12 -162280 -66577 0
+;
+#X obj 8 421 cnv 15 775 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 8 361 cnv 15 775 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 8 271 cnv 15 775 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 8 211 cnv 15 775 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 8 151 cnv 15 775 1 empty empty empty -10 0 0 14 -228856 -66577
+0;
+#X obj 8 91 cnv 15 775 1 empty empty +12 2 8 0 12 -162280 -66577 0
+;
+#X obj 9 451 cnv 15 775 1 empty empty +0 0 0 0 12 -162280 -66577 0
+;
+#X obj 9 391 cnv 15 775 1 empty empty +2 0 8 0 12 -162280 -66577 0
+;
+#X obj 339 28 bng 35 250 50 0 load_pattern empty Load_Pattern 40 18
+0 14 -262144 -1 -1;
+#X obj 489 28 bng 35 250 50 0 save_pattern empty Save_Pattern 40 18
+0 14 -262144 -1 -1;
+#X obj 636 28 bng 35 250 50 0 reset_notes empty Reset_Notes 40 18 0
+14 -262144 -1 -1;
+#X obj 25 27 taplist 35 35 basenote1.r basenote1.s basenote1 C C# D
+Eb E F F# G Ab A Bb B;
+#X obj 88 28 hradio 35 1 0 4 baseoctave.s baseoctave.r Octave 0 -8
+0 14 -262144 -1 -1 0;
+#X obj 255 28 nbx 4 35 0 127 0 0 basenote.s basenote.r empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X text 27 454 Octave;
+#X obj 741 475 taplist 35 35 octave16.r octave16.s octave16 *0 *1 *2
+*3 *4 *5 *6;
+#X obj 694 475 taplist 35 35 octave15.r octave15.s octave15 *0 *1 *2
+*3 *4 *5 *6;
+#X obj 647 475 taplist 35 35 octave14.r octave14.s octave14 *0 *1 *2
+*3 *4 *5 *6;
+#X obj 599 475 taplist 35 35 octave13.r octave13.s octave13 *0 *1 *2
+*3 *4 *5 *6;
+#X obj 551 475 taplist 35 35 octave12.r octave12.s octave12 *0 *1 *2
+*3 *4 *5 *6;
+#X obj 28 474 taplist 35 35 octave1.r octave1.s octave1 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 76 474 taplist 35 35 octave2.r octave2.s octave2 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 124 475 taplist 35 35 octave3.r octave3.s octave3 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 172 475 taplist 35 35 octave4.r octave4.s octave4 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 220 475 taplist 35 35 octave5.r octave5.s octave5 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 267 475 taplist 35 35 octave6.r octave6.s octave6 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 314 475 taplist 35 35 octave7.r octave7.s octave7 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 361 475 taplist 35 35 octave8.r octave8.s octave8 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 410 475 taplist 35 35 octave9.r octave9.s octave9 *0 *1 *2 *3
+*4 *5 *6;
+#X obj 457 475 taplist 35 35 octave10.r octave10.s octave10 *0 *1 *2
+*3 *4 *5 *6;
+#X obj 504 475 taplist 35 35 octave11.r octave11.s octave11 *0 *1 *2
+*3 *4 *5 *6;
