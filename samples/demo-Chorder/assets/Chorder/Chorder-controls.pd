@@ -1,0 +1,34 @@
+#N canvas 281 159 424 280 10;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X obj 10 263 declare -path ../../../../pd-party/droidparty-abstractions
+;
+#X obj 255 213 hsl 150 30 0 127 0 0 velocity.s velocity.r empty -2
+-8 0 10 -262144 -1 -1 11732 1;
+#X text 252 196 Velocity;
+#X obj 8 44 hsl 150 30 0 1 0 0 tone.s tone.r empty -2 -8 0 10 -262144
+-1 -1 2980 1;
+#X text 5 27 Tone;
+#X obj 7 101 hsl 150 30 50 2500 0 0 decay.s decay.r empty -2 -8 0 10
+-262144 -1 -1 8818 1;
+#X text 4 84 Decay;
+#X obj 256 45 hsl 150 30 0 20 0 0 vibfreq.s vibfreq.r empty -2 -8 0
+10 -262144 -1 -1 8195 1;
+#X text 253 28 Vibration frequency;
+#X obj 256 100 hsl 150 30 0 10 0 0 vibdepth.s vibdepth.r empty -2 -8
+0 10 -262144 -1 -1 0 1;
+#X text 253 83 Vibration depth;
+#X obj 256 157 hsl 150 30 0 2 0 0 mod.s mod.r empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 251 141 Mod;
+#X obj 7 157 hsl 150 30 0 127 0 0 adsr.s adsr.r empty -2 -8 0 10 -262144
+-1 -1 14900 1;
+#X text 4 140 ADSR;
+#X obj 7 211 hsl 150 30 0 1 0 0 delay.s delay.r empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 4 194 Note Spacing (arpegio);
+#X obj 176 42 bng 35 250 50 0 load_synth empty Load_Synth 0 -7 0 10
+-262144 -1 -1;
+#X obj 177 98 bng 35 250 50 0 save_synth empty Save_Synth 0 -7 0 10
+-262144 -1 -1;
+#X obj 177 156 bng 35 250 50 0 reset_synth empty Reset_Synth 0 -7 0
+10 -262144 -1 -1;

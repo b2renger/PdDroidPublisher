@@ -1,0 +1,47 @@
+#N canvas 126 127 816 511 10;
+#X obj 2 -1 cnv 15 800 500 empty empty empty 0 -4 0 10 -261682 -66577
+0;
+#X obj 22 260 bng 80 250 50 0 play_note1-1.s play_note1-1.r empty 17
+7 0 10 -262144 -1 -1;
+#X obj 102 260 bng 80 250 50 0 play_note1-2.s play_note1-2.r empty
+17 7 0 10 -262144 -1 -1;
+#X obj 22 340 bng 80 250 50 0 play_note1-3.s play_note1-3.r empty 17
+7 0 10 -262144 -1 -1;
+#X obj 102 340 bng 80 250 50 0 play_note1-4.s play_note1-4.r empty
+17 7 0 10 -262144 -1 -1;
+#X obj 213 261 bng 80 250 50 0 play_note2-1.s play_note2-1.r empty
+17 7 0 10 -262144 -1 -1;
+#X obj 293 261 bng 80 250 50 0 play_note2-2.s play_note2-2.r empty
+17 7 0 10 -262144 -1 -1;
+#X obj 213 341 bng 80 250 50 0 play_note2-3.s play_note2-3.r empty
+17 7 0 10 -262144 -1 -1;
+#X obj 293 341 bng 80 250 50 0 play_note2-4.s play_note2-4.r empty
+17 7 0 10 -262144 -1 -1;
+#X obj 409 260 bng 80 250 50 0 play_note3-1.s play_note3-1.r empty
+17 7 0 10 -262144 -1 -1;
+#X obj 489 260 bng 80 250 50 0 play_note3-2.s play_note3-2.r empty
+17 7 0 10 -262144 -1 -1;
+#X obj 409 340 bng 80 250 50 0 play_note3-3.s play_note3-3.r empty
+17 7 0 10 -262144 -1 -1;
+#X obj 489 340 bng 80 250 50 0 play_note3-4.s play_note3-4.r empty
+17 7 0 10 -262144 -1 -1;
+#X obj 605 260 bng 80 250 50 0 play_note4-1.s play_note4-1.r empty
+17 7 0 10 -262144 -1 -1;
+#X obj 685 260 bng 80 250 50 0 play_note4-2.s play_note4-2.r empty
+17 7 0 10 -262144 -1 -1;
+#X obj 605 340 bng 80 250 50 0 play_note4-3.s play_note4-3.r empty
+17 7 0 10 -262144 -1 -1;
+#X obj 685 340 bng 80 250 50 0 play_note4-4.s play_note4-4.r empty
+17 7 0 10 -262144 -1 -1;
+#X obj 62 111 bng 80 250 50 0 play_chord1.s play_chord1.r empty 17
+7 0 10 -262144 -1 -1;
+#X obj 254 109 bng 80 250 50 0 play_chord2.s play_chord2.r empty 17
+7 0 10 -262144 -1 -1;
+#X obj 449 108 bng 80 250 50 0 play_chord3.s play_chord3.r empty 17
+7 0 10 -262144 -1 -1;
+#X obj 644 107 bng 80 250 50 0 play_chord4.s play_chord4.r empty 17
+7 0 10 -262144 -1 -1;
+#X text 90 75 I, f 2;
+#X text 282 72 II;
+#X text 474 72 III;
+#X text 670 72 IV;

@@ -1,0 +1,87 @@
+#N canvas 88 109 450 300 10;
+#X declare -path ../../pd-party/droidparty-abstractions;
+#X declare -path assets/Chorder;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X obj 5 23 declare -path ../../pd-party/droidparty-abstractions;
+#X obj 4 73 clock-gui;
+#X obj 5 44 declare -path assets/Chorder;
+#X obj 4 111 Chorder-core;
+#X obj 6 134 Chorder-controls;
+#X obj 7 161 Chorder-gui;
+#X obj 5 184 Chorder-playBoard;
+#X text 160 119 implement loadsave states;
+#N canvas 715 82 651 686 loadsave-mapping 0;
+#X obj 462 75 r reset_synth;
+#X obj 577 33 loadbang;
+#X obj 412 -152 r synth-load;
+#X obj 411 -132 persist-load synth;
+#X obj 413 -42 r synth-save;
+#X obj 413 -22 persist-save synth;
+#X obj 412 -208 r load_synth;
+#X msg 412 -188 \; synth load presets_synth cbs;
+#X obj 412 -98 r save_synth;
+#X msg 412 -78 \; synth save presets_synth cbs;
+#X obj 40 -210 r load_chords;
+#X obj 40 -154 r chords-load;
+#X obj 40 -134 persist-load chords;
+#X obj 41 -103 r save_chords;
+#X msg 40 -190 \; chords load presets_chords cbs;
+#X msg 41 -83 \; chords save presets_chords cbs;
+#X obj 42 -47 r chords-save;
+#X obj 42 -27 persist-save chords;
+#X obj 28 27 persist-map synth tone.s tone.r;
+#X obj 28 46 persist-map synth decay.s decay.r;
+#X obj 28 65 persist-map synth mod.s mod.r;
+#X obj 28 84 persist-map synth velocity.s velocity.r;
+#X obj 28 103 persist-map synth vibfreq.s vibfreq.r;
+#X obj 28 124 persist-map synth vibdepth.s vibdepth.r;
+#X obj 28 143 persist-map synth adsr.s adsr.r;
+#X obj 28 162 persist-map synth delay.s delay.r;
+#X msg 462 110 \; tone.r 0.2 \; decay.r 1500 \; velocity.r 100 \; vibfreq.r
+11 \; vibdepth 1 \; adsr.r 127 \; delay.r 0 \;;
+#X obj 27 209 persist-map chords octave1.s octave1.r;
+#X obj 27 229 persist-map chords basenote1.s basenote1.r;
+#X obj 27 251 persist-map chords arrangement1.s arrangement1.r;
+#X obj 26 280 persist-map chords octave2.s octave2.r;
+#X obj 26 300 persist-map chords basenote2.s basenote2.r;
+#X obj 26 322 persist-map chords arrangement2.s arrangement2.r;
+#X obj 26 357 persist-map chords octave3.s octave3.r;
+#X obj 26 377 persist-map chords basenote3.s basenote3.r;
+#X obj 26 399 persist-map chords arrangement3.s arrangement3.r;
+#X obj 26 427 persist-map chords octave4.s octave4.r;
+#X obj 26 447 persist-map chords basenote4.s basenote4.r;
+#X obj 26 470 persist-map chords arrangement4.s arrangement4.r;
+#X obj 29 505 persist-map chords structured_evolution.s structured_evolution.r
+;
+#X obj 29 538 persist-map chords proba_evolution.s proba_evolution.r
+;
+#X obj 29 558 persist-map chords structure_type.s structure_type.r
+;
+#X obj 32 589 persist-map chords proba1.s proba1.r;
+#X obj 34 611 persist-map chords proba2.s proba2.r;
+#X obj 32 632 persist-map chords proba3.s proba3.r;
+#X obj 34 654 persist-map chords proba4.s proba4.r;
+#X obj 463 245 r reset_chords;
+#X msg 463 280 \; octave1.r 1 \; basenote1.r/idx 0 \; arrangement1.r/idx
+0 \; octave2.r 1 \; basenote2.r/idx 0 \; arrangement2.r/idx 0 \; octave3.r
+1 \; basenote3.r/idx 0 \; arrangement3.r/idx 0 \; octave4.r 1 \; basenote4.r/idx
+0 \; arrangement4.r/idx 0 \; structured_evolution.r 0 \; proba_evolution.r
+0 \; structure_type.r 0 \; proba1.r 25 \; proba2.r 50 \; proba3.r 75
+\; proba4.r 100 \;;
+#X connect 0 0 26 0;
+#X connect 1 0 26 0;
+#X connect 1 0 47 0;
+#X connect 2 0 3 0;
+#X connect 4 0 5 0;
+#X connect 6 0 7 0;
+#X connect 8 0 9 0;
+#X connect 10 0 14 0;
+#X connect 11 0 12 0;
+#X connect 13 0 15 0;
+#X connect 16 0 17 0;
+#X connect 46 0 47 0;
+#X restore 226 231 pd loadsave-mapping;
+#X obj 29 232 loadsave pattern;
+#X obj 134 232 loadsave synth;
