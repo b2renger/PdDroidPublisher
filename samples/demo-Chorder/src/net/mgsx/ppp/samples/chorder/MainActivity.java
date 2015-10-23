@@ -6,9 +6,13 @@ import net.mgsx.ppp.PdDroidPartyConfig;
 import net.mgsx.ppp.PdDroidPartyLauncher;
 import net.mgsx.ppp.theme.mono.MonochromeTheme;
 import net.mgsx.ppp.widget.abs.Taplist;
+import net.mgsx.ppp.widget.core.Bang;
 import net.mgsx.ppp.widget.core.Slider;
+import net.mgsx.ppp.widget.core.Toggle;
+import net.mgsx.ppp.widget.custom.SwitchToggle;
 import net.mgsx.ppp.widget.custom.PopupTaplist;
 import net.mgsx.ppp.widget.custom.RibbonSlider;
+import net.mgsx.ppp.widget.custom.SimpleBang;
 
 
 public class MainActivity extends Activity {
@@ -18,12 +22,14 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
-        config.theme = new MonochromeTheme(MonochromeTheme.RED, true);
+        config.theme = new MonochromeTheme(MonochromeTheme.ORANGE, true);
         
         config.guiKeepAspectRatio = true;
         
         config.typeOverrides.put(Taplist.class, PopupTaplist.class);
         config.typeOverrides.put(Slider.class, RibbonSlider.class);
+        config.typeOverrides.put(Bang.class, SimpleBang.class);
+        config.typeOverrides.put(Toggle.class, SwitchToggle.class);
         
         config.presetsPaths.add("Chorder/presets_chords");
         config.presetsPaths.add("Chorder/presets_synth");
