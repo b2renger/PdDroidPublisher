@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
         config.guiKeepAspectRatio = true;
-        config.theme = new MonochromeTheme(MonochromeTheme.YELLOW,true);
+        config.theme = new MonochromeTheme(MonochromeTheme.GREEN,true);
         
        
         config.typeOverrides.put(Slider.class, RibbonSlider.class);
