@@ -36,7 +36,7 @@ public class Taplist extends Widget {
 		
 		label = atomline[9];
 
-		fontsize = (int) (h * 0.75); // XXX Wrong !
+		fontsize = (int) (h * 0.60); // XXX Wrong !
 
 		// get list atoms
 		for (int a = 10; a < atomline.length; a++) {
@@ -81,11 +81,11 @@ public class Taplist extends Widget {
 		if (down ? on.draw(canvas) : off.draw(canvas)) {
 			paint.setStyle(Style.FILL);
 			paint.setColor(bgcolor);
-			canvas.drawRect(dRect, paint);
+			canvas.drawRoundRect(dRect,5,5, paint);
 			
 			paint.setStyle(Style.STROKE);
 			paint.setColor(fgcolor);
-			canvas.drawRect(dRect, paint);
+			canvas.drawRoundRect(dRect,5,5, paint);
 		}
 		paint.setStyle(Paint.Style.FILL);
 		paint.setColor(fgcolor);
