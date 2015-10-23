@@ -1,4 +1,4 @@
-#N canvas 351 128 816 511 10;
+#N canvas 348 133 816 511 10;
 #X obj 21 274 bng 80 250 50 0 play_note1-1.s play_note1-1.r empty 17
 7 0 10 -262144 -1 -1;
 #X obj 111 274 bng 80 250 50 0 play_note1-2.s play_note1-2.r empty
@@ -42,13 +42,13 @@
 #X text 286 106 II;
 #X text 478 106 III;
 #X text 676 106 IV;
-#X text 103 105 I, f 2;
 #X obj 31 34 hradio 40 1 0 7 play_div.s play_div.r Quantization 0 -8
 0 10 -262144 -1 -1 3;
-#X text 47 46 1, f 2;
 #X text 85 45 /2;
 #X text 124 45 /3;
 #X text 161 46 /4;
 #X text 199 46 /6;
 #X text 241 45 /8;
 #X text 279 45 /12;
+#X text 97 105 I;
+#X text 46 46 1;
