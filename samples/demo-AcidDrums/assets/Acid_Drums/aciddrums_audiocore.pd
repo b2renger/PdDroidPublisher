@@ -1,4 +1,4 @@
-#N canvas 318 198 523 454 10;
+#N canvas 315 203 523 454 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #N canvas 580 101 478 686 audio 0;
 #X obj 238 538 dac~;
@@ -351,10 +351,9 @@
 #X connect 21 0 22 0;
 #X connect 21 0 9 0;
 #X restore 329 51 pd audio;
-#X obj 323 32 clock-gui;
 #X obj 29 5 declare -path ../../../../pd-party/droidparty-abstractions
 ;
-#N canvas 65 54 1301 714 loadsave-mapping 1;
+#N canvas 65 54 1301 714 loadsave-mapping 0;
 #X obj 41 37 persist-map pattern sound1-01.s sound1-01.r;
 #X obj 41 54 persist-map pattern sound1-02.s sound1-02.r;
 #X obj 41 71 persist-map pattern sound1-03.s sound1-03.r;
