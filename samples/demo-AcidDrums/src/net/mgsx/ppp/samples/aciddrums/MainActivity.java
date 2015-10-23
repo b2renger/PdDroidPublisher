@@ -5,8 +5,10 @@ import net.mgsx.ppp.PdDroidPartyLauncher;
 import net.mgsx.ppp.theme.mono.MonochromeTheme;
 import net.mgsx.ppp.widget.core.Bang;
 import net.mgsx.ppp.widget.core.Slider;
+import net.mgsx.ppp.widget.core.Toggle;
 import net.mgsx.ppp.widget.custom.RibbonSlider;
 import net.mgsx.ppp.widget.custom.SimpleBang;
+import net.mgsx.ppp.widget.custom.SwitchToggle;
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -24,6 +26,12 @@ public class MainActivity extends Activity {
        
         config.typeOverrides.put(Slider.class, RibbonSlider.class);
         config.typeOverrides.put(Bang.class, SimpleBang.class);
+       
+        config.objectOverrides.put("Kick_Mute", SwitchToggle.class);
+        config.objectOverrides.put("Snare_Mute", SwitchToggle.class);
+        config.objectOverrides.put("Clap_Mute", SwitchToggle.class);
+        config.objectOverrides.put("Hihat_Mute", SwitchToggle.class);
+        config.objectOverrides.put("Hihat2_Mute", SwitchToggle.class);
        
        // config.patches.put("Full Stack", "Acid_Drums/aciddrums_fullstack.pd");
         config.guiPatches.put("Sequencer", "Acid_Drums/aciddrums_sequencer.pd");
