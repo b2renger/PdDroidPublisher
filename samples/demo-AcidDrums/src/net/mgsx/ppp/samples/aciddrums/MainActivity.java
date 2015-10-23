@@ -6,10 +6,12 @@ import net.mgsx.ppp.theme.mono.MonochromeTheme;
 import net.mgsx.ppp.widget.core.Bang;
 import net.mgsx.ppp.widget.core.Slider;
 import net.mgsx.ppp.widget.core.Toggle;
+import net.mgsx.ppp.widget.core.Radio;
 import net.mgsx.ppp.widget.custom.RibbonSlider;
 import net.mgsx.ppp.widget.custom.SimpleBang;
 import net.mgsx.ppp.widget.custom.SwitchToggle;
 import net.mgsx.ppp.widget.custom.FilledToggle;
+import net.mgsx.ppp.widget.custom.SimpleRadio;
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -28,6 +30,7 @@ public class MainActivity extends Activity {
         config.typeOverrides.put(Slider.class, RibbonSlider.class);
         config.typeOverrides.put(Bang.class, SimpleBang.class);
         config.typeOverrides.put(Toggle.class, FilledToggle.class);
+        config.typeOverrides.put(Radio.class, SimpleRadio.class);
        
         config.objectOverrides.put("Kick_Mute", SwitchToggle.class);
         config.objectOverrides.put("Snare_Mute", SwitchToggle.class);
