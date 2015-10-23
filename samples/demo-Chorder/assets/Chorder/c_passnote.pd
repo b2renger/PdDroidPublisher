@@ -1,0 +1,12 @@
+#N canvas 65 127 638 300 10;
+#X obj 322 240 outlet;
+#X obj 319 3 inlet;
+#X obj 321 171 f;
+#X obj 321 200 pack f 127;
+#X obj 378 176 r velocity.s;
+#X obj 338 153 r \$1;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 1;
+#X connect 5 0 2 1;

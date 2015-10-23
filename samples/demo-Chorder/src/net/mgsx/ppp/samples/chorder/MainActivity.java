@@ -9,10 +9,12 @@ import net.mgsx.ppp.widget.abs.Taplist;
 import net.mgsx.ppp.widget.core.Bang;
 import net.mgsx.ppp.widget.core.Slider;
 import net.mgsx.ppp.widget.core.Toggle;
+import net.mgsx.ppp.widget.core.Radio;
 import net.mgsx.ppp.widget.custom.SwitchToggle;
 import net.mgsx.ppp.widget.custom.PopupTaplist;
 import net.mgsx.ppp.widget.custom.RibbonSlider;
 import net.mgsx.ppp.widget.custom.SimpleBang;
+import net.mgsx.ppp.widget.custom.SimpleRadio;
 
 
 public class MainActivity extends Activity {
@@ -30,6 +32,7 @@ public class MainActivity extends Activity {
         config.typeOverrides.put(Slider.class, RibbonSlider.class);
         config.typeOverrides.put(Bang.class, SimpleBang.class);
         config.typeOverrides.put(Toggle.class, SwitchToggle.class);
+        config.typeOverrides.put(Radio.class, SimpleRadio.class);
         
         config.presetsPaths.add("Chorder/presets_chords");
         config.presetsPaths.add("Chorder/presets_synth");

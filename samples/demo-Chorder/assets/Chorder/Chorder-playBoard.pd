@@ -1,54 +1,54 @@
-#N canvas 348 133 816 511 10;
-#X obj 21 274 bng 80 250 50 0 play_note1-1.s play_note1-1.r empty 17
+#N canvas 372 232 865 511 10;
+#X obj 3 356 bng 120 250 50 0 playnote0.s playnote0.r empty 17 7 0
+10 -262144 -1 -1;
+#X obj 28 26 bng 80 250 50 0 play_chord1.s play_chord1.r empty 17 7
+0 10 -262144 -1 -1;
+#X obj 128 26 bng 80 250 50 0 play_chord2.s play_chord2.r empty 17
 7 0 10 -262144 -1 -1;
-#X obj 111 274 bng 80 250 50 0 play_note1-2.s play_note1-2.r empty
-17 7 0 10 -262144 -1 -1;
-#X obj 21 365 bng 80 250 50 0 play_note1-3.s play_note1-3.r empty 17
+#X obj 221 26 bng 80 250 50 0 play_chord3.s play_chord3.r empty 17
 7 0 10 -262144 -1 -1;
-#X obj 111 365 bng 80 250 50 0 play_note1-4.s play_note1-4.r empty
-17 7 0 10 -262144 -1 -1;
-#X obj 212 275 bng 80 250 50 0 play_note2-1.s play_note2-1.r empty
-17 7 0 10 -262144 -1 -1;
-#X obj 303 275 bng 80 250 50 0 play_note2-2.s play_note2-2.r empty
-17 7 0 10 -262144 -1 -1;
-#X obj 212 366 bng 80 250 50 0 play_note2-3.s play_note2-3.r empty
-17 7 0 10 -262144 -1 -1;
-#X obj 303 366 bng 80 250 50 0 play_note2-4.s play_note2-4.r empty
-17 7 0 10 -262144 -1 -1;
-#X obj 408 274 bng 80 250 50 0 play_note3-1.s play_note3-1.r empty
-17 7 0 10 -262144 -1 -1;
-#X obj 498 274 bng 80 250 50 0 play_note3-2.s play_note3-2.r empty
-17 7 0 10 -262144 -1 -1;
-#X obj 408 365 bng 80 250 50 0 play_note3-3.s play_note3-3.r empty
-17 7 0 10 -262144 -1 -1;
-#X obj 498 365 bng 80 250 50 0 play_note3-4.s play_note3-4.r empty
-17 7 0 10 -262144 -1 -1;
-#X obj 604 274 bng 80 250 50 0 play_note4-1.s play_note4-1.r empty
-17 7 0 10 -262144 -1 -1;
-#X obj 694 274 bng 80 250 50 0 play_note4-2.s play_note4-2.r empty
-17 7 0 10 -262144 -1 -1;
-#X obj 604 365 bng 80 250 50 0 play_note4-3.s play_note4-3.r empty
-17 7 0 10 -262144 -1 -1;
-#X obj 694 365 bng 80 250 50 0 play_note4-4.s play_note4-4.r empty
-17 7 0 10 -262144 -1 -1;
-#X obj 66 143 bng 80 250 50 0 play_chord1.s play_chord1.r empty 17
+#X obj 315 26 bng 80 250 50 0 play_chord4.s play_chord4.r empty 17
 7 0 10 -262144 -1 -1;
-#X obj 258 143 bng 80 250 50 0 play_chord2.s play_chord2.r empty 17
+#X text 160 9 II;
+#X text 249 8 III;
+#X text 346 9 IV;
+#X obj 524 23 hradio 40 1 0 7 play_div.s play_div.r Quantization 0
+-8 0 10 -262144 -1 -1 3;
+#X text 578 24 /2;
+#X text 617 24 /3;
+#X text 654 25 /4;
+#X text 692 25 /6;
+#X text 734 24 /8;
+#X text 772 24 /12;
+#X text 63 7 I;
+#X text 539 25 1;
+#X obj 126 356 bng 120 250 50 0 playnote2.s playnote2.r empty 17 7
+0 10 -262144 -1 -1;
+#X obj 249 356 bng 120 250 50 0 playnote4.s playnote4.r empty 17 7
+0 10 -262144 -1 -1;
+#X obj 372 356 bng 120 250 50 0 playnote5.s playnote5.r empty 17 7
+0 10 -262144 -1 -1;
+#X obj 496 356 bng 120 250 50 0 playnote7.s playnote7.r empty 17 7
+0 10 -262144 -1 -1;
+#X obj 619 356 bng 120 250 50 0 playnote9.s playnote9.r empty 17 7
+0 10 -262144 -1 -1;
+#X obj 742 356 bng 120 250 50 0 playnote11.s playnote11.r empty 17
 7 0 10 -262144 -1 -1;
-#X obj 453 142 bng 80 250 50 0 play_chord3.s play_chord3.r empty 17
+#X obj 65 233 bng 120 250 50 0 playnote1.s playnote1.r empty 17 7 0
+10 -262144 -1 -1;
+#X obj 188 233 bng 120 250 50 0 playnote3.s playnote3.r empty 17 7
+0 10 -262144 -1 -1;
+#X obj 434 233 bng 120 250 50 0 playnote6.s playnote6.r empty 17 7
+0 10 -262144 -1 -1;
+#X obj 557 233 bng 120 250 50 0 playnote8.s playnote8.r empty 17 7
+0 10 -262144 -1 -1;
+#X obj 679 233 bng 120 250 50 0 playnote10.s playnote10.r empty 17
 7 0 10 -262144 -1 -1;
-#X obj 648 141 bng 80 250 50 0 play_chord4.s play_chord4.r empty 17
-7 0 10 -262144 -1 -1;
-#X text 286 106 II;
-#X text 478 106 III;
-#X text 676 106 IV;
-#X obj 31 34 hradio 40 1 0 7 play_div.s play_div.r Quantization 0 -8
-0 10 -262144 -1 -1 3;
-#X text 85 45 /2;
-#X text 124 45 /3;
-#X text 161 46 /4;
-#X text 199 46 /6;
-#X text 241 45 /8;
-#X text 279 45 /12;
-#X text 97 105 I;
-#X text 46 46 1;
+#X obj 524 92 hradio 40 1 0 6 keyboard_octave.s keyboard_octave.r Keyboard_Octave
+0 -8 0 10 -262144 -1 -1 2;
+#X text 581 93 2;
+#X text 620 93 3;
+#X text 657 94 4;
+#X text 695 94 5;
+#X text 737 93 6;
+#X text 537 93 1;
