@@ -1,47 +1,54 @@
-#N canvas 126 127 816 511 10;
-#X obj 2 -1 cnv 15 800 500 empty empty empty 0 -4 0 10 -261682 -66577
-0;
-#X obj 22 260 bng 80 250 50 0 play_note1-1.s play_note1-1.r empty 17
+#N canvas 351 128 816 511 10;
+#X obj 21 274 bng 80 250 50 0 play_note1-1.s play_note1-1.r empty 17
 7 0 10 -262144 -1 -1;
-#X obj 102 260 bng 80 250 50 0 play_note1-2.s play_note1-2.r empty
+#X obj 111 274 bng 80 250 50 0 play_note1-2.s play_note1-2.r empty
 17 7 0 10 -262144 -1 -1;
-#X obj 22 340 bng 80 250 50 0 play_note1-3.s play_note1-3.r empty 17
+#X obj 21 365 bng 80 250 50 0 play_note1-3.s play_note1-3.r empty 17
 7 0 10 -262144 -1 -1;
-#X obj 102 340 bng 80 250 50 0 play_note1-4.s play_note1-4.r empty
+#X obj 111 365 bng 80 250 50 0 play_note1-4.s play_note1-4.r empty
 17 7 0 10 -262144 -1 -1;
-#X obj 213 261 bng 80 250 50 0 play_note2-1.s play_note2-1.r empty
+#X obj 212 275 bng 80 250 50 0 play_note2-1.s play_note2-1.r empty
 17 7 0 10 -262144 -1 -1;
-#X obj 293 261 bng 80 250 50 0 play_note2-2.s play_note2-2.r empty
+#X obj 303 275 bng 80 250 50 0 play_note2-2.s play_note2-2.r empty
 17 7 0 10 -262144 -1 -1;
-#X obj 213 341 bng 80 250 50 0 play_note2-3.s play_note2-3.r empty
+#X obj 212 366 bng 80 250 50 0 play_note2-3.s play_note2-3.r empty
 17 7 0 10 -262144 -1 -1;
-#X obj 293 341 bng 80 250 50 0 play_note2-4.s play_note2-4.r empty
+#X obj 303 366 bng 80 250 50 0 play_note2-4.s play_note2-4.r empty
 17 7 0 10 -262144 -1 -1;
-#X obj 409 260 bng 80 250 50 0 play_note3-1.s play_note3-1.r empty
+#X obj 408 274 bng 80 250 50 0 play_note3-1.s play_note3-1.r empty
 17 7 0 10 -262144 -1 -1;
-#X obj 489 260 bng 80 250 50 0 play_note3-2.s play_note3-2.r empty
+#X obj 498 274 bng 80 250 50 0 play_note3-2.s play_note3-2.r empty
 17 7 0 10 -262144 -1 -1;
-#X obj 409 340 bng 80 250 50 0 play_note3-3.s play_note3-3.r empty
+#X obj 408 365 bng 80 250 50 0 play_note3-3.s play_note3-3.r empty
 17 7 0 10 -262144 -1 -1;
-#X obj 489 340 bng 80 250 50 0 play_note3-4.s play_note3-4.r empty
+#X obj 498 365 bng 80 250 50 0 play_note3-4.s play_note3-4.r empty
 17 7 0 10 -262144 -1 -1;
-#X obj 605 260 bng 80 250 50 0 play_note4-1.s play_note4-1.r empty
+#X obj 604 274 bng 80 250 50 0 play_note4-1.s play_note4-1.r empty
 17 7 0 10 -262144 -1 -1;
-#X obj 685 260 bng 80 250 50 0 play_note4-2.s play_note4-2.r empty
+#X obj 694 274 bng 80 250 50 0 play_note4-2.s play_note4-2.r empty
 17 7 0 10 -262144 -1 -1;
-#X obj 605 340 bng 80 250 50 0 play_note4-3.s play_note4-3.r empty
+#X obj 604 365 bng 80 250 50 0 play_note4-3.s play_note4-3.r empty
 17 7 0 10 -262144 -1 -1;
-#X obj 685 340 bng 80 250 50 0 play_note4-4.s play_note4-4.r empty
+#X obj 694 365 bng 80 250 50 0 play_note4-4.s play_note4-4.r empty
 17 7 0 10 -262144 -1 -1;
-#X obj 62 111 bng 80 250 50 0 play_chord1.s play_chord1.r empty 17
+#X obj 66 143 bng 80 250 50 0 play_chord1.s play_chord1.r empty 17
 7 0 10 -262144 -1 -1;
-#X obj 254 109 bng 80 250 50 0 play_chord2.s play_chord2.r empty 17
+#X obj 258 143 bng 80 250 50 0 play_chord2.s play_chord2.r empty 17
 7 0 10 -262144 -1 -1;
-#X obj 449 108 bng 80 250 50 0 play_chord3.s play_chord3.r empty 17
+#X obj 453 142 bng 80 250 50 0 play_chord3.s play_chord3.r empty 17
 7 0 10 -262144 -1 -1;
-#X obj 644 107 bng 80 250 50 0 play_chord4.s play_chord4.r empty 17
+#X obj 648 141 bng 80 250 50 0 play_chord4.s play_chord4.r empty 17
 7 0 10 -262144 -1 -1;
-#X text 90 75 I, f 2;
-#X text 282 72 II;
-#X text 474 72 III;
-#X text 670 72 IV;
+#X text 286 106 II;
+#X text 478 106 III;
+#X text 676 106 IV;
+#X text 103 105 I, f 2;
+#X obj 31 34 hradio 40 1 0 7 play_div.s play_div.r Quantization 0 -8
+0 10 -262144 -1 -1 3;
+#X text 47 46 1, f 2;
+#X text 85 45 /2;
+#X text 124 45 /3;
+#X text 161 46 /4;
+#X text 199 46 /6;
+#X text 241 45 /8;
+#X text 279 45 /12;

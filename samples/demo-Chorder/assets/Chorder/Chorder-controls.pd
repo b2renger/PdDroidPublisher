@@ -1,4 +1,4 @@
-#N canvas 281 159 424 280 10;
+#N canvas 119 210 424 280 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 10 263 declare -path ../../../../pd-party/droidparty-abstractions
 ;
@@ -15,7 +15,7 @@
 10 -262144 -1 -1 8195 1;
 #X text 253 28 Vibration frequency;
 #X obj 256 100 hsl 150 30 0 10 0 0 vibdepth.s vibdepth.r empty -2 -8
-0 10 -262144 -1 -1 0 1;
+0 10 -262144 -1 -1 1490 1;
 #X text 253 83 Vibration depth;
 #X obj 256 157 hsl 150 30 0 2 0 0 mod.s mod.r empty -2 -8 0 10 -262144
 -1 -1 0 1;
