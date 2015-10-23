@@ -1,4 +1,4 @@
-package net.mgsx.ppp.test.custom;
+package net.mgsx.ppp.widget.custom;
 
 import net.mgsx.ppp.view.PdDroidPatchView;
 import net.mgsx.ppp.widget.core.Toggle;
@@ -6,12 +6,12 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 
-public class CustomToggle extends Toggle
+public class SwitchToggle extends Toggle
 {
 	protected float cursorX, px;
 	protected int pid = -1;
 
-	public CustomToggle(PdDroidPatchView app, String[] atomline) {
+	public SwitchToggle(PdDroidPatchView app, String[] atomline) {
 		super(app, atomline);
 		dRect.bottom = dRect.top + dRect.width()/2;
 		if(val > 0)
@@ -42,6 +42,7 @@ public class CustomToggle extends Toggle
 		paint.setStyle(Paint.Style.STROKE);
 		canvas.drawRect(dRect,paint);
 		
+		paint.setStyle(Paint.Style.FILL);
 		drawLabel(canvas);
 	}
 	

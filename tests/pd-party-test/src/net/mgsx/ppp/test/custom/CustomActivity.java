@@ -15,6 +15,7 @@ import net.mgsx.ppp.widget.core.Subpatch;
 import net.mgsx.ppp.widget.core.Toggle;
 import net.mgsx.ppp.widget.core.VUMeter;
 import net.mgsx.ppp.widget.custom.SimpleBang;
+import net.mgsx.ppp.widget.custom.SwitchToggle;
 import net.mgsx.ppp.widget.custom.PopupTaplist;
 import net.mgsx.ppp.widget.custom.RibbonSlider;
 import android.app.Activity;
@@ -39,7 +40,7 @@ public class CustomActivity extends Activity {
         config.objectOverrides.put("custom-taplist2", PopupTaplist.class);
         config.objectOverrides.put("sub-custom", CustomSubpatch.class);
         config.objectOverrides.put("custom comment", CustomComment.class);
-        config.objectOverrides.put("toggle-custom", CustomToggle.class);
+        config.objectOverrides.put("toggle-custom", SwitchToggle.class);
         config.objectOverrides.put("vcb-custom", CustomRadio.class);
         config.objectOverrides.put("hcb-custom", CustomRadio.class);
         // TODO custom VUMeter
