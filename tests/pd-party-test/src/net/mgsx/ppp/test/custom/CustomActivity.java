@@ -14,6 +14,7 @@ import net.mgsx.ppp.widget.core.Slider;
 import net.mgsx.ppp.widget.core.Subpatch;
 import net.mgsx.ppp.widget.core.Toggle;
 import net.mgsx.ppp.widget.core.VUMeter;
+import net.mgsx.ppp.widget.custom.SimpleBang;
 import net.mgsx.ppp.widget.custom.PopupTaplist;
 import net.mgsx.ppp.widget.custom.RibbonSlider;
 import android.app.Activity;
@@ -32,7 +33,7 @@ public class CustomActivity extends Activity {
         config.objectOverrides.put("hsl-custom-square", CustomSlider.class);
         config.objectOverrides.put("hsl-custom", RibbonSlider.class);
         config.objectOverrides.put("vsl-custom", RibbonSlider.class);
-        config.objectOverrides.put("bang-custom", CustomBang.class);
+        config.objectOverrides.put("bang-custom", SimpleBang.class);
         config.objectOverrides.put("array-custom", CustomArray.class);
         config.objectOverrides.put("custom-taplist", PopupTaplist.class);
         config.objectOverrides.put("custom-taplist2", PopupTaplist.class);

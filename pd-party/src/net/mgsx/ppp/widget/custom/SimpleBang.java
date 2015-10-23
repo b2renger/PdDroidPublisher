@@ -1,14 +1,14 @@
-package net.mgsx.ppp.test.custom;
+package net.mgsx.ppp.widget.custom;
 
 import net.mgsx.ppp.view.PdDroidPatchView;
 import net.mgsx.ppp.widget.core.Bang;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-public class CustomBang extends Bang
+public class SimpleBang extends Bang
 {
 
-	public CustomBang(PdDroidPatchView app, String[] atomline) 
+	public SimpleBang(PdDroidPatchView app, String[] atomline) 
 	{
 		super(app, atomline);
 	}
@@ -31,6 +31,8 @@ public class CustomBang extends Bang
 			paint.setColor(fgcolor);
 			canvas.drawCircle(dRect.centerX(), dRect.centerY(), Math.min(dRect.width(), dRect.height()) / 3, paint);
 		}
+		paint.setStyle(Paint.Style.FILL);
+		drawLabel(canvas);
 	}
 
 }
