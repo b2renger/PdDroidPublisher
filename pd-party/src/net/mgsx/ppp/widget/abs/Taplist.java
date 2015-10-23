@@ -87,6 +87,7 @@ public class Taplist extends Widget {
 			paint.setColor(fgcolor);
 			canvas.drawRect(dRect, paint);
 		}
+		paint.setStyle(Paint.Style.FILL);
 		paint.setColor(fgcolor);
 		drawCenteredText(canvas, atoms.get((int) val));
 	}
