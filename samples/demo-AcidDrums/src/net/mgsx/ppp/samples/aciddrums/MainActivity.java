@@ -9,6 +9,7 @@ import net.mgsx.ppp.widget.core.Toggle;
 import net.mgsx.ppp.widget.custom.RibbonSlider;
 import net.mgsx.ppp.widget.custom.SimpleBang;
 import net.mgsx.ppp.widget.custom.SwitchToggle;
+import net.mgsx.ppp.widget.custom.FilledToggle;
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -26,6 +27,7 @@ public class MainActivity extends Activity {
        
         config.typeOverrides.put(Slider.class, RibbonSlider.class);
         config.typeOverrides.put(Bang.class, SimpleBang.class);
+        config.typeOverrides.put(Toggle.class, FilledToggle.class);
        
         config.objectOverrides.put("Kick_Mute", SwitchToggle.class);
         config.objectOverrides.put("Snare_Mute", SwitchToggle.class);
