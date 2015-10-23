@@ -1,10 +1,10 @@
-#N canvas 168 143 939 496 10;
+#N canvas 162 153 939 496 10;
 #X obj 842 20 vsl 80 450 0 127 0 0 master.s master.r Master 0 -9 0
-10 -262144 -1 -1 22273 1;
+10 -262144 -1 -1 35673 1;
 #X obj 13 271 vsl 60 200 0 1 0 0 kick_tone.s kick_tone.r KickT 0 -9
 0 10 -262144 -1 -1 19900 1;
 #X obj 87 271 vsl 60 200 0.25 0.75 0 0 kick_decay.s kick_decay.r KickD
-0 -9 0 10 -262144 -1 -1 0 1;
+0 -9 0 10 -262144 -1 -1 5100 1;
 #X obj 162 272 vsl 60 200 0 1 0 0 kick_gain.s kick_gain.r KickG 0 -9
 0 10 -262144 -1 -1 18905 1;
 #X obj 361 20 vsl 60 200 0.05 0.5 0 0 snare_decay.s snare_decay.r SnareD
@@ -40,9 +40,9 @@ Hihat2D 0 -9 0 10 -262144 -1 -1 4975 1;
 #X obj 507 17 tgl 40 0 snare_mute.s snare_mute.r Mute 0 -7 0 10 -262144
 -1 -1 0 1;
 #X obj 232 270 tgl 40 0 kick_mute.s kick_mute.r Mute 0 -7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 508 273 tgl 40 0 clap_mute.s clap_mute.r Mute 0 -7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 785 19 tgl 40 0 hihat_mute.s hihat_mute.r Mute 0 -7 0 10 -262144
 -1 -1 0 1;
 #X obj 788 274 tgl 40 0 hihat2_mute.s hihat2_mute.r Mute 0 -7 0 10
