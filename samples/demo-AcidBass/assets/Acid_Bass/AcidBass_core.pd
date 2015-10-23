@@ -1,4 +1,4 @@
-#N canvas 596 92 447 686 10;
+#N canvas 590 102 447 686 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 306 354 s pos;
 #X obj 27 336 mod 16;
@@ -170,7 +170,7 @@
 #X connect 11 0 14 0;
 #X connect 15 0 16 0;
 #X restore 26 66 pd loadsave-maping;
-#N canvas 712 87 651 686 audio 0;
+#N canvas 709 92 651 686 audio 0;
 #N canvas 65 54 1301 714 synth-seq 0;
 #X obj 75 -88 r pos;
 #X obj 75 -59 sel 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15;
@@ -226,6 +226,8 @@
 #X obj 307 622 t a;
 #X obj 307 641 route 0;
 #X obj 482 507 outlet, f 8;
+#X obj 227 215 onestep2 notes_10.s octave11.s glide11.s accent11.s
+half11.s gldur11.s, f 71;
 #X obj 179 145 onestep2 notes_7.s octave8.s glide8.s accent8.s half8.s
 gldur8.s, f 66;
 #X obj 75 -12 onestep2 notes_0.s octave1.s glide1.s accent1.s half1.s
@@ -246,8 +248,6 @@ gldur7.s, f 66;
 gldur9.s, f 65;
 #X obj 209 190 onestep2 notes_9.s octave10.s glide10.s accent10.s half10.s
 gldur10.s, f 71;
-#X obj 227 215 onestep2 notes_10.s octave11.s glide11.s accent11.s
-half11.s gldur11.s, f 71;
 #X obj 241 238 onestep2 notes_11.s octave12.s glide12.s accent12.s
 half12.s gldur12.s, f 72;
 #X obj 257 259 onestep2 notes_12.s octave13.s glide13.s accent13.s
@@ -259,17 +259,17 @@ half15.s gldur15.s, f 72;
 #X obj 302 326 onestep2 notes_15.s octave16.s glide16.s accent16.s
 half16.s gldur16.s, f 85;
 #X connect 0 0 1 0;
-#X connect 1 0 55 0;
-#X connect 1 1 56 0;
-#X connect 1 2 57 0;
-#X connect 1 3 58 0;
-#X connect 1 4 59 0;
-#X connect 1 5 60 0;
-#X connect 1 6 61 0;
-#X connect 1 7 54 0;
-#X connect 1 8 62 0;
-#X connect 1 9 63 0;
-#X connect 1 10 64 0;
+#X connect 1 0 56 0;
+#X connect 1 1 57 0;
+#X connect 1 2 58 0;
+#X connect 1 3 59 0;
+#X connect 1 4 60 0;
+#X connect 1 5 61 0;
+#X connect 1 6 62 0;
+#X connect 1 7 55 0;
+#X connect 1 8 63 0;
+#X connect 1 9 64 0;
+#X connect 1 10 54 0;
 #X connect 1 11 65 0;
 #X connect 1 12 66 0;
 #X connect 1 13 67 0;
@@ -310,27 +310,27 @@ half16.s gldur16.s, f 85;
 #X connect 51 0 52 0;
 #X connect 52 1 50 0;
 #X connect 54 0 2 0;
-#X connect 54 0 27 0;
+#X connect 54 0 36 0;
 #X connect 55 0 2 0;
-#X connect 55 0 6 0;
+#X connect 55 0 27 0;
 #X connect 56 0 2 0;
-#X connect 56 0 9 0;
+#X connect 56 0 6 0;
 #X connect 57 0 2 0;
-#X connect 57 0 12 0;
+#X connect 57 0 9 0;
 #X connect 58 0 2 0;
-#X connect 58 0 15 0;
+#X connect 58 0 12 0;
 #X connect 59 0 2 0;
-#X connect 59 0 18 0;
+#X connect 59 0 15 0;
 #X connect 60 0 2 0;
-#X connect 60 0 21 0;
+#X connect 60 0 18 0;
 #X connect 61 0 2 0;
-#X connect 61 0 24 0;
+#X connect 61 0 21 0;
 #X connect 62 0 2 0;
-#X connect 62 0 30 0;
+#X connect 62 0 24 0;
 #X connect 63 0 2 0;
-#X connect 63 0 33 0;
+#X connect 63 0 30 0;
 #X connect 64 0 2 0;
-#X connect 64 0 36 0;
+#X connect 64 0 33 0;
 #X connect 65 0 2 0;
 #X connect 65 0 39 0;
 #X connect 66 0 2 0;
@@ -574,7 +574,7 @@ half16.s gldur16.s, f 85;
 #X obj 256 123 r basenote1.s/idx;
 #X obj 27 432 + 25;
 #X obj 27 404 * 48;
-#N canvas 65 87 722 686 init 0;
+#N canvas 65 92 722 686 init 1;
 #X obj 18 142 r reset_synth;
 #X obj 439 232 s Notes;
 #X msg 439 210 const 12;
