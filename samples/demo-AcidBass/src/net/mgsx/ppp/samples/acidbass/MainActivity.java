@@ -8,10 +8,10 @@ import net.mgsx.ppp.theme.mono.MonochromeTheme;
 import net.mgsx.ppp.widget.abs.Taplist;
 import net.mgsx.ppp.widget.custom.PopupTaplist;
 import net.mgsx.ppp.widget.core.Slider;
-import net.mgsx.ppp.widget.core.Toggle;
 import net.mgsx.ppp.widget.custom.RibbonSlider;
 import net.mgsx.ppp.widget.core.Bang;
 import net.mgsx.ppp.widget.custom.SimpleBang;
+import net.mgsx.ppp.widget.core.Toggle;
 import net.mgsx.ppp.widget.custom.FilledToggle;
 
 
@@ -31,6 +31,7 @@ public class MainActivity extends Activity {
         config.typeOverrides.put(Slider.class, RibbonSlider.class);
         config.typeOverrides.put(Bang.class, SimpleBang.class);
         config.typeOverrides.put(Toggle.class, FilledToggle.class);
+        config.objectOverrides.put("Notes", GridArray.class);
         
         config.presetsPaths.add("Chip_sequencer/presets_pattern");
         config.presetsPaths.add("Chip_sequencer/presets_synth");
