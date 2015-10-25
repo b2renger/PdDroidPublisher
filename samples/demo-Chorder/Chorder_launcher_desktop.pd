@@ -1,11 +1,11 @@
-#N canvas 234 183 450 300 10;
+#N canvas 222 203 450 300 10;
 #X declare -path ../../pd-party/droidparty-abstractions;
 #X declare -path assets/Chorder;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 5 23 declare -path ../../pd-party/droidparty-abstractions;
-#X obj 4 73 clock-gui;
+#X obj 4 75 clock-gui;
 #X obj 5 44 declare -path assets/Chorder;
 #X obj 4 111 Chorder-core;
 #X obj 6 134 Chorder-controls;

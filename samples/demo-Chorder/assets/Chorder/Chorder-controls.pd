@@ -1,34 +1,44 @@
-#N canvas 119 210 424 280 10;
+#N canvas 314 251 433 290 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#X obj 10 263 declare -path ../../../../pd-party/droidparty-abstractions
+#X obj 2 290 declare -path ../../../../pd-party/droidparty-abstractions
 ;
-#X obj 255 213 hsl 150 30 0 127 0 0 velocity.s velocity.r empty -2
+#X obj 255 188 hsl 150 30 0 127 0 0 velocity.s velocity.r empty -2
 -8 0 10 -262144 -1 -1 11732 1;
-#X text 252 196 Velocity;
-#X obj 8 44 hsl 150 30 0 1 0 0 tone.s tone.r empty -2 -8 0 10 -262144
+#X text 252 171 Velocity;
+#X obj 8 19 hsl 150 30 0 1 0 0 tone.s tone.r empty -2 -8 0 10 -262144
 -1 -1 2980 1;
-#X text 5 27 Tone;
-#X obj 7 101 hsl 150 30 50 2500 0 0 decay.s decay.r empty -2 -8 0 10
+#X text 5 2 Tone;
+#X obj 7 76 hsl 150 30 50 2500 0 0 decay.s decay.r empty -2 -8 0 10
 -262144 -1 -1 8818 1;
-#X text 4 84 Decay;
-#X obj 256 45 hsl 150 30 0 20 0 0 vibfreq.s vibfreq.r empty -2 -8 0
+#X text 4 59 Decay;
+#X obj 256 20 hsl 150 30 0 20 0 0 vibfreq.s vibfreq.r empty -2 -8 0
 10 -262144 -1 -1 8195 1;
-#X text 253 28 Vibration frequency;
-#X obj 256 100 hsl 150 30 0 10 0 0 vibdepth.s vibdepth.r empty -2 -8
+#X text 253 3 Vibration frequency;
+#X obj 256 75 hsl 150 30 0 10 0 0 vibdepth.s vibdepth.r empty -2 -8
 0 10 -262144 -1 -1 1490 1;
-#X text 253 83 Vibration depth;
-#X obj 256 157 hsl 150 30 0 2 0 0 mod.s mod.r empty -2 -8 0 10 -262144
+#X text 253 58 Vibration depth;
+#X obj 256 132 hsl 150 30 0 2 0 0 mod.s mod.r empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X text 251 141 Mod;
-#X obj 7 157 hsl 150 30 0 127 0 0 adsr.s adsr.r empty -2 -8 0 10 -262144
+#X text 251 116 Mod;
+#X obj 7 132 hsl 150 30 0 127 0 0 adsr.s adsr.r empty -2 -8 0 10 -262144
 -1 -1 14900 1;
-#X text 4 140 ADSR;
-#X obj 7 211 hsl 150 30 0 1 0 0 delay.s delay.r empty -2 -8 0 10 -262144
+#X text 4 115 ADSR;
+#X obj 7 186 hsl 150 30 0 1 0 0 delay.s delay.r empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X text 4 194 Note Spacing (arpegio);
-#X obj 176 42 bng 35 250 50 0 load_synth empty Load_Synth 0 -7 0 10
+#X text 5 167 Note Spacing (arpegio);
+#X obj 176 17 bng 35 250 50 0 load_synth empty Load_Synth 0 -7 0 10
 -262144 -1 -1;
-#X obj 177 98 bng 35 250 50 0 save_synth empty Save_Synth 0 -7 0 10
+#X obj 177 73 bng 35 250 50 0 save_synth empty Save_Synth 0 -7 0 10
 -262144 -1 -1;
-#X obj 177 156 bng 35 250 50 0 reset_synth empty Reset_Synth 0 -7 0
+#X obj 177 131 bng 35 250 50 0 reset_synth empty Reset_Synth 0 -7 0
 10 -262144 -1 -1;
+#X obj 7 242 hsl 150 30 0 1 0 0 dddry.s dddry.r empty -2 -8 0 10 -262144
+-1 -1 7450 1;
+#X text 251 224 Dub Delay Triggers;
+#X text 215 252 Left;
+#X text 371 250 Right;
+#X text 4 225 Dub Delay (wet/dry);
+#X obj 253 241 taplist 35 35 dell.r dell.s dell N 0.25 0.33 0.5 0.66
+0.75 1 2 3 4 5 6;
+#X obj 327 241 taplist 35 35 delr.r delr.s delr N 0.25 0.33 0.5 0.66
+0.75 1 2 3 4 5 6;

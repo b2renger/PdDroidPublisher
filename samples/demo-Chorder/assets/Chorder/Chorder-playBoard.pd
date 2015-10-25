@@ -1,4 +1,4 @@
-#N canvas 372 232 865 511 10;
+#N canvas 354 234 865 511 10;
 #X obj 3 356 bng 120 250 50 0 playnote0.s playnote0.r empty 17 7 0
 10 -262144 -1 -1;
 #X obj 28 26 bng 80 250 50 0 play_chord1.s play_chord1.r empty 17 7
