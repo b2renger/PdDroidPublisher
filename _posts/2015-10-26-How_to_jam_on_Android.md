@@ -8,7 +8,7 @@ published : true
 * [Slave configuration](#Slave)<br>
 * [Master configuration](#Master)<br>
 * [Audio Latency configuration](#Audio_Latency)<br>
-* [Local jam](#local_jam)<br>
+* [Local jam](#Local_Jam)<br>
 
 
 <a name="Introduction"/>
@@ -39,7 +39,7 @@ When you do that another dialog appears :
 
 You won't need to modify anything there and you just have to click "create". FIY **21929** is the port you will receive information from, so be sure to tell your master if you change it.
 
-If you want to run a second app on the same device, though it is officialy not supported and not tested, you can't use a port twice so you'll need to change this value to something else (again be sure to inform your master). More about it in the local jam mode [here](#local_jam).
+If you want to run a second app on the same device, though it is officialy not supported and not tested, you can't use a port twice so you'll need to change this value to something else (again be sure to inform your master). More about it in the local jam mode [here](#Local_Jam).
 
 Congrats ! you are now a slave, if a master gives you orders you will now execute them ! In our context the master will just drive your clock, and you'll be able to choose the subdivision of the main beat you are using to build your patterns.
 
