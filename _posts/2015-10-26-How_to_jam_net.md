@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "How To Jam (Net)"
+title:  "How To Jam on Android (Net)"
 categories: How to, android user
-published : false
+published : true
 ---
 * [Introduction](#Introduction)<br>
 * [Slave configuration](#Slave)<br>
@@ -16,10 +16,10 @@ published : false
 
 First that means that you need to have at least two device both connected to the **same wifi network**. (first step of troubleshooting, is always to check that wifi is enabled and that you are connected to the same router. Even if we have done that a billion times, it still happens ...).
 
-If you click the IO icon : ![io icon](../../../../../../../img/io-icon.png)
+If you click the IO icon : ![io icon]({{site.baseurl}}/img/io-icon.png)
 
 You should see this configuration dialog appear :
-![midi config image](../../../../../../../img/MidiConfigDialog.png)
+![midi config image]({{site.baseurl}}/img/MidiConfigDialog.png)
 
 First information is your ip address you will need this information depending on the scenario you choose : you either will be a slave or be the master.
 That's what happens in a midi environnement ... A master can have more than one slave, but slaves can only have one master.
@@ -30,11 +30,11 @@ That's what happens in a midi environnement ... A master can have more than one 
 
 So you choose to be a slave, good for you ! all you need is to create an **input** configuration.
 
-So you just have to tap the "+" icon next to the **MIDI INPUT** line: ![add midi](../../../../../../../img/addmidi-icon.png)
+So you just have to tap the "+" icon next to the **MIDI INPUT** line: ![add midi]({{site.baseurl}}/img/addmidi-icon.png)
 
 When you do that another dialog appears :
 
-![add midi input](../../../../../../../img/MidiAddInput.png)
+![add midi input]({{site.baseurl}}/img/MidiAddInput.png)
 
 You won't need to modify anything there and you just have to click "create". FIY **21929** is the port you will receive information from, so be sure to tell your master if you change it.
 
@@ -50,15 +50,15 @@ With great power comes great responsibilities ... Not only you will have the han
 
 This is because chose to use the unicast method because it worked better for us, for security and performance reasons hopefully it will work for you too.
 
-For each of the devices you want to forward beats to, you need to create and activitate a new output by tapping the "+" icon next to the **MIDI OUTPUT** label : ![add midi](../../../../../../../img/addmidi-icon.png)
+For each of the devices you want to forward beats to, you need to create and activitate a new output by tapping the "+" icon next to the **MIDI OUTPUT** label : ![add midi]({{site.baseurl}}/img/addmidi-icon.png)
 
 This will open this dialog :
-![add midi output](../../../../../../../img/MidiAddOutput.png)
+![add midi output]({{site.baseurl}}/img/MidiAddOutput.png)
 
 You have to reference each ip address and port of the slaves as they have configured it. Then click on **Create**.
 
 A new entry will be created in the list of available outputs, you just to check it :
-![add midi output](../../../../../../../img/MidiOutputSelected.png)
+![add midi output]({{site.baseurl}}/img/MidiOutputSelected.png)
 
 That's it ! do it for every of you slaves/buddies. And you can now go on to the next step which is about dealing with latency.
 
@@ -79,11 +79,11 @@ Once you have setup a master and slave :
 
 1- the **master** has to launch the clock by clicking on the **play** icon, and activate the audio feedback, by tapping this button :
 
-![audio feedback button](../../../../../../../img/audiofbk-icon.png)
+![audio feedback button]({{site.baseurl}}/img/audiofbk-icon.png)
 
 2- the **slave** should also activate the audio feedback, and then synch the sounds of both device by dragging your finger on the **delay** labelled value.
 
-![audio delay gui](../../../../../../../img/latencyConfig.png)
+![audio delay gui]({{site.baseurl}}/img/latencyConfig.png)
 
 Once sounds are in synch you are good to go !
 
