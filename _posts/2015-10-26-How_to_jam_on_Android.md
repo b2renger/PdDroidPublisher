@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How To Jam on Android (Net)"
+title:  "How To Jam on Android"
 categories: How to, android user
 published : true
 ---
@@ -8,6 +8,7 @@ published : true
 * [Slave configuration](#Slave)<br>
 * [Master configuration](#Master)<br>
 * [Audio Latency configuration](#Audio_Latency)<br>
+* [Local jam](#local_jam)<br>
 
 
 <a name="Introduction"/>
@@ -38,7 +39,7 @@ When you do that another dialog appears :
 
 You won't need to modify anything there and you just have to click "create". FIY **21929** is the port you will receive information from, so be sure to tell your master if you change it.
 
-If you want to run a second app on the same device, though it is officialy not supported and not tested, you can't use a port twice so you'll need to change this value to something else (again be sure to inform your master).
+If you want to run a second app on the same device, though it is officialy not supported and not tested, you can't use a port twice so you'll need to change this value to something else (again be sure to inform your master). More about it in the local jam mode [here](#local_jam).
 
 Congrats ! you are now a slave, if a master gives you orders you will now execute them ! In our context the master will just drive your clock, and you'll be able to choose the subdivision of the main beat you are using to build your patterns.
 
@@ -86,6 +87,25 @@ Once you have setup a master and slave :
 ![audio delay gui]({{site.baseurl}}/img/latencyConfig.png)
 
 Once sounds are in synch you are good to go !
+
+
+<a name="Local_Jam"/>
+
+## Jamming alone in local mode
+
+It is actually pretty trivial, but if you are alone, you still use our system to share the clock beetween several instance of one app, or several apps.
+
+You will have to choose one app as master and all other apps you will launch will be slaves.
+
+For the slaves you just have to specify a different port each time '21269' for the first one, '21270' for the next etc. 
+
+The one and master app has to reference each one of the other app you want to use in synch. You have to follow the same procedure as described before but instead of the ip address you just leave the default '127.0.0.1' value, change the port and tap create.
+
+In a local jam you don't have to worry about audio latency, it's probably the simple way to get started but it's more fun with at least one buddy.
+
+
+Have Fun !
+
 
 
 
