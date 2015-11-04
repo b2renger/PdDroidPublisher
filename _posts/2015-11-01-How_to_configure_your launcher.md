@@ -14,26 +14,17 @@ This section is about how to use the :
 	 * [custom overrides](#custom-overrides)<br>
 * [Persist saving system](#persist)<br>
 
-This is a big part of the project, it requires pd-skills, and hopefully you will learn the rest here. We will base our observations on the Acid Bass example which uses all of these features. But first let's discuss best practices a bit.
 
-## Pure Data best practices
+You should have read the 'List of helper abstractions' post before reading this, and specially the 'Pure-Data best practices' section.
 
-We advise you to create a pd 'launcher' file at the base of you project, to simulate the way it works on android when working on your desktop computer. In the AcidBass example project it is called *AcidBass_launcher_desktop.pd*, and it looks like this :
-
-![pd launcher]({{site.baseurl}}/img/pd_desktop_launcher.png)
-
-This pd patch is only for use in desktop, and in developpement mode, it is not embarked in your application.
-
-It contains a path to our project folder containing specific abstractions such as [clock-gui], or [clock] to control the playback of a sequencer via our jamming system, or other specific abstractions usefull for the project (persist, taplist, touch ...)
-
-It also contains a path to the *assets/Acid_Bass* folder which contains each view of the patch built as an abstraction and incidentally the topic of the next section.
+This is a big part of the project, it requires pd-skills, and hopefully you will learn the bits of code you need to start publishing here. We will base our observations on the Acid Bass example which uses all of these features. 
 
 
 <a name="multi-view"/>
 
 ## Multi-view support
 
-The best way to benefit from the multi-view feature, is to break your patch into several abstractions. You will probably want to seperate the gui from the audio core, and probably break the gui into pannels.
+The best way to benefit from the multi-view feature, is to break your patch into several abstractions. You will probably want to seperate the gui from the audio core, and probably break the gui into pannels as hinted in the post mentionned above.
 
 This is the case in the Acid_Bass project :
 
