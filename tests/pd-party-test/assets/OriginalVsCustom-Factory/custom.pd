@@ -1,0 +1,42 @@
+#N canvas 91 187 662 484 10;
+#X declare -path ../../../../pd-party/droidparty-abstractions;
+#X obj 297 279 hsl 128 20 0 1 0 0 volume empty ribbon -2 -15 0 10 -262144
+-1 -1 0 1;
+#X obj 30 49 bng 50 250 50 0 empty empty empty 0 -7 0 10 -262144 -1
+-1;
+#X obj 95 49 bng 50 250 50 0 empty empty A 0 -15 0 10 -262144 -1 -1
+;
+#X obj 31 135 tgl 25 0 empty empty empty 0 -7 0 10 -262144 -1 -1 0
+1;
+#X obj 479 46 vsl 20 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 522 46 vsl 20 128 0 127 0 0 empty empty ribbon 0 -15 0 10 -262144
+-1 -1 0 1;
+#X obj 290 31 vradio 20 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X obj 342 31 vradio 20 1 0 8 empty empty radio 0 -15 0 10 -262144
+-1 -1 0;
+#X obj 283 330 hradio 20 1 0 8 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 284 384 hradio 20 1 0 8 empty empty radio 0 -15 0 10 -262144
+-1 -1 0;
+#X obj 123 447 declare -path ../../../../pd-party/droidparty-abstractions
+;
+#X obj 39 286 taplist 32 32 tl.r tl.s normal-taplist A B C D;
+#X obj 135 287 taplist 32 32 tl.r tl.s custom-taplist A B C D;
+#X obj 297 229 hsl 128 20 0 1 0 0 volume empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 66 135 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 138 135 tgl 25 0 empty empty Switch 0 -15 0 10 -262144 -1 -1
+0 1;
+#X obj 171 135 tgl 25 0 empty empty Switch 17 -15 0 10 -262144 -1 -1
+0 1;
+#X obj 138 199 tgl 25 0 empty empty Filled 0 -15 0 10 -262144 -1 -1
+0 1;
+#X obj 171 199 tgl 25 0 empty empty Filled 17 -15 0 10 -262144 -1 -1
+0 1;
+#X obj 32 199 tgl 25 0 empty empty empty 0 -7 0 10 -262144 -1 -1 0
+1;
+#X obj 67 199 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
