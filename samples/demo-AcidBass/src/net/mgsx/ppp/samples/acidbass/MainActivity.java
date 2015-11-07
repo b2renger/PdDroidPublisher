@@ -32,9 +32,10 @@ public class MainActivity extends Activity {
         config.typeOverrides.put(Bang.class, SimpleBang.class);
         config.typeOverrides.put(Toggle.class, FilledToggle.class);
         config.objectOverrides.put("Notes", GridArray.class);
+      
         
-        config.presetsPaths.add("Chip_sequencer/presets_pattern");
-        config.presetsPaths.add("Chip_sequencer/presets_synth");
+        config.presetsPaths.add("Acid_Bass/presets_pattern");
+        config.presetsPaths.add("Acid_Bass/presets_synth");
         
         
         config.guiPatches.put("Harmony", "Acid_Bass/AcidBass_noteSelector.pd");
