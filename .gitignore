@@ -4,8 +4,6 @@
 .settings/
 bin/
 /local.properties
-/samples/**/res/drawable*/ic_launcher.png
-/samples/**/web/ic_launcher.png
 # Gradle
 .gradle
 build/
