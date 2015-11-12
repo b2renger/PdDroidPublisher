@@ -49,7 +49,7 @@ public class PdDroidPartyConfig implements Serializable
 	/**
 	 * Number of audio inputs channels to open.
 	 */
-	public int audioInputs = 1;
+	public int audioInputs = 0;
 	
 	/**
 	 * Number of audio outputs channels to open.

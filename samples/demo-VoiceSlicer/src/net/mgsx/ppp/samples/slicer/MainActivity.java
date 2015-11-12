@@ -14,6 +14,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         PdDroidPartyConfig config = new PdDroidPartyConfig();
+        
+        // enable microphone.
+        config.audioInputs = 1;
+        
         config.theme = new MonochromeTheme(180, false);
         config.objectOverrides.put("Bend", PitchBend.class);
         config.objectOverrides.put("smp1", WavePreview.class);

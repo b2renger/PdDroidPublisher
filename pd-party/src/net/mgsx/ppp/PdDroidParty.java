@@ -271,13 +271,13 @@ public class PdDroidParty extends Activity {
 				
 				int nIn = Math.min(AudioParameters.suggestInputChannels(), config.audioInputs);
 				Log.d(TAG, "input channels: " + nIn);
-				if (nIn == 0) {
+				if (nIn == 0 && config.audioInputs > 0) {
 					Log.w(TAG, "warning: audio input not available");
 				}
 				
 				int nOut = Math.min(AudioParameters.suggestOutputChannels(), config.audioOutputs);
 				Log.d(TAG, "output channels: " + nOut);
-				if (nOut == 0) {
+				if (nOut == 0 && config.audioOutputs > 0) {
 					Log.w(TAG, "audio output not available");
 				}
 				
