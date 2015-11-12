@@ -308,6 +308,10 @@ task buildAbstractions(type:Copy) {
  		into ('.')
  		include '**/*'
  	}
+ 	from ('tools/android-screen-ratios'){
+		into ('.')
+ 		include '*.pd' 	
+ 	}
  	destinationDir new File(buildDir, 'distrib/puredata')
 }
 
