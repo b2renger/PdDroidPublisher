@@ -303,6 +303,14 @@ task cleanLibrary(type: Delete) {
 	delete(new File(buildDir, "PdPartyPublisher-${project.version}.zip"))
 }
 
+task buildAbstractions(type:Copy) {
+ 	from ('pd-party/droidparty-abstractions'){
+ 		into ('.')
+ 		include '**/*'
+ 	}
+ 	destinationDir new File(buildDir, 'distrib/puredata')
+}
+
 task release(type:Zip){
 	from(new File(buildDir, 'distrib')){
 		include '**/*'
@@ -312,4 +320,5 @@ task release(type:Zip){
 }
 
 release.dependsOn buildLibrary
-buildLibrary.dependsOn cleanLibrary
+buildLibrary.dependsOn buildAbstractions
+buildAbstractions.dependsOn cleanLibrary
