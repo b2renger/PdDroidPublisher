@@ -53,13 +53,13 @@ You will need something like QmidiNet (if you are on linux) to send the clock vi
 
 # [persist abstractions]
 
-Those abstractions should be used in your **core** abstraction. 
+Those abstractions should be used in your **core** abstraction. They are used for the state saving system.
 More about it in the 'How to configure you launcher' post in the section about 'persist'.
 
 
 # [taplist]
 
-Comes from DroidParty but breaks compatibility with the original DroidParty abstraction. 
+Comes from DroidParty but breaks compatibility with the original DroidParty abstraction. It emulates a list of symbol on which you can click/tap to go to the next element, on android it opens a popup dialog for you to select a value. 
 
 It should be used in your **gui-view** abstractions.
 
@@ -97,5 +97,5 @@ you could only set the value via "index" before :
 
 # [touch]
 
-Comes from DroidParty unchanged.
+Comes from DroidParty unchanged. It emulated a 2D touch surface, that can be used as kaos-pad like interface.
 It should be used in your **gui-view** abstractions.
