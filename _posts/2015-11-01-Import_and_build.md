@@ -46,9 +46,11 @@ In your file explorer and a good text editor, you can setup a new working folder
 * change app name field res/values/strings.xml.
 * change name in the AndroidManifest.xml.
 
-Then in eclipse, import this new folder, by following again the steps to import a project, only this time you'll only have to select the new project to import.
+Then in eclipse, import this new folder, by following again the steps to import a project, only this time you'll only have to select the new project to import. If you cannot select it be sure that any of the names are not used twice if so, change it.
 
-In the package explorer you can now right click on the project and change its package name with the menu *Refactor/Rename*.
+![import new project]({{site.baseurl}}/img/import_and_build/import-new-project.png)
+
+In the package explorer you can now right click on the project and change its package name with the menu *Refactor/Rename*. Eclipse may ask you if you want to update your launch configurations, say **yes**.
 
 You can finally launch the project on you android device by selecting the menu *Run/Run as/android application* - to test that everything is working before starting to code.
 
