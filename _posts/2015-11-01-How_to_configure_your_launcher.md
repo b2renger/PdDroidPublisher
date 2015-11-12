@@ -19,6 +19,19 @@ You should have read the 'List of helper abstractions' post before reading this,
 
 This is a big part of the project, it requires pd-skills, and hopefully you will learn the bits of code you need to start publishing here. We will base our observations on the Acid Bass example which uses all of these features. 
 
+First in the launcher you have to create a config variable :
+
+{% highlight java %} 
+PdDroidPartyConfig config = new PdDroidPartyConfig();
+{% endhighlight %}
+
+right after the line :
+{% highlight java %} 
+super.onCreate(savedInstanceState);
+{% endhighlight %}
+
+then we will use this variable to call methods like this *config.myCustomisationMethod*.
+
 
 <a name="multi-view"/>
 
