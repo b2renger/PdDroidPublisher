@@ -2,6 +2,7 @@
 layout: post
 title:  "How To Jam over wifi"
 tags: user-guide
+order: 010
 ---
 * [Introduction](#Introduction)<br>
 * [Slave configuration](#Slave)<br>

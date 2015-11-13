@@ -2,6 +2,7 @@
 layout: post
 title:  "How To Jam alone"
 tags: user-guide
+order: 020
 ---
 
 ## Jamming alone in local mode

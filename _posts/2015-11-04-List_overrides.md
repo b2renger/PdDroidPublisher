@@ -2,6 +2,7 @@
 layout: post
 title:  "List of available overrides"
 tags: dev-guide
+order: 070
 ---
 
 The system of override is a way to customize a gui component from pd and transform it into something else. You can just override the **graphics**, or you can re-code the **behavior**. We have built a few overrides as 'out of the box' features to customise your apps.

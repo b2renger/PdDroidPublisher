@@ -2,6 +2,7 @@
 layout: post
 title:  "List of helper abstractions"
 tags: dev-guide
+order: 060
 ---
 
 Those abstractions are the core of our system to developp apps, you will find stuff to deal with the beat sharing clock, saving presets, and specific abstractions to interact with a touchscreen or display a list of symbols.

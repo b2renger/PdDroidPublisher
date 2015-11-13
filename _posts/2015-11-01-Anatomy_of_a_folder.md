@@ -2,6 +2,7 @@
 layout: post
 title:  "Anatomy of a project folder"
 tags: dev-guide
+order: 040
 ---
 
 A project folder contains a lot of things. You are mainly interested by a few of the files and folders in here.

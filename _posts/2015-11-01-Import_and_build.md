@@ -2,6 +2,7 @@
 layout: post
 title:  "How to import the project and build an app"
 tags: dev-guide
+order: 020
 ---
 
 This 'how to' assumes that you have completed the setup of your publishing stack.

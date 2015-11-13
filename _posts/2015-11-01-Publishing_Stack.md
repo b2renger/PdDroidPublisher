@@ -2,6 +2,7 @@
 layout: post
 title:  "How to setup your publishing stack"
 tags: dev-guide
+order: 010
 ---
 
 Our first target is android.  So you'll probably need an android phone, maybe a second one (or at least a friend), though it will is possible several apps in *local* mode.
