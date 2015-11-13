@@ -26,14 +26,14 @@ public class RibbonSlider extends Slider
 		
 		if(horizontal)
 		{
-			float offset = dRect.width() * (val - min) / (max - min);
+			float offset = dRect.width() * getNormalizedPosition();
 			RectF rect = new RectF(dRect.left, dRect.top, dRect.left + offset, dRect.bottom);
 			//canvas.drawRect);
 			canvas.drawRoundRect(rect,5,5,paint);
 		}
 		else
 		{
-			float offset = dRect.height() * (val - min) / (max - min);
+			float offset = dRect.height() * getNormalizedPosition();
 			RectF rect = new RectF(dRect.left, dRect.bottom - offset, dRect.right, dRect.bottom);
 			canvas.drawRoundRect(rect,5,5,paint);
 		}
