@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "How to import the project and build an app"
-categories: How to, pd developer
-published : true
+tags: dev-guide
 ---
 
 This 'how to' assumes that you have completed the setup of your publishing stack.

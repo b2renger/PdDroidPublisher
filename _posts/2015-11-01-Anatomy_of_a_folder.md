@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Anatomy of a project folder"
-categories: How to, pd developer
-published : true
+tags: dev-guide
 ---
 
 A project folder contains a lot of things. You are mainly interested by a few of the files and folders in here.

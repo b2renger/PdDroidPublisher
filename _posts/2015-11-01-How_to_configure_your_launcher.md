@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "How to configure your launcher"
-categories: How to, pd developer
-published : true
+tags: dev-guide
 ---
 
 This section is about how to use the :

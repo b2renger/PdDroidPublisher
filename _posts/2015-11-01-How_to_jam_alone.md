@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "How To Jam alone"
-categories: How to, app user
-published : true
+tags: user-guide
 ---
 
 ## Jamming alone in local mode

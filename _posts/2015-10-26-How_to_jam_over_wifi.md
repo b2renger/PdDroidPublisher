@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "How To Jam over wifi"
-categories: How to, app user
-published : true
+tags: user-guide
 ---
 * [Introduction](#Introduction)<br>
 * [Slave configuration](#Slave)<br>
