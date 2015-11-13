@@ -1,9 +1,9 @@
-#N canvas 372 203 532 510 10;
+#N canvas 370 204 532 510 10;
 #X declare -path ./rj;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#X obj 32 177 hsl 250 25 0 1 0 1 glide.s glide.r GLIDE 40 7 1 10 -262144
+#X obj 32 187 hsl 250 25 0 1 0 1 glide.s glide.r GLIDE 0 -6 1 10 -262144
 -1 -4160 0 1;
-#X obj 33 225 hsl 250 50 0 1 0 1 tone.s tone.r TONE 40 7 1 10 -262144
+#X obj 33 229 hsl 250 50 0 1 0 1 tone.s tone.r TONE 0 -6 1 10 -262144
 -1 -4160 18600 1;
 #X obj 74 24 tgl 25 1 autoplay.s autoplay.r AUTOPLAY 0 -10 1 10 -262144
 -1 -4160 1 1;
@@ -743,12 +743,12 @@
 #X connect 14 0 15 0;
 #X restore 620 97 pd loadsave;
 #X obj 620 58 loadsave storage;
-#X obj 32 99 hsl 250 25 0 1 0 1 noilvl.s noilvl.r NOISE_LEVEL 40 7
+#X obj 32 107 hsl 250 25 0 1 0 1 noilvl.s noilvl.r NOISE_LEVEL 0 -6
 1 10 -262144 -1 -4160 6200 1;
-#X obj 32 56 hsl 250 25 0 1 0 1 oscmix.s oscmix.r OSC_MIX 40 7 1 10
+#X obj 32 66 hsl 250 25 0 1 0 1 oscmix.s oscmix.r OSC_MIX 0 -6 1 10
 -262144 -1 -4160 2100 1;
-#X obj 32 131 hsl 250 25 1 100 1 1 noiq.s noiq.r NOISE_RESONANCE 40
-7 1 10 -262144 -1 -4160 11400 1;
+#X obj 32 147 hsl 250 25 1 100 1 1 noiq.s noiq.r NOISE_RESONANCE 0
+-6 1 10 -262144 -1 -4160 11400 1;
 #X obj 359 71 vradio 28 1 1 13 sel2.s sel2.r empty 0 -8 0 10 -262144
 -1 -1 8;
 #X obj 393 71 vradio 28 1 1 13 sel3.s sel3.r empty 0 -8 0 10 -262144
@@ -757,7 +757,7 @@
 -1 -1 6;
 #X obj 325 71 vradio 28 1 1 13 sel1.s sel1.r empty 0 -8 0 10 -262144
 -1 -1 9;
-#X obj 34 298 hsl 250 50 0 1 0 1 wobble.s wobble.r WOBBLE 40 7 1 10
+#X obj 34 298 hsl 250 50 0 1 0 1 wobble.s wobble.r WOBBLE 0 -6 1 10
 -262144 -1 -4160 12450 1;
 #X text 2 61 SIN;
 #X text 285 61 TRI;
