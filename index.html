@@ -5,7 +5,7 @@ layout: default
 <div class="home">
 
   <div class="col-wrapper">
-    <div class="col col-3">
+    <div class="col col-4">
      
       <img src="{{site.baseurl}}/img/HomeScreen.png">
       <h1>PPP</h1>
@@ -21,24 +21,6 @@ layout: default
       <li> a <b>pd designer</b> : So you can checkout <a href="{{site.baseurl}}/dev-guide">the programmer guide</a> to start building an application from a Pure-Data patch. </li>
       <li> a <b>PPP Contributor</b> : So you can checkout <a href="{{site.github_wiki}}">the project wiki</a> to start contributing. </li>
       <p></p>
-    </div>
-    <div class="col col-1">
-
-      <h1 class="page-heading">Posts</h1>
-
-      <ul class="post-list">
-        {% for post in site.posts %}
-          <li>
-            <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-            <h2>
-              <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-            </h2>
-          </li>
-        {% endfor %}
-      </ul>
-
-      <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
     </div>
   </div>
 </div>

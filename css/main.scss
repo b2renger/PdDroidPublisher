@@ -47,3 +47,16 @@ $on-laptop:        800px;
         "layout",
         "syntax-highlighting"
 ;
+
+.site-header, .site-footer {
+	background-color: #eee;
+}
+
+.site-header{
+	border-top: 5px solid $grey-color-dark;
+    border-bottom: 1px solid $grey-color-dark;
+}
+
+.site-footer{
+	border-top: 1px solid $grey-color-dark;
+}
