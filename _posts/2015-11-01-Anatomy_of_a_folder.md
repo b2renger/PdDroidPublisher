@@ -24,11 +24,9 @@ In this folder you will find :
 
 You can check this discussion on [stackoverflow](http://stackoverflow.com/questions/12768128/android-launcher-icon-size) about android icon sizes.
 
-As a bonus on the github repository in the [tools/icon/](https://github.com/b2renger/PdDroidPublisher/tree/master/tools/icon) folder you can find a shell script to populate a project with a specific icon.
-
 Note : we do provide an icon, you can of course change it to what suits you best.
 
 #AndroidManifes.xml
 
-This is your android manifest. You need to change it if you want to change your application name.
+This is your android manifest. You need to change it if you want to change your application name, declare some authorizations.
 You can also set versions there when you will need to export signed apk for the android marker.

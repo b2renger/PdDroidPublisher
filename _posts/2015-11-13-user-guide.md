@@ -4,7 +4,7 @@ title:  "User Guide"
 permalink: user-guide
 ---
 
-TODOC : links to user guide pages (jamming over wifi, ...etc)
+This guide help music performers to setup and use applications. No programming skills are required here.
 
 <ul>
 {% assign sorted_posts = (site.posts | sort: 'order', 'first') %}

@@ -81,7 +81,7 @@ PdDroidPartyLauncher.launch(this, config);
 
 ## Gui-customization
 
-We provide several level of gui customization by default you have some simple pd classic gui, with the default colors from your original patch. By adding a few lines of code to you launcher (ie *MainActivity.java*)
+We provide several level of gui customization by adding a few lines of code to you launcher (ie *MainActivity.java*). By default you have some simple pd classic gui, with the default colors from your original patch. 
 
 <a name="color-theme"/>
 
@@ -93,7 +93,9 @@ config.theme = new MonochromeTheme(MonochromeTheme.RED, true);
 
 We have a few colors already setup for you, in eclipse you can remove the *.RED* part and press *ctrl + space* to activate auto-completion and check which other colors are available.
 
-You can also create a theme with your own colors, you will then have to specify 3 colors, first the main background color, then the background color, and finally the foreground color expressed in hexadecimal form :
+TODOC : color constants like RED are there to help but you can set any global color ... 
+
+You can also create a theme with your own colors, you will then have to specify 3 colors, first the main background color, then the widgets background color, and finally the widgets foreground color expressed in hexadecimal form :
 
 {% highlight java %} 
 config.theme = new MonochromeTheme(0xff101933, 0xff202943, 0xff004ce6);
@@ -101,11 +103,13 @@ config.theme = new MonochromeTheme(0xff101933, 0xff202943, 0xff004ce6);
 
 To find the hexadecimal code you can consult a website like this [one](http://www.color-hex.com/). An hexadecimal color code is composed of 6 characters numbers or letters, and you have to add the prefix **0xff**. In the above line the colors are different kinds of blue.
 
+TODOC : more about SVG and/or PNG theming ? even if SVG is not fully supported ... ? at minima : it exists and it's an experimental feature ...
+
 <a name="factory-components"/>
 
 ### Use factory components 
 
-Those are ready to be used for slick look, almost out of the box. You can refer to [this](link missing) post to get a list of all possible overrides.
+Those are ready to be used for slick look, almost out of the box. You can refer to [this]({{ site.baseurl}}{% post_url 2015-11-04-List_overrides %}) post to get a list of all possible overrides.
 
 To take a simple example, you can apply a custom look, on all the sliders of your patch by using **typeOverrides**, for instance the line of code below once added to you launcher will make your app draw all sliders as filled rounded rectangles.
 
@@ -143,20 +147,20 @@ The AcidBass example features a simple override to draw an array with a custom g
 
 For the saving system we choose to developp our own system, mainly because sssad was very slow when saving arrays with a lot of samples (saving 1s of audio was taking too much time for instance). The system is built to be as simple as possible, and allow to deal with several preset banks - that is to say that you can save your sequencer patterns and synth presets separatly
 
-On the pd side you can check the help patches in **/droidparty-abstractions** folder. It relies on the same mechanism as sssad, and it probably cannot do eveything sssad can, but it has pretty much the same limitation and it's best to know about it ... sssad and persist rely on the fact that a single instance of an abstraction will save a value that is received and sent via the messages given as arguments : that means that if you don't send anything at some point ... well, nothing will be saved, and nothing will be restored on load. So the lesson is : ** if you want to save a value be sure to initiate it with a default value on startup.** 
+On the pd side you can check the help patches in **/puredata** release folder. It relies on the same mechanism as sssad, and it probably cannot do eveything sssad can, but it has pretty much the same limitation and it's best to know about it ... sssad and persist rely on the fact that a single instance of an abstraction will save a value that is received and sent via the messages given as arguments : that means that if you don't send anything at some point ... well, nothing will be saved, and nothing will be restored on load. So the lesson is : ** if you want to save a value be sure to initiate it with a default value on startup.** 
 
 With something like this for instance : ![pd init]({{site.baseurl}}/img/pd/init.png)
 You could also probably create an empty preset, and load it on startup.
 
 That being said there is two main abstractions that you will be interested in to actually save values :
 
-* **[persist-map]** : it takes 3 arguments the first one is the name of the bank preset, the second one is the send value of the gui object you want to save, the third one is the receive value of the object you want to save. If you create an object [persist-map synth decay.s decay.r] : you will save your decay value in a the preset bank called 'synth'.
+* **[persist-map]** : it takes 3 arguments the first one is the name of the preset bank, the second one is the send value of the gui object you want to save, the third one is the receive value of the object you want to load. If you create an object [persist-map synth decay.s decay.r] : you will save your decay value in a the preset bank called 'synth'.
 
-* **[persist-table]** : it takes 2 arguments, the first one is the name of the bank, the second one the name of the table object that you want to save (regardless of its size - even if it is not made to save to much audio, play nice !)
+* **[persist-table]** : it takes 2 arguments, the first one is the name of the preset bank, the second one the name of the table object that you want to save/load (regardless of its size - even if it is not made to save to much audio, play nice !)
 
 Now let take a pragmatic example from the acid_bass sample app. As stated before we want to save our parameters in two separate banks : one for sequencer patterns and one fo synth presets. So the first thing to do is to create two objects **[loadsave synth]** and **[loadsave pattern]**, those act as 'routers' for messages.
 
-In the IHM we have three pannels two of them are for the sequencer, and only one for the synth. We chose to use a bang to activate the display of dialog pannels one for the save action and one for the load action. That makes for bang that send those messages 'save_pattern', 'load_pattern', 'save_synth', 'load_synth'.
+In the GUI we have three pannels : two of them are for the sequencer, and only one for the synth. We chose to use a bang to activate the display of dialog pannels one for the save action and one for the load action. That makes for bang that send those messages 'save_pattern', 'load_pattern', 'save_synth', 'load_synth'.
 
 Now we can interface this with persist :
 ![loadsave interface]({{site.baseurl}}/img/pd/loadsave-gui-binding.png)

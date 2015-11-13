@@ -11,13 +11,13 @@ If that the case you should have eclipse installed, aswell as the android sdk an
 
 #1- Download last distribution
 
-* Go [here](https://github.com/b2renger/PdDroidPublisher/releases) and dowload the latest release. 
+* Go [here](https://github.com/b2renger/PdDroidPublisher/releases) and dowload the latest release (PdPartyPublisher-X.Y.Z.zip file). 
 * Extract it to a directory that is convenient for you.
 
 
 #2- Import the project in eclipse
 
-When starting up eclipse, it should prompt you to select a workspace. It is a good practice to seperate your source from your eclipse workspace. You could porbably create a folder to keep your eclipse workspace, and a folder were you keep the code of the release, and your own code for your applications.
+When starting up eclipse, it should prompt you to select a workspace. It is a good practice to seperate your source from your eclipse workspace. We recommand to create a folder to keep your eclipse workspace, a folder were you keep ppp source code and your own code for your applications.
 
 ![create a workspace]({{site.baseurl}}/img/import_and_build/workspace_creation.png)
 
@@ -27,7 +27,7 @@ and select */Android/Existing Android Code Into Workspace.* then click **Next**.
 
 ![import android code]({{site.baseurl}}/img/import_and_build/import_android_code.png)
 
-Next to the *Root Directory* field click *Browse* and navigate to the folder containing the last distribution you just downloaded.
+Next to the *Root Directory* field click *Browse* and navigate to the folder containing the last distribution you just extracted.
 
 Finally click *Finish* to import the 5 projects, do not click *copy project into workspace* check box. As we want to keep our workspace and our code separated.
 

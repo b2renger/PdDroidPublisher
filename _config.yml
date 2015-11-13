@@ -8,6 +8,7 @@ twitter_username:
 github_username:  b2renger
 github_repositoryname: PdDroidPublisher
 github_wiki: https://github.com/b2renger/PdDroidPublisher/wiki
+github_new_issue: https://github.com/b2renger/PdDroidPublisher/issues/new
 
 # Build settings
 markdown: kramdown

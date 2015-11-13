@@ -7,7 +7,7 @@ order: 070
 
 The system of override is a way to customize a gui component from pd and transform it into something else. You can just override the **graphics**, or you can re-code the **behavior**. We have built a few overrides as 'out of the box' features to customise your apps.
 
-You can use those features by configuring them in the launcher, you can check the [How to configure your launcher]({{site.baseurl}}/_post/2015-11-01-How_to_configure_your_launcher#factory-components) post.
+You can use those features by configuring them in the launcher, you can check the [How to configure your launcher]({{site.baseurl}}{% post_url 2015-11-01-How_to_configure_your_launcher %}#factory-components) post.
 
 * [Filled Toggle](#ftgl)<br>
 * [Popup Taplist](#ptap)<br>
