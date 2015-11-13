@@ -6,6 +6,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 
+/**
+ * Toggle with classic I/O slider. 
+ */
 public class SwitchToggle extends Toggle
 {
 	protected float cursorX, px;

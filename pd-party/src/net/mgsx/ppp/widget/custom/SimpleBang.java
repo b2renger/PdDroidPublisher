@@ -5,6 +5,9 @@ import net.mgsx.ppp.widget.core.Bang;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+/**
+ * Bang drawn with circles. 
+ */
 public class SimpleBang extends Bang
 {
 

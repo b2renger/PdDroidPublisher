@@ -6,6 +6,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 
+/**
+ * Radio with tiny rectangles.
+ */
 public class SimpleRadio extends Radio {
 
 	public SimpleRadio(PdDroidPatchView app, String[] atomline, boolean horizontal) {

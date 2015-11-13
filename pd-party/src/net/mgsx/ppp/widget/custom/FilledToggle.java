@@ -5,6 +5,9 @@ import net.mgsx.ppp.widget.core.Toggle;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+/**
+ * Toggle with plain button.
+ */
 public class FilledToggle extends Toggle
 {
 	protected float cursorX, px;
