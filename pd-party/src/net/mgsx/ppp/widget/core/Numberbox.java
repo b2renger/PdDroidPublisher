@@ -149,6 +149,7 @@ public class Numberbox extends Widget {
 	private void openEditDialog()
 	{
 		final NumberboxDialog editDialog = new NumberboxDialog(parent.getContext(), val);
+		editDialog.setTitle(label == null ? "Edit number" : label);
 		editDialog.setOnDismissListener(new OnDismissListener() {
 			@Override
 			public void onDismiss(DialogInterface dialog) {

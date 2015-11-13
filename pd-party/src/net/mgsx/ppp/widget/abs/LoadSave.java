@@ -47,6 +47,7 @@ public class LoadSave extends Widget {
 		final File path = new File(PdDroidPartyLauncher.getPersistDirectory(parent.getContext()), directory);
 		if (symbol.equals("save")) {
 			final SaveDialog saveDialog = new SaveDialog(parent.getContext(), filename);
+			saveDialog.setTitle("Save preset");
 			saveDialog.setOnDismissListener(new OnDismissListener() {
 				@Override
 				public void onDismiss(DialogInterface dialog) {
@@ -60,6 +61,7 @@ public class LoadSave extends Widget {
 			saveDialog.show();
 		} else if (symbol.equals("load")) {
 			final LoadDialog loadDialog = new LoadDialog(parent.getContext(), path, extension);
+			loadDialog.setTitle("Load preset");
 			loadDialog.setOnDismissListener(new OnDismissListener() {
 				@Override
 				public void onDismiss(DialogInterface dialog) {

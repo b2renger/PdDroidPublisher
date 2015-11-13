@@ -143,6 +143,7 @@ public class Symbol extends Widget
 	private void openEditDialog()
 	{
 		final SymbolDialog editDialog = new SymbolDialog(parent.getContext(), value);
+		editDialog.setTitle(label == null ? "Edit symbol" : label);
 		editDialog.setOnDismissListener(new OnDismissListener() {
 			@Override
 			public void onDismiss(DialogInterface dialog) {
