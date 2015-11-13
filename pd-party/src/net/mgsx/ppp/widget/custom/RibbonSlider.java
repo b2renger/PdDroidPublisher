@@ -42,7 +42,6 @@ public class RibbonSlider extends Slider
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setStrokeWidth(1);
 		canvas.drawRoundRect(dRect,5,5, paint);
-		paint.setStyle(Paint.Style.FILL);
 		drawLabel(canvas);
 	}
 	

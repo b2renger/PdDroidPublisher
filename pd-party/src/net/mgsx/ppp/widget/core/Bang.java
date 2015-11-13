@@ -94,7 +94,6 @@ public class Bang extends Widget {
 				paint.setColor(fgcolor);
 			}
 		}
-		paint.setStyle(Paint.Style.FILL);
 		drawLabel(canvas);
 	}
 

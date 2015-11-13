@@ -32,8 +32,6 @@ public class SimpleRadio extends Radio {
 					paint.setStyle(Paint.Style.FILL);
 					canvas.drawRect(cellRect, paint);
 				}
-				paint.setStyle(Paint.Style.FILL);
-				drawLabel(canvas);
 			}
 		}
 		else {
@@ -50,11 +48,11 @@ public class SimpleRadio extends Radio {
 					paint.setStyle(Paint.Style.FILL);
 					canvas.drawRect(cellRect,  paint);
 				}
-				paint.setStyle(Paint.Style.FILL);
-				drawLabel(canvas);
 			}
 			
 		}
+		
+		drawLabel(canvas);
 
 	}
 

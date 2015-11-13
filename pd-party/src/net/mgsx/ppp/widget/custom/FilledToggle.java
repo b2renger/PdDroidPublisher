@@ -4,7 +4,6 @@ import net.mgsx.ppp.view.PdDroidPatchView;
 import net.mgsx.ppp.widget.core.Toggle;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Paint.Align;
 
 public class FilledToggle extends Toggle
 {
@@ -39,7 +38,6 @@ public class FilledToggle extends Toggle
 				canvas.drawRoundRect(dRect,5,5,paint);
 		}
 		
-		paint.setStyle(Paint.Style.FILL);
 		drawLabel(canvas);
 	}
 	

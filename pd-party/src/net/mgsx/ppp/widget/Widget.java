@@ -176,6 +176,7 @@ abstract public class Widget {
 	
 	public void drawLabel(Canvas canvas) {
 		if (label != null) {
+			paint.setStyle(Paint.Style.FILL);
 			paint.setTextAlign(Align.LEFT);
 			paint.setStrokeWidth(0);
 			paint.setColor(labelcolor);

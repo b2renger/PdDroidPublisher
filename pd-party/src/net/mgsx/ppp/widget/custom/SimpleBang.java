@@ -31,7 +31,6 @@ public class SimpleBang extends Bang
 			paint.setColor(fgcolor);
 			canvas.drawCircle(dRect.centerX(), dRect.centerY(), Math.min(dRect.width(), dRect.height()) / 3, paint);
 		}
-		paint.setStyle(Paint.Style.FILL);
 		drawLabel(canvas);
 	}
 

@@ -42,7 +42,6 @@ public class SwitchToggle extends Toggle
 		paint.setStyle(Paint.Style.STROKE);
 		canvas.drawRect(dRect,paint);
 		
-		paint.setStyle(Paint.Style.FILL);
 		drawLabel(canvas);
 	}
 	
