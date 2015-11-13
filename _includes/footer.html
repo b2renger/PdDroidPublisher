@@ -2,17 +2,15 @@
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">{{ site.title }}</h2>
-
     <div class="footer-col-wrapper">
       <div class="footer-col  footer-col-1">
-        <ul class="contact-list">
-          <li>{{ site.title }}</li>
-          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-        </ul>
+        <h2 class="footer-heading">{{ site.title }}</h2>
+         <p class="text">{{ site.description }}</p>
+        
       </div>
 
       <div class="footer-col  footer-col-2">
+        <h2 class="footer-heading">Keep in touch</h2>
         <ul class="social-media-list">
           {% if site.github_username %}
           <li>
@@ -42,12 +40,13 @@
             </a>
           </li>
           {% endif %}
+          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
         </ul>
       </div>
 
       <div class="footer-col  footer-col-3">
+        <h2 class="footer-heading">Get informed</h2>
         <p class="rss-subscribe">subscribe to <a href="{{ site.baseurl }}/site.html">website posts</a> via <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a></p>
-        <p class="text">{{ site.description }}</p>
       </div>
     </div>
 
