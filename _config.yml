@@ -7,6 +7,7 @@ url: "http://b2renger.github.io" # the base hostname & protocol for your site
 twitter_username: 
 github_username:  b2renger
 github_repositoryname: PdDroidPublisher
+github_wiki: https://github.com/b2renger/PdDroidPublisher/wiki
 
 # Build settings
 markdown: kramdown
