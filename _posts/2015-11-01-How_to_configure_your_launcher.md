@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "How to configure your launcher"
-tags: dev-guide
-order: 050
+tags: others
 ---
 
 This section is about how to use the :
