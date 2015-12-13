@@ -1,38 +1,81 @@
-#N canvas 389 82 850 485 10;
-#X obj 65 317 cnv 15 315 1 empty empty null -35 0 0 14 -162280 -66577
-0;
-#X obj 64 250 cnv 15 315 1 empty empty sinus -40 0 0 14 -162280 -66577
-0;
-#X obj 64 183 cnv 15 315 1 empty empty square -50 0 0 14 -162280 -66577
-0;
-#X obj 64 117 cnv 15 315 1 empty empty noise -40 0 0 14 -162280 -66577
-0;
-#N canvas 65 92 450 250 (subpatch) 0;
-#X array Synth-Data 16 float 2;
-#X coords 0 3 16 0 300 200 1 0 0;
-#X restore 80 117 graph;
-#N canvas 65 97 450 250 (subpatch) 0;
-#X array Synth-Pitch 16 float 1;
-#A 0 0 0 0 31.68 0 0 -21.12 -21.12 -21.12 -20.16 4.8 0 0 0 48 0;
-#X coords 0 48 15 -48 300 200 1 0 0;
-#X restore 431 117 graph;
-#X obj 83 446 hsl 200 35 0 1 0 0 feedback.s feedback.r Feedback -2
--8 0 10 -262144 -1 -1 0 1;
-#X obj 83 392 hsl 200 35 0 1 0 0 dry.s dry.r Wet/Dry -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 431 446 hsl 200 35 0 15 0 0 bpq.s bpq.r VCF_Q -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 431 392 hsl 200 35 24 127 0 0 bppitch.s bppitch.r VCF_F -2 -8
-0 10 -262144 -1 -1 0 1;
-#X obj 82 73 nbx 5 25 0 200 0 0 notedur.s notedur.r Note_Duration 0
--8 0 10 -262144 -1 -1 0 256;
-#X obj 185 347 nbx 5 25 0 12 0 0 dell.s dell.r Left_Del 0 -8 0 10 -262144
--1 -1 0 256;
-#X obj 80 346 nbx 5 25 0 12 0 0 delr.s delr.r Right_Del 0 -8 0 10 -262144
--1 -1 0 256;
-#X obj 83 29 bng 25 250 50 0 load_synth empty Load_Synth 0 -10 0 10
+#N canvas 506 144 778 513 10;
+#X obj 525 28 bng 25 250 50 0 load_synth empty Load_Synth 0 -10 0 10
 -262144 -1 -1;
-#X obj 161 29 bng 25 250 50 0 save_synth empty Save_Synth 0 -10 0 10
+#X obj 603 28 bng 25 250 50 0 save_synth empty Save_Synth 0 -10 0 10
 -262144 -1 -1;
-#X obj 250 29 bng 25 250 50 0 reset_synth empty Reset_Synth 0 -10 0
+#X obj 692 28 bng 25 250 50 0 reset_synth empty Reset_Synth 0 -10 0
 10 -262144 -1 -1;
+#X obj 17 20 hsl 128 25 0 1 0 0 env1a-amp-attack.s env1a-amp-attack.r
+AMP-ATTACK -2 -8 0 10 -228992 -1 -262144 0 1;
+#X obj 18 60 hsl 128 25 0 1 0 0 env1d-amp-decay.s env1d-amp-decay.r
+AMP-DECAY -2 -8 0 10 -228992 -1 -262144 1310 1;
+#X obj 18 100 hsl 128 25 0 1 0 0 env1s-amp-sustain.s env1s-amp-sustain.r
+AMP-SUS -2 -8 0 10 -228992 -1 -262144 10500 1;
+#X obj 19 139 hsl 128 25 0 1 0 0 env1r-amp-release.s env1r-amp-release.r
+AMP-REL -2 -8 0 10 -228992 -1 -262144 421 1;
+#X obj 174 18 hsl 128 25 0 1 0 0 env2a-osc1-attack.s env2a-osc1-attack.r
+OSC1-ATTACK -2 -8 0 10 -228992 -1 -262144 0 1;
+#X obj 175 58 hsl 128 25 0 1 0 0 env2d-osc1-decay.s env2d-osc1-decay.r
+OSC1-DECAY -2 -8 0 10 -228992 -1 -262144 0 1;
+#X obj 175 98 hsl 128 25 0 1 0 0 env2s-osc1-sustain.s env2s-osc1-sustain.r
+OSC1-SUS -2 -8 0 10 -228992 -1 -262144 11300 1;
+#X obj 176 137 hsl 128 25 0 1 0 0 env2r-osc1-release.s env2r-osc1-release.r
+OSC1-REL -2 -8 0 10 -228992 -1 -262144 211 1;
+#X obj 332 17 hsl 128 25 0 1 0 0 env3a-osc2-attack.s env3a-osc2-attack.r
+OSC2-ATTACK -2 -8 0 10 -228992 -1 -262144 0 1;
+#X obj 333 57 hsl 128 25 0 1 0 0 env3d-osc2-decay.s env3d-osc2-decay.r
+OSC2-DECAY -2 -8 0 10 -228992 -1 -262144 0 1;
+#X obj 333 97 hsl 128 25 0 1 0 0 env3s-osc2-sustain.s env3s-osc2-sustain.r
+OSC2-SUS -2 -8 0 10 -228992 -1 -262144 0 1;
+#X obj 334 136 hsl 128 25 0 1 0 0 env3r-osc2-release.s env3r-osc2-release.r
+OSC2-REL -2 -8 0 10 -228992 -1 -262144 0 1;
+#X obj 19 188 hsl 128 25 0 1 0 0 osc1a.s osc1a.r OSC1-BRIGHT -2 -8
+0 10 -228992 -1 -262144 12700 1;
+#X obj 20 227 hsl 128 25 0 1 0 0 osc1b.s osc1b.r OSC1-WAVE -2 -8 0
+10 -228992 -1 -262144 6400 1;
+#X obj 20 267 hsl 128 25 0 1 0 0 osc1c.s osc1c.r OSC1-CLIP -2 -8 0
+10 -228992 -1 -262144 1981 1;
+#X obj 21 307 hsl 128 25 0 1 0 0 osc1d.s osc1d.r OSC1-ENV -2 -8 0 10
+-228992 -1 -262144 12700 1;
+#X obj 176 187 hsl 128 25 0 1 0 0 osc2a.s osc2a.r OSC2-BRIGHT -2 -8
+0 10 -228992 -1 -262144 12700 1;
+#X obj 177 226 hsl 128 25 0 1 0 0 osc2b.s osc2b.r OSC2-WAVE -2 -8 0
+10 -228992 -1 -262144 7900 1;
+#X obj 177 266 hsl 128 25 0 1 0 0 osc2c.s osc2c.r OSC2-CLIP -2 -8 0
+10 -228992 -1 -262144 2400 1;
+#X obj 178 306 hsl 128 25 0 1 0 0 osc2d.s osc2d.r OSC2-ENV -2 -8 0
+10 -228992 -1 -262144 0 1;
+#X obj 333 186 hsl 128 25 0 1 0 0 osc3a.s osc3a.r OCTAVE -2 -8 0 10
+-228992 -1 -262144 8400 1;
+#X obj 334 225 hsl 128 25 0 1 0 0 osc3b.s osc3b.r OSC2-OCT -2 -8 0
+10 -228992 -1 -262144 0 1;
+#X obj 21 360 hsl 128 25 0 1 0 0 mod1a.s mod1a.r OSC1-BRIGHT -2 -8
+0 10 -228992 -1 -262144 0 1;
+#X obj 22 401 hsl 128 25 0 1 0 0 mod1b.s mod1b.r LFO-FREQ2 -2 -8 0
+10 -228992 -1 -262144 9100 1;
+#X obj 22 441 hsl 128 25 0 1 0 0 mod1c.s mod1c.r VIB-AMNT -2 -8 0 10
+-228992 -1 -262144 0 1;
+#X obj 22 481 hsl 128 25 0 1 0 0 mod1d.s mod1d.r VIB-ONSET -2 -8 0
+10 -228992 -1 -262144 1600 1;
+#X obj 337 396 hsl 128 25 0 1 0 0 mod3b.s mod3b.r VOLUME -2 -8 0 10
+-228992 -1 -262144 11805 1;
+#X obj 337 439 hsl 128 25 0 1 0 0 mod3c.s mod3c.r PORTAMENTO -2 -8
+0 10 -228992 -1 -262144 12700 1;
+#X obj 525 77 taplist 200 35 presets.r presets.s presets portsaw dualbass
+reedy1 pure voicier stringy stringy2 detrum brassens piano organ1 organ2
+oboe seq1 fatbass;
+#X obj 556 299 hsl 150 30 0 1 0 0 dddry.s dddry.r empty -2 -8 0 10
+-262144 -1 -1 7450 1;
+#X text 571 338 Dub Delay Triggers;
+#X text 535 367 Left;
+#X text 691 364 Right;
+#X text 559 275 Dub Delay (wet/dry);
+#X obj 573 356 taplist 35 35 dell.r dell.s dell N 0.25 0.33 0.5 0.66
+0.75 1 2 3 4 5 6;
+#X obj 647 355 taplist 35 35 delr.r delr.s delr N 0.25 0.33 0.5 0.66
+0.75 1 2 3 4 5 6;
+#X obj 553 164 hsl 150 30 0 127 0 0 vcffreq.s vcffreq.r Vcf_frequency
+-2 -8 0 10 -262144 -1 -1 0 1;
+#X obj 553 221 hsl 150 30 1 20 0 0 vcfq.s vcfq.r Vcf_resonance -2 -8
+0 10 -262144 -1 -1 0 1;
+#X text 523 58 Factory Presets;

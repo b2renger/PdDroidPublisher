@@ -1,0 +1,9 @@
+#N canvas 65 185 351 191 10;
+#X declare -path ../../pd-party/droidparty-abstractions;
+#X declare -path assets/Chip_sequencer;
+#X obj 5 23 declare -path ../../pd-party/droidparty-abstractions;
+#X obj 6 81 clock-gui;
+#X obj 5 44 declare -path assets/Chip_sequencer;
+#X obj 5 117 chip_sequencer_audiocore;
+#X obj 5 138 chip_sequencer_controls;
+#X obj 5 158 chip_sequencer_sequencer;

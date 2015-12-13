@@ -1,4 +1,4 @@
-#N canvas 65 90 1128 686 10;
+#N canvas 65 100 1128 686 10;
 #X obj 55 560 cnv 15 100 130 empty cursorAccents empty 20 12 0 14 -261234
 -66577 0;
 #X obj 755 420 cnv 15 100 140 empty cursorOctaves empty 20 12 0 14
@@ -10,7 +10,7 @@
 #A 0 12 7 12 7 12 5 12 5;
 #X coords 0 0 8 12 800 200 2 0 0;
 #X restore 54 205 graph;
-#N canvas 65 87 1301 686 guts 1;
+#N canvas 65 102 1301 686 guts 0;
 #X obj 257 636 pack f f;
 #N canvas 65 54 1301 714 gui-lookup 0;
 #X obj 16 0 table_note_rd_lookup Notes 0 notes_0.r 11;
@@ -151,31 +151,14 @@
 #X obj 868 450 * 100;
 #X obj 868 475 + 55;
 #X obj 683 582 * 100;
-#X obj 258 1178 rj/e_dubdel mydubdel;
 #X obj 257 605 +;
 #X obj 323 582 r basenote.s;
 #X obj 257 656 unpack;
-#X obj 350 765 r notedur.s;
 #X obj 257 709 poly 4 1;
 #X obj 257 754 route 1 2 3 4;
 #X obj 257 732 pack f f f;
-#X obj 405 796 r notedur.s;
-#X obj 462 826 r notedur.s;
-#X obj 506 853 r notedur.s;
 #X obj 257 686 makenote 50 100 100;
-#X obj 496 1044 loadbang;
-#X msg 496 1065 dry 1 \, bq 2 \, basedur 500 \, bpitch 83 \, feedback
-0.99 \, dell 2 \, delr 3 \,;
-#X obj 497 1180 r dry.s;
-#X msg 497 1200 dry \$1;
-#X msg 497 1120 basedur \$1;
-#X obj 496 1220 r dell.s;
-#X msg 496 1239 dell \$1;
-#X obj 496 1261 r delr.s;
 #X msg 496 1280 delr \$1;
-#X obj 497 1141 r feedback.s;
-#X msg 497 1161 feedback \$1;
-#X msg 496 1099 250;
 #X obj 272 376 r modulonotes.s;
 #X obj 486 374 r modulooctaves.s;
 #X obj 698 375 r moduloaccents.s;
@@ -232,17 +215,6 @@
 #X msg 965 218 \; moduloaccents.r 8 \; modulonotes.r 8 \; modulooctaves.r
 8 \; forwardaccents.s 1 \; forwardoctaves.s 1 \; forwardnotes.s 1 \;
 basenote.r 24 \; notedur.r 25 \;;
-#X obj 312 815 s_chipwave_voice;
-#X obj 257 784 s_chipwave_voice;
-#X obj 413 872 s_chipwave_voice;
-#X obj 369 845 s_chipwave_voice;
-#X msg 495 959 bpitch \$1;
-#X obj 495 939 r bppitch.s;
-#X msg 495 1001 bq \$1;
-#X obj 495 981 r bpq.s;
-#X obj 267 1049 mtof;
-#X obj 257 1075 vcf~;
-#X obj 258 965 +~;
 #X text 168 1098 Effects;
 #X obj 91 42 clock;
 #X obj 109 89 s tick;
@@ -266,7 +238,7 @@ basenote.r 24 \; notedur.r 25 \;;
 #X msg 578 -42 1;
 #X msg 758 -45 0;
 #X msg 790 -45 1;
-#X connect 0 0 46 0;
+#X connect 0 0 45 0;
 #X connect 2 0 5 0;
 #X connect 3 0 5 0;
 #X connect 4 0 5 0;
@@ -296,121 +268,84 @@ basenote.r 24 \; notedur.r 25 \;;
 #X connect 25 0 24 0;
 #X connect 25 1 24 1;
 #X connect 26 0 27 1;
-#X connect 27 0 44 0;
+#X connect 27 0 43 0;
 #X connect 28 0 32 0;
 #X connect 29 0 28 0;
 #X connect 29 1 28 1;
 #X connect 30 0 18 0;
-#X connect 30 0 84 0;
+#X connect 30 0 68 0;
 #X connect 31 0 6 0;
 #X connect 31 1 16 0;
 #X connect 31 2 17 0;
 #X connect 32 0 42 0;
 #X connect 33 0 19 0;
 #X connect 33 0 36 0;
-#X connect 33 0 71 0;
+#X connect 33 0 55 0;
 #X connect 34 0 20 0;
 #X connect 34 0 38 0;
-#X connect 34 0 74 0;
+#X connect 34 0 58 0;
 #X connect 35 0 21 0;
 #X connect 35 0 40 0;
-#X connect 35 0 75 0;
+#X connect 35 0 59 0;
 #X connect 36 0 37 0;
-#X connect 37 0 104 0;
+#X connect 37 0 77 0;
 #X connect 38 0 39 0;
-#X connect 39 0 105 0;
+#X connect 39 0 78 0;
 #X connect 40 0 41 0;
-#X connect 41 0 106 0;
+#X connect 41 0 79 0;
 #X connect 42 0 0 1;
-#X connect 43 0 103 0;
-#X connect 43 1 103 1;
-#X connect 44 0 0 0;
-#X connect 45 0 44 1;
-#X connect 46 0 54 0;
-#X connect 46 1 54 1;
-#X connect 47 0 86 1;
-#X connect 48 0 50 0;
-#X connect 48 1 50 1;
-#X connect 48 2 50 2;
-#X connect 49 0 86 0;
-#X connect 49 1 85 0;
-#X connect 49 2 88 0;
-#X connect 49 3 87 0;
-#X connect 50 0 49 0;
-#X connect 51 0 85 1;
-#X connect 52 0 88 1;
-#X connect 53 0 87 1;
-#X connect 54 0 48 0;
-#X connect 54 1 48 1;
-#X connect 55 0 56 0;
-#X connect 55 0 66 0;
-#X connect 56 0 43 2;
-#X connect 57 0 58 0;
-#X connect 58 0 43 2;
-#X connect 59 0 43 2;
-#X connect 60 0 61 0;
-#X connect 61 0 43 2;
-#X connect 62 0 63 0;
-#X connect 63 0 43 2;
-#X connect 64 0 65 0;
-#X connect 65 0 43 2;
-#X connect 66 0 59 0;
-#X connect 67 0 33 1;
-#X connect 68 0 34 1;
-#X connect 69 0 35 1;
-#X connect 70 0 4 0;
-#X connect 72 0 3 0;
-#X connect 72 1 2 0;
-#X connect 73 0 9 0;
-#X connect 73 1 8 0;
-#X connect 76 0 10 0;
-#X connect 77 0 13 0;
-#X connect 77 1 12 0;
-#X connect 78 0 14 0;
-#X connect 85 0 95 0;
-#X connect 86 0 95 0;
-#X connect 87 0 95 0;
-#X connect 88 0 95 0;
-#X connect 90 0 89 0;
-#X connect 90 0 93 0;
-#X connect 92 0 91 0;
-#X connect 92 0 94 2;
-#X connect 93 0 94 1;
-#X connect 94 0 43 0;
-#X connect 94 0 43 1;
-#X connect 94 1 43 0;
-#X connect 94 1 43 1;
-#X connect 95 0 94 0;
-#X connect 97 2 98 0;
-#X connect 97 3 99 0;
-#X connect 100 0 6 0;
-#X connect 101 0 17 0;
-#X connect 102 0 16 0;
-#X connect 107 0 108 0;
-#X connect 108 0 3 0;
-#X connect 108 0 113 0;
-#X connect 108 1 2 0;
-#X connect 108 1 113 0;
-#X connect 108 2 114 0;
-#X connect 109 0 9 0;
-#X connect 109 0 115 0;
-#X connect 109 1 8 0;
-#X connect 109 1 115 0;
-#X connect 109 2 116 0;
-#X connect 110 0 109 0;
-#X connect 111 0 13 0;
-#X connect 111 0 117 0;
-#X connect 111 1 12 0;
-#X connect 111 1 117 0;
-#X connect 111 2 118 0;
-#X connect 112 0 111 0;
-#X connect 113 0 72 0;
-#X connect 114 0 72 0;
-#X connect 115 0 73 0;
-#X connect 116 0 73 0;
-#X connect 117 0 77 0;
-#X connect 118 0 77 0;
-#X restore 792 38 pd guts;
+#X connect 43 0 0 0;
+#X connect 44 0 43 1;
+#X connect 45 0 49 0;
+#X connect 45 1 49 1;
+#X connect 46 0 48 0;
+#X connect 46 1 48 1;
+#X connect 46 2 48 2;
+#X connect 48 0 47 0;
+#X connect 49 0 46 0;
+#X connect 49 1 46 1;
+#X connect 51 0 33 1;
+#X connect 52 0 34 1;
+#X connect 53 0 35 1;
+#X connect 54 0 4 0;
+#X connect 56 0 3 0;
+#X connect 56 1 2 0;
+#X connect 57 0 9 0;
+#X connect 57 1 8 0;
+#X connect 60 0 10 0;
+#X connect 61 0 13 0;
+#X connect 61 1 12 0;
+#X connect 62 0 14 0;
+#X connect 70 2 71 0;
+#X connect 70 3 72 0;
+#X connect 73 0 6 0;
+#X connect 74 0 17 0;
+#X connect 75 0 16 0;
+#X connect 80 0 81 0;
+#X connect 81 0 3 0;
+#X connect 81 0 86 0;
+#X connect 81 1 2 0;
+#X connect 81 1 86 0;
+#X connect 81 2 87 0;
+#X connect 82 0 9 0;
+#X connect 82 0 88 0;
+#X connect 82 1 8 0;
+#X connect 82 1 88 0;
+#X connect 82 2 89 0;
+#X connect 83 0 82 0;
+#X connect 84 0 13 0;
+#X connect 84 0 90 0;
+#X connect 84 1 12 0;
+#X connect 84 1 90 0;
+#X connect 84 2 91 0;
+#X connect 85 0 84 0;
+#X connect 86 0 56 0;
+#X connect 87 0 56 0;
+#X connect 88 0 57 0;
+#X connect 89 0 57 0;
+#X connect 90 0 61 0;
+#X connect 91 0 61 0;
+#X restore 791 153 pd guts;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array Octaves 8 float 3;
 #A 0 6 3 6 6 6 4 6 3;
@@ -513,42 +448,6 @@ basenote.r 24 \; notedur.r 25 \;;
 0;
 #X obj 753 417 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#N canvas 65 92 450 250 (subpatch) 0;
-#X array Synth-Data 8 float 3;
-#A 0 0 1 1 0 0 0 1 1;
-#X coords 0 3 8 0 250 100 1 0 0;
-#X restore 56 72 graph;
-#X obj 241 57 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
-0;
-#X obj 211 57 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
-0;
-#X obj 180 57 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
-0;
-#X obj 148 57 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
-0;
-#X obj 117 57 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
-0;
-#X obj 86 57 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
-0;
-#X obj 41 171 cnv 15 265 1 empty empty null -35 0 0 14 -162280 -66577
-0;
-#X obj 40 138 cnv 15 265 1 empty empty sinus -40 0 0 14 -162280 -66577
-0;
-#X obj 40 106 cnv 15 265 1 empty empty square -50 0 0 14 -162280 -66577
-0;
-#X obj 40 72 cnv 15 265 1 empty empty noise -40 0 0 14 -162280 -66577
-0;
-#N canvas 65 97 450 250 (subpatch) 0;
-#X array Synth-Pitch 9 float 1;
-#A 0 -0.48 -0.48 17.28 -4.32 0.480007 -22.56 -9.6 4.32 2.88;
-#X coords 0 24 8 -24 250 100 1 0 0;
-#X restore 323 71 graph;
-#X obj 600 133 hsl 200 35 0 1 0 0 feedback.s feedback.r Feedback -2
--8 0 10 -262144 -1 -1 0 1;
-#X obj 600 79 hsl 200 35 0 1 0 0 dry.s dry.r Wet/Dry -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 273 57 cnv 15 1 120 empty empty empty 20 12 0 14 -261234 -66577
-0;
 #N canvas 711 286 613 463 loadsave-interface 0;
 #X obj 44 15 s cb-save;
 #X obj 44 -6 r storage-save;
@@ -567,7 +466,7 @@ basenote.r 24 \; notedur.r 25 \;;
 #X connect 5 0 6 0;
 #X connect 9 0 8 0;
 #X connect 10 0 7 0;
-#X restore 868 19 pd loadsave-interface;
+#X restore 867 134 pd loadsave-interface;
 #N canvas 65 54 1301 714 loadsave 0;
 #X obj 97 58 sssad/tablesave Synth-Data 8 Synth-Data;
 #X obj 97 78 sssad/tablesave Synth-Pitch 8 Synth-Pitch;
@@ -597,25 +496,21 @@ basenote.r 24 \; notedur.r 25 \;;
 #X obj 99 587 sssad/auto dephaseaccents.s dephaseaccents.r;
 #X obj 335 267 sssad/auto bppitch.s bppitch.r;
 #X obj 335 286 sssad/auto bpq.s bpq.r;
-#X restore 868 39 pd loadsave;
-#X obj 943 39 loadsave storage;
-#X obj 869 133 hsl 200 35 0 15 0 0 bpq.s bpq.r VCF_Q -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 869 79 hsl 200 35 24 127 0 0 bppitch.s bppitch.r VCF_F -2 -8
-0 10 -262144 -1 -1 0 1;
-#X obj 792 18 clock-gui;
-#X obj 324 26 nbx 5 25 0 127 0 0 basnote.r basenote.s Base_Note 0 -8
-0 10 -262144 -1 -1 0 256;
-#X obj 440 26 nbx 5 25 0 200 0 0 notedur.s notedur.r Note_Duration
+#X restore 867 154 pd loadsave;
+#X obj 942 154 loadsave storage;
+#X obj 791 133 clock-gui;
+#X obj 323 141 nbx 5 25 0 127 0 0 basnote.r basenote.s Base_Note 0
+-8 0 10 -262144 -1 -1 0 256;
+#X obj 439 141 nbx 5 25 0 200 0 0 notedur.s notedur.r Note_Duration
 0 -8 0 10 -262144 -1 -1 25 256;
-#X obj 56 25 bng 25 250 50 0 load empty Load 0 -10 0 10 -262144 -1
+#X obj 55 140 bng 25 250 50 0 load empty Load 0 -10 0 10 -262144 -1
 -1;
-#X obj 154 25 bng 25 250 50 0 save empty Save 0 -10 0 10 -262144 -1
+#X obj 153 140 bng 25 250 50 0 save empty Save 0 -10 0 10 -262144 -1
 -1;
-#X obj 597 26 nbx 5 25 0 12 0 0 dell.s dell.r Left_Del 0 -8 0 10 -262144
+#X obj 596 141 nbx 5 25 0 12 0 0 dell.s dell.r Left_Del 0 -8 0 10 -262144
 -1 -1 0 256;
-#X obj 704 27 nbx 5 25 0 12 0 0 delr.s delr.r Right_Del 0 -8 0 10 -262144
--1 -1 0 256;
+#X obj 703 142 nbx 5 25 0 12 0 0 delr.s delr.r Right_Del 0 -8 0 10
+-262144 -1 -1 0 256;
 #X obj 957 273 nbx 5 25 0 12 0 0 modulonotes.s modulonotes.r Modulo
 0 -8 0 10 -262144 -1 -1 8 256;
 #X obj 957 318 nbx 5 25 0 12 0 0 dephasenotes.s dephasenotes.r Dephase
@@ -643,3 +538,9 @@ Dephase 0 -8 0 10 -262144 -1 -1 0 256;
 #X text 914 565 >>;
 #X text 913 604 <<;
 #X text 913 641 ><;
+#X text 111 16 replace accent by duration ?;
+#X text 109 44 set new synth;
+#X text 113 67 use taplist for synth preset ? base note and octave
+?;
+#X text 117 87 remove sssad for persist;
+#X text 101 2 patch structure complient with guidelines;

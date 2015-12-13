@@ -1,5 +1,27 @@
-#N canvas 252 104 1092 664 10;
-#X obj 257 636 pack f f;
+#N canvas 485 103 572 686 10;
+#X obj 18 -92 clock;
+#X obj 18 49 s tick;
+#X obj 104 26 s reset;
+#X obj 18 -69 / 24;
+#X obj 18 -44 i;
+#X obj 18 -20 change;
+#X obj 18 4 b;
+#X obj 18 27 f 0;
+#X obj 46 27 + 1;
+#X msg 104 7 set 0;
+#X obj -8 10 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 115 211 * 12;
+#X obj 18 245 +;
+#X obj 18 272 s basenote.r;
+#X obj 18 185 f;
+#X obj 57 228 f;
+#X obj 76 168 t b b f;
+#X obj 18 152 t b f b;
+#X obj 76 144 r baseoctave.s;
+#X obj 18 120 r basenote1.s/idx;
+#X obj 115 191 + 2;
+#N canvas 65 54 1301 714 sequencer-logic 0;
 #X msg 332 75 retrograde;
 #X msg 332 15 bang;
 #X msg 332 115 rotate \$1;
@@ -27,45 +49,20 @@
 #X obj 471 553 * 12;
 #X obj 257 581 +;
 #X obj 683 525 -;
-#X obj 683 493 swap 4, f 8;
 #X obj 863 200 loadbang;
-#X obj 257 228 t b b b;
-#X obj 683 559 / 4;
+#X obj 683 552 / 4;
 #X obj 257 396 %;
 #X obj 471 394 %;
 #X obj 683 395 %;
-#X obj 870 630 * 100;
-#X obj 870 655 + 55;
-#X obj 868 539 * 100;
-#X obj 868 564 + 55;
-#X obj 868 450 * 100;
-#X obj 868 475 + 55;
-#X obj 683 582 * 100;
-#X obj 258 1178 rj/e_dubdel mydubdel;
-#X obj 256 603 +;
+#X obj 1285 630 * 100;
+#X obj 1285 655 + 55;
+#X obj 1283 539 * 100;
+#X obj 1283 564 + 55;
+#X obj 1283 450 * 100;
+#X obj 1283 475 + 55;
+#X obj 683 609 * 100;
+#X obj 257 603 +;
 #X obj 323 582 r basenote.s;
-#X obj 257 656 unpack;
-#X obj 350 765 r notedur.s;
-#X obj 257 709 poly 4 1;
-#X obj 257 754 route 1 2 3 4;
-#X obj 257 732 pack f f f;
-#X obj 405 796 r notedur.s;
-#X obj 462 826 r notedur.s;
-#X obj 506 853 r notedur.s;
-#X obj 257 686 makenote 50 100 100;
-#X obj 496 1044 loadbang;
-#X msg 496 1065 dry 1 \, bq 2 \, basedur 500 \, bpitch 83 \, feedback
-0.99 \, dell 2 \, delr 3 \,;
-#X obj 497 1180 r dry.s;
-#X msg 497 1200 dry \$1;
-#X msg 497 1120 basedur \$1;
-#X obj 496 1220 r dell.s;
-#X msg 496 1239 dell \$1;
-#X obj 496 1261 r delr.s;
-#X msg 496 1280 delr \$1;
-#X obj 497 1141 r feedback.s;
-#X msg 497 1161 feedback \$1;
-#X msg 496 1099 250;
 #X obj 272 376 r modulonotes.s;
 #X obj 486 374 r modulooctaves.s;
 #X obj 698 375 r moduloaccents.s;
@@ -116,25 +113,10 @@
 #X obj 674 101 r dephaseaccents.s;
 #X text 216 -104 Read Modes;
 #X text 157 469 Read Data;
-#X text 159 666 create notes;
-#X text 144 784 polyphonic synth;
-#X text 868 421 Move canvases on parent gui;
-#X obj 312 815 s_chipwave_voice;
-#X msg 495 959 bpitch \$1;
-#X obj 495 939 r bppitch.s;
-#X msg 495 1001 bq \$1;
-#X obj 495 981 r bpq.s;
-#X obj 267 1049 mtof;
-#X obj 257 1075 vcf~;
-#X obj 258 965 +~;
-#X text 168 1098 Effects;
-#X obj 56 46 clock;
-#X obj 56 187 s tick;
-#X obj 149 131 s reset;
+#X text 1283 421 Move canvases on parent gui;
 #X obj 267 316 r reset;
 #X obj 691 316 r reset;
 #X obj 486 315 r reset;
-#X obj 265 1253 dac~;
 #X obj 298 -106 r modenotes.s;
 #X obj 298 -84 sel 0 1 2;
 #X obj 512 -85 sel 0 1 2;
@@ -147,170 +129,1064 @@
 #X msg 578 -42 1;
 #X msg 758 -45 0;
 #X msg 790 -45 1;
-#X obj 56 69 / 24;
-#X obj 56 94 i;
-#X obj 56 118 change;
-#X obj 56 142 b;
-#X obj 56 165 f 0;
-#X obj 84 165 + 1;
-#X msg 149 112 set 0;
-#X obj 30 148 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 257 784 s_chipwave_voice;
-#X obj 413 872 s_chipwave_voice;
-#X obj 369 845 s_chipwave_voice;
-#X msg 870 682 \; cursorNotes pos \$1 62;
-#X msg 868 590 \; cursorOctaves pos \$1 348;
-#X msg 868 499 \; cursorAccents pos \$1 462;
-#X connect 0 0 45 0;
-#X connect 1 0 4 0;
-#X connect 2 0 4 0;
-#X connect 3 0 4 0;
-#X connect 4 0 5 1;
-#X connect 5 0 32 0;
-#X connect 6 0 30 0;
-#X connect 7 0 10 0;
-#X connect 8 0 10 0;
-#X connect 9 0 10 0;
-#X connect 10 0 15 1;
-#X connect 11 0 14 0;
-#X connect 12 0 14 0;
-#X connect 13 0 14 0;
-#X connect 14 0 16 1;
-#X connect 15 0 33 0;
-#X connect 16 0 34 0;
-#X connect 17 0 4 1;
-#X connect 17 0 10 1;
-#X connect 17 0 14 1;
-#X connect 18 0 21 0;
-#X connect 19 0 24 0;
-#X connect 20 0 28 0;
-#X connect 21 0 22 0;
-#X connect 21 1 22 1;
-#X connect 22 0 26 0;
-#X connect 23 0 25 0;
-#X connect 24 0 23 0;
-#X connect 24 1 23 1;
-#X connect 25 0 26 1;
-#X connect 26 0 43 0;
-#X connect 27 0 31 0;
-#X connect 28 0 27 0;
-#X connect 28 1 27 1;
+#X msg 1284 682 \; cursorNotes pos \$1 2;
+#X obj 260 710 outlet;
+#X obj 257 228 t b b b b;
+#X obj 257 679 pack f f f;
+#X msg 1044 88 retrograde;
+#X msg 1044 29 bang;
+#X msg 1044 131 rotate \$1;
+#X obj 1044 308 rj/c_patternchange;
+#X obj 969 364 rj/u_listloop;
+#X msg 1149 234 0 1 2 3 4 5 6 7;
+#X obj 969 538 -;
+#X obj 1149 213 loadbang;
+#X obj 969 408 %;
+#N canvas 65 152 532 300 pingpong 0;
+#X obj 127 59 spigot;
+#X obj 128 84 sel 0 7;
+#X obj 132 225 outlet;
+#X obj 196 230 outlet;
+#X obj 158 35 inlet;
+#X obj 127 14 r durationsstep;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 4 0 0 1;
+#X connect 5 0 0 0;
+#X restore 1044 10 pd pingpong;
+#X obj 977 329 r reset;
+#X obj 1010 -74 sel 0 1 2;
+#X msg 1044 -32 0;
+#X msg 1076 -32 1;
+#X obj 969 486 tabread Durations;
+#X obj 877 425 s durationsstep;
+#X obj 984 388 r modulodurations.s;
+#X obj 960 114 r dephasedurations.s;
+#X obj 1011 617 r notetime;
+#X obj 998 645 f;
+#X obj 906 662 *;
+#X obj 906 582 moses 0.5;
+#X msg 906 629 0.5;
+#X obj 906 606 t b b;
+#X obj 971 605 t f b;
+#X obj 1266 307 * 100;
+#X obj 1266 332 + 55;
+#X floatatom 1080 445 5 0 0 0 - - -, f 5;
+#X floatatom 738 427 5 0 0 0 - - -, f 5;
+#X msg 1282 583 \; cursorOctaves pos \$1 555;
+#X msg 1284 498 \; cursorAccents pos \$1 440;
+#X msg 1265 357 \; cursorDurations pos \$1 290;
+#X obj 1010 -96 r modedurations.s;
+#X obj 683 493 swap 3, f 8;
+#X obj 683 583 -1;
+#X floatatom 1038 536 5 0 0 0 - - -, f 5;
+#X obj 969 506 swap 5, f 8;
+#X connect 0 0 3 0;
+#X connect 1 0 3 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 1;
+#X connect 4 0 29 0;
+#X connect 5 0 73 0;
+#X connect 6 0 9 0;
+#X connect 7 0 9 0;
+#X connect 8 0 9 0;
+#X connect 9 0 14 1;
+#X connect 10 0 13 0;
+#X connect 11 0 13 0;
+#X connect 12 0 13 0;
+#X connect 13 0 15 1;
+#X connect 14 0 30 0;
+#X connect 15 0 31 0;
+#X connect 16 0 3 1;
+#X connect 16 0 9 1;
+#X connect 16 0 13 1;
+#X connect 17 0 20 0;
+#X connect 18 0 23 0;
+#X connect 19 0 108 0;
+#X connect 20 0 21 0;
+#X connect 20 1 21 1;
+#X connect 21 0 25 0;
+#X connect 22 0 24 0;
+#X connect 23 0 22 0;
+#X connect 23 1 22 1;
+#X connect 24 0 25 1;
+#X connect 25 0 39 0;
+#X connect 26 0 28 0;
+#X connect 27 0 16 0;
+#X connect 28 0 109 0;
 #X connect 29 0 17 0;
-#X connect 30 0 5 0;
-#X connect 30 1 15 0;
-#X connect 30 2 16 0;
-#X connect 31 0 41 0;
-#X connect 32 0 18 0;
-#X connect 32 0 35 0;
-#X connect 32 0 70 0;
-#X connect 33 0 19 0;
-#X connect 33 0 37 0;
-#X connect 33 0 73 0;
-#X connect 34 0 20 0;
-#X connect 34 0 39 0;
-#X connect 34 0 74 0;
-#X connect 35 0 36 0;
-#X connect 36 0 122 0;
-#X connect 37 0 38 0;
-#X connect 38 0 123 0;
-#X connect 39 0 40 0;
-#X connect 40 0 124 0;
-#X connect 41 0 0 1;
-#X connect 42 0 98 0;
-#X connect 42 1 98 1;
-#X connect 43 0 0 0;
-#X connect 44 0 43 1;
-#X connect 45 0 53 0;
-#X connect 45 1 53 1;
-#X connect 46 0 119 1;
-#X connect 47 0 49 0;
-#X connect 47 1 49 1;
-#X connect 47 2 49 2;
-#X connect 48 0 119 0;
-#X connect 48 1 83 0;
-#X connect 48 2 121 0;
-#X connect 48 3 120 0;
-#X connect 49 0 48 0;
-#X connect 50 0 83 1;
-#X connect 51 0 121 1;
-#X connect 52 0 120 1;
-#X connect 53 0 47 0;
-#X connect 53 1 47 1;
-#X connect 54 0 55 0;
-#X connect 54 0 65 0;
-#X connect 55 0 42 2;
-#X connect 56 0 57 0;
-#X connect 57 0 42 2;
-#X connect 58 0 42 2;
+#X connect 29 0 32 0;
+#X connect 29 0 45 0;
+#X connect 30 0 18 0;
+#X connect 30 0 34 0;
+#X connect 30 0 48 0;
+#X connect 31 0 19 0;
+#X connect 31 0 36 0;
+#X connect 31 0 49 0;
+#X connect 31 0 103 0;
+#X connect 32 0 33 0;
+#X connect 33 0 71 0;
+#X connect 34 0 35 0;
+#X connect 35 0 104 0;
+#X connect 36 0 37 0;
+#X connect 37 0 105 0;
+#X connect 38 0 74 1;
+#X connect 39 0 74 0;
+#X connect 40 0 39 1;
+#X connect 41 0 29 1;
+#X connect 42 0 30 1;
+#X connect 43 0 31 1;
+#X connect 44 0 2 0;
+#X connect 46 0 1 0;
+#X connect 46 1 0 0;
+#X connect 47 0 7 0;
+#X connect 47 1 6 0;
+#X connect 50 0 8 0;
+#X connect 51 0 11 0;
+#X connect 51 1 10 0;
+#X connect 52 0 12 0;
+#X connect 56 0 4 0;
+#X connect 57 0 15 0;
+#X connect 58 0 14 0;
 #X connect 59 0 60 0;
-#X connect 60 0 42 2;
-#X connect 61 0 62 0;
-#X connect 62 0 42 2;
-#X connect 63 0 64 0;
-#X connect 64 0 42 2;
-#X connect 65 0 58 0;
-#X connect 66 0 32 1;
-#X connect 67 0 33 1;
-#X connect 68 0 34 1;
-#X connect 69 0 3 0;
-#X connect 71 0 2 0;
-#X connect 71 1 1 0;
-#X connect 72 0 8 0;
-#X connect 72 1 7 0;
-#X connect 75 0 9 0;
-#X connect 76 0 12 0;
-#X connect 76 1 11 0;
-#X connect 77 0 13 0;
+#X connect 60 0 1 0;
+#X connect 60 0 65 0;
+#X connect 60 1 0 0;
+#X connect 60 1 65 0;
+#X connect 60 2 66 0;
+#X connect 61 0 7 0;
+#X connect 61 0 67 0;
+#X connect 61 1 6 0;
+#X connect 61 1 67 0;
+#X connect 61 2 68 0;
+#X connect 62 0 61 0;
+#X connect 63 0 11 0;
+#X connect 63 0 69 0;
+#X connect 63 1 10 0;
+#X connect 63 1 69 0;
+#X connect 63 2 70 0;
+#X connect 64 0 63 0;
+#X connect 65 0 46 0;
+#X connect 66 0 46 0;
+#X connect 67 0 47 0;
+#X connect 68 0 47 0;
+#X connect 69 0 51 0;
+#X connect 70 0 51 0;
+#X connect 73 0 4 0;
+#X connect 73 1 14 0;
+#X connect 73 2 15 0;
+#X connect 73 3 79 0;
+#X connect 74 0 72 0;
+#X connect 75 0 78 0;
+#X connect 76 0 78 0;
+#X connect 77 0 78 0;
+#X connect 78 0 79 1;
+#X connect 79 0 83 0;
+#X connect 80 0 78 1;
+#X connect 81 0 96 0;
+#X connect 82 0 80 0;
+#X connect 83 0 89 0;
 #X connect 83 0 90 0;
-#X connect 85 0 84 0;
-#X connect 85 0 88 0;
-#X connect 87 0 86 0;
-#X connect 87 0 89 2;
-#X connect 88 0 89 1;
-#X connect 89 0 42 0;
-#X connect 89 0 42 1;
-#X connect 89 1 42 0;
-#X connect 89 1 42 1;
-#X connect 90 0 89 0;
-#X connect 92 0 111 0;
-#X connect 92 2 117 0;
-#X connect 95 0 5 0;
-#X connect 96 0 16 0;
-#X connect 97 0 15 0;
-#X connect 99 0 100 0;
-#X connect 100 0 2 0;
-#X connect 100 0 105 0;
-#X connect 100 1 1 0;
-#X connect 100 1 105 0;
-#X connect 100 2 106 0;
-#X connect 101 0 8 0;
-#X connect 101 0 107 0;
-#X connect 101 1 7 0;
-#X connect 101 1 107 0;
-#X connect 101 2 108 0;
-#X connect 102 0 101 0;
-#X connect 103 0 12 0;
-#X connect 103 0 109 0;
-#X connect 103 1 11 0;
-#X connect 103 1 109 0;
-#X connect 103 2 110 0;
-#X connect 104 0 103 0;
-#X connect 105 0 71 0;
-#X connect 106 0 71 0;
-#X connect 107 0 72 0;
-#X connect 108 0 72 0;
-#X connect 109 0 76 0;
-#X connect 110 0 76 0;
-#X connect 111 0 112 0;
-#X connect 112 0 113 0;
-#X connect 113 0 114 0;
-#X connect 114 0 115 0;
-#X connect 114 0 118 0;
-#X connect 115 0 116 0;
-#X connect 115 0 93 0;
-#X connect 116 0 115 1;
-#X connect 117 0 94 0;
-#X connect 119 0 90 0;
-#X connect 120 0 90 0;
-#X connect 121 0 90 0;
+#X connect 83 0 100 0;
+#X connect 83 0 102 0;
+#X connect 84 0 76 0;
+#X connect 84 1 75 0;
+#X connect 85 0 79 0;
+#X connect 86 0 76 0;
+#X connect 86 0 87 0;
+#X connect 86 1 75 0;
+#X connect 86 1 87 0;
+#X connect 86 2 88 0;
+#X connect 87 0 84 0;
+#X connect 88 0 84 0;
+#X connect 89 0 111 0;
+#X connect 91 0 83 1;
+#X connect 92 0 77 0;
+#X connect 93 0 94 1;
+#X connect 94 0 95 1;
+#X connect 95 0 74 2;
+#X connect 96 0 98 0;
+#X connect 96 1 99 0;
+#X connect 97 0 95 0;
+#X connect 98 0 97 0;
+#X connect 98 1 94 0;
+#X connect 99 0 95 0;
+#X connect 99 1 94 0;
+#X connect 100 0 101 0;
+#X connect 101 0 106 0;
+#X connect 107 0 86 0;
+#X connect 108 0 26 0;
+#X connect 108 1 26 1;
+#X connect 109 0 38 0;
+#X connect 111 0 81 0;
+#X connect 111 1 81 1;
+#X connect 111 1 110 0;
+#X restore 255 331 pd sequencer-logic;
+#N canvas 323 187 932 558 synth 0;
+#X obj 117 -57 pack f f f;
+#X obj 117 -103 makenote 50 100 100;
+#X text 19 -123 create notes;
+#X obj 117 -79 poly 8 1;
+#X obj 118 -35 route 1 2 3 4 5 6 7 8;
+#X obj 118 13 rj/s_chip \$0-v;
+#X obj 133 42 rj/s_chip \$0-v;
+#X obj 148 69 rj/s_chip \$0-v;
+#X obj 164 98 rj/s_chip \$0-v;
+#X obj 180 126 rj/s_chip \$0-v;
+#X obj 195 155 rj/s_chip \$0-v;
+#X obj 210 182 rj/s_chip \$0-v;
+#X obj 226 211 rj/s_chip \$0-v;
+#X obj 199 -9 r chipcontrols;
+#X obj 214 20 r chipcontrols;
+#X obj 229 48 r chipcontrols;
+#X obj 245 76 r chipcontrols;
+#X obj 261 104 r chipcontrols;
+#X obj 276 133 r chipcontrols;
+#X obj 291 160 r chipcontrols;
+#X obj 114 -183 inlet;
+#X obj 230 542 dac~;
+#N canvas 65 112 1025 602 dubdelay 0;
+#X obj 481 157 r \$0-feedback;
+#X obj 714 61 inlet;
+#X obj 714 108 route save;
+#X obj 714 85 list trim;
+#X obj 565 300 r \$0-basedur;
+#X obj 80 213 inlet~;
+#X obj 56 556 outlet~;
+#X obj 377 214 inlet~;
+#X obj 355 557 outlet~;
+#X obj 460 302 r \$0-delr;
+#X obj 155 296 r \$0-dell;
+#X obj 461 424 swap 1000;
+#X obj 159 422 swap 1000;
+#X obj 461 445 /;
+#X obj 159 441 /;
+#X obj 481 182 / 2;
+#X obj 207 147 r \$0-feedback;
+#X obj 207 172 / 2;
+#X text 511 182 because of 2 delaylines;
+#X obj 442 215 *~ 0.1;
+#X obj 168 202 *~ 0.1;
+#X obj 461 504 vd~ \$0-dubby-r;
+#X obj 159 501 vd~ \$0-dubby-l;
+#X obj 118 533 r \$0-dry;
+#X obj 118 555 pack 0 10;
+#X obj 421 532 r \$0-dry;
+#X obj 421 554 pack 0 10;
+#X obj 440 271 delwrite~ \$0-dubby-r 6000;
+#X obj 167 271 delwrite~ \$0-dubby-l 6000;
+#N canvas 172 83 586 377 LICENSE-GPL 0;
+#X text 57 88 This program is free software: you can redistribute it
+and/or modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation \, either version 3 of
+the License \, or (at your option) any later version.;
+#X text 58 168 This program is distributed in the hope that it will
+be useful \, but WITHOUT ANY WARRANTY \; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.;
+#X text 57 261 You should have received a copy of the GNU General Public
+License along with this program. If not \, see <http://www.gnu.org/licenses/>.
+;
+#X text 61 54 Copyright (C) 2009 \, Reality Jockey Ltd.;
+#X text 60 325 See the file LICENSE.txt for the full license text.
+;
+#X restore 912 29 pd LICENSE-GPL;
+#X obj 159 479 line~;
+#X msg 159 460 \$1 5;
+#X obj 461 484 line~;
+#X msg 461 465 \$1 5;
+#X obj 461 405 f;
+#X obj 565 323 t b b f;
+#X obj 512 404 f;
+#X obj 461 323 t b f b;
+#X obj 264 297 r \$0-basedur;
+#X obj 160 402 f;
+#X obj 264 320 t b b f;
+#X obj 211 401 f;
+#X obj 160 320 t b f b;
+#X obj 781 160 rj/u_dispatch \$0 delr;
+#X obj 781 184 rj/u_dispatch \$0 dell;
+#X obj 781 209 rj/u_dispatch \$0 feedback;
+#X obj 781 255 rj/u_dispatch \$0 basedur;
+#X obj 781 298 rj/u_dispatch \$0 dry;
+#X obj 355 533 rj/c_xfade;
+#X obj 57 532 rj/c_xfade;
+#X connect 0 0 15 0;
+#X connect 1 0 3 0;
+#X connect 2 1 43 0;
+#X connect 3 0 2 0;
+#X connect 4 0 35 0;
+#X connect 5 0 28 0;
+#X connect 5 0 49 1;
+#X connect 7 0 27 0;
+#X connect 7 0 48 1;
+#X connect 9 0 37 0;
+#X connect 10 0 42 0;
+#X connect 11 0 13 0;
+#X connect 11 1 13 1;
+#X connect 12 0 14 0;
+#X connect 12 1 14 1;
+#X connect 13 0 33 0;
+#X connect 14 0 31 0;
+#X connect 15 0 19 1;
+#X connect 16 0 17 0;
+#X connect 17 0 20 1;
+#X connect 19 0 27 0;
+#X connect 20 0 28 0;
+#X connect 21 0 20 0;
+#X connect 21 0 48 0;
+#X connect 22 0 19 0;
+#X connect 22 0 49 0;
+#X connect 23 0 24 0;
+#X connect 24 0 49 2;
+#X connect 25 0 26 0;
+#X connect 26 0 48 2;
+#X connect 30 0 22 0;
+#X connect 31 0 30 0;
+#X connect 32 0 21 0;
+#X connect 33 0 32 0;
+#X connect 34 0 11 0;
+#X connect 35 1 36 0;
+#X connect 35 2 36 1;
+#X connect 36 0 11 1;
+#X connect 37 0 34 0;
+#X connect 37 1 34 1;
+#X connect 37 2 36 0;
+#X connect 38 0 40 0;
+#X connect 39 0 12 0;
+#X connect 40 1 41 0;
+#X connect 40 2 41 1;
+#X connect 41 0 12 1;
+#X connect 42 0 39 0;
+#X connect 42 1 39 1;
+#X connect 42 2 41 0;
+#X connect 43 0 44 0;
+#X connect 44 0 45 0;
+#X connect 45 0 46 0;
+#X connect 46 0 47 0;
+#X connect 48 0 8 0;
+#X connect 49 0 6 0;
+#X restore 192 467 pd dubdelay;
+#X obj 624 244 s \$0-in2;
+#X obj 259 440 r \$0-in2;
+#X msg 624 220 dell \$1;
+#X obj 702 244 s \$0-in2;
+#X msg 702 220 delr \$1;
+#X obj 791 236 s \$0-in2;
+#X msg 791 212 basedur \$1;
+#X obj 788 115 r notetime;
+#X obj 564 244 s \$0-in2;
+#X msg 564 220 dry \$1;
+#X obj 442 399 loadbang;
+#X obj 564 197 r dddry.s;
+#X obj 624 197 r dell.s/idx;
+#X obj 702 197 r delr.s/idx;
+#X obj 192 497 tanh~;
+#X obj 256 496 tanh~;
+#X obj 192 436 tanh~;
+#X obj 790 139 i;
+#X obj 790 161 change;
+#X msg 444 434 dry 0.2 \, bq 3 \, basedur 500 \, bpitch 83 \, feedback
+0.7 \, dell 2 \, delr 3 \,;
+#X obj 191 400 vcf~ 2000 50;
+#X obj 307 189 r chipcontrols;
+#X obj 207 338 sig~;
+#X obj 195 269 mtof;
+#X obj 206 316 line;
+#X msg 204 291 \$1 5;
+#X obj 194 247 r vcffreq.s;
+#X obj 330 318 r vcfq.s;
+#X obj 115 220 *~ 0.25;
+#X obj 117 -133 unpack f f f;
+#X connect 0 0 4 0;
+#X connect 1 0 3 0;
+#X connect 1 1 3 1;
+#X connect 3 0 0 0;
+#X connect 3 1 0 1;
+#X connect 3 2 0 2;
+#X connect 4 0 5 0;
+#X connect 4 1 6 0;
+#X connect 4 2 7 0;
+#X connect 4 3 8 0;
+#X connect 4 4 9 0;
+#X connect 4 5 10 0;
+#X connect 4 6 11 0;
+#X connect 4 7 12 0;
+#X connect 5 0 51 0;
+#X connect 6 0 51 0;
+#X connect 7 0 51 0;
+#X connect 8 0 51 0;
+#X connect 9 0 51 0;
+#X connect 10 0 51 0;
+#X connect 11 0 51 0;
+#X connect 12 0 51 0;
+#X connect 13 0 5 1;
+#X connect 14 0 6 1;
+#X connect 15 0 7 1;
+#X connect 16 0 8 1;
+#X connect 17 0 9 1;
+#X connect 18 0 10 1;
+#X connect 19 0 11 1;
+#X connect 20 0 52 0;
+#X connect 22 0 37 0;
+#X connect 22 1 38 0;
+#X connect 24 0 22 2;
+#X connect 25 0 23 0;
+#X connect 27 0 26 0;
+#X connect 29 0 28 0;
+#X connect 30 0 40 0;
+#X connect 32 0 31 0;
+#X connect 33 0 42 0;
+#X connect 34 0 32 0;
+#X connect 35 0 25 0;
+#X connect 36 0 27 0;
+#X connect 37 0 21 0;
+#X connect 38 0 21 1;
+#X connect 39 0 22 0;
+#X connect 39 0 22 1;
+#X connect 40 0 41 0;
+#X connect 41 0 29 0;
+#X connect 42 0 22 2;
+#X connect 43 0 39 0;
+#X connect 44 0 12 1;
+#X connect 45 0 43 1;
+#X connect 46 0 48 0;
+#X connect 47 0 45 0;
+#X connect 48 0 47 0;
+#X connect 49 0 46 0;
+#X connect 50 0 43 2;
+#X connect 51 0 43 0;
+#X connect 52 0 1 0;
+#X connect 52 1 1 1;
+#X connect 52 2 1 2;
+#X restore 255 350 pd synth;
+#N canvas 65 54 1301 714 gui-lookup 0;
+#X obj 333 -2 table_set_from_gui Notes 0 notes_0.s 11;
+#X obj 16 97 table_note_rd_lookup Notes 5 notes_5.r 11;
+#X obj 333 17 table_set_from_gui Notes 1 notes_1.s 11;
+#X obj 333 37 table_set_from_gui Notes 2 notes_2.s 11;
+#X obj 333 56 table_set_from_gui Notes 3 notes_3.s 11;
+#X obj 333 76 table_set_from_gui Notes 4 notes_4.s 11;
+#X obj 333 95 table_set_from_gui Notes 5 notes_5.s 11;
+#X obj 333 115 table_set_from_gui Notes 6 notes_6.s 11;
+#X obj 333 134 table_set_from_gui Notes 7 notes_7.s 11;
+#X obj 333 184 table_set_from_gui Octaves 0 octaves_0.s 5;
+#X obj 333 203 table_set_from_gui Octaves 1 octaves_1.s 5;
+#X obj 333 223 table_set_from_gui Octaves 2 octaves_2.s 5;
+#X obj 333 242 table_set_from_gui Octaves 3 octaves_3.s 5;
+#X obj 333 261 table_set_from_gui Octaves 4 octaves_4.s 5;
+#X obj 333 280 table_set_from_gui Octaves 5 octaves_5.s 5;
+#X obj 333 300 table_set_from_gui Octaves 6 octaves_6.s 5;
+#X obj 333 319 table_set_from_gui Octaves 7 octaves_7.s 5;
+#X obj 333 386 table_set_from_gui Accents 1 accents_1.s 3;
+#X obj 333 406 table_set_from_gui Accents 2 accents_2.s 3;
+#X obj 333 426 table_set_from_gui Accents 3 accents_3.s 3;
+#X obj 333 445 table_set_from_gui Accents 4 accents_4.s 3;
+#X obj 333 465 table_set_from_gui Accents 5 accents_5.s 3;
+#X obj 333 485 table_set_from_gui Accents 6 accents_6.s 3;
+#X obj 333 505 table_set_from_gui Accents 7 accents_7.s 3;
+#X floatatom 598 366 7 0 0 0 - accents_0.r accents_0.s, f 7;
+#X floatatom 598 386 7 0 0 0 - accents_1.r accents_1.s, f 7;
+#X floatatom 599 409 7 0 0 0 - accents_2.r accents_2.s, f 7;
+#X floatatom 599 428 7 0 0 0 - accents_3.r accents_3.s, f 7;
+#X floatatom 597 448 7 0 0 0 - accents_4.r accents_4.s, f 7;
+#X floatatom 599 464 7 0 0 0 - accents_5.r accents_5.s, f 7;
+#X floatatom 599 488 7 0 0 0 - accents_6.r accents_6.s, f 7;
+#X floatatom 601 509 7 0 0 0 - accents_7.r accents_7.s, f 7;
+#X floatatom 600 185 7 0 0 0 - octaves_0.r octaves_0.s, f 7;
+#X floatatom 602 205 7 0 0 0 - octaves_1.r octaves_1.s, f 7;
+#X floatatom 602 223 7 0 0 0 - octaves_2.r octaves_2.s, f 7;
+#X floatatom 602 243 7 0 0 0 - octaves_3.r octaves_3.s, f 7;
+#X floatatom 605 263 7 0 0 0 - octaves_4.r octaves_4.s, f 7;
+#X floatatom 606 285 7 0 0 0 - octaves_5.r octaves_5.s, f 7;
+#X floatatom 600 302 7 0 0 0 - octaves_6.r octaves_6.s, f 7;
+#X floatatom 597 319 7 0 0 0 - octaves_7.r octaves_7.s, f 7;
+#X floatatom 575 0 7 0 0 0 - notes_0.r notes_0.s, f 7;
+#X floatatom 576 18 7 0 0 0 - notes_1.r notes_1.s, f 7;
+#X floatatom 577 36 7 0 0 0 - notes_2.r notes_2.s, f 7;
+#X floatatom 575 59 7 0 0 0 - notes_3.r notes_3.s, f 7;
+#X floatatom 577 79 7 0 0 0 - notes_4.r notes_4.s, f 7;
+#X floatatom 576 99 7 0 0 0 - notes_5.r notes_5.s, f 7;
+#X floatatom 577 119 7 0 0 0 - notes_6.r notes_6.s, f 7;
+#X floatatom 576 139 7 0 0 0 - notes_7.r notes_7.s, f 7;
+#X obj 16 0 table_note_rd_lookup Notes 0 notes_0.r 11;
+#X obj 16 19 table_note_rd_lookup Notes 1 notes_1.r 11;
+#X obj 16 39 table_note_rd_lookup Notes 2 notes_2.r 11;
+#X obj 16 58 table_note_rd_lookup Notes 3 notes_3.r 11;
+#X obj 16 78 table_note_rd_lookup Notes 4 notes_4.r 11;
+#X obj 16 117 table_note_rd_lookup Notes 6 notes_6.r 11;
+#X obj 16 136 table_note_rd_lookup Notes 7 notes_7.r 11;
+#X obj 16 184 table_note_rd_lookup Octaves 0 octaves_0.r 5;
+#X obj 16 203 table_note_rd_lookup Octaves 1 octaves_1.r 5;
+#X obj 16 223 table_note_rd_lookup Octaves 2 octaves_2.r 5;
+#X obj 16 242 table_note_rd_lookup Octaves 3 octaves_3.r 5;
+#X obj 16 262 table_note_rd_lookup Octaves 4 octaves_4.r 5;
+#X obj 16 281 table_note_rd_lookup Octaves 5 octaves_5.r 5;
+#X obj 16 301 table_note_rd_lookup Octaves 6 octaves_6.r 5;
+#X obj 16 320 table_note_rd_lookup Octaves 7 octaves_7.r 5;
+#X obj 17 388 table_note_rd_lookup Accents 1 accents_1.r 3;
+#X obj 17 408 table_note_rd_lookup Accents 2 accents_2.r 3;
+#X obj 17 427 table_note_rd_lookup Accents 3 accents_3.r 3;
+#X obj 17 447 table_note_rd_lookup Accents 4 accents_4.r 3;
+#X obj 17 466 table_note_rd_lookup Accents 5 accents_5.r 3;
+#X obj 17 486 table_note_rd_lookup Accents 6 accents_6.r 3;
+#X obj 17 505 table_note_rd_lookup Accents 7 accents_7.r 3;
+#X floatatom 621 552 7 0 0 0 - durations_0.r durations_0.s, f 7;
+#X floatatom 621 572 7 0 0 0 - durations_1.r durations_1.s, f 7;
+#X floatatom 622 595 7 0 0 0 - durations_2.r durations_2.s, f 7;
+#X floatatom 622 614 7 0 0 0 - durations_3.r durations_3.s, f 7;
+#X floatatom 620 634 7 0 0 0 - durations_4.r durations_4.s, f 7;
+#X floatatom 622 650 7 0 0 0 - durations_5.r durations_5.s, f 7;
+#X floatatom 622 674 7 0 0 0 - durations_6.r durations_6.s, f 7;
+#X floatatom 624 695 7 0 0 0 - durations_7.r durations_7.s, f 7;
+#X obj 17 554 table_note_rd_lookup Durations 0 durations_0.r 4;
+#X obj 17 573 table_note_rd_lookup Durations 1 durations_1.r 4;
+#X obj 333 551 table_set_from_gui Durations 0 durations_0.s 4;
+#X obj 333 571 table_set_from_gui Durations 1 durations_1.s 4;
+#X obj 334 590 table_set_from_gui Durations 2 durations_2.s 4;
+#X obj 333 611 table_set_from_gui Durations 3 durations_3.s 4;
+#X obj 333 631 table_set_from_gui Durations 4 durations_4.s 4;
+#X obj 333 648 table_set_from_gui Durations 5 durations_5.s 4;
+#X obj 333 670 table_set_from_gui Durations 6 durations_6.s 4;
+#X obj 333 690 table_set_from_gui Durations 7 durations_7.s 4;
+#X obj 17 593 table_note_rd_lookup Durations 2 durations_2.r 4;
+#X obj 17 612 table_note_rd_lookup Durations 3 durations_3.r 4;
+#X obj 18 632 table_note_rd_lookup Durations 4 durations_4.r 4;
+#X obj 17 651 table_note_rd_lookup Durations 5 durations_5.r 4;
+#X obj 17 671 table_note_rd_lookup Durations 6 durations_6.r 4;
+#X obj 17 690 table_note_rd_lookup Durations 7 durations_7.r 4;
+#X obj 17 369 table_note_rd_lookup Accents 0 accents_0.r 2;
+#X obj 333 364 table_set_from_gui Accents 0 accents_0.s 2;
+#X restore 256 235 pd gui-lookup;
+#X obj 225 -92 loadbang;
+#X obj 291 307 s \$0-GUI;
+#N canvas 712 87 651 686 chip_presets 0;
+#X obj 71 -109 inlet;
+#X obj 151 615 outlet name;
+#X obj 151 590 symbol;
+#X obj 217 646 outlet parms;
+#X obj 151 566 route name;
+#X obj 606 195 loadbang;
+#X text 603 141 set up the interface to be human readable and show
+which controls are actually used;
+#X text 605 171 Requires modified [g-hsl];
+#X msg -77 -31 name portsaw \, mod3c 1 \, mod3b 0.929528 \, mod2a 0
+\, mod1d 0.125984 \, mod1c 0 \, mod1b 0.716535 \, mod1a 0.84252 \,
+osc3a 0.661417 \, osc2d 0 \, osc2c 0.188976 \, osc2b 0.622047 \, osc2a
+1 \, osc1d 1 \, osc1c 0.155984 \, osc1b 0.503937 \, osc1a 1 \, env3r
+0 \, env3s 0 \, env3d 0 \, env3a 0 \, env2r 0.0166142 \, env2s 0.889764
+\, env2d 0 \, env2a 0 \, env1r 0.0331496 \, env1s 0.826772 \, env1d
+0.10315 \, env1a 0 \,;
+#X msg -62 -20 name dualbass \, mod3d 0 \, mod3c 0 \, mod3b 0.480709
+\, mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0.125984
+\, mod1c 0 \, mod1b 0.716535 \, mod1a 0.84252 \, osc3d 0 \, osc3c 0
+\, osc3b 0.23622 \, osc3a 0.417323 \, osc2d 0.700787 \, osc2c 0.188976
+\, osc2b 0.622047 \, osc2a 1 \, osc1d 1 \, osc1c 0.155984 \, osc1b
+0.503937 \, osc1a 1 \, env3r 0.0393701 \, env3s 0.645669 \, env3d 0
+\, env3a 0 \, env2r 0.0166142 \, env2s 0.889764 \, env2d 0 \, env2a
+0 \, env1r 0.0331496 \, env1s 0.826772 \, env1d 0.10315 \, env1a 0
+\,;
+#X msg -47 -12 name reedy1 \, mod3d 0 \, mod3c 0 \, mod3b 0.583071
+\, mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0.228346
+\, mod1c 0.015748 \, mod1b 0.614173 \, mod1a 0.732283 \, osc3d 0 \,
+osc3c 0 \, osc3b 0.472441 \, osc3a 0.755906 \, osc2d 0.826772 \, osc2c
+0.0472441 \, osc2b 0.401575 \, osc2a 0.023622 \, osc1d 0.779528 \,
+osc1c 0.045748 \, osc1b 0.574803 \, osc1a 0.015748 \, env3r 0.0393701
+\, env3s 0.645669 \, env3d 0.19685 \, env3a 0.0629921 \, env2r 0.0166142
+\, env2s 0.889764 \, env2d 0.110236 \, env2a 0 \, env1r 0.0331496 \,
+env1s 0.826772 \, env1d 0.10315 \, env1a 0 \,;
+#X msg -24 13 name pure \, mod3d 0 \, mod3c 0 \, mod3b 0.291732 \,
+mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0.244094
+\, mod1c 0.401575 \, mod1b 0.614173 \, mod1a 0.629921 \, osc3d 0 \,
+osc3c 0 \, osc3b 0.472441 \, osc3a 0.755906 \, osc2d 0 \, osc2c 0.0472441
+\, osc2b 0.401575 \, osc2a 0.023622 \, osc1d 0.779528 \, osc1c 0.203228
+\, osc1b 1 \, osc1a 0.015748 \, env3r 0.0393701 \, env3s 0.645669 \,
+env3d 0.19685 \, env3a 0.0629921 \, env2r 0.0244882 \, env2s 0.897638
+\, env2d 0.110236 \, env2a 0 \, env1r 0.0331496 \, env1s 0.826772 \,
+env1d 0.10315 \, env1a 0.000472441 \,;
+#X msg -10 38 name voicier \, mod3d 0 \, mod3c 0 \, mod3b 0.291732
+\, mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0.244094
+\, mod1c 0.401575 \, mod1b 0.582677 \, mod1a 0.629921 \, osc3d 0 \,
+osc3c 0 \, osc3b 0.472441 \, osc3a 1 \, osc2d 0.740157 \, osc2c 0.204724
+\, osc2b 1 \, osc2a 0.496063 \, osc1d 0.677165 \, osc1c 0.203228 \,
+osc1b 1 \, osc1a 0.527559 \, env3r 0.0393701 \, env3s 0.645669 \, env3d
+0.19685 \, env3a 0.0629921 \, env2r 0.0244882 \, env2s 0.897638 \,
+env2d 0.110236 \, env2a 0.0393701 \, env1r 0.0331496 \, env1s 0.826772
+\, env1d 0.10315 \, env1a 0.000472441 \,;
+#X msg 2 55 name stringy \, mod3d 0 \, mod3c 0 \, mod3b 0.197244 \,
+mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0.244094
+\, mod1c 0.188976 \, mod1b 0.582677 \, mod1a 0.590551 \, osc3d 0 \,
+osc3c 0 \, osc3b 0.472441 \, osc3a 1 \, osc2d 0.574803 \, osc2c 0.204724
+\, osc2b 0.992126 \, osc2a 0.496063 \, osc1d 0.755906 \, osc1c 0.203228
+\, osc1b 0.976378 \, osc1a 0.527559 \, env3r 0.0393701 \, env3s 0.645669
+\, env3d 0.19685 \, env3a 0.0629921 \, env2r 0.0244882 \, env2s 0.897638
+\, env2d 0.110236 \, env2a 0.23622 \, env1r 0.0331496 \, env1s 0.826772
+\, env1d 0.10315 \, env1a 0.0398425 \,;
+#X msg 22 80 name stringy2 \, mod3d 0 \, mod3c 0 \, mod3b 0.197244
+\, mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0.220472
+\, mod1c 0.00787402 \, mod1b 0.582677 \, mod1a 0.590551 \, osc3d 0
+\, osc3c 0 \, osc3b 0.472441 \, osc3a 0.866142 \, osc2d 0.527559 \,
+osc2c 0.409449 \, osc2b 0.771654 \, osc2a 0.015748 \, osc1d 0.889764
+\, osc1c 0.0929921 \, osc1b 0.897638 \, osc1a 0 \, env3r 0.0393701
+\, env3s 0.244094 \, env3d 0.0708661 \, env3a 0.0708661 \, env2r 0.0244882
+\, env2s 0.307087 \, env2d 0.0787402 \, env2a 0.212598 \, env1r 0.0174016
+\, env1s 0.425197 \, env1d 0.0559055 \, env1a 0.0555906 \,;
+#X msg 46 109 name detrum \, mod3d 0 \, mod3c 0 \, mod3b 0.197244 \,
+mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0 \, mod1c
+0.23622 \, mod1b 0.023622 \, mod1a 0 \, osc3d 0 \, osc3c 0 \, osc3b
+0.472441 \, osc3a 1 \, osc2d 0.291339 \, osc2c 0.826772 \, osc2b 0.669291
+\, osc2a 0.015748 \, osc1d 0.677165 \, osc1c 0.982756 \, osc1b 0.527559
+\, osc1a 0 \, env3r 0.015748 \, env3s 0.244094 \, env3d 0.0708661 \,
+env3a 0.125984 \, env2r 0.00874016 \, env2s 0.0314961 \, env2d 0.0787402
+\, env2a 0.0472441 \, env1r 0.0174016 \, env1s 0.385827 \, env1d 0.0559055
+\, env1a 0.0555906 \,;
+#X msg 68 134 name brassens \, mod3d 0 \, mod3c 0 \, mod3b 0.197244
+\, mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0 \,
+mod1c 0.023622 \, mod1b 0.811024 \, mod1a 0.015748 \, osc3d 0 \, osc3c
+0 \, osc3b 0.76378 \, osc3a 0.204724 \, osc2d 0.677165 \, osc2c 0.826772
+\, osc2b 0.299213 \, osc2a 0.015748 \, osc1d 0.677165 \, osc1c 0.982756
+\, osc1b 0.15748 \, osc1a 0 \, env3r 0.015748 \, env3s 0.244094 \,
+env3d 0.0708661 \, env3a 0.125984 \, env2r 0.00874016 \, env2s 0.0314961
+\, env2d 0.0787402 \, env2a 0.0314961 \, env1r 0.0174016 \, env1s 0.385827
+\, env1d 0.0559055 \, env1a 0.0398425 \,;
+#X msg 113 100 name piano \, mod3d 0 \, mod3c 0 \, mod3b 0.197244 \,
+mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0 \, mod1c
+0.0102362 \, mod1b 0.000551181 \, mod1a 0.000629921 \, osc3d 0 \, osc3c
+0 \, osc3b 0.598425 \, osc3a 0.543307 \, osc2d 0.834646 \, osc2c 0.393701
+\, osc2b 0.299213 \, osc2a 0.015748 \, osc1d 0.559055 \, osc1c 0.818898
+\, osc1b 0.622047 \, osc1a 1 \, env3r 0.0787402 \, env3s 0.88189 \,
+env3d 0.0551181 \, env3a 0 \, env2r 0.386693 \, env2s 0.543307 \, env2d
+0.0472441 \, env2a 0 \, env1r 0.26937 \, env1s 0.133858 \, env1d 0.0952756
+\, env1a 0.00110236 \,;
+#X msg 294 28 name organ1 \, mod3d 0 \, mod3c 0 \, mod3b 0.827165 \,
+mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0 \, mod1c
+0.0417323 \, mod1b 0.969055 \, mod1a 0.929764 \, osc3d 0 \, osc3c 0
+\, osc3b 1 \, osc3a 0.543307 \, osc2d 0.283465 \, osc2c 0.125984 \,
+osc2b 0.511811 \, osc2a 0.00787402 \, osc1d 0.629921 \, osc1c 0.0629921
+\, osc1b 0.645669 \, osc1a 0 \, env3r 0.0314961 \, env3s 0.88189 \,
+env3d 0.0551181 \, env3a 0 \, env2r 0.0559843 \, env2s 0.503937 \,
+env2d 0.00787402 \, env2a 0 \, env1r 0.0252756 \, env1s 1 \, env1d
+0.0244094 \, env1a 0.00110236 \,;
+#X msg 136 163 name organ2 \, mod3d 0 \, mod3c 0 \, mod3b 0.173622
+\, mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0 \,
+mod1c 0.159843 \, mod1b 0.929685 \, mod1a 0.890394 \, osc3d 0 \, osc3c
+0 \, osc3b 0.692913 \, osc3a 0.826772 \, osc2d 0.299213 \, osc2c 0.448819
+\, osc2b 0.228346 \, osc2a 0.00787402 \, osc1d 0.629921 \, osc1c 0.0629921
+\, osc1b 0.472441 \, osc1a 0 \, env3r 0.0314961 \, env3s 0.614173 \,
+env3d 0.00787402 \, env3a 0 \, env2r 0.0559843 \, env2s 0.503937 \,
+env2d 0.00787402 \, env2a 0 \, env1r 0.0252756 \, env1s 1 \, env1d
+0.0244094 \, env1a 0.00110236 \,;
+#X msg 146 178 name oboe \, mod3d 0 \, mod3c 0 \, mod3b 0.583071 \,
+mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0.464567
+\, mod1c 0.0629921 \, mod1b 0.574803 \, mod1a 0.637795 \, osc3d 0 \,
+osc3c 0 \, osc3b 0.692913 \, osc3a 0.826772 \, osc2d 0.19685 \, osc2c
+0.110236 \, osc2b 0.866142 \, osc2a 0.0708661 \, osc1d 0.433071 \,
+osc1c 0.0629921 \, osc1b 0.834646 \, osc1a 1 \, env3r 0.141732 \, env3s
+0.535433 \, env3d 0.354331 \, env3a 0.000314961 \, env2r 0.441811 \,
+env2s 0.503937 \, env2d 0.338583 \, env2a 0.700787 \, env1r 0.0331496
+\, env1s 1 \, env1d 0.0244094 \, env1a 0.0798425 \,;
+#X msg 160 195 name seq1 \, mod3d 0 \, mod3c 0 \, mod3b 0.583071 \,
+mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0.464567
+\, mod1c 0.0629921 \, mod1b 0.574803 \, mod1a 0.637795 \, osc3d 0 \,
+osc3c 0 \, osc3b 0.692913 \, osc3a 0.606299 \, osc2d 0.283465 \, osc2c
+0.11811 \, osc2b 0.377953 \, osc2a 0.0472441 \, osc1d 0.409449 \, osc1c
+0.102362 \, osc1b 0.653543 \, osc1a 0.0314961 \, env3r 0.0314961 \,
+env3s 1 \, env3d 1 \, env3a 0.023937 \, env2r 0.023622 \, env2s 1 \,
+env2d 1 \, env2a 0 \, env1r 0.0331496 \, env1s 0 \, env1d 0.0401575
+\, env1a 0 \,;
+#X obj 71 -83 sel 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14;
+#X msg 180 221 name fatbass \, mod3d 0 \, mod3c 0 \, mod3b 0.34685
+\, mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0 \,
+mod1c 0.0629921 \, mod1b 0.732283 \, mod1a 0.76378 \, osc3d 0 \, osc3c
+0 \, osc3b 0.692913 \, osc3a 0.606299 \, osc2d 0.283465 \, osc2c 0.566929
+\, osc2b 0.283465 \, osc2a 0.0472441 \, osc1d 0.409449 \, osc1c 0.527559
+\, osc1b 0.653543 \, osc1a 0.0314961 \, env3r 0.0314961 \, env3s 1
+\, env3d 1 \, env3a 0.023937 \, env2r 0.023622 \, env2s 1 \, env2d
+1 \, env2a 0 \, env1r 0.0331496 \, env1s 0 \, env1d 0.0637795 \, env1a
+0.000708661 \,;
+#X msg 606 232 env1a color 128 \, env1a label AMP-ATTACK \, env1d color
+128 \, env1d label AMP-DECAY \, env1r color 128 \, env1r label AMP-REL
+\, env1s color 128 \, env1s label AMP-SUS \, env2a color 128 \, env2a
+label OSC1-ATTACK \, env2d color 128 \, env2d label OSC1-DECAY \, env2r
+color 128 \, env2r label OSC1-REL \, env2s color 128 \, env2s label
+OSC1-SUS \, env3a color 128 \, env3a label OSC2-ATTACK \, env3d color
+128 \, env3d label OSC2-DECAY \, env3r color 128 \, env3r label OSC2-REL
+\, env3s color 128 \, env3s label OSC2-SUS \, mod1a color 128 \, mod1a
+label LFO-FREQ1 \, mod1b color 128 \, mod1b label LFO-FREQ2 \, mod1c
+color 128 \, mod1c label VIB-AMNT \, mod1d color 128 \, mod1d label
+VIB-ONSET \, mod2a color 2 \, mod2a label _ \, mod2b color 2 \, mod2b
+label _ \, mod2c color 2 \, mod2c label _ \, mod2d color 2 \, mod2d
+label _ \, mod3a color 2 \, mod3a label _ \, mod3b color 128 \, mod3b
+label VOLUME \, mod3c color 128 \, mod3c label PORTAMENTO \, mod3d
+color 2 \, mod3d label _ \, osc1a color 128 \, osc1a label OSC1-BRIGHT
+\, osc1b color 128 \, osc1b label OSC1-WAVE \, osc1c color 128 \, osc1c
+label OSC1-CLIP \, osc1d color 128 \, osc1d label OSC1-ENV \, osc2a
+color 128 \, osc2a label OSC2-BRIGHT \, osc2b color 128 \, osc2b label
+OSC2-WAVE \, osc2c color 128 \, osc2c label OSC2-CLIP \, osc2d color
+128 \, osc2d label OSC2-ENV \, osc3a color 128 \, osc3a label OCTAVE
+\, osc3b color 128 \, osc3b label OSC2-OCT \, osc3c color 2 \, osc3c
+label _ \, osc3d color 2 \, osc3d label _;
+#X connect 0 0 22 0;
+#X connect 2 0 1 0;
+#X connect 4 0 2 0;
+#X connect 4 1 3 0;
+#X connect 5 0 24 0;
+#X connect 8 0 4 0;
+#X connect 9 0 4 0;
+#X connect 10 0 4 0;
+#X connect 11 0 4 0;
+#X connect 12 0 4 0;
+#X connect 13 0 4 0;
+#X connect 14 0 4 0;
+#X connect 15 0 4 0;
+#X connect 16 0 4 0;
+#X connect 17 0 4 0;
+#X connect 18 0 4 0;
+#X connect 19 0 4 0;
+#X connect 20 0 4 0;
+#X connect 21 0 4 0;
+#X connect 22 0 8 0;
+#X connect 22 1 9 0;
+#X connect 22 2 10 0;
+#X connect 22 3 11 0;
+#X connect 22 4 12 0;
+#X connect 22 5 13 0;
+#X connect 22 6 14 0;
+#X connect 22 7 15 0;
+#X connect 22 8 16 0;
+#X connect 22 9 17 0;
+#X connect 22 10 18 0;
+#X connect 22 11 19 0;
+#X connect 22 12 20 0;
+#X connect 22 13 21 0;
+#X connect 22 14 23 0;
+#X connect 23 0 4 0;
+#X connect 24 0 3 0;
+#X restore 256 283 pd chip_presets;
+#X obj 256 263 r presets.s/idx;
+#X obj 95 -70 * 24;
+#X obj 101 -43 s notetime;
+#N canvas 136 222 392 152 interface-synth-messages 0;
+#N canvas 65 87 450 300 envs 0;
+#X obj 190 422 s chipcontrols;
+#X obj 16 8 r \$0-GUI;
+#X obj 16 73 s env1a-amp-attack.r;
+#X obj 11 186 r env1a-amp-attack.s;
+#X obj 11 205 list prepend env1a;
+#X obj 54 93 s env1d-amp-decay.r;
+#X obj 92 115 s env1s-amp-sustain.r;
+#X obj 130 135 s env1r-amp-release.r;
+#X obj 23 225 r env1d-amp-decay.s;
+#X obj 23 246 list prepend env1d;
+#X obj 37 266 r env1s-amp-sustain.s;
+#X obj 39 286 list prepend env1s;
+#X obj 50 306 r env1r-amp-release.s;
+#X obj 50 327 list prepend env1r;
+#X obj 16 39 route env1a env1d env1s env1r env2a env2d env2s env2r
+env3a env3d env3s env3r, f 77;
+#X obj 169 71 s env2a-osc1-attack.r;
+#X obj 207 91 s env2d-osc1-decay.r;
+#X obj 245 113 s env2s-osc1-sustain.r;
+#X obj 283 133 s env2r-osc1-release.r;
+#X obj 322 68 s env3a-osc2-attack.r;
+#X obj 360 88 s env3d-osc2-decay.r;
+#X obj 398 110 s env3s-osc2-sustain.r;
+#X obj 436 130 s env3r-osc2-release.r;
+#X obj 203 198 list prepend env2a;
+#X obj 215 239 list prepend env2d;
+#X obj 231 279 list prepend env2s;
+#X obj 242 320 list prepend env2r;
+#X obj 203 179 r env2a-osc1-attack.s;
+#X obj 215 218 r env2d-osc1-decay.s;
+#X obj 229 259 r env2s-osc1-sustain.s;
+#X obj 242 299 r env2r-osc1-release.s;
+#X obj 375 175 r env3a-osc2-attack.s;
+#X obj 375 194 list prepend env3a;
+#X obj 387 214 r env3d-osc2-decay.s;
+#X obj 387 235 list prepend env3d;
+#X obj 401 255 r env3s-osc2-sustain.s;
+#X obj 403 275 list prepend env3s;
+#X obj 414 295 r env3r-osc2-release.s;
+#X obj 414 316 list prepend env3r;
+#X connect 1 0 14 0;
+#X connect 3 0 4 0;
+#X connect 4 0 0 0;
+#X connect 8 0 9 0;
+#X connect 9 0 0 0;
+#X connect 10 0 11 0;
+#X connect 11 0 0 0;
+#X connect 12 0 13 0;
+#X connect 13 0 0 0;
+#X connect 14 0 2 0;
+#X connect 14 1 5 0;
+#X connect 14 2 6 0;
+#X connect 14 3 7 0;
+#X connect 14 4 15 0;
+#X connect 14 5 16 0;
+#X connect 14 6 17 0;
+#X connect 14 7 18 0;
+#X connect 14 8 19 0;
+#X connect 14 9 20 0;
+#X connect 14 10 21 0;
+#X connect 14 11 22 0;
+#X connect 23 0 0 0;
+#X connect 24 0 0 0;
+#X connect 25 0 0 0;
+#X connect 26 0 0 0;
+#X connect 27 0 23 0;
+#X connect 28 0 24 0;
+#X connect 29 0 25 0;
+#X connect 30 0 26 0;
+#X connect 31 0 32 0;
+#X connect 32 0 0 0;
+#X connect 33 0 34 0;
+#X connect 34 0 0 0;
+#X connect 35 0 36 0;
+#X connect 36 0 0 0;
+#X connect 37 0 38 0;
+#X connect 38 0 0 0;
+#X restore 31 8 pd envs;
+#N canvas 65 92 723 500 oscillators 0;
+#X obj 190 422 s chipcontrols;
+#X obj 16 8 r \$0-GUI;
+#X obj 16 39 route osc1a osc1b osc1c osc1d osc2a osc2b osc2c osc2d
+osc3a osc3b osc3c osc3d, f 77;
+#X obj 12 205 list prepend osc1a;
+#X obj 23 246 list prepend osc1b;
+#X obj 39 285 list prepend osc1c;
+#X obj 50 327 list prepend osc1d;
+#X obj 203 199 list prepend osc2a;
+#X obj 215 239 list prepend osc2b;
+#X obj 231 279 list prepend osc2c;
+#X obj 242 319 list prepend osc2d;
+#X obj 375 194 list prepend osc3a;
+#X obj 387 235 list prepend osc3b;
+#X obj 16 73 s osc1a.r;
+#X obj 54 92 s osc1b.r;
+#X obj 92 115 s osc1c.r;
+#X obj 130 135 s osc1d.r;
+#X obj 11 184 r osc1a.s;
+#X obj 23 225 r osc1b.s;
+#X obj 37 266 r osc1c.s;
+#X obj 50 306 r osc1d.s;
+#X obj 169 71 s osc2a.r;
+#X obj 207 91 s osc2b.r;
+#X obj 245 113 s osc2c.r;
+#X obj 283 133 s osc2d.r;
+#X obj 325 68 s osc3a.r;
+#X obj 360 88 s osc3b.r;
+#X obj 203 179 r osc2a.s;
+#X obj 215 218 r osc2b.s;
+#X obj 229 259 r osc2c.s;
+#X obj 242 299 r osc2d.s;
+#X obj 375 175 r osc3a.s;
+#X obj 387 214 r osc3b.s;
+#X connect 1 0 2 0;
+#X connect 2 0 13 0;
+#X connect 2 1 14 0;
+#X connect 2 2 15 0;
+#X connect 2 3 16 0;
+#X connect 2 4 21 0;
+#X connect 2 5 22 0;
+#X connect 2 6 23 0;
+#X connect 2 7 24 0;
+#X connect 2 8 25 0;
+#X connect 2 9 26 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;
+#X connect 7 0 0 0;
+#X connect 8 0 0 0;
+#X connect 9 0 0 0;
+#X connect 10 0 0 0;
+#X connect 11 0 0 0;
+#X connect 12 0 0 0;
+#X connect 17 0 3 0;
+#X connect 18 0 4 0;
+#X connect 19 0 5 0;
+#X connect 20 0 6 0;
+#X connect 27 0 7 0;
+#X connect 28 0 8 0;
+#X connect 29 0 9 0;
+#X connect 30 0 10 0;
+#X connect 31 0 11 0;
+#X connect 32 0 12 0;
+#X restore 32 31 pd oscillators;
+#N canvas 65 102 723 500 modifiers 0;
+#X obj 190 422 s chipcontrols;
+#X obj 16 8 r \$0-GUI;
+#X obj 16 39 route mod1a mod1b mod1c mod1d mod3b mod3c, f 43;
+#X obj 16 73 s moad1a.r;
+#X obj 54 92 s mod1b.r;
+#X obj 92 115 s mod1c.r;
+#X obj 130 135 s mod1d.r;
+#X obj 169 71 s mod3b.r;
+#X obj 207 91 s mod3c.r;
+#X obj 12 205 list prepend mod1a;
+#X obj 23 246 list prepend mod1b;
+#X obj 39 285 list prepend mod1c;
+#X obj 50 327 list prepend mod1d;
+#X obj 375 175 r mod3b.s;
+#X obj 375 194 list prepend mod3b;
+#X obj 387 235 list prepend mod3c;
+#X obj 387 214 r mod3c.s;
+#X obj 11 184 r mod1a.s;
+#X obj 23 225 r mod1b.s;
+#X obj 37 266 r mod1c.s;
+#X obj 50 306 r mod1d.s;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 2 2 5 0;
+#X connect 2 3 6 0;
+#X connect 2 4 7 0;
+#X connect 2 5 8 0;
+#X connect 9 0 0 0;
+#X connect 10 0 0 0;
+#X connect 11 0 0 0;
+#X connect 12 0 0 0;
+#X connect 13 0 14 0;
+#X connect 14 0 0 0;
+#X connect 15 0 0 0;
+#X connect 16 0 15 0;
+#X connect 17 0 9 0;
+#X connect 18 0 10 0;
+#X connect 19 0 11 0;
+#X connect 20 0 12 0;
+#X restore 35 59 pd modifiers;
+#X restore 256 214 pd interface-synth-messages;
+#N canvas -107 82 850 686 loadsave-mapping 0;
+#X obj 466 -152 r synth-load;
+#X obj 465 -132 persist-load synth;
+#X obj 467 -42 r synth-save;
+#X obj 467 -22 persist-save synth;
+#X obj 466 -208 r load_synth;
+#X msg 466 -188 \; synth load presets_synth cbs;
+#X obj 466 -98 r save_synth;
+#X msg 466 -78 \; synth save presets_synth cbs;
+#X obj 40 -210 r load_pattern;
+#X msg 40 -190 \; pattern load presets_pattern cbs;
+#X obj 40 -154 r pattern-load;
+#X obj 40 -134 persist-load pattern;
+#X obj 41 -103 r save_pattern;
+#X msg 41 -83 \; pattern save presets_pattern cbs;
+#X obj 42 -47 r pattern-save;
+#X obj 42 -27 persist-save pattern;
+#X obj 29 27 persist-table pattern Notes;
+#X obj 29 47 persist-table pattern Durations;
+#X obj 29 67 persist-table pattern Accents;
+#X obj 29 87 persist-table pattern Octaves;
+#X obj 30 113 persist-map pattern baseoctave.s baseoctave.r;
+#X obj 30 133 persist-map pattern basenote.s basenote.r;
+#X obj 30 154 persist-map pattern basenote1.s basenote1.r;
+#X obj 29 184 persist-map pattern modenotes.s modenotes.r;
+#X obj 29 204 persist-map pattern modulonotes.s modulonotes.r;
+#X obj 29 224 persist-map pattern dephasenotes.s dephasenotes.r;
+#X obj 29 256 persist-map pattern modedurations.s modedurations.r;
+#X obj 30 278 persist-map pattern modulodurations.s modulodurations.r
+;
+#X obj 30 301 persist-map pattern dephasedurations.s dephasedurations.r
+;
+#X obj 30 336 persist-map pattern modeaccents.s modeaccents.r;
+#X obj 30 358 persist-map pattern moduloaccents.s moduloaccents.r;
+#X obj 29 382 persist-map pattern dephaseaccents.s dephaseaccents.r
+;
+#X obj 29 410 persist-map pattern modeoctaves.s modeoctaves.r;
+#X obj 29 432 persist-map pattern modulooctaves.s modulooctaves.r;
+#X obj 29 454 persist-map pattern dephaseoctaves.s dephaseoctaves.r
+;
+#X obj 467 13 persist-map synth presets.s presets.r;
+#X obj 467 33 persist-map synth vcffreq.s vcffreq.r;
+#X obj 467 54 persist-map synth vcfq.s vcfq.r;
+#X obj 468 81 persist-map synth dddry.s dddry.r;
+#X obj 468 100 persist-map synth dell.s dell.r;
+#X obj 467 147 persist-map synth env1a-amp-attack.s env1a-amp-attack.r
+;
+#X obj 467 166 persist-map synth env1d-amp-decay.s env1d-amp-decay.r
+;
+#X obj 468 119 persist-map synth delr.s delr.r;
+#X obj 467 185 persist-map synth env1s-amp-sustain.s env1s-amp-sustain.r
+;
+#X obj 467 204 persist-map synth env1r-amp-release.s env1r-amp-release.r
+;
+#X obj 467 237 persist-map synth env2a-osc1-attack.s env2a-osc1-attack.r
+;
+#X obj 467 256 persist-map synth env2d-osc1-decay.s env2d-osc1-decay.r
+;
+#X obj 467 275 persist-map synth env2s-osc1-sustain.s env2s-osc1-sustain.r
+;
+#X obj 467 294 persist-map synth env2r-osc1-release.s env2r-osc1-release.r
+;
+#X obj 467 326 persist-map synth env3a-osc2-attack.s env3a-osc2-attack.r
+;
+#X obj 467 345 persist-map synth env3d-osc2-decay.s env3d-osc2-decay.r
+;
+#X obj 467 364 persist-map synth env3s-osc2-sustain.s env3s-osc2-sustain.r
+;
+#X obj 467 383 persist-map synth env3r-osc2-release.s env3r-osc2-release.r
+;
+#X obj 467 411 persist-map synth osc1a.s osc1a.r;
+#X obj 467 432 persist-map synth osc1b.s osc1b.r;
+#X obj 467 452 persist-map synth osc1c.s osc1c.r;
+#X obj 467 473 persist-map synth osc1d.s osc1d.r;
+#X obj 463 507 persist-map synth osc2a.s osc2a.r;
+#X obj 463 528 persist-map synth osc2b.s osc2b.r;
+#X obj 463 548 persist-map synth osc2c.s osc2c.r;
+#X obj 463 569 persist-map synth osc2d.s osc2d.r;
+#X obj 463 597 persist-map synth osc3a.s osc3a.r;
+#X obj 463 618 persist-map synth osc3b.s osc3b.r;
+#X obj 460 656 persist-map synth mod1a.s mod1a.r;
+#X obj 460 677 persist-map synth mod1b.s mod1b.r;
+#X obj 460 697 persist-map synth mod1c.s mod1c.r;
+#X obj 460 718 persist-map synth mod1d.s mod1d.r;
+#X obj 459 751 persist-map synth mod3c.s mod3c.r;
+#X obj 459 772 persist-map synth mod3b.s mod3b.r;
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
+#X connect 4 0 5 0;
+#X connect 6 0 7 0;
+#X connect 8 0 9 0;
+#X connect 10 0 11 0;
+#X connect 12 0 13 0;
+#X connect 14 0 15 0;
+#X restore 60 385 pd loadsave-mapping;
+#X obj 31 348 loadsave pattern;
+#X obj 136 348 loadsave synth;
+#X msg 225 -71 \; modulonotes.r 8 \; moduloaccents.r 8 \; modulooctaves.r
+8 \; modulodurations.r 8 \; dephasenotes.r 0 \; dephaseaccents.r 0
+\; dephaseoctaves.r 0 \; dephasedurations.r 0 \; modenotes.r 0 \; modeaccents.r
+0 \; modeoctaves.r 0 \; modedurations.r 0 \; baseoctave.r 1 \; presets.r/idx
+0 \; vcffreq.r 50 \; vcfq.r 5 \; dddry.r 0.5 \; dell.r/idx 0 \; dell.r/idx
+0 \;;
+#X connect 0 0 3 0;
+#X connect 0 1 28 0;
+#X connect 0 2 9 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 6 0 10 0;
+#X connect 7 0 8 0;
+#X connect 7 0 1 0;
+#X connect 8 0 7 1;
+#X connect 9 0 2 0;
+#X connect 11 0 15 1;
+#X connect 12 0 13 0;
+#X connect 14 0 12 0;
+#X connect 15 0 12 1;
+#X connect 16 0 14 0;
+#X connect 16 1 15 0;
+#X connect 16 2 20 0;
+#X connect 17 0 14 0;
+#X connect 17 1 14 1;
+#X connect 17 2 15 0;
+#X connect 18 0 16 0;
+#X connect 19 0 17 0;
+#X connect 20 0 11 0;
+#X connect 21 0 22 0;
+#X connect 24 0 34 0;
+#X connect 26 1 25 0;
+#X connect 27 0 26 0;
+#X connect 28 0 29 0;
