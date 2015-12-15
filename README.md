@@ -32,20 +32,28 @@ requirements:
 - Gradle Eclipse Plugin
 
 Steps :
-- Once git repository cloned, you need to init all submodules :
-```  
-  $ git submodule update --init --recursive
-```
+- Once git repository cloned, you need to generate pd-for-android eclipse
+  project. To do so : 
+  - move to pd-for-android folder and run *gradle generateEclipseDependencies*
+  - you should have a directory *aarDependencies* containing generated eclipse projects.
+- Then you need to generate eclipse projects for ppp, to do so :
+  - move to root folder and run *gradle eclipse* command.
+  - you should have eclipse files generated in projects folders (.project, .classpath, ...).
+
 - Import all projects in eclipse :
-  - **File/Import.../Gradle/Gradle Project**
-  - Select the repository root folder and press **Build Model**
+  - **File/Import.../Existing eclipse projects**
+  - Select the repository root folder
   - Select all projects except some samples project (you may import some of them now or later)
   - Press **Finish**.
   - You will have some (known) errors at import. To fix them, you need to define Android Target on all projects : Right click on each projects, then **properties/Android** and select your android target (ex: Android 4.4W), press **OK** to finish.
-  - The midi project needs to be cleaned (since bin directory has been unfortunately source controled). Right click on the project and **clean...**
   - All projects should be OK now.
 
 Note : if you want to import samples, you need to generate icons first (see tools/icon/readme.md for instructions)
+
+Note : eclipse project generation have to be done in two phase because
+gradle plugin used to convert aar dependencies to eclipse project is not
+working well on multiple gradle project layout, it generates dependencies
+in each projects (including all samples) and that's not what we want.
 
 ### create a new project :
 
