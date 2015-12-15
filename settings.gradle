@@ -1,7 +1,5 @@
 
-include 'pd-for-android', 'pd-party', 'svg-android', 'lib', 'svg-android-test', 'pd-party-test', 'demo-AcidBass', 'demo-AcidDrums', 'demo-Wobbler', 'demo-Glitcher', 'demo-ChipSequencer', 'demo-VoiceSlicer', 'demo-VoiceSlicer','demo-Chorder'
-
-project(':pd-for-android').projectDir = new File(settingsDir, "pd-for-android/PdCore")
+include 'pd-party', 'svg-android', 'lib', 'svg-android-test', 'pd-party-test', 'demo-AcidBass', 'demo-AcidDrums', 'demo-Wobbler', 'demo-Glitcher', 'demo-ChipSequencer', 'demo-VoiceSlicer', 'demo-VoiceSlicer','demo-Chorder'
 
 project(':svg-android-test').projectDir = new File(settingsDir, "tests/svg-android-test")
 project(':pd-party-test').projectDir = new File(settingsDir, "tests/pd-party-test")
