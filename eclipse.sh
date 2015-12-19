@@ -3,7 +3,7 @@
 # generate eclipse project for all dependencies
 
 cd pd-for-android
-bash gradlew generateEclipseDependencies
+bash ../gradlew generateEclipseDependencies
 
 # fix native library location in pd-core project
 
@@ -16,13 +16,11 @@ cd ../..
 rm .project
 rm .classpath
 rm project.properties
-rm gen
-rm bin
 
 cd ..
 
 # generate eclipse project for ppp modules
 
-bash gradlew generateEclipseDependencies
+bash gradlew eclipse
 
 # After that, you can import all eclipse project in your workspace.
