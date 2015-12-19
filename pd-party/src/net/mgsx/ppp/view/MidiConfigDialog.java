@@ -1,10 +1,6 @@
 package net.mgsx.ppp.view;
 
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 
 import net.mgsx.ppp.R;
 import net.mgsx.ppp.midi.MidiDevice;
@@ -16,9 +12,9 @@ import net.mgsx.ppp.midi.ip.MidiOutputCreateDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.text.format.Formatter;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -32,8 +28,6 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.net.wifi.WifiManager;
-import android.content.Context;
 
 public class MidiConfigDialog extends Dialog {
 	private MidiManager midiManager;
@@ -70,6 +64,7 @@ public class MidiConfigDialog extends Dialog {
 
 		final TextView ipinfo = new TextView(getContext());
 		WifiManager wm = (WifiManager) getContext().getSystemService(Context.WIFI_SERVICE);
+		@SuppressWarnings("deprecation")
 		String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
 		ipinfo.setText("Your IP address is : " + ip);
 

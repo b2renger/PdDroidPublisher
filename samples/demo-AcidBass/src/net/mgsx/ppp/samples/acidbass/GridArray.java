@@ -2,7 +2,6 @@ package net.mgsx.ppp.samples.acidbass;
 
 import net.mgsx.ppp.widget.core.Subpatch;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 
 public class GridArray extends Subpatch
