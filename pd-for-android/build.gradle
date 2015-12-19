@@ -1,0 +1,45 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        // or jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.0.0'
+    }
+}
+
+plugins {
+    id 'com.github.ksoichiro.eclipse.aar' version '0.1.4'
+}
+
+apply plugin: 'com.android.application'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+
+dependencies {
+    compile 'org.puredata.android:pd-core:1.0.0-rc3'
+}
+
+eclipseAar {
+	androidTarget = 'android-20'
+	aarDependenciesDir = 'aarDependencies'
+}
+
+android {
+
+    compileSdkVersion 1
+
+    // Source directory is 'src/main/java' by default.
+    // This will be added as a classpath entry in .classpath file.
+    // If you'd like to set src directory other than that,
+    // override it with sourceSets.main.java.srcDirs like this.
+    sourceSets {
+        main {
+            java.srcDirs = [ 'src' ]
+        }
+    }
+}

@@ -11,9 +11,9 @@ requirements:
 Steps :
 * download last distribution
 * unzip it
-* In Eclipse : File/Import.../Android/Existing Android Code Into Workspace.
+* In Eclipse : File/Import.../General/Existing Projects Into Workspace.
 * Select eclipse directory from last distribution
-* Finish to import the 5 projects
+* Finish to import the 7 projects
 * Edit Project named Example. This is a simple demo project you can start on :
   - change app name res/values/strings.xml
   - change package name with refactor -> rename
@@ -29,35 +29,36 @@ requirements:
 - Android SDK
 - GIT
 - Eclipse (Tested with Eclipse Kepler)
-- Gradle Eclipse Plugin
+- Android for eclipse (ADT)
 
 Steps :
-- Once git repository cloned, you need to init all submodules :
-```  
-  $ git submodule update --init --recursive
-```
+- Once git repository cloned, you have to generate eclipse projects. To do so,
+  run eclipse.sh script.
 - Import all projects in eclipse :
-  - **File/Import.../Gradle/Gradle Project**
-  - Select the repository root folder and press **Build Model**
+  - File/Import.../General/Existing Projects Into Workspace.
+  - Select the repository root folder
   - Select all projects except some samples project (you may import some of them now or later)
   - Press **Finish**.
   - You will have some (known) errors at import. To fix them, you need to define Android Target on all projects : Right click on each projects, then **properties/Android** and select your android target (ex: Android 4.4W), press **OK** to finish.
-  - The midi project needs to be cleaned (since bin directory has been unfortunately source controled). Right click on the project and **clean...**
   - All projects should be OK now.
-
-Note : if you want to import samples, you need to generate icons first (see tools/icon/readme.md for instructions)
 
 ### create a new project :
 
 - duplicate a sample project, change its name an copy your patch in assets
 - add your project to settings.gradle in PdPartyPublisher project (first line, and dedicated line with the path)
+- then generate eclipse project by running this command in your sample directory :
+  - ../../gradlew eclipse
+  - then import eclipse project as usual.
+- adapt the sample with specific
 - change app name res/values/strings.xml
 - change package name with refactor -> rename
 - change name in the manifest
 
 ### make a distribution
 
-* have a clean local git repository on develop branch
+* clone release branch (develop for instance) :
+  * git clone -b develop git@github.com:b2renger/PdDroidPublisher.git
+* run eclipse.sh to generate eclipse project files (required for release)
 * update version in main build.gradle for the release
 * launch gradle task "release" on sources root (root project PdPartyPublisher)
 * verify release is OK

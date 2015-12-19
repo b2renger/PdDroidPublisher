@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
     }
 
     dependencies {
@@ -11,6 +12,10 @@ buildscript {
 version = '0.0.1'
 
 allprojects {
+	repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
     apply plugin: "eclipse"
 }
 
@@ -20,7 +25,6 @@ project(":pd-party") {
 
 	dependencies {
 		compile project(":lib")
-	    compile project(":pd-for-android")
 	    compile project(":svg-android")
 	}
 
@@ -138,156 +142,41 @@ project(":svg-android") {
 	}
 }
 
-project(":pd-for-android") {
-	afterEvaluate {
-    	apply plugin: 'android-library'
-		apply plugin: 'eclipse'
-		
-		dependencies{
-			compile project(":midi")
-		}
-
-	    android {
-	   
-	        compileSdkVersion 20
-	        buildToolsVersion "20"
-	
-	        defaultConfig {
-	            minSdkVersion 3
-	            targetSdkVersion 3
-	        }
-	         lintOptions {
-	          abortOnError false
-	        }
-	     
-	    }
-	    
-		eclipse {
-		    // need to specify Java source sets explicitely, SpringSource Gradle Eclipse plugin
-		    // ignores any nodes added in classpath.file.withXml
-		    sourceSets {
-		        main {
-		            java.srcDirs "src", 'gen' , 'jni/libpd/java'
-		        }
-		    }
-		
-		    jdt {
-		        sourceCompatibility = 1.6
-		        targetCompatibility = 1.6
-		    }
-		
-		    classpath {
-		        plusConfigurations += [ project.configurations.compile ]        
-		        containers 'com.android.ide.eclipse.adt.ANDROID_FRAMEWORK', 'com.android.ide.eclipse.adt.LIBRARIES'       
-		    }
-		
-		    project {
-		        //name = appName + "-android"
-		        natures 'com.android.ide.eclipse.adt.AndroidNature'
-		        buildCommands.clear();
-		        buildCommand "com.android.ide.eclipse.adt.ResourceManagerBuilder"
-		        buildCommand "com.android.ide.eclipse.adt.PreCompilerBuilder"
-		        buildCommand "org.eclipse.jdt.core.javabuilder"
-		        buildCommand "com.android.ide.eclipse.adt.ApkBuilder"
-		    }
-		}	    
-	    
-	}
-}
-
-project(":midi") {
-	afterEvaluate {
-	    apply plugin: 'android-library'
-		apply plugin: 'eclipse'
-		
-	    android {
-	        compileSdkVersion 20
-	        buildToolsVersion "20"
-	
-	        defaultConfig {
-	            minSdkVersion 3
-	            targetSdkVersion 3
-	        }
-	         lintOptions {
-	          abortOnError false
-	        }
-	
-	    }
-	    
-	    eclipse {
-		    // need to specify Java source sets explicitely, SpringSource Gradle Eclipse plugin
-		    // ignores any nodes added in classpath.file.withXml
-		    sourceSets {
-		        main {
-		            java.srcDirs "src", 'gen' , 'jni/libpd/java'
-		        }
-		    }
-		
-		    jdt {
-		        sourceCompatibility = 1.6
-		        targetCompatibility = 1.6
-		    }
-		
-		    classpath {
-		        plusConfigurations += [ project.configurations.compile ]        
-		        containers 'com.android.ide.eclipse.adt.ANDROID_FRAMEWORK', 'com.android.ide.eclipse.adt.LIBRARIES'       
-		    }
-		
-		    project {
-		        //name = appName + "-android"
-		        natures 'com.android.ide.eclipse.adt.AndroidNature'
-		        buildCommands.clear();
-		        buildCommand "com.android.ide.eclipse.adt.ResourceManagerBuilder"
-		        buildCommand "com.android.ide.eclipse.adt.PreCompilerBuilder"
-		        buildCommand "org.eclipse.jdt.core.javabuilder"
-		        buildCommand "com.android.ide.eclipse.adt.ApkBuilder"
-		    }
-		}	    
-	    
-    }
-}
 
 tasks.eclipse.doLast {
     delete ".project"
 }
 
 task buildLibrary(type:Copy) {
- 	
- 	from ('lib'){
- 		into ('pd-party')
- 		include 'src/**/*'
- 	}
     
+ 	from ('.'){
+ 		include (
+ 			'pd-for-android/aarDependencies/**/*',
 
-	from ('.'){
-	    include (
+ 			'pd-party/AndroidManifest.xml',
+	    	'pd-party/src/**/*', 
+	    	'pd-party/res/**/*', 
 	    	'pd-party/AndroidManifest.xml', 
 	    	'pd-party/project.properties', 
-	    	'pd-party/src/**/*', 
-	    	'pd-party/res/**/*',
-	    	
-	    	'pd-for-android/midi/AndroidMidi/AndroidManifest.xml', 
-	    	'pd-for-android/midi/AndroidMidi/project.properties', 
-	    	'pd-for-android/midi/AndroidMidi/src/**/*', 
-	    	'pd-for-android/midi/AndroidMidi/res/**/*',
-	
+	    	'pd-party/.classpath', 
+	    	'pd-party/.project',
+
+	    	'lib/src/**/*',
+	    	'lib/test',
+	    	'lib/.classpath',
+	    	'lib/.project',
+ 
+  			'svg-android/AndroidManifest.xml',
+	    	'svg-android/src/**/*', 
+	    	'svg-android/res/**/*', 
 	    	'svg-android/AndroidManifest.xml', 
 	    	'svg-android/project.properties', 
-	    	'svg-android/src/**/*', 
-	    	'svg-android/res/**/*',
-	
-	    	'pd-for-android/PdCore/AndroidManifest.xml', 
-	    	'pd-for-android/PdCore/project.properties', 
-	    	'pd-for-android/PdCore/src/**/*', 
-	    	'pd-for-android/PdCore/res/**/*',
-	    	'pd-for-android/PdCore/libs/**/*'
+	    	'svg-android/.classpath', 
+	    	'svg-android/.project'
+		)
+		exclude (
+	    	'**/bin', '**/gen'
 	    )
- 	}
- 
- 
- 	from('pd-for-android/PdCore/jni/libpd/java'){
- 		into 'pd-for-android/PdCore/src'
- 		include '**/*'
  	}
  	
  	from('samples/example-default'){
