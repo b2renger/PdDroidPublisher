@@ -148,37 +148,35 @@ tasks.eclipse.doLast {
 }
 
 task buildLibrary(type:Copy) {
- 	
- 	from ('lib'){
- 		into ('pd-party')
- 		include 'src/**/*'
- 	}
     
+ 	from ('.'){
+ 		include (
+ 			'pd-for-android/aarDependencies/**/*',
 
-	from ('.'){
-	    include (
+ 			'pd-party/AndroidManifest.xml',
+	    	'pd-party/src/**/*', 
+	    	'pd-party/res/**/*', 
 	    	'pd-party/AndroidManifest.xml', 
 	    	'pd-party/project.properties', 
-	    	'pd-party/src/**/*', 
-	    	'pd-party/res/**/*',
-	    	
+	    	'pd-party/.classpath', 
+	    	'pd-party/.project',
+
+	    	'lib/src/**/*',
+	    	'lib/test',
+	    	'lib/.classpath',
+	    	'lib/.project',
+ 
+  			'svg-android/AndroidManifest.xml',
+	    	'svg-android/src/**/*', 
+	    	'svg-android/res/**/*', 
 	    	'svg-android/AndroidManifest.xml', 
 	    	'svg-android/project.properties', 
-	    	'svg-android/src/**/*', 
-	    	'svg-android/res/**/*',
-	
-	    	'pd-for-android/PdCore/AndroidManifest.xml', 
-	    	'pd-for-android/PdCore/project.properties', 
-	    	'pd-for-android/PdCore/src/**/*', 
-	    	'pd-for-android/PdCore/res/**/*',
-	    	'pd-for-android/PdCore/libs/**/*'
+	    	'svg-android/.classpath', 
+	    	'svg-android/.project'
+		)
+		exclude (
+	    	'**/bin', '**/gen'
 	    )
- 	}
- 
- 
- 	from('pd-for-android/PdCore/jni/libpd/java'){
- 		into 'pd-for-android/PdCore/src'
- 		include '**/*'
  	}
  	
  	from('samples/example-default'){
