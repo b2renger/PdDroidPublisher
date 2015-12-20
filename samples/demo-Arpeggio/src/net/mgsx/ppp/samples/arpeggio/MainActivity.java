@@ -20,6 +20,8 @@ public class MainActivity extends Activity {
         config.typeOverrides.put(Slider.class, RibbonSlider.class);
         config.theme = new MonochromeTheme(180, true);
         
+        config.presetsPaths.add("Arpeggio/presets");
+        
         PdDroidPartyLauncher.launch(this, "Arpeggio/arpeggio.pd", config);
     }
     

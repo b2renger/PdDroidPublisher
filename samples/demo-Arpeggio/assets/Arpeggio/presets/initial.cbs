@@ -1,0 +1,15 @@
+length3.r 1;
+scale3.r 3;
+length2.r 1;
+scale2.r 1;
+limit1.r 7;
+length1.r 8;
+scale1.r 2;
+feedback.r 0.2;
+delay.r 100;
+fmo.r 0;
+fm.r 100;
+mode.r 3;
+subdiv.r 4;
+note.r 0;
+octavia.r 3;

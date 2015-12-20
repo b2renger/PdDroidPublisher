@@ -1,6 +1,6 @@
-#N canvas 273 261 652 347 10;
+#N canvas 281 222 655 352 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
-#N canvas 66 268 625 392 core 0;
+#N canvas 66 270 625 392 core 0;
 #X obj 34 15 declare -path ../../../../pd-party/droidparty-abstractions
 ;
 #X obj 403 16 clock-gui;
@@ -320,6 +320,38 @@
 \; scale1.r 2 \; length1.r 8 \; limit1.r 7 \; scale2.r 1 \; length2.r
 1 \; scale3.r 3 \; length3.r 1 \; fm.r 100 \; fmo.r 0 \; delay.r 100
 \; feedback.r 0.2 \; master.r 0.5 \;;
+#N canvas 409 267 450 300 load-save 0;
+#X obj 38 70 r load;
+#X obj 40 140 r preset-load;
+#X obj 40 162 persist-load preset;
+#X obj 166 10 loadsave preset;
+#X msg 38 92 \; preset load presets cbs;
+#X obj 244 70 r save;
+#X msg 244 92 \; preset save presets cbs;
+#X obj 247 142 r preset-save;
+#X obj 247 164 persist-save preset;
+#X connect 0 0 4 0;
+#X connect 1 0 2 0;
+#X connect 5 0 6 0;
+#X connect 7 0 8 0;
+#X restore 400 65 pd load-save;
+#N canvas 712 249 608 300 preset-mapping 0;
+#X obj 54 37 persist-map preset octavia octavia.r;
+#X obj 54 64 persist-map preset note note.r;
+#X obj 54 91 persist-map preset subdiv subdiv.r;
+#X obj 54 118 persist-map preset mode mode.r;
+#X obj 58 154 persist-map preset fm fm.r;
+#X obj 58 181 persist-map preset fmo fmo.r;
+#X obj 59 205 persist-map preset delay delay.r;
+#X obj 59 232 persist-map preset feedback feedback.r;
+#X obj 317 31 persist-map preset scale1 scale1.r;
+#X obj 317 58 persist-map preset length1 length1.r;
+#X obj 318 82 persist-map preset limit1 limit1.r;
+#X obj 320 139 persist-map preset scale2 scale2.r;
+#X obj 320 166 persist-map preset length2 length2.r;
+#X obj 322 219 persist-map preset scale3 scale3.r;
+#X obj 322 246 persist-map preset length3 length3.r;
+#X restore 403 118 pd preset-mapping;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 4 0 5 0;
@@ -328,7 +360,7 @@
 #X connect 8 0 9 0;
 #X connect 8 1 9 1;
 #X connect 10 0 11 0;
-#X restore 594 72 pd core;
+#X restore 438 60 pd core;
 #X obj 450 19 hradio 32 1 0 6 subdiv subdiv.r empty 0 -8 0 10 -262144
 -1 -1 4;
 #X text 459 3 4;
@@ -340,7 +372,7 @@
 #X obj 617 206 vsl 15 128 0 1 0 0 master master.r Master -10 -9 0 10
 -262144 -1 -1 12700 1;
 #X obj 12 16 hradio 32 1 0 13 note note.r Note 0 -8 0 10 -262144 -1
--1 12;
+-1 0;
 #X obj 9 106 hradio 15 1 0 8 octavia octavia.r Octavia 0 -8 0 10 -262144
 -1 -1 3;
 #X obj 234 145 hradio 15 1 0 16 limit1 limit1.r empty 0 -8 0 10 -262144
@@ -358,7 +390,7 @@
 #X obj 11 282 hradio 15 1 0 13 scale3 scale3.r Scale 0 -8 0 10 -262144
 -1 -1 3;
 #X obj 234 162 hradio 15 1 0 16 empty position1 led -20 6 0 10 -228856
--1 -1 0;
+-1 -1 5;
 #X obj 233 300 hradio 15 1 0 16 empty position3 led -20 6 0 10 -228856
 -1 -1 0;
 #X obj 234 110 hradio 15 1 0 16 length1 length1.r Length 0 -8 0 10
@@ -497,3 +529,7 @@
 0;
 #X obj 404 58 cnv 16 16 24 empty empty empty 20 12 0 14 -228856 -66577
 0;
+#X obj 611 127 bng 24 250 50 0 load empty Load 0 -7 0 10 -262144 -1
+-1;
+#X obj 610 87 bng 24 250 50 0 save empty Save 0 -7 0 10 -262144 -1
+-1;
