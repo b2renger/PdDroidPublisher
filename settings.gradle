@@ -1,5 +1,5 @@
 
-include 'pd-party', 'svg-android', 'lib', 'svg-android-test', 'pd-party-test', 'example', 'demo-AcidBass', 'demo-AcidDrums', 'demo-Wobbler', 'demo-Glitcher', 'demo-ChipSequencer', 'demo-VoiceSlicer', 'demo-VoiceSlicer','demo-Chorder'
+include 'pd-party', 'svg-android', 'lib', 'svg-android-test', 'pd-party-test', 'example', 'demo-AcidBass', 'demo-AcidDrums', 'demo-Wobbler', 'demo-Glitcher', 'demo-ChipSequencer', 'demo-VoiceSlicer', 'demo-VoiceSlicer','demo-Chorder','demo-Arpeggio'
 
 project(':svg-android-test').projectDir = new File(settingsDir, "tests/svg-android-test")
 project(':pd-party-test').projectDir = new File(settingsDir, "tests/pd-party-test")
@@ -13,5 +13,6 @@ project(':demo-Glitcher').projectDir = new File(settingsDir, "samples/demo-Glitc
 project(':demo-ChipSequencer').projectDir = new File(settingsDir, "samples/demo-ChipSequencer")
 project(':demo-VoiceSlicer').projectDir = new File(settingsDir, "samples/demo-VoiceSlicer")
 project(':demo-Chorder').projectDir = new File(settingsDir, "samples/demo-Chorder")
+project(':demo-Arpeggio').projectDir = new File(settingsDir, "samples/demo-Arpeggio")
 
 rootProject.name = 'PdPartyPublisher'

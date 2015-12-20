@@ -1,4 +1,4 @@
-package net.mgsx.ppp.samples.wobbler;
+package net.mgsx.ppp.samples.arpeggio;
 
 import net.mgsx.ppp.view.PdDroidPatchView;
 import net.mgsx.ppp.widget.core.Radio;
