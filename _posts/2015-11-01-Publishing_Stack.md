@@ -42,7 +42,7 @@ You are now good to go for the software requirement ! Now let's start the fun pa
 
 #Download last distribution
 
-* Go [here](https://github.com/b2renger/PdDroidPublisher/releases) and dowload the latest release (PdPartyPublisher-X.Y.Z.zip file). 
+* Go [here](https://github.com/b2renger/PdDroidPublisher/releases) and dowload the latest release (PdPartyPublisher-X.Y.Z.zip file - do not mistake it with the source code right below, you want the first downloadable file here). 
 * Extract it to a directory that is convenient for you.
 
 <a name="import"/>
@@ -54,24 +54,24 @@ When starting up eclipse, it should prompt you to select a workspace. It is a go
 ![create a workspace]({{site.baseurl}}/img/import_and_build/workspace_creation.png)
 
 Once your workspace is created go to the menu : *File/Import...*
-and select */Android/Existing Android Code Into Workspace.* then click **Next**.
+and select */General/Existing Projects into Workspace.* then click **Next**.
 
 
-![import android code]({{site.baseurl}}/img/import_and_build/import_android_code.png)
+![import android code]({{site.baseurl}}/img/import_and_build/import_general_project.png)
 
 Next to the *Root Directory* field click *Browse* and navigate to the folder containing the last distribution you just extracted.
 
-Finally click *Finish* to import the 5 projects, do not click *copy project into workspace* check box. As we want to keep our workspace and our code separated.
+Finally click *Finish* to import all the projects, do not click *copy project into workspace* check box. As we want to keep our workspace and our code separated.
 
 ![import projects]({{site.baseurl}}/img/import_and_build/import_dialog.png)
 
-You may have a few residual errors after importing the project, you can clear them by clicking the menu *Project/Clean* and select *clean all project* and click *ok*.
+Close the 'workspace' tab. You may have a few residual errors after importing the project, you can clear them by clicking the menu *Project/Clean* and select *clean all project* and click *ok*.
 
 Now you should have a clean workspace to work on.
 
 ![workspace ready]({{site.baseurl}}/img/import_and_build/eclipse_workspace_ready.png)
 
-You can deploy the example by right clicking on the example folder in the left pane and select "Run As \ Android Application".
+You can deploy the example by right clicking on the example folder in the left pane and select "Run As \ Android Application". On the screenshot the "Example.java" file is open in the editor.
 
 You need to be sure to have enabled the "Developper option menu" and in it the "USB debugging mode". The web will help you with that if you don't know yet how to do it.
 
@@ -87,8 +87,6 @@ In your file explorer and a good text editor, you can setup a new working folder
 * change name in the AndroidManifest.xml.
 
 Then in eclipse, import this new folder, by following again the steps to import a project, only this time you'll only have to select the new project to import. If you cannot select it be sure that any of the names are not used twice if so, change it.
-
-![import new project]({{site.baseurl}}/img/import_and_build/import-new-project.png)
 
 In the package explorer you can now right click on the project and change its package name with the menu *Refactor/Rename*. Eclipse may ask you if you want to update your launch configurations, say **yes**.
 
