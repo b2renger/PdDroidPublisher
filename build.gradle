@@ -9,7 +9,7 @@ buildscript {
     }
 }
 
-version = '0.1.0'
+version = '0.1.1'
 
 allprojects {
 	repositories {
@@ -182,6 +182,9 @@ task buildLibrary(type:Copy) {
  	from('samples/example-default'){
  		into 'example'
  		include '**/*'
+		exclude (
+	    	'bin', 'gen', '.settings'
+	    )
  	}
  	
  	destinationDir new File(buildDir, 'distrib/eclipse')
