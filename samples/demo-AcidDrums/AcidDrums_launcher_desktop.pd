@@ -1,4 +1,4 @@
-#N canvas 65 102 450 300 10;
+#N canvas 404 162 450 300 10;
 #X declare -path ../../pd-party/droidparty-abstractions;
 #X declare -path assets/Acid_Drums;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
