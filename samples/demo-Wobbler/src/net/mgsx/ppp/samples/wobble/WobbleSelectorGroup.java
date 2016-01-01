@@ -1,4 +1,4 @@
-package net.mgsx.ppp.samples.wobbler;
+package net.mgsx.ppp.samples.wobble;
 
 public class WobbleSelectorGroup
 {

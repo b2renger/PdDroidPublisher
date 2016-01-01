@@ -1,4 +1,4 @@
-package net.mgsx.ppp.samples.wobbler;
+package net.mgsx.ppp.samples.wobble;
 
 import net.mgsx.ppp.widget.Widget;
 import net.mgsx.ppp.widget.WidgetFactory;
