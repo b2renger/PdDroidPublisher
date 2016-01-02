@@ -1,4 +1,4 @@
-#N canvas 65 82 1301 686 10;
+#N canvas 712 87 651 686 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 9 3 declare -path ../../../../pd-party/droidparty-abstractions
 ;
@@ -662,7 +662,7 @@ License along with this program. If not \, see <http://www.gnu.org/licenses/>.
 #X msg 549 364 12;
 #X text 592 340 no visible bar when no mode selected;
 #X floatatom 150 180 5 0 0 0 - - -, f 5;
-#N canvas 604 107 651 686 loadsave-mapping 0;
+#N canvas 592 97 651 686 loadsave-mapping 1;
 #X obj 462 75 r reset_synth;
 #X obj 577 33 loadbang;
 #X obj 412 -152 r synth-load;
@@ -701,8 +701,6 @@ License along with this program. If not \, see <http://www.gnu.org/licenses/>.
 #X obj 26 427 persist-map chords octave4.s octave4.r;
 #X obj 26 447 persist-map chords basenote4.s basenote4.r;
 #X obj 26 470 persist-map chords arrangement4.s arrangement4.r;
-#X obj 29 505 persist-map chords structured_evolution.s structured_evolution.r
-;
 #X obj 29 538 persist-map chords proba_evolution.s proba_evolution.r
 ;
 #X obj 29 558 persist-map chords structure_type.s structure_type.r
@@ -712,21 +710,23 @@ License along with this program. If not \, see <http://www.gnu.org/licenses/>.
 #X obj 32 632 persist-map chords proba3.s proba3.r;
 #X obj 34 654 persist-map chords proba4.s proba4.r;
 #X obj 463 390 r reset_chords;
+#X obj 27 152 persist-map synth dddry.s dddry.r;
 #X msg 461 413 \; octave1.r 1 \; basenote1.r/idx 0 \; arrangement1.r/idx
 0 \; octave2.r 1 \; basenote2.r/idx 0 \; arrangement2.r/idx 0 \; octave3.r
 1 \; basenote3.r/idx 0 \; arrangement3.r/idx 0 \; octave4.r 1 \; basenote4.r/idx
-0 \; arrangement4.r/idx 0 \; structured_evolution.r 0 \; proba_evolution.r
+0 \; arrangement4.r/idx 0 \; structured_evolution.r 1 \; proba_evolution.r
 0 \; structure_type.r 0 \; proba1.r 25 \; proba2.r 50 \; proba3.r 75
 \; proba4.r 100 \;;
-#X obj 27 152 persist-map synth dddry.s dddry.r;
-#X obj 27 171 persist-map synth dell.s dell.r;
-#X obj 27 192 persist-map synth delr.s delr.r;
 #X msg 462 110 \; tone.r 0.2 \; decay.r 1500 \; velocity.r 100 \; vibfreq.r
 11 \; vibdepth.r 1 \; mod.r 0 \; adsr.r 127 \; delay.r 0 \; keyboard_octave.r
-2 \; dddry.r 0.5 \; notetime 500 \; play_div.r 4 \; dell.r/idx 0 \;
-delr.r/idx 0 \;;
-#X connect 0 0 50 0;
-#X connect 1 0 50 0;
+2 \; dddry.r 0.5 \; notetime 500 \; play_div.r 4 \; dell.r/idx 2 \;
+delr.r/idx 3 \;;
+#X obj 27 171 persist-map synth dell.s/idx dell.r/idx;
+#X obj 27 192 persist-map synth delr.s/idx delr.r/idx;
+#X obj 29 505 persist-map chords structured_evolution.s structured_evolution.r
+;
+#X connect 0 0 47 0;
+#X connect 1 0 47 0;
 #X connect 1 0 46 0;
 #X connect 2 0 3 0;
 #X connect 4 0 5 0;
@@ -736,7 +736,7 @@ delr.r/idx 0 \;;
 #X connect 11 0 12 0;
 #X connect 13 0 15 0;
 #X connect 16 0 17 0;
-#X connect 45 0 46 0;
+#X connect 44 0 46 0;
 #X restore 362 41 pd loadsave-mapping;
 #X obj 270 42 loadsave synth;
 #X obj 125 247 r play_div.s;
@@ -759,6 +759,12 @@ delr.r/idx 0 \;;
 #X obj 8 244 t b;
 #X obj 42 250 t f b;
 #X obj 165 42 loadsave chords;
+#X obj 779 -7 loadbang;
+#X obj 780 58 symbol presets_chords/minor-walk.cbs;
+#X obj 848 84 symbol presets_synth/echo-rhode.cbs;
+#X obj 851 146 persist-load synth;
+#X obj 767 118 persist-load chords;
+#X obj 779 26 delay 100;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 4 0 49 0;
@@ -839,3 +845,8 @@ delr.r/idx 0 \;;
 #X connect 50 0 7 0;
 #X connect 51 0 48 0;
 #X connect 51 1 47 0;
+#X connect 53 0 58 0;
+#X connect 54 0 57 0;
+#X connect 55 0 56 0;
+#X connect 58 0 54 0;
+#X connect 58 0 55 0;

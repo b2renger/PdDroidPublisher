@@ -14,6 +14,7 @@ import net.mgsx.ppp.widget.custom.SwitchToggle;
 import net.mgsx.ppp.widget.custom.PopupTaplist;
 import net.mgsx.ppp.widget.custom.RibbonSlider;
 import net.mgsx.ppp.widget.custom.SimpleBang;
+import net.mgsx.ppp.widget.custom.FilledToggle;
 import net.mgsx.ppp.widget.custom.SimpleRadio;
 
 

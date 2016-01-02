@@ -1,4 +1,4 @@
-#N canvas 314 251 433 290 10;
+#N canvas 311 256 433 290 10;
 #X declare -path ../../../../pd-party/droidparty-abstractions;
 #X obj 2 290 declare -path ../../../../pd-party/droidparty-abstractions
 ;
