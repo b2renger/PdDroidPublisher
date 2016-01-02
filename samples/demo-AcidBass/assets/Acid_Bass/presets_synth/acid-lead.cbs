@@ -1,0 +1,6 @@
+reverbfeedback.r 0;
+dry.r 0.823436;
+drive.r 46.3798;
+toshape 0.196719;
+todecay 0;
+toattack 0.155475;

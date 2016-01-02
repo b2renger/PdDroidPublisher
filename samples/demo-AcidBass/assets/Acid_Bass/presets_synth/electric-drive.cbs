@@ -1,0 +1,7 @@
+reverbfeedback.r 18.7539;
+dry.r 0.294262;
+drive.r 48.0795;
+toshape 0.714747;
+todecay 0.22426;
+toattack 0.1;
+toVolume 127;
