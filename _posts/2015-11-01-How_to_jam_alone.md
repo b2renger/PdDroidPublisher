@@ -5,6 +5,14 @@ tags: user-guide
 order: 020
 ---
 
+This video may be self-explanatory, but you can also read on ...
+
+<div>
+        <center>
+         <iframe width="420" height="315" src="https://www.youtube.com/embed/9U19fb3_Koc" frameborder="0" allowfullscreen></iframe>
+        </center>
+</div>
+
 ## Jamming alone in local mode
 
 It is actually pretty trivial, but if you are alone, you still use our system to share the clock beetween several instance of one app, or several apps.
