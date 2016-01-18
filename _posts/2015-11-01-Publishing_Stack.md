@@ -34,7 +34,15 @@ You will also have to add SDK packages, but you just have to follow the steps de
 
 #Installing ADT plugin for eclipse
 
-This is trickiest step, but it often quite straight forward, you just have to follow the instructions described [here](http://developer.android.com/sdk/installing/installing-adt.html).
+This is trickiest step, but it often quite straight forward : from eclipse select 'Install new software' from the 'Help' menu. In the upper right hand corner click on the button labelled 'Add ...'.
+
+In the 'Name' field write down "ADT-Plugin" (you can actually enter whatever name you want here) and in the field 'Location' copy this adress 'https://dl-ssl.google.com/android/eclipse/' and click 'ok' :
+
+![add plugin]({{site.baseurl}}/img/import_and_build/adt-plugin-add.png)
+
+Now you just have to select it and click 'Finish' :
+
+![finish addin plugin]({{site.baseurl}}/img/import_and_build/finish_import_adt.png)
 
 You are now good to go for the software requirement ! Now let's start the fun part :
 
