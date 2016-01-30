@@ -7,23 +7,57 @@ order: 020
 
 We will cover :
 
+* [the config variable](#config)<br>
+* [aspect ratio](#aspect-ratio)<br>
 * [color themes](#color-theme)<br>
 * [factory components](#factory-components)<br>
 * [custom overrides](#custom-overrides)<br>
 
 We provide several level of gui customization by adding a few lines of code to you launcher (ie *MainActivity.java*). By default you have some simple pd classic gui, with the default colors from your original patch. 
 
+
+<a name="config"/>
+
+### Create a config variable
+
+First you need to import the config class from ppp, add the following line at the top of your main *.java file the one located in your /src folder in eclipse.
+
+{% highlight java %} 
+import net.mgsx.ppp.PdDroidPartyConfig;
+{% endhighlight %}
+
+After that you can create a new config variable, right after this line :
+{% highlight java %} 
+super.onCreate(savedInstanceState);
+{% endhighlight %}
+
+in the main java class. You just need to copy this line : 
+{% highlight java %} 
+PdDroidPartyConfig config = new PdDroidPartyConfig();
+{% endhighlight %}
+this will give you access to new customization function !
+
+<a name="aspect-ratio"/>
+
+### Aspect ratio
+
+By default ppp will strech you view to match the size of you screen. If you want the gui to keep the same look by not getting stretched away by several screen ratios once you've created the config variable below.
+
+{% highlight java %} 
+config.guiKeepAspectRatio = true;
+{% endhighlight %}
+
 <a name="color-theme"/>
 
 ### Apply a color theme
+
+Here is how to apply one of themes shipped with ppp, again you need to have created the config variable :
 
 {% highlight java %} 
 config.theme = new MonochromeTheme(MonochromeTheme.RED, true);
 {% endhighlight %}
 
 We have a few colors already setup for you, in eclipse you can remove the *.RED* part and press *ctrl + space* to activate auto-completion and check which other colors are available.
-
-TODOC : color constants like RED are there to help but you can set any global color ... 
 
 You can also create a theme with your own colors, you will then have to specify 3 colors, first the main background color, then the widgets background color, and finally the widgets foreground color expressed in hexadecimal form :
 
@@ -33,7 +67,7 @@ config.theme = new MonochromeTheme(0xff101933, 0xff202943, 0xff004ce6);
 
 To find the hexadecimal code you can consult a website like this [one](http://www.color-hex.com/). An hexadecimal color code is composed of 6 characters numbers or letters, and you have to add the prefix **0xff**. In the above line the colors are different kinds of blue.
 
-TODOC : more about SVG and/or PNG theming ? even if SVG is not fully supported ... ? at minima : it exists and it's an experimental feature ...
+TODOC : more about SVG and/or PNG theming. even if SVG is not fully supported it's an experimental feature ...
 
 <a name="factory-components"/>
 
