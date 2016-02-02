@@ -30,8 +30,9 @@ public class NumberboxDialog extends Dialog
 		//Context context = getApplicationContext();
 		final EditText number = (EditText)findViewById(R.id.number);
 		number.setSelectAllOnFocus(true);
-		number.setInputType(InputType.TYPE_CLASS_NUMBER);
 		number.setText(String.valueOf(defaultValue));
+		number.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+		
 		
 		Button ok = (Button)findViewById(R.id.ok);
 		ok.setOnClickListener(new Button.OnClickListener() {
