@@ -18,13 +18,13 @@ Let's face it we are not providing a magic "export to android" button to pd, but
 
 <a name="eclipse"/>
 
-#Installing eclipse
+# Installing eclipse
 
 This should be easy enough. Just go [here](https://eclipse.org/downloads/) and download the **Eclipse IDE for Java Developers** package for your system. Run the installer, and you are cleared for this step.
 
 <a name="sdk"/>
 
-#Installing android SDK
+# Installing android SDK
 
 This is pretty simple too. Go [here](http://developer.android.com/sdk/installing/index.html), and download **Stand-alone sdk tools**. 
 
@@ -32,7 +32,7 @@ You will also have to add SDK packages, but you just have to follow the steps de
 
 <a name="adt"/>
 
-#Installing ADT plugin for eclipse
+# Installing ADT plugin for eclipse
 
 This is trickiest step, but it often quite straight forward : from eclipse select 'Install new software' from the 'Help' menu. In the upper right hand corner click on the button labelled 'Add ...'.
 
@@ -48,14 +48,14 @@ You are now good to go for the software requirement ! Now let's start the fun pa
 
 <a name="distrib"/>
 
-#Download last distribution
+# Download last distribution
 
 * Go [here](https://github.com/b2renger/PdDroidPublisher/releases) and dowload the latest release (PdPartyPublisher-X.Y.Z.zip file - do not mistake it with the source code right below, you want the first downloadable file here). 
 * Extract it to a directory that is convenient for you.
 
 <a name="import"/>
 
-#Import the project in eclipse
+# Import the project in eclipse
 
 When starting up eclipse, it should prompt you to select a workspace. It is a good practice to seperate your source from your eclipse workspace. We recommand to create a folder to keep your eclipse workspace, a folder were you keep ppp source code and your own code for your applications.
 
@@ -87,7 +87,7 @@ If the application launches, you can add features to the example to see how it i
 
 <a name="new-project"/>
 
-#Create a new application project
+# Create a new application project
 
 In your file explorer and a good text editor, you can setup a new working folder for you project, by duplicating the example folder and editting it manually :
 
