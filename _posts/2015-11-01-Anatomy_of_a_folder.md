@@ -7,16 +7,19 @@ order: 020
 
 A project folder contains a lot of things. You are mainly interested by a few of the files and folders in here.
 
-#assets
+# assets
+
 It is the main folder to store your **Pd** patch, abstractions, sound files, presets etc. 
 
-#src
+# src
+
 This folder is for the **code**. It contains the *launcher* file which is java file in which you can do all sorts of configurations stunts. This is where you can tell : what pd file to launch and how, if you want to use our midi-clock, if you want to customize graphic display of some components, and where you specify the path to store banks of presets.
 
 This file is located deep in the hierarch and called MainActivity.java
 src/net/mgsx/ppp/samples/myproject/MainActivity.java
 
-#res
+# res
+
 In this folder you will find :
 
 * in *values* the *strings.xml* which you need to update if you want to change the name of your project.
@@ -26,7 +29,7 @@ You can check this discussion on [stackoverflow](http://stackoverflow.com/questi
 
 Note : we do provide an icon, you can of course change it to what suits you best.
 
-#AndroidManifes.xml
+# AndroidManifes.xml
 
 This is your android manifest. You need to change it if you want to change your application name, declare some authorizations.
 You can also set versions there when you will need to export signed apk for the android marker.
